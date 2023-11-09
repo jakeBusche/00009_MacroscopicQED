@@ -1,0 +1,1231 @@
+\documentclass{article}
+\input{default_preamble}
+
+%%%%%%%%%%%%%%%%%%%%%%%%% Additional Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Used to get bibliogrpahy options that I want
+\usepackage[comma,super,sort&compress]{natbib}
+
+% Used to get handy macros for physics notes (like these!)
+\usepackage{physics}
+
+% Number equations by section (needs amsmath package)
+\numberwithin{equation}{section}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% New Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Used to place references in text
+\newcommand{\citen}[1]{
+	\begingroup
+		\hspace{-18pt}
+		\setcitestyle{numbers} % cite style is no longer superscript
+		\cite{#1}
+		\hspace{-6.5pt}
+	\endgroup
+}
+
+\begin{document}
+
+\title{Derivations of the Fields Operators in Free Space}
+\author{Jacob A Busche}
+
+\maketitle
+
+
+
+
+\section{Solutions in Spherical Coordinates}
+
+\subsection{Classical Solution}
+
+We begin with proposed solutions to the Helmholtz equation for the electric field in the absence of sources (see Eq. [\ref{eq:waveEqFreq}]),
+\begin{equation}\label{eq:waveEqE0}
+\nabla\times\nabla\times\mathbf{E}(\mathbf{r},\omega) - \frac{\omega^2}{c^2}\mathbf{E}(\mathbf{r},\omega) = \bm{0}.
+\end{equation}
+The solution to Eq. \eqref{eq:waveEqE0} is
+\begin{equation}
+\mathbf{E}(\mathbf{r},\omega) = \mathrm{i}k\sum_{p = 0}^1\sum_{\ell = 1}^\infty\sum_{m = 0}^\ell\left[a_{p\ell m}(\omega)\mathbf{M}_{p\ell m}(\mathbf{r},k) + b_{p\ell m}(\omega)\mathbf{N}_{p\ell m}(\mathbf{r},k)\right],
+\end{equation}
+where $a_{p\ell m}(\omega)$ and $b_{p\ell m}(\omega)$ are complex coefficients with units of electric field times length times time (or electric potential times time) whose magnitudes and phases are free to vary and $k = \omega/c$. The details of the spherical vector harmonics $\mathbf{M}_{p\ell m}(\mathbf{r},k)$ and $\mathbf{N}_{p\ell m}(\mathbf{r},k)$ are given in Appendix \ref{sec:harmDef}, where it is clear that they are transverse vector fields. The longitudinal component of the electric field is zero identically, as can be seen from an expansion $\mathbf{E}(\mathbf{r},\omega) = \mathbf{E}_\parallel(\mathbf{r},\omega) + \mathbf{E}_\perp(\mathbf{r},\omega)$ within the wave function that, with the additional identity $\nabla\times\mathbf{E}_\parallel(\mathbf{r},\omega) = 0$, provides
+\begin{equation}
+\begin{split}
+\nabla\times\nabla\times\mathbf{E}_\perp(\mathbf{r},\omega) - \frac{\omega^2}{c^2}\mathbf{E}_\perp(\mathbf{r},\omega) &= \bm{0},\\
+-\frac{\omega^2}{c^2}\mathbf{E}_\parallel(\mathbf{r},\omega) &= \bm{0}.
+\end{split}
+\end{equation}
+The only solution viable for all frequencies $\omega$ for the longitudinal field is then $\mathbf{E}_\parallel(\mathbf{r},\omega) = \bm{0}$ such that $\mathbf{E}(\mathbf{r},\omega) = \mathbf{E}_\perp(\mathbf{r},\omega)$.
+
+In the Coulomb gauge, the longitudinal and transverse components of the electric field are described as derivatives of separate potentials. The vector potential $\mathbf{A}(\mathbf{r},\omega) = \mathbf{A}_\perp(\mathbf{r},\omega)$ is purely transverse such that $\mathbf{E}_\perp(\mathbf{r},\omega) = (\mathrm{i}\omega/c)\mathbf{A}(\mathbf{r},\omega)$. The ``longitudinal'' potential $\Phi(\mathbf{r},\omega)$ is actually a scalar such that $\mathbf{E}_\parallel(\mathbf{r},\omega) = -\nabla\Phi(\mathbf{r},\omega)$. Therefore, we have
+\begin{equation}
+\mathbf{A}(\mathbf{r},\omega) = \sum_{p = 0}^1\sum_{\ell = 1}^\infty\sum_{m = 0}^\ell\left[a_{p\ell m}(\omega)\mathbf{M}_{p\ell m}(\mathbf{r},k) + b_{p\ell m}(\omega)\mathbf{N}_{p\ell m}(\mathbf{r},k)\right].
+\end{equation}
+Given the transformation properties of the vector harmonics under frequency reversal, the reality condition $\mathbf{A}(\mathbf{r},-\omega) = \mathbf{A}^*(\mathbf{r},\omega)$ is satisfied only if
+\begin{equation}
+\begin{split}
+a_{p\ell m}(-\omega) &= (-1)^\ell a_{p\ell m}^*(\omega),\\
+b_{p\ell m}(-\omega) &= (-1)^{\ell + 1} b_{p\ell m}^*(\omega).\\
+\end{split}
+\end{equation}
+Therefore, we can rewrite $\mathbf{A}(\mathbf{r},t)$ as 
+\begin{equation}
+\begin{split}
+\mathbf{A}(\mathbf{r},t) &= \int_{-\infty}^\infty\mathbf{A}(\mathbf{r},\omega)\mathrm{e}^{-\mathrm{i}\omega t}\;\frac{\mathrm{d}\omega}{2\pi}\\
+&= \int_0^\infty\sum_{p\ell m}\left[a_{p\ell m}(\omega)\mathrm{e}^{-\mathrm{i}\omega t}\mathbf{M}_{p\ell m}(\mathbf{r},k) + a_{p\ell m}(-\omega)\mathrm{e}^{\mathrm{i}\omega t}\mathbf{M}_{p\ell m}(\mathbf{r},-k)\right.\\
+&\hspace{0.1\textwidth}\left. + b_{p\ell m}(\omega)\mathrm{e}^{-\mathrm{i}\omega t}\mathbf{N}_{p\ell m}(\mathbf{r},k) + b_{p\ell m}(-\omega)\mathrm{e}^{\mathrm{i}\omega t}\mathbf{N}_{p\ell m}(\mathbf{r},-k)\right]\;\frac{\mathrm{d}\omega}{2\pi}\\
+&= \int_0^\infty\sum_{Tp\ell m}\left[a_{Tp\ell m}(\omega)\mathrm{e}^{-\mathrm{i}\omega t} + a_{Tp\ell m}^*(\omega)\mathrm{e}^{\mathrm{i}\omega t}\right]\mathbf{X}_{Tp\ell m}(\mathbf{r},k)\;\frac{\mathrm{d}\omega}{2\pi},
+\end{split}
+\end{equation}
+wherein we have defined the harmonics $\mathbf{X}(\mathbf{r},k)$ of subscript $T = M$ as the magnetic ($\mathbf{M}$) vector harmonics and those of subscript $E$ as the electric ($\mathbf{N}$). The coefficients have been similarly redefined for brevity such that $a_{Mp\ell m}(\omega) = a_{p\ell m}(\omega)$ and $a_{Ep\ell m}(\omega) = b_{p\ell m}(\omega)$.
+
+From here, we will let $\bm{\alpha} = \{T,p,\ell,m\}$ be a collective index. The form for the magnetic field is then simple to write from $\mathbf{B}(\mathbf{r},t) = \nabla\times\mathbf{A}(\mathbf{r},t)$ as
+\begin{equation}\label{eq:B1}
+\mathbf{B}(\mathbf{r},t) = \int_0^\infty\sum_{\bm{\alpha}}\left[ka_{\bm{\alpha}}(\omega)\mathrm{e}^{-\mathrm{i}\omega t} + ka_{\bm{\alpha}}^*(\omega)\mathrm{e}^{\mathrm{i}\omega t}\right]\mathbf{Y}_{\bm{\alpha}}(\mathbf{r},k)\;\frac{\mathrm{d}\omega}{2\pi},
+\end{equation}
+with $\mathbf{Y}_{\bm{\alpha}}(\mathbf{r},k) = \nabla\times\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)/k$, and the electric field is similarly written as
+\begin{equation}\label{eq:E1}
+\mathbf{E}(\mathbf{r},t) = \int_0^\infty\sum_{\bm{\alpha}}\left[\mathrm{i}ka_{\bm{\alpha}}(\omega)\mathrm{e}^{-\mathrm{i}\omega t} - \mathrm{i}ka^*_{\bm{\alpha}}(\omega)\mathrm{e}^{\mathrm{i}\omega t}\right]\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)\;\frac{\mathrm{d}\omega}{2\pi}.
+\end{equation}
+These definitions allow for the simple definition of the Hamiltonian of the free fields,
+\begin{equation}
+H(t) = \frac{1}{8\pi}\int\left[\mathbf{E}(\mathbf{r},t)\cdot\mathbf{E}(\mathbf{r},t) + \mathbf{B}(\mathbf{r},t)\cdot\mathbf{B}(\mathbf{r},t)\right]\;\mathrm{d}^3\mathbf{r}.
+\end{equation}
+Explicitly, the orthogonality properties of the spherical vector harmonics in Eq. \eqref{eq:orthogonality} and the identity $\delta(k ' -k') = c\delta(\omega - \omega')$ lead us to
+\begin{equation}
+\begin{split}
+\int\mathbf{E}(\mathbf{r},t)\cdot\mathbf{E}(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r} &= \int_0^\infty\int_0^\infty\sum_{\bm{\alpha}\bm{\alpha}'}(-kk')\left[a_{\bm{\alpha}}(\omega)\mathrm{e}^{-\mathrm{i}\omega t} - a_{\bm{\alpha}}^*(\omega)\mathrm{e}^{\mathrm{i}\omega t}\right]\left[a_{\bm{\alpha}'}(\omega')\mathrm{e}^{-\mathrm{i}\omega' t} - a_{\bm{\alpha}'}^*(\omega')\mathrm{e}^{\mathrm{i}\omega' t}\right]\\
+&\hspace{0.05\textwidth}\times\frac{2\pi^2}{k^2}\delta(k - k')\delta_{\bm{\alpha}\bm{\alpha}'}\;\frac{\mathrm{d}\omega}{2\pi}\,\frac{\mathrm{d}\omega'}{2\pi}\\
+&= -\frac{c}{2}\int_0^\infty\sum_{\bm{\alpha}}\left[a_{\bm{\alpha}}(\omega)\mathrm{e}^{-\mathrm{i}\omega t} - a_{\bm{\alpha}}^*(\omega)\mathrm{e}^{\mathrm{i}\omega t}\right]^2\;\mathrm{d}\omega
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+\int\mathbf{B}(\mathbf{r},t)\cdot\mathbf{B}(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r} &= \int_0^\infty\int_0^\infty\sum_{\bm{\alpha}\bm{\alpha}'}kk'\left[a_{\bm{\alpha}}(\omega)\mathrm{e}^{-\mathrm{i}\omega t} + a_{\bm{\alpha}}^*(\omega)\mathrm{e}^{\mathrm{i}\omega t}\right]\left[a_{\bm{\alpha}'}(\omega')\mathrm{e}^{-\mathrm{i}\omega' t} + a_{\bm{\alpha}'}^*(\omega')\mathrm{e}^{\mathrm{i}\omega' t}\right]\\
+&\hspace{0.05\textwidth}\times\frac{2\pi^2}{k^2}\delta(k - k')\delta_{\bm{\alpha}\bm{\alpha}'}\;\frac{\mathrm{d}\omega}{2\pi}\,\frac{\mathrm{d}\omega'}{2\pi}\\
+&= \frac{c}{2}\int_0^\infty\sum_{\bm{\alpha}}\left[a_{\bm{\alpha}}(\omega)\mathrm{e}^{-\mathrm{i}\omega t} + a_{\bm{\alpha}}^*(\omega)\mathrm{e}^{\mathrm{i}\omega t}\right]^2\;\mathrm{d}\omega.
+\end{split}
+\end{equation}
+Thus, the (time-invariant) Hamiltonian becomes
+\begin{equation}
+\begin{split}
+H &= \frac{c}{16\pi}\int_0^\infty\sum_{\bm{\alpha}}\left(\left[a_{\bm{\alpha}}(\omega)\mathrm{e}^{-\mathrm{i}\omega t} + a_{\bm{\alpha}}^*(\omega)\mathrm{e}^{\mathrm{i}\omega t}\right]^2 - \left[a_{\bm{\alpha}}(\omega)\mathrm{e}^{-\mathrm{i}\omega t} - a_{\bm{\alpha}}^*(\omega)\mathrm{e}^{\mathrm{i}\omega t}\right]^2\right)\;\mathrm{d}\omega\\
+&= \frac{c}{4\pi}\int_0^\infty\sum_{\bm{\alpha}}\abs{a_{\bm{\alpha}}(\omega)\mathrm{e}^{-\mathrm{i}\omega t}}^2\;\mathrm{d}\omega.
+\end{split}
+\end{equation}
+
+To shorten our notation, we will define the time-dependent oscillator functions $a_{\bm{\alpha}}(\omega,t) = a_{\bm{\alpha}}(\omega)\exp(-\mathrm{i}\omega t)$ such that $a_{\bm{\alpha}}(\omega,t) + a_{\bm{\alpha}}^*(\omega,t) = 2\mathrm{Re}\{a_{\bm{\alpha}}(\omega,t)\}$ and $a_{\bm{\alpha}}(\omega,t) - a_{\bm{\alpha}}^*(\omega,t) = 2\mathrm{i}\mathrm{Im}\{a_{\bm{\alpha}}(\omega,t)\}$. Further, it is useful to see that the functional derivatives of $H$ with respect to the real and imaginary parts of the oscillator functions give
+\begin{equation}
+\begin{split}
+\frac{\delta H}{\delta \mathrm{Re}\{a_{\bm{\alpha}'}(\omega',t)\}} &= \frac{c}{2\pi}\mathrm{Re}\{a_{\bm{\alpha}'}(\omega',t)\} = -\frac{c}{2\pi\omega'}\frac{\mathrm{d}}{\mathrm{d}t}\mathrm{Im}\{a_{\bm{\alpha}'}(\omega',t)\},\\
+\frac{\delta H}{\delta \mathrm{Im}\{a_{\bm{\alpha}'}(\omega',t)\}} &= \frac{c}{2\pi}\mathrm{Im}\{a_{\bm{\alpha}'}(\omega',t)\} = \frac{c}{2\pi\omega'}\frac{\mathrm{d}}{\mathrm{d}t}\mathrm{Re}\{a_{\bm{\alpha}'}(\omega',t)\},
+\end{split}
+\end{equation}
+wherein we have used the identities
+\begin{equation}
+\begin{split}
+\frac{\delta g[f(x)]}{\delta h(x)} &= \frac{\delta g[f(x)]}{\delta f(x)}\frac{\delta f(x)}{\delta h(x)},\\
+\frac{\delta \mathrm{Re}\{a_{\bm{\alpha}}(\omega,t)\}}{\delta\mathrm{Im}\{a_{\bm{\alpha}'}(\omega',t)\}} &= \frac{\delta \mathrm{Im}\{a_{\bm{\alpha}}(\omega,t)\}}{\delta\mathrm{Re}\{a_{\bm{\alpha}'}(\omega',t)\}} = 0,\\
+\frac{\delta \mathrm{Re}\{a_{\bm{\alpha}}(\omega,t)\}}{\delta\mathrm{Re}\{a_{\bm{\alpha}'}(\omega',t)\}} &= \frac{\delta \mathrm{Im}\{a_{\bm{\alpha}}(\omega,t)\}}{\delta\mathrm{Im}\{a_{\bm{\alpha}'}(\omega',t)\}} = \delta_{\bm{\alpha\alpha}'}\delta(\omega - \omega')
+\end{split}
+\end{equation}
+that are central to variational derivative calculus. Thus, not only are the real and imaginary parts of the oscillator functions independent (as is implied above), they are Hamiltonian conjugate variables of each other up to a constant. More precisely, Hamiltonian mechanics defines two functions $q_k(\xi,t)$ and $p_k(\xi,t)$ of discrete index $k$ and continuous index $\xi$ as conjugate if and only if
+\begin{equation}\label{eq:conjugateRules}
+\begin{split}
+\dot{q}_k(\chi,t) &= \frac{\delta H[q_1(\xi,t),\ldots,q_N(\xi,t),q_1(\xi',t),\ldots,q_N(\xi',t),\ldots;p_1(\xi,t),\ldots,p_N(\xi',t),\ldots]}{\delta p_k(\chi,t)},\\
+\dot{p}_k(\chi,t) &= -\frac{\delta H[q_1(\xi,t),\ldots,q_N(\xi,t),q_1(\xi',t),\ldots,q_N(\xi',t),\ldots;p_1(\xi,t),\ldots,p_N(\xi',t),\ldots]}{\delta q_k(\chi,t)}
+\end{split}
+\end{equation}
+are satisfied.
+
+The truly conjugate variables of $H$ thus be defined as
+\begin{equation}
+\begin{split}
+x_{\bm{\alpha}}(\omega,t) &= A\left[a_{\bm{\alpha}}(\omega)\mathrm{e}^{-\mathrm{i}\omega t} + a_{\bm{\alpha}}^*(\omega)\mathrm{e}^{\mathrm{i}\omega t}\right],\\
+p_{\bm{\alpha}}(\omega,t) &= B\left[a_{\bm{\alpha}}(\omega)\mathrm{e}^{-\mathrm{i}\omega t} - a_{\bm{\alpha}}^*(\omega)\mathrm{e}^{\mathrm{i}\omega t}\right].
+\end{split}
+\end{equation}
+Using Hamilton's equations above as well as the identities $\dot{x}_{\bm{\alpha}}(\omega,t) = (-\mathrm{i}\omega A/B)p_{\bm{\alpha}}(\omega,t)$ and $\dot{p}_{\bm{\alpha}}(\omega,t) = (-\mathrm{i}\omega B/A)x_{\bm{\alpha}}(\omega,t)$, the coefficients $A$ and $B$ are constrained such that $x_{\bm{\alpha}}(\omega,t)$ and $p_{\bm{\alpha}}(\omega,t)$ are conjugate if and only if
+\begin{equation}
+AB = -\frac{\mathrm{i}}{8\pi k}.
+\end{equation}
+In the interest of simplification, we can define the unknown coefficients as $A = 1/\sqrt{8\pi\hbar k^3}$ and $B = -\mathrm{i}\hbar k/\sqrt{8\pi\hbar k}$ such that
+\begin{equation}\label{eq:xAndP1}
+\begin{split}
+x_{\bm{\alpha}}(\omega,t) &= \frac{1}{k\sqrt{8\pi}}\sqrt{\frac{1}{\hbar k}}\left[a_{\bm{\alpha}}(\omega)\mathrm{e}^{-\mathrm{i}\omega t} + a_{\bm{\alpha}}^*(\omega)\mathrm{e}^{\mathrm{i}\omega t}\right],\\
+p_{\bm{\alpha}}(\omega,t) &= -\mathrm{i}\frac{\hbar k}{\sqrt{8\pi}}\sqrt{\frac{1}{\hbar k}}\left[a_{\bm{\alpha}}(\omega)\mathrm{e}^{-\mathrm{i}\omega t} - a_{\bm{\alpha}}^*(\omega)\mathrm{e}^{\mathrm{i}\omega t}\right]
+\end{split}
+\end{equation}
+have units of position times square-root-time and momentum times squre-root-time, respectively. These strange dimensions do not interfere with the generation of sensible equations of motion for $x_{\bm{\alpha}}(\omega,t)$ and $p_{\bm{\alpha}}(\omega,t)$, as with the identities
+\begin{equation}\label{eq:varDeriv1}
+\begin{split}
+\frac{\delta x_{\bm{\alpha}}(\omega,t)}{\delta x_{\bm{\alpha}'}(\omega',t)} &= \delta_{\bm{\alpha}\bm{\alpha}'}\delta(\omega - \omega'),\\
+\frac{\delta p_{\bm{\alpha}}(\omega,t)}{\delta p_{\bm{\alpha}'}(\omega',t)} &= \delta_{\bm{\alpha}\bm{\alpha}'}\delta(\omega - \omega'),\\
+\frac{\delta x_{\bm{\alpha}}(\omega,t)}{\delta p_{\bm{\alpha}'}(\omega',t)} &= 0,\\
+\frac{\delta p_{\bm{\alpha}}(\omega,t)}{\delta x_{\bm{\alpha}'}(\omega',t)} &= 0,\\
+\end{split}
+\end{equation}
+the variational derivative chain rule, and the canonicality condition of Eq. \eqref{eq:conjugateRules} one can find
+\begin{equation}\label{eq:eqMot1}
+\begin{split}
+\dot{x}_{\bm{\alpha}}(\omega,t) &= \frac{\hbar\omega}{\hbar^2k^2}p_{\bm{\alpha}}(\omega,t),\\
+\dot{p}_{\bm{\alpha}}(\omega,t) &= -\hbar\omega k^2x_{\bm{\alpha}}(\omega,t),
+\end{split}
+\end{equation}
+or, after application of a second time derivative and substitution,
+\begin{equation}\label{eq:eqMot2}
+\begin{split}
+\ddot{x}_{\bm{\alpha}}(\omega,t) &= -\omega^2x_{\bm{\alpha}}(\omega,t),\\
+\ddot{p}_{\bm{\alpha}}(\omega,t) &= -\omega^2p_{\bm{\alpha}}(\omega,t).\\
+\end{split}
+\end{equation}
+The unusual dimensions of the mode coordinates and momenta also become immediately sensible when we see that the Hamiltonian is 
+\begin{equation}\label{eq:H2}
+H = \frac{1}{2}\int_0^{\infty}\sum_{\bm{\alpha}}\hbar\omega\left[\frac{p_{\bm{\alpha}}^2(\omega,t)}{\hbar^2k^2} + k^2x_{\bm{\alpha}}^2(\omega,t)\right]\;\mathrm{d}\omega.
+\end{equation}
+Due to the continuous nature of the $\omega$ index (or equivalently $k$), the dynamics of the modes $(\bm{\alpha},k)$ are determined by coordinate and momentum \textit{densities}, rather than coordinates and momenta in the usual sense. This abstraction is perhaps expected: one can quickly see from Eq. \eqref{eq:xAndP1} that
+\begin{equation}
+\begin{split}
+\mathbf{B}(\mathbf{r},t) &= \int_0^\infty k^2\sqrt{2\hbar k}\sum_{\bm{\alpha}}x_{\bm{\alpha}}(\omega,t)\mathbf{Y}_{\bm{\alpha}}(\mathbf{r},k)\;\mathrm{d}\omega,\\
+\mathbf{E}(\mathbf{r},t) &= -\frac{1}{\hbar}\int_0^\infty\sqrt{2\hbar k}\sum_{\bm{\alpha}}p_{\bm{\alpha}}(\omega,t)\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)\;\mathrm{d}\omega
+\end{split}
+\end{equation}
+such that the mechanical quantities of the Hamiltonian are simply well-constrained amplitudes for the different modes of the electromagnetic field and are not comparable in an exact way to the dynamical position and momenta of massive objects.
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Quantization}
+
+Quantization of Eq. \eqref{eq:H2} is straightforward using the Poisson bracket commutator, however it is convenient to first make a change of variables. It will turn out to be important that the mode coordinates have units of length and the mode conjugate momenta have units of mass times velocity, and we can make this happen by letting $\omega\to ck_c\kappa$ strategically within the definition of $H$. Here, $\kappa$ is a unitless index that can range from $0$ to $\infty$ and $k_c$ is a constant token wavenumber that can take any positive finite value. Therefore,
+\begin{equation}
+H = \frac{ck_c}{2}\int_0^\infty\sum_{\bm{\alpha}}\hbar\omega\left[\frac{p_{\bm{\alpha}}^2(ck_c\kappa,t)}{\hbar^2k^2} + k^2x_{\bm{\alpha}}^2(ck_c\kappa,t)\right]\mathrm{d}\kappa.
+\end{equation}
+To simplify, we can let
+\begin{equation}
+\sqrt{ck_c}a_{\bm{\alpha}}(\omega,t) = \sqrt{ck_c}a_{\bm{\alpha}}(ck_c\kappa)\mathrm{e}^{-\mathrm{i}ck_c\kappa t} \to a_{\bm{\alpha}}(\kappa,t) = a_{\bm{\alpha}}(\kappa)\mathrm{e}^{-\mathrm{i}ck_c\kappa t},
+\end{equation}
+i.e. we can rescale our oscillator functions $a_{\bm{\alpha}}(\omega)$ by a factor $\sqrt{ck_c}$ and reindex them with $\kappa$ rather than $\omega$. The reindexing is trivial and does not change the underlying frequency dependence of the functions, just the way that we write them. However, the rescaling gives them new units of $[\mathrm{electric\;potential}][\mathrm{time}]^{1/2}$. The mode coorindates and momenta now have the desired units if their relationships with the oscillator coordinates are
+\begin{equation}
+\begin{split}
+x_{\bm{\alpha}}(\kappa,t) &= \frac{1}{k\sqrt{8\pi}}\sqrt{\frac{1}{\hbar k}}\left[a_{\bm{\alpha}}(\kappa,t) + a_{\bm{\alpha}}^*(\kappa,t)\right],\\
+p_{\bm{\alpha}}(\kappa,t) &= -\mathrm{i}\frac{\hbar k}{\sqrt{8\pi}}\sqrt{\frac{1}{\hbar k}}\left[a_{\bm{\alpha}}(\kappa,t) - a_{\bm{\alpha}}^*(\kappa,t)\right],
+\end{split}
+\end{equation}
+i.e. if we let $\sqrt{ck_c}x_{\bm{\alpha}}(\omega,t)\to x_{\bm{\alpha}}(\kappa,t)$ and $\sqrt{ck_c}p_{\bm{\alpha}}(\omega,t)\to p_{\bm{\alpha}}(\kappa,t)$. The new Hamiltonian in this case is
+\begin{equation}
+\begin{split}
+H &= \frac{1}{2}\int_0^\infty\sum_{\bm{\alpha}}\hbar\omega\left[\frac{p_{\bm{\alpha}}^2(\kappa,t)}{\hbar^2k^2} + k^2x_{\bm{\alpha}}^2(\kappa,t)\right]\mathrm{d}\kappa\\
+&= \frac{c}{16\pi}\int_0^\infty\sum_{\bm{\alpha}}\left(\left[a_{\bm{\alpha}}(\kappa,t) + a_{\bm{\alpha}}^*(\kappa,t)\right]^2 - \left[a_{\bm{\alpha}}(\kappa,t) - a_{\bm{\alpha}}^*(\kappa,t)\right]^2\right)\mathrm{d}\kappa.
+\end{split}
+\end{equation}
+One can see that the transformation of the mode coordinates and momenta does not affect their equations of motion, as the multiplication of both sides of either Eq. \eqref{eq:eqMot1} or \eqref{eq:eqMot2} by $\sqrt{ck_c}$ produces no change in the time-evolution of $x_{\bm{\alpha}}(\omega,t)$ and $p_{\bm{\alpha}}(\omega,t)$ (or, equivalently, $x_{\bm{\alpha}}(\kappa,t)$ and $p_{\bm{\alpha}}(\kappa,t)$). Further, with the change of the variational derivatives involving the coordinates and momenta from those of Eq. \eqref{eq:varDeriv1} to
+\begin{equation}
+\begin{split}
+\frac{\delta x_{\bm{\alpha}}(\kappa,t)}{\delta x_{\bm{\alpha}'}(\kappa',t)} &= \delta_{\bm{\alpha}\bm{\alpha}'}\delta(\kappa - \kappa'),\\
+\frac{\delta p_{\bm{\alpha}}(\kappa,t)}{\delta p_{\bm{\alpha}'}(\kappa',t)} &= \delta_{\bm{\alpha}\bm{\alpha}'}\delta(\kappa - \kappa'),\\
+\frac{\delta x_{\bm{\alpha}}(\kappa,t)}{\delta p_{\bm{\alpha}'}(\kappa',t)} &= 0,\\
+\frac{\delta p_{\bm{\alpha}}(\kappa,t)}{\delta x_{\bm{\alpha}'}(\kappa',t)} &= 0,\\
+\end{split}
+\end{equation}
+the canonicality condition of Eq. \eqref{eq:conjugateRules} is maintained between $x_{\bm{\alpha}}(\kappa,t)$ and $p_{\bm{\alpha}}(\kappa,t)$.
+
+We can now resume our quantization process. The Poisson bracket commutators between the coordinates and momenta are given by 
+\begin{equation}
+\begin{split}
+\{x_{\bm{\alpha}}(\kappa,t),p_{\bm{\alpha}'}(\kappa',t)\} &= \int_{-\infty}^\infty\sum_{\bm{\beta}}\left[\frac{\delta x_{\bm{\alpha}}(\kappa,t)}{\delta x_{\bm{\beta}}(\eta,t)}\frac{\delta p_{\bm{\alpha}'}(\kappa',t)}{\delta p_{\bm{\beta}}(\eta,t)} - \frac{\delta x_{\bm{\alpha}}(\kappa,t)}{\delta p_{\bm{\beta}}(\eta,t)}\frac{\delta p_{\bm{\alpha}'}(\kappa',t)}{\delta x_{\bm{\beta}}(\eta,t)}\right]\mathrm{d}\eta\\
+&= \int_{-\infty}^\infty\sum_{\bm{\beta}}\left[\delta_{\bm{\alpha}\bm{\beta}}\delta(\kappa - \eta)\delta_{\bm{\alpha}'\bm{\beta}}\delta(\kappa' - \eta) - 0\right]\mathrm{d}\eta\\
+&= \delta_{\bm{\alpha}\bm{\alpha}'}\delta(\kappa - \kappa')
+\end{split}
+\end{equation}
+and $\{p_{\bm{\alpha}'}(\kappa',t),x_{\bm{\alpha}}(\kappa,t)\} = -\delta_{\bm{\alpha}\bm{\alpha}'}\delta(\kappa - \kappa')$. These results deliver in a straightforward way the forms of the quantum operators that correspond to our classical functions. We simply let
+\begin{equation}
+\begin{split}
+x_{\bm{\alpha}}(\kappa,t) &\to \hat{x}_{\bm{\alpha}}(\kappa,t)\\
+p_{\bm{\alpha}}(\kappa,t) &\to \hat{p}_{\bm{\alpha}}(\kappa,t)\\
+H[\ldots,x_{\bm{\alpha}}(\kappa,t),\ldots;\ldots,p_{\bm{\alpha}}(\kappa,t),\ldots] &\to \hat{H}[\ldots,\hat{x}_{\bm{\alpha}}(\kappa,t),\ldots;\ldots,\hat{p}_{\bm{\alpha}}(\kappa,t),\ldots],\\
+\end{split}
+\end{equation}
+and
+\begin{equation}\label{eq:xpCommutator}
+\begin{split}
+\{x_{\bm{\alpha}}(\kappa,t),p_{\bm{\alpha}}(\kappa',t)\} &\to [\hat{x}_{\bm{\alpha}}(\kappa,t),\hat{p}_{\bm{\alpha}'}(\kappa',t)] = \mathrm{i}\hbar\delta_{\bm{\alpha}\bm{\alpha}'}\delta(\kappa - \kappa'),\\
+\{p_{\bm{\alpha}}(\kappa,t),x_{\bm{\alpha}}(\kappa',t)\} &\to [\hat{p}_{\bm{\alpha}}(\kappa,t),\hat{x}_{\bm{\alpha}'}(\kappa',t)] = -\mathrm{i}\hbar\delta_{\bm{\alpha}\bm{\alpha}'}\delta(\kappa - \kappa'),
+\end{split}
+\end{equation}
+i.e. we let each observable quantity of the motion become an operator (labeled with a ``$\;\hat{}\;$'') that acts on the states of the Hilbert space spanned by the eigenvectors of $\hat{H}$. The Poisson bracket is then modified to become a commutator $[\hat{f},\hat{g}] = \hat{f}\hat{g} - \hat{g}\hat{f}$ whose output is identical to the classical commutator result modulo a factor of $\mathrm{i}\hbar$. Explicitly, the Hamiltonian becomes
+\begin{equation}\label{eq:Hhat1}
+\hat{H} = \frac{1}{2}\int_0^{\infty}\sum_{\bm{\alpha}}\hbar\omega\left[\frac{\hat{p}_{\bm{\alpha}}^2(\kappa,t)}{\hbar^2 k^2} + k^2\hat{x}^2_{\bm{\alpha}}(\kappa,t)\right]\;\mathrm{d}\kappa
+\end{equation}
+and is comprised of position and momentum operators $\hat{x}_{\bm{\alpha}}(\kappa,t)$ and $\hat{p}_{\bm{\alpha}}(\kappa,t)$ of the wave quanta of the electromagnetic field, photons.
+
+It is useful at this point to return to the expression of the Hamiltonian in terms of the quantized versions of the oscillator functions $a_{\bm{\alpha}}(\kappa,t)$. In keeping with our current notation conventions, we will let these new oscillator operators be $\hat{a}_{\bm{\alpha}}(\kappa,t) = \hat{a}_{\bm{\alpha}}(\kappa)\exp(-\mathrm{i}\omega t)$. However, if we can, we would like these operators to be unitless. Moreover, it turns out to be convenient if the relationship between the coordinate/momentum operators and the oscillator operators is
+\begin{equation}\label{eq:xAndP2}
+\begin{split}
+\hat{x}_{\bm{\alpha}}(\kappa,t) &= \frac{1}{k\sqrt{2}}\left[\hat{a}_{\bm{\alpha}}(\kappa,t) + \hat{a}_{\bm{\alpha}}^\dagger(\kappa,t)\right],\\
+\hat{p}_{\bm{\alpha}}(\kappa,t) &= -\mathrm{i}\frac{\hbar k}{\sqrt{2}}\left[\hat{a}_{\bm{\alpha}}(\kappa,t) - \hat{a}_{\bm{\alpha}}^\dagger(\kappa,t)\right].
+\end{split}
+\end{equation}
+This is achieved by quantizing $x_{\bm{\alpha}}(\kappa,t)$ and $p_{\bm{\alpha}}(\kappa,t)$ directly (by simply adding a ``$\;\hat{}\;$'') but rescaling $a_{\bm{\alpha}}(\kappa,t)$ before quantization such that $(1/\sqrt{4\pi\hbar k})a_{\bm{\alpha}}(\kappa,t)\to\hat{a}_{\bm{\alpha}}(\kappa,t)$. This transformation is independent of the canonical conjugation of the quantum coordinate and momentum operators and is thus allowable without violating any physical principles. The electric and magnetic field operators can now be rebuilt using the quantized position and momentum operators such that
+\begin{equation}
+\begin{split}
+\hat{\mathbf{B}}(\mathbf{r},t) &= \int_0^\infty k^2\sqrt{2\hbar kk_cc}\sum_{\bm{\alpha}}\hat{x}_{\bm{\alpha}}(\kappa,t)\mathbf{Y}_{\bm{\alpha}}(\mathbf{r},k)\;\mathrm{d}\kappa,\\
+&= \int_0^\infty k\sqrt{\hbar kk_cc}\sum_{\bm{\alpha}}\left[\hat{a}_{\bm{\alpha}}(\kappa,t) + \hat{a}_{\bm{\alpha}}^\dagger(\kappa,t)\right]\mathbf{Y}_{\bm{\alpha}}(\mathbf{r},k)\;\mathrm{d}\kappa,\\[0.5em]
+\hat{\mathbf{E}}(\mathbf{r},t) &= -\frac{1}{\hbar}\int_0^\infty\sqrt{2\hbar kk_cc}\sum_{\bm{\alpha}}\hat{p}_{\bm{\alpha}}(\kappa,t)\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)\;\mathrm{d}\kappa\\
+&= \mathrm{i}\int_0^\infty k\sqrt{\hbar kk_cc}\sum_{\bm{\alpha}}\left[\hat{a}_{\bm{\alpha}}(\kappa,t) - \hat{a}_{\bm{\alpha}}^\dagger(\kappa,t)\right]\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)\;\mathrm{d}\kappa.
+\end{split}
+\end{equation}
+
+We now wish to take a closer look at the quantum properties of the oscillator operators. Rearranging, we find that
+\begin{equation}
+\begin{split}
+\hat{a}_{\bm{\alpha}}(\kappa,t) &= \frac{k}{\sqrt{2}}\hat{x}_{\bm{\alpha}}(\kappa,t) + \frac{\mathrm{i}}{\hbar k\sqrt{2}}\hat{p}_{\bm{\alpha}}(\kappa,t),\\
+\hat{a}_{\bm{\alpha}}^\dagger(\kappa,t) &= \frac{k}{\sqrt{2}}\hat{x}_{\bm{\alpha}}(\kappa,t) - \frac{\mathrm{i}}{\hbar k\sqrt{2}}\hat{p}_{\bm{\alpha}}(\kappa,t),\\
+\end{split}
+\end{equation}
+a result which confirms the Hermiticity of the position and momentum operators, $\hat{x}_{\bm{\alpha}}^\dagger(\kappa,t) = \hat{x}_{\bm{\alpha}}(\kappa,t)$ and $\hat{p}_{\bm{\alpha}}^\dagger(\kappa,t) = \hat{p}_{\bm{\alpha}}(\kappa,t)$, that one expects from physical observables (the electric and magnetic fields whose amplitudes are determined by $\hat{x}_{\bm{\alpha}}(\kappa,t)$ and $\hat{p}_{\bm{\alpha}}(\kappa,t)$ must be real and observable). Further, with
+\begin{equation}
+\begin{split}
+[\hat{x}_{\bm{\alpha}}(\kappa,t),\hat{x}_{\bm{\alpha}'}(\kappa',t)] &= 0,\\
+[\hat{p}_{\bm{\alpha}}(\kappa,t),\hat{p}_{\bm{\alpha}'}(\kappa',t)] &= 0
+\end{split}
+\end{equation}
+as follows from the quantization of the Poisson commutators for the classical mode coordinates and momenta, one can find with Eq. \eqref{eq:xpCommutator} that
+\begin{equation}
+\begin{split}
+[\hat{a}_{\bm{\alpha}}(\kappa,t),\hat{a}_{\bm{\alpha}'}(\kappa',t)] &= 0,\\
+[\hat{a}_{\bm{\alpha}}^\dagger(\kappa,t),\hat{a}_{\bm{\alpha}'}^\dagger(\kappa',t)] &= 0,\\
+[\hat{a}_{\bm{\alpha}}(\kappa,t),\hat{a}_{\bm{\alpha}'}^\dagger(\kappa',t)] &= \delta_{\bm{\alpha}\bm{\alpha}'}\delta(\kappa - \kappa'),\\
+[\hat{a}_{\bm{\alpha}}^\dagger(\kappa,t),\hat{a}_{\bm{\alpha}'}(\kappa',t)] &= -\delta_{\bm{\alpha}\bm{\alpha}'}\delta(\kappa - \kappa').
+\end{split}
+\end{equation}
+(These nice commutation relations have been nicely set up by our previous decision to rescale the oscillator functions). Finally, we can expand the Hamiltonian into the oscillator operators, similarly to the expansion in the classical case. Explicitly,
+\begin{equation}
+\begin{split}
+\hat{H} &= \frac{1}{2}\int_0^\infty\sum_{\bm{\alpha}}\hbar\omega\left[\frac{\hat{p}_{\bm{\alpha}}^2(\kappa,t)}{\hbar^2k^2} + k^2\hat{x}_{\bm{\alpha}}^2(\kappa,t)\right]\;\mathrm{d}\kappa\\
+&= \frac{1}{2}\int_0^\infty\sum_{\bm{\alpha}}\left[-\frac{1}{2}\left(\hat{a}_{\bm{\alpha}}(\kappa,t)\hat{a}_{\bm{\alpha}}(\kappa,t) + \hat{a}_{\bm{\alpha}}^\dagger(\kappa,t)\hat{a}_{\bm{\alpha}}^\dagger(\kappa,t) - \hat{a}_{\bm{\alpha}}(\kappa,t)\hat{a}_{\bm{\alpha}}^\dagger(\kappa,t) - \hat{a}_{\bm{\alpha}}^\dagger(\kappa,t)\hat{a}_{\bm{\alpha}}(\kappa,t)\right)\right.\\
+&\left.\hspace{0.05\textwidth}+\frac{1}{2}\left(\hat{a}_{\bm{\alpha}}(\kappa,t)\hat{a}_{\bm{\alpha}}(\kappa,t) + \hat{a}_{\bm{\alpha}}^\dagger(\kappa,t)\hat{a}_{\bm{\alpha}}^\dagger(\kappa,t) + \hat{a}_{\bm{\alpha}}(\kappa,t)\hat{a}_{\bm{\alpha}}^\dagger(\kappa,t) + \hat{a}_{\bm{\alpha}}^\dagger(\kappa,t)\hat{a}_{\bm{\alpha}}(\kappa,t)\right)\right]\;\mathrm{d}\kappa\\
+&= \frac{1}{2}\int_0^\infty\sum_{\bm{\alpha}}\hbar\omega\left[\hat{a}_{\bm{\alpha}}(\kappa,t)\hat{a}_{\bm{\alpha}}^\dagger(\kappa,t) + \hat{a}_{\bm{\alpha}}^\dagger(\kappa,t)\hat{a}_{\bm{\alpha}}(\kappa,t)\right]\;\mathrm{d}\kappa.
+\end{split}
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Time-dependence}
+
+We are now in a position to interrogate the time-dependence of our operators. This is determined by the Heisenberg equation,
+\begin{equation}
+\frac{\partial \hat{f}_{\bm{\alpha}}(\kappa,t)}{\partial t} = -\frac{\mathrm{i}}{\hbar}\left[\hat{f}_{\bm{\alpha}}(\kappa,t),\hat{H}\right],
+\end{equation}
+where $\hat{f}_{\bm{\alpha}}(\kappa,t)$ takes the place of either a coordinate or momentum operator. Using the commutation relations
+\begin{equation}
+\begin{split}
+\left[\hat{x}_{\bm{\alpha}}(\kappa,t),\hat{x}^2_{\bm{\alpha}'}(\kappa',t)\right] &= 0,\\
+\left[\hat{p}_{\bm{\alpha}}(\kappa,t),\hat{p}^2_{\bm{\alpha}'}(\kappa',t)\right] &= 0,\\
+\left[\hat{x}_{\bm{\alpha}}(\kappa,t),\hat{p}^2_{\bm{\alpha}'}(\kappa',t)\right] &= 2\mathrm{i}\hbar\delta_{\bm{\alpha},\bm{\alpha}'}\delta(\kappa - \kappa')\hat{p}_{\bm{\alpha}'}(\kappa',t),\\
+\left[\hat{p}_{\bm{\alpha}}(\kappa,t),\hat{x}^2_{\bm{\alpha}'}(\kappa',t)\right] &= -2\mathrm{i}\hbar\delta_{\bm{\alpha},\bm{\alpha}'}\delta(\kappa - \kappa')\hat{x}_{\bm{\alpha}'}(\kappa',t),
+\end{split}
+\end{equation}
+one finds that 
+\begin{equation}
+\begin{split}
+\left[\hat{x}_{\bm{\alpha}}(\kappa,t),\hat{H}\right] &= \frac{1}{2}\int_0^\infty\sum_{\bm{\alpha}'}\hbar\omega'\left(\frac{\left[\hat{x}_{\bm{\alpha}}(\kappa,t),\hat{p}_{\bm{\alpha}'}^2(\kappa',t)\right]}{\hbar^2k'^2} + k'^2\left[\hat{x}_{\bm{\alpha}}(\kappa,t),\hat{x}_{\bm{\alpha}'}^2(\kappa',t)\right]\right)\;\mathrm{d}\kappa'\\
+&= \frac{i\omega}{k^2}\hat{p}_{\bm{\alpha}}(\kappa,t)
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\left[\hat{p}_{\bm{\alpha}}(\kappa,t),\hat{H}\right] = -\mathrm{i}\hbar^2\omega k^2\hat{x}_{\bm{\alpha}}(\kappa,t).
+\end{equation}
+Therefore,
+\begin{equation}
+\begin{split}
+\dot{\hat{x}}_{\bm{\alpha}}(\kappa,t) &= \frac{\hbar\omega}{\hbar^2k^2}\hat{p}_{\bm{\alpha}}(\kappa,t),\\
+\dot{\hat{p}}_{\bm{\alpha}}(\kappa,t) &= -\hbar\omega k^2\hat{x}_{\bm{\alpha}}(\kappa,t).
+\end{split}
+\end{equation}
+Taking the time-derivatives of the above relations and substituting appropriately gives
+\begin{equation}
+\begin{split}
+\ddot{\hat{x}}_{\bm{\alpha}}(\kappa,t) = -\omega^2\hat{x}_{\bm{\alpha}}(\kappa,t),\\
+\ddot{\hat{p}}_{\bm{\alpha}}(\kappa,t) = -\omega^2\hat{p}_{\bm{\alpha}}(\kappa,t),
+\end{split}
+\end{equation}
+such that
+\begin{equation}
+\begin{split}
+\hat{x}_{\bm{\alpha}}(\kappa,t) &= \hat{A}_{x_{\bm{\alpha}}}(\kappa)\cos(\omega t) + \hat{B}_{x_{\bm{\alpha}}}(\kappa)\sin(\omega t),\\
+\hat{p}_{\bm{\alpha}}(\kappa,t) &= \hat{A}_{p_{\bm{\alpha}}}(\kappa)\cos(\omega t) + \hat{B}_{p_{\bm{\alpha}}}(\kappa)\sin(\omega t).\\
+\end{split}
+\end{equation}
+Note that these equations of motion are precisely the same as those found through the classical version of this theory in Eq. \eqref{eq:eqMot2}. A simple analysis of the behavior of either operator and its derivative at $t = 0$ quickly fixes the unkown prefactors as $\hat{A}_{x_{\bm{\alpha}}}(\kappa) = \hat{x}_{\bm{\alpha}}(\kappa)$, $\hat{B}_{x_{\bm{\alpha}}}(\kappa) = (1/\hbar k^2)\hat{p}_{\bm{\alpha}}(\kappa)$, $\hat{A}_{p_{\bm{\alpha}}}(\kappa) = \hat{p}_{\bm{\alpha}}(\kappa)$, and $\hat{B}_{p_{\bm{\alpha}}}(\kappa) = -\hbar k^2\hat{x}_{\bm{\alpha}}(\kappa)$. Thus,
+\begin{equation}
+\begin{split}
+\hat{x}_{\bm{\alpha}}(\kappa,t) &= \hat{x}_{\bm{\alpha}}(\kappa)\cos(\omega t) + \frac{1}{\hbar k^2}\hat{p}_{\bm{\alpha}}(\kappa)\sin(\omega t),\\
+\hat{p}_{\bm{\alpha}}(\kappa,t) &= \hat{p}_{\bm{\alpha}}(\kappa)\cos(\omega t) - \hbar k^2\hat{x}_{\bm{\alpha}}(\kappa)\sin(\omega t).\\
+\end{split}
+\end{equation}
+
+The particular forms of the time-dependent coordinate and momentum operators produces
+\begin{equation}
+\frac{\hat{p}_{\bm{\alpha}}^2(\kappa,t)}{\hbar^2k^2} + k^2\hat{x}_{\bm{\alpha}}^2(\kappa,t) = \frac{\hat{p}_{\bm{\alpha}}^2(\kappa)}{\hbar^2k^2} + k^2\hat{x}_{\bm{\alpha}}^2(\kappa),
+\end{equation}
+as can be seen through simple substitution and the identity $\cos^2(\omega t) + \sin^2(\omega t) = 1$. Therefore, our time-independent Hamiltonian can indeed be simply written in terms of the time-independent (or $t = 0$) coordinate and momentum operators:
+\begin{equation}\label{eq:Hhat3}
+\hat{H} = \frac{1}{2}\int_0^{\infty}\sum_{\bm{\alpha}}\hbar\omega\left[\frac{\hat{p}_{\bm{\alpha}}^2(\kappa)}{\hbar^2 k^2} + k^2\hat{x}^2_{\bm{\alpha}}(\kappa)\right]\mathrm{d}\kappa.
+\end{equation}
+This result agrees well with the time-independent form of the Hamiltonian as written in terms of ladder operators. Explicitly, the time-dependent factors of $\hat{a}_{\bm{\alpha}}(\kappa,t)$ and $\hat{a}_{\bm{\alpha}}^\dagger(\kappa,t)$ are inverses and cancel immediately upon multiplication, such that
+\begin{equation}\label{eq:Hhat4}
+\hat{H} = \frac{1}{2}\int_0^\infty\sum_{\bm{\alpha}}\hbar\omega\left[\hat{a}_{\bm{\alpha}}(\kappa)\hat{a}_{\bm{\alpha}}^\dagger(\kappa) + \hat{a}_{\bm{\alpha}}^\dagger(\kappa)\hat{a}_{\bm{\alpha}}(\kappa)\right]\;\mathrm{d}\kappa.
+\end{equation}
+is clear by inspection.
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Quantized Basis: State Normalization and the Quantization Volume}
+
+To put our new Hamiltonian to work, we must first define the basis of eigenstates with which one can simply describe any physical state that $\hat{H}$ acts upon. However, doing so is not so straightforward. For example, if we restrict ourselves to treating a single mode $(\bm{\alpha},\kappa)$ of $\hat{H}$, we can propose that there exists a Hilbert space spanned by the vector $\ket{q}$ upon which we can project the position and momentum operators. We'll let
+\begin{equation}
+\begin{split}
+\mel{q}{\hat{x}_{\bm{\alpha}}(\kappa)}{q'} &= f(q,q'),\\
+\mel{q}{\hat{p}_{\bm{\alpha}}(\kappa)}{q'} &= g(q,q')
+\end{split}
+\end{equation}
+where $q'$ may or not be equal to $q$ but both $\ket{q}$ and $\ket{q'}$ exist in the same Hilbert space. Further, we'll assume that $q$ can take any value along a continuum such that the $q$-states are normalized according to $\braket{q}{q'} = \delta(q - q')$ and $\hat{\bm{1}} = \int\dyad{q}{q}\;\mathrm{d}q$ (to check, use $\hat{\bm{1}}\ket{q'} = \ket{q'}$ and expand the identity operator). Therefore,
+\begin{equation}
+\begin{split}
+\mel{q}{\hat{x}_{\bm{\alpha}}(\kappa)\hat{p}_{\bm{\alpha}}(\kappa)}{q'} &= \int \mel{q}{\hat{x}_{\bm{\alpha}}(\kappa)}{q''}\mel{q''}{\hat{p}_{\bm{\alpha}}(\kappa)}{q'}\;\mathrm{d}q''\\
+&= \int f(q,q'')g(q'',q')\;\mathrm{d}q''.
+\end{split}
+\end{equation}
+Similarly, $\mel{q}{\hat{x}_{\bm{\alpha}}(\kappa)\hat{p}_{\bm{\alpha}}(\kappa)}{q'} = \int g(q,q'')f(q'',q')\;\mathrm{d}q''$ such that
+\begin{equation}
+\mel{q}{\left[\hat{x}_{\bm{\alpha}}(\kappa),\hat{p}_{\bm{\alpha}}(\kappa)\right]}{q'} = \int \left[f(q,q'')g(q'',q') - g(q,q'')f(q'',q')\right]\;\mathrm{d}q''.
+\end{equation}
+However, we can also see directly that 
+\begin{equation}
+\mel{q}{\left[\hat{x}_{\bm{\alpha}}(\kappa),\hat{p}_{\bm{\alpha}}(\kappa)\right]}{q'} = \mathrm{i}\hbar\delta(0)\delta(q - q').
+\end{equation}
+Therefore, whatever forms $f(q,q')$ and $g(q,q')$ take, a factor of the size $\delta(0)$ (or its square root or something similar) must be included in their definition or produced through the action of the integral over $q''$. In order to avoid dealing with this type of infinity, we can move to a simpler notation that provides a more intuitive picture of the eigenstates of $\hat{H}$.
+
+To begin, we can see that the cause of the appearance of $\delta(0)$ in the matrix element above is the use of a continuous radial wavenumber $k$. This, in turn, requires that the commutator between the position and momentum operators is proportional to a Dirac delta rather than a Kronecker delta. A continuous wavenumber is the product of the assumption that the universe is infinite in extent such that, to replace our commutator factor $\delta(k - k')$ with $\delta_{kk'}$, the universe must be assumed to be finite but very very large. To see that this is true, we can look to the orthogonality relation between the transverse vector spherical harmonics $\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)$ in Eq. \eqref{eq:orthogonality}. If the radial integral is taken out to a very large radius $L$ rather than infinity, we can replace the expression with the approximate equality
+\begin{equation}\label{eq:boxOrthogonality}
+\int_0^L\int_0^\pi\int_0^{2\pi}\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)\cdot\mathbf{X}_{\bm{\alpha}'}(\mathbf{r},k')r^2\sin\theta\;\mathrm{d}r\,\mathrm{d}\theta\,\mathrm{d}\phi  = \frac{2\pi^2}{k^2}L\delta_{kk'}\delta_{\bm{\alpha}\bm{\alpha}'}.
+\end{equation}
+Clearly, for $k\neq k'$, this new orthogonality condition produces zero. For $k = k'$, it produces an effectively infinite number when $L$ is much, much (much, much) larger than the size of the a system we care about such that $L\delta_{kk'}$ produces a good approximation to the Dirac delta. However, the presence of the \textit{Kronecker} delta $\delta_{kk'}$ implies that the corresponding completeness relation to Eq. \eqref{eq:boxOrthogonality} must contain a sum over $k$-modes, rather than an integral. This is important because in an integral (continuous) formulation the amount of energy contained in a mode of wavenumber $k$ is exactly zero---one can only ask about the amount of energy contained in modes with wavenumbers between $k$ and, at minimum, $k + \mathrm{d}k$.
+
+Explicitly, we have in our new notation
+\begin{equation}\label{eq:boxCompleteness}
+\begin{split}
+\bm{1}_2\delta(\mathbf{r}- \mathbf{r}') &= \frac{1}{2\pi^2L}\sum_{k = -\infty}^\infty\sum_{\bm{\alpha}}k^2\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)\mathbf{X}_{\bm{\alpha}}(\mathbf{r}',k)\\
+&+ \frac{1}{4\pi}\sum_{p\ell m}\left[\nabla f_{p\ell m}^>(\mathbf{r})\nabla'f_{p\ell m}^<(\mathbf{r}')\Theta(r - r') + \nabla f_{p\ell m}^<(\mathbf{r})\nabla'f_{p\ell m}^>(\mathbf{r}')\Theta(r' - r)\right].
+\end{split}
+\end{equation}
+The second term is longitudinal such that its integral with a transverse field over the whole universe is zero or approximately zero. Therefore,
+\begin{equation}
+\begin{split}
+\int_V\bm{1}_2\delta(\mathbf{r} - \mathbf{r}')\cdot\mathbf{X}_{\bm{\alpha}'}(\mathbf{r}',k')\;\mathrm{d}^3\mathbf{r}' &= \frac{1}{2\pi^2}\sum_{k\bm{\alpha}}k^2\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)\int_V\mathbf{X}_{\bm{\alpha}}(\mathbf{r}',k)\cdot\mathbf{X}_{\bm{\alpha}'}(\mathbf{r}',k')\;\mathrm{d}^3\mathbf{r}'\\
+&= \frac{1}{2\pi^2L}\sum_{k\bm{\alpha}}\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)\frac{2\pi^2}{k^2}L\delta_{kk'}\delta_{\bm{\alpha}\bm{\alpha}'}\\
+&= \mathbf{X}_{\bm{\alpha}'}(\mathbf{r},k'),
+\end{split}
+\end{equation}
+such that the orthogonality condition reproduces the necessary projection identity operation $\int_V\bm{1}_2\delta(\mathbf{r} - \mathbf{r}')\cdot\mathbf{X}_{\bm{\alpha}'}(\mathbf{r}',k')\;\mathrm{d}^3\mathbf{r}' = \mathbf{X}_{\bm{\alpha}'}(\mathbf{r},k')$. Here we have let $\int_V\mathrm{d}^3\mathbf{r} = \int_0^L\int_0^\pi\int_0^{2\pi}r^2\sin\theta\;\mathrm{d}r\,\mathrm{d}\theta\,\mathrm{d}\phi$ imply integration over the finite universe. Using these identities and the replacement $\int c\mathrm{d}k\to\sum_{\kappa}c/L$, we can rewrite the electric and magnetic fields from Eqs. \eqref{eq:B1} and \eqref{eq:E1} as
+\begin{equation}
+\begin{split}
+\mathbf{E}(\mathbf{r},t) &= \sum_{\kappa\bm{\alpha}}\frac{c}{2\pi L}\mathrm{i}k\left[a_{\kappa\bm{\alpha}}\mathrm{e}^{-\mathrm{i}\omega t} - a_{\kappa\bm{\alpha}}^*\mathrm{e}^{\mathrm{i}\omega t}\right]\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k),\\
+\mathbf{B}(\mathbf{r},t) &= \sum_{\kappa\bm{\alpha}}\frac{c}{2\pi L}k\left[a_{\kappa\bm{\alpha}}\mathrm{e}^{-\mathrm{i}\omega t} + a_{\kappa\bm{\alpha}}^*\mathrm{e}^{\mathrm{i}\omega t}\right]\mathbf{Y}_{\bm{\alpha}}(\mathbf{r},k),
+\end{split}
+\end{equation}
+where we have replaced the notation $a_{\bm{\alpha}}(\omega)$ with $a_{\kappa\bm{\alpha}}$ to make clear that $\kappa = k/k_c$ is now a discrete index. Further, we can make the replacement $a_{\kappa\bm{\alpha}}\to a_{\kappa\bm{\alpha}}/\sqrt{ck_c}$ to change the units of the oscillator functions as well as maintain the same relationships between the oscillator functions and dynamical variables as before (see Eq. [\ref{eq:xAndP1}]) such that 
+\begin{equation}
+\begin{split}
+\mathbf{E}(\mathbf{r},t) &\to \sum_{\kappa\bm{\alpha}}\frac{\mathrm{i}\omega}{2\pi L\sqrt{ck_c}}\left[a_{\kappa\bm{\alpha}}\mathrm{e}^{-\mathrm{i}\omega t} - a_{\kappa\bm{\alpha}}^*\mathrm{e}^{\mathrm{i}\omega t}\right]\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)\\
+&= -\sqrt{2}\frac{\omega}{L\sqrt{\pi k_c\hbar\omega}}p_{\kappa\bm{\alpha}}(t)\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k),\\[0.5em]
+\mathbf{B}(\mathbf{r},t) &\to \sum_{\kappa\bm{\alpha}}\frac{\omega}{2\pi L\sqrt{ck_c}}\left[a_{\kappa\bm{\alpha}}\mathrm{e}^{-\mathrm{i}\omega t} + a_{\kappa\bm{\alpha}}^*\mathrm{e}^{\mathrm{i}\omega t}\right]\mathbf{Y}_{\bm{\alpha}}(\mathbf{r},k)\\
+&= \sqrt{2}\frac{\omega k}{L}\sqrt{\frac{\hbar k}{\pi k_cc}}x_{\kappa\bm{\alpha}}(t)\mathbf{Y}_{\bm{\alpha}}(\mathbf{r},k),
+\end{split}
+\end{equation}
+and the electric and magnetic contributions to the electromagnetic field energy become
+\begin{equation}
+\begin{split}
+\int_V\mathbf{E}(\mathbf{r},t)\cdot\mathbf{E}(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r} &= \sum_{\kappa\bm{\alpha}}\frac{4\pi\hbar \omega}{k_cL}\frac{p^2_{\kappa\bm{\alpha}}(t)}{\hbar^2k^2},\\
+\int_V\mathbf{B}(\mathbf{r},t)\cdot\mathbf{B}(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r} &= \sum_{\kappa\bm{\alpha}}\frac{4\pi\hbar \omega}{k_cL}k^2x^2_{\kappa\bm{\alpha}}(t).
+\end{split}
+\end{equation}
+
+The classical Hamiltonian is thus
+\begin{equation}
+H = \sum_{\kappa\bm{\alpha}}\frac{\hbar\omega}{2k_cL}\left[k^2x_{\kappa\bm{\alpha}}^2(t) + \frac{p_{\kappa\bm{\alpha}}^2(t)}{\hbar^2k^2}\right].
+\end{equation}
+Quantization can be performed straightforwardly with $x_{\kappa\bm{\alpha}}\to\hat{x}_{\kappa\bm{\alpha}}$ and $p_{\kappa\bm{\alpha}}\to\hat{p}_{\kappa\bm{\alpha}}$. The quantization of the oscillator functions becomes more convenient when using the transformation $a_{\kappa\bm{\alpha}}/\sqrt{4\pi\hbar k}\to\sqrt{k_cL}\hat{a}_{\kappa\bm{\alpha}}$ such that
+\begin{equation}\label{eq:xAndP3}
+\begin{split}
+\hat{x}_{\kappa\bm{\alpha}}(t) &= \frac{\sqrt{k_cL}}{k\sqrt{2}}\left[\hat{a}_{\kappa\bm{\alpha}}(t) + \hat{a}_{\kappa\bm{\alpha}}^\dagger(t)\right],\\
+\hat{p}_{\kappa\bm{\alpha}}(t) &= -\mathrm{i}\frac{\hbar k\sqrt{k_cL}}{\sqrt{2}}\left[\hat{a}_{\kappa\bm{\alpha}}(t) - \hat{a}_{\kappa\bm{\alpha}}^\dagger(t)\right]\\
+\end{split}
+\end{equation}
+with $\hat{a}_{\kappa\bm{\alpha}}(t) = \hat{a}_{\kappa\bm{\alpha}}\exp(-\mathrm{i}\omega t)$ and
+\begin{equation}
+\begin{split}
+\hat{\mathbf{E}}(\mathbf{r},t) &= \sum_{\kappa\bm{\alpha}}\mathrm{i}k\sqrt{\frac{\hbar\omega}{\pi L}}\left[\hat{a}_{\kappa\bm{\alpha}}(t) - \hat{a}^\dagger_{\kappa\bm{\alpha}}(t)\right]\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k),\\
+\hat{\mathbf{B}}(\mathbf{r},t) &= \sum_{\kappa\bm{\alpha}}k\sqrt{\frac{\hbar\omega}{\pi L}}\left[\hat{a}_{\kappa\bm{\alpha}}(t) + \hat{a}^\dagger_{\kappa\bm{\alpha}}(t)\right]\mathbf{Y}_{\bm{\alpha}}(\mathbf{r},k).
+\end{split}
+\end{equation}
+The quantum Hamiltonian is therefore
+\begin{equation}
+\begin{split}
+\hat{H} &= \sum_{\kappa\bm{\alpha}}\frac{\hbar\omega}{2k_cL}\left[k^2\hat{x}_{\kappa\bm{\alpha}}^2(t) + \frac{\hat{p}_{\kappa\bm{\alpha}}^2(t)}{\hbar^2k^2}\right]\\
+&= \frac{1}{2}\sum_{\kappa\bm{\alpha}}\hbar\omega\left[\hat{a}_{\kappa\bm{\alpha}}\hat{a}^\dagger_{\kappa\bm{\alpha}} + \hat{a}^\dagger_{\kappa\bm{\alpha}}\hat{a}_{\kappa\bm{\alpha}}\right].
+\end{split}
+\end{equation}
+Note that, in the second line, the time-dependent factors of the oscillator operators $\exp(\mp\mathrm{i}\omega t)$ cancel trivially. This Hamiltonian appears very similar to that of Eq. \eqref{eq:Hhat4} except for the replacement of an integral over $\kappa$ with a sum. However, the commutation relations are very different in the two pictures. The discretized classical Hamiltonian implies that the position and momentum operators obey the (Poisson) commutation relations
+\begin{equation}
+\begin{split}
+\left\{x_{\kappa\bm{\alpha}}(t),p_{\kappa'\bm{\alpha}'}(t)\right\} &= \delta_{\bm{\alpha}\bm{\alpha}'}\delta_{\kappa\kappa'},\\
+\left\{p_{\kappa\bm{\alpha}}(t),x_{\kappa'\bm{\alpha}'}(t)\right\} &= -\delta_{\bm{\alpha}\bm{\alpha}'}\delta_{\kappa\kappa'},\\
+\left\{x_{\kappa\bm{\alpha}}(t),x_{\kappa'\bm{\alpha}'}(t)\right\} &= 0,\\
+\left\{p_{\kappa\bm{\alpha}}(t),p_{\kappa'\bm{\alpha}'}(t)\right\} &= 0,
+\end{split}
+\end{equation}
+such that the quantum commutation relations are
+\begin{equation}
+\begin{split}
+\left[\hat{x}_{\kappa\bm{\alpha}}(t),\hat{p}_{\kappa'\bm{\alpha}'}(t)\right] &= \mathrm{i}\hbar\delta_{\bm{\alpha}\bm{\alpha}'}\delta_{\kappa\kappa'},\\
+\left[\hat{p}_{\kappa\bm{\alpha}}(t),\hat{x}_{\kappa'\bm{\alpha}'}(t)\right] &= -\mathrm{i}\hbar\delta_{\bm{\alpha}\bm{\alpha}'}\delta_{\kappa\kappa'},\\
+\left[\hat{x}_{\kappa\bm{\alpha}}(t),\hat{x}_{\kappa'\bm{\alpha}'}(t)\right] &= 0,\\
+\left[\hat{p}_{\kappa\bm{\alpha}}(t),\hat{p}_{\kappa'\bm{\alpha}'}(t)\right] &= 0,
+\end{split}
+\end{equation}
+and 
+\begin{equation}
+\begin{split}
+\left[\hat{a}_{\kappa\bm{\alpha}}(t),\hat{a}_{\kappa'\bm{\alpha}'}^\dagger(t)\right] &= \delta_{\bm{\alpha}\bm{\alpha}'}\delta_{\kappa\kappa'},\\
+\left[\hat{a}_{\kappa\bm{\alpha}}^\dagger(t),\hat{a}_{\kappa'\bm{\alpha}'}(t)\right] &= -\delta_{\bm{\alpha}\bm{\alpha}'}\delta_{\kappa\kappa'},\\
+\left[\hat{a}_{\kappa\bm{\alpha}}(t),\hat{a}_{\kappa'\bm{\alpha}'}(t)\right] &= 0,\\
+\left[\hat{a}_{\kappa\bm{\alpha}}^\dagger(t),\hat{a}_{\kappa'\bm{\alpha}'}^\dagger(t)\right] &= 0.
+\end{split}
+\end{equation}
+The trouble with factors of $\delta(0)$ showing up in our math has thus been completely eliminated (at the cost of introducing $L$)! 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Quantized Basis - Coordinate Representation}
+
+To put our new Hamiltonian to work, we must first define the basis of eigenstates with which one can most simply describe any physical state that $\hat{H}$ acts upon. To find this set of eigenstates, it is generally preferable to represent the Hamiltonian in the coordinate basis, i.e. within a mathematical representation that describes the excitation of a mode $(\bm{\alpha},\kappa)$ of the electric field as the displacement of an oscillator in a one-dimensional coordinate space $x_{\kappa\bm{\alpha}}$, where $-\infty<x_{\kappa\bm{\alpha}}<\infty$. Each mode can be displaced independently in its own coordinate space, such that the Hilbert space of all possible displacements is spanned by the vector (ket):
+\begin{equation}
+\begin{split}
+\ket{X} &= \cdots\ket{x_{\kappa\bm{\alpha}}}\ket{x_{\kappa\bm{\alpha}'}}\cdots\ket{x_{\kappa'\bm{\alpha}}}\cdots\\
+&= \prod_{\bm{\alpha},\kappa}\ket{x_{\kappa\bm{\alpha}}}.
+\end{split}
+\end{equation}
+These kets are normalized such that
+\begin{equation}
+\begin{split}
+\braket{X'}{X} &= \cdots\braket{x'_{\kappa\bm{\alpha}}}{x_{\kappa\bm{\alpha}}}\braket{x'_{\kappa\bm{\alpha}'}}{x_{\kappa\bm{\alpha}'}}\cdots\braket{x'_{\kappa'\bm{\alpha}}}{x_{\kappa'\bm{\alpha}}}\cdots\\
+&=\prod_{\bm{\alpha},\kappa}\delta(x_{\kappa\bm{\alpha}} - x'_{\kappa\bm{\alpha}})\\
+\implies \int\cdots\int&\braket{X'}{X}\;\cdots\mathrm{d}x_{\kappa\bm{\alpha}}\cdots = 1.
+\end{split}
+\end{equation}
+With these identities, we can assert that the states $\ket{x_{\kappa\bm{\alpha}}}$ are eigenstates of the coordinate operators $\hat{x}_{\kappa\bm{\alpha}}$ such that
+\begin{equation}
+\hat{x}_{\kappa\bm{\alpha}}\ket{X} = x_{\kappa\bm{\alpha}}\ket{X}
+\end{equation}
+and
+\begin{equation}
+\hat{x}_{\kappa\bm{\alpha}} = \int\cdots\int x_{\kappa\bm{\alpha}}\dyad{X}{X}\;\cdots\mathrm{d}x_{\kappa\bm{\alpha}}\cdots.
+\end{equation}
+Thus, the units of the eigenvalues $x_{\kappa\bm{\alpha}}$ are $[\mathrm{length}]$ to match the units of the coordinate operators and the units of the eigenvectors are the inverse square-root of the operators' units, i.e. $[\mathrm{length}]^{-1/2}$. 
+
+The $i^\mathrm{th}$ eigenstate of the mode $(\bm{\alpha},\kappa)$ can then be written as $\ket{\phi^{(i)}_{\kappa\bm{\alpha}}}$ with a coordinate representation
+\begin{equation}
+\phi_{\kappa\bm{\alpha}}^{(i)}(x) = \braket{x_{\kappa\bm{\alpha}}}{\phi^{(i)}_{\kappa\bm{\alpha}}},
+\end{equation}
+wherein the indices on the coordinate inside the function definition have been dropped for brevity. The eigenkets $\ket{\phi_{\kappa\bm{\alpha}}^{(i)}}$ are unitless such that the functions $\phi_{\kappa\bm{\alpha}}^{(i)}(x)$ have units of $[length]^{-1/2}$ to match the position eigenvectors. They are normalized such that
+\begin{equation}
+\braket{\phi_{\kappa\bm{\alpha}}^{(i)}}{\phi_{\kappa\bm{\alpha}}^{(i)}} = \int_{-\infty}^\infty\phi^{(i)*}_{\kappa\bm{\alpha}}(x)\phi^{(i)}_{\kappa\bm{\alpha}}(x)\;\mathrm{d}x_{\kappa\bm{\alpha}} = 1,
+\end{equation}
+where the integral has been defined with the implicit insertion of the single-particle identity operator $\hat{\bm{1}}_{\kappa\bm{\alpha}} = \int\dyad{x_{\kappa\bm{\alpha}}}{x_{\kappa\bm{\alpha}}}\;\mathrm{d}x_{\kappa\bm{\alpha}}$. Of course, we are not working in a single-particle basis, such that it is more convenient to define a composite state that is the direct product of an eigenstate of each mode and normalize using the composite many-particle identity operator
+\begin{equation}
+\hat{\bm{1}} = \int\cdots\int\dyad{X}{X}\;\cdots\mathrm{d}x_{\kappa\bm{\alpha}}\cdots.
+\end{equation}
+The particular eigenstate of each mode used will be left undefined for now, such that we can drop the superscripts and bring them back when they're needed. Explicitly, then, the composite state is $\ket{\Phi} = \cdots\ket{\phi_{\kappa\bm{\alpha}}}\ket{\phi_{\kappa\bm{\alpha}'}}\cdots\ket{\phi_{\kappa'\bm{\alpha}}}\cdots$. This composite state can be represented in the position basis as
+\begin{equation}
+\braket{X}{\Phi} = \prod_{\bm{\alpha},\kappa}\phi_{\kappa\bm{\alpha}}(x),
+\end{equation}
+where the state-by-state projection is performed ``in order'' the same way as in the projection $\braket{X'}{X}$. Therefore,
+\begin{equation}
+\begin{split}
+\braket{\Phi}{\Phi} &= \mel{\Phi}{\hat{\bm{1}}}{\Phi} = \int\cdots\int\braket{\Phi}{X}\braket{X}{\Phi}\cdots\mathrm{d}x_{\kappa\bm{\alpha}}\cdots\\
+&=\prod_{\bm{\alpha},\kappa}\int_{-\infty}^{\infty}\phi^{(i)*}_{\kappa\bm{\alpha}}(x)\phi^{(i)}_{\kappa\bm{\alpha}}(x)\;\mathrm{d}x_{\kappa\bm{\alpha}} = \prod_{\bm{\alpha},\omega}1 = 1.
+\end{split}
+\end{equation}
+
+Finally, we need to define the projection of the momentum operators in position space. This is best done through an analysis of the translation operator, the generator of which is known to be momentum through de Broglie's work on matter waves. Defining a translation operator that moves the coordinate of each mode a displacement $\delta_{\kappa\bm{\alpha}}$ as 
+\begin{equation}
+T(\Delta)\ket{X} = \cdots\ket{x_{\kappa\bm{\alpha}} + \delta_{\kappa\bm{\alpha}}}\ket{x_{\kappa\bm{\alpha}'} + \delta_{\kappa\bm{\alpha}'}}\cdots
+\end{equation}
+where $T$ is the operator name and $\Delta$ is the set of all the displacements, one can see from the theory of matter plane waves that the explicit form of $T$ ought to be an exponential function with an exponent proportional to a sum of functions $\sim(\mathrm{i}/\hbar)\delta_{\kappa\bm{\alpha}}\hat{p}_{\kappa\bm{\alpha}}$. The result is
+\begin{equation}
+\begin{split}
+T(\Delta) &= \mathrm{e}^{-\frac{\mathrm{i}}{\hbar}\sum_{\kappa\bm{\alpha}}\delta_{\kappa\bm{\alpha}}\hat{p}_{\kappa\bm{\alpha}}}\\
+&= \prod_{\bm{\alpha},\kappa}\mathrm{e}^{-\frac{\mathrm{i}}{\hbar}\delta_{\kappa\bm{\alpha}}\hat{p}_{\kappa\bm{\alpha}}}.
+\end{split}
+\end{equation}
+The action of each factor in $T(\Delta)$ produces
+\begin{equation}
+\mathrm{e}^{-\frac{\mathrm{i}}{\hbar}\delta_{\kappa\bm{\alpha}}\hat{p}_{\kappa\bm{\alpha}}}\ket{X} = \cdots\ket{x_{\kappa'\bm{\alpha}'}}\ket{x_{\kappa\bm{\alpha}} + \delta_{\kappa\bm{\alpha}}}\ket{x_{\kappa''\bm{\alpha}''}}\cdots
+\end{equation}
+and the derivative of $T$ with respect to one of the displacements is
+\begin{equation}
+\begin{split}
+\frac{\partial}{\partial\delta_{\kappa\bm{\alpha}}}\left\{\mathrm{e}^{-\frac{\mathrm{i}}{\hbar}\sum_{\kappa'\bm{\alpha}'}\delta_{\kappa'\bm{\alpha}'}\hat{p}_{\kappa'\bm{\alpha}'}}\right\} &= \frac{\partial}{\partial\delta_{\kappa\bm{\alpha}}}\left\{1- \frac{\mathrm{i}}{\hbar}\sum_{\kappa'\bm{\alpha}'}\delta_{\kappa'\bm{\alpha}'}\hat{p}_{\kappa'\bm{\alpha}'} + \mathcal{O}\left(\delta_{\kappa\bm{\alpha}}^2\right)\right\}\\
+&= -\frac{\mathrm{i}}{\hbar}\sum_{\kappa'\bm{\alpha}'}\delta_{\bm{\alpha}\bm{\alpha}'}\delta_{\kappa\kappa'}\hat{p}_{\kappa'\bm{\alpha}'} + \mathcal{O}\left(\delta^2_{\kappa\bm{\alpha}}\right)\\
+&= -\frac{\mathrm{i}}{\hbar}\hat{p}_{\kappa\bm{\alpha}} + \mathcal{O}\left(\delta_{\kappa\bm{\alpha}}\right).
+\end{split}
+\end{equation}
+where we have let $\partial\delta_{\kappa'\bm{\alpha}'}/\partial\delta_{\kappa\bm{\alpha}} = \delta_{\bm{\alpha}\bm{\alpha}'}\delta_{\kappa\kappa'}$. Therefore, $\partial/\partial\delta_{\kappa\bm{\alpha}}\{T(\Delta)\}|_{\Delta\to0} = (-\mathrm{i}/\hbar)\hat{p}_{\kappa\bm{\alpha}}$. We can also see that
+\begin{equation}
+\begin{split}
+\mel{X'}{\frac{\partial}{\partial\delta_{\kappa\bm{\alpha}}}\left\{T(\Delta)\right\}_{\Delta\to0}}{X} &= \frac{\partial}{\partial\delta_{\kappa\bm{\alpha}}}\left\{\mel{X'}{T(\Delta)}{X}\right\}_{\Delta\to0}\\
+&= \frac{\partial}{\partial\delta_{\kappa\bm{\alpha}}}\left\{\braket{X'}{X + \Delta}\right\}_{\Delta\to0}\\
+&= \frac{\partial}{\partial\delta_{\kappa\bm{\alpha}}}\left\{\delta\left(x'_{\kappa\bm{\alpha}} - [x_{\kappa\bm{\alpha}} + \delta_{\kappa\bm{\alpha}}]\right)\right\}_{\delta_{\kappa\bm{\alpha}}\to0}\prod_{\substack{\bm{\alpha}'\neq\bm{\alpha}\\\kappa'\neq\kappa}}\delta\left(x_{\kappa'\bm{\alpha}'} - x'_{\kappa'\bm{\alpha}'}\right)
+\end{split}
+\end{equation}
+Using the identity $\partial/\partial x\{\delta(x - a)\} = -\delta(x - a)/(x - a)$, we can see that
+\begin{equation}
+\frac{\partial}{\partial\delta_{\kappa\bm{\alpha}}}\left\{\delta\left(x'_{\kappa\bm{\alpha}} - [x_{\kappa\bm{\alpha}} + \delta_{\kappa\bm{\alpha}}]\right)\right\}_{\delta_{\kappa\bm{\alpha}}\to0} = \frac{\partial}{\partial x_{\kappa\bm{\alpha}}}\left\{\delta\left(x_{\kappa\bm{\alpha}} - x'_{\kappa\bm{\alpha}}\right)\right\}
+\end{equation}
+such that
+\begin{equation}
+\mel{X'}{\hat{p}_{\kappa\bm{\alpha}}}{X} = \mathrm{i}\hbar\frac{\partial}{\partial x_{\kappa\bm{\alpha}}}\left\{\delta\left(x_{\kappa\bm{\alpha}} - x'_{\kappa\bm{\alpha}}\right)\right\}\prod_{\substack{\bm{\alpha}'\neq\bm{\alpha}\\\kappa'\neq\kappa}}\delta\left(x_{\kappa\bm{\alpha}} - x'_{\kappa\bm{\alpha}}\right).
+\end{equation}
+
+We are now in a position to calculate the eigenstates of the Hamiltonian in the position basis. Using the energy-eigenvalue equation
+\begin{equation}\label{eq:energyEigenvalue1}
+\hat{H}\ket{\Phi} = E_\Phi\ket{\Phi}
+\end{equation}
+with $E_\Phi$ the total energy of the set of excited eigenstates $\ket{\Phi}$, we find, upon insertion of the identity operator and left-projection by $\bra{X}$,
+\begin{equation}\label{eq:energyEigenvalueProjection}
+\begin{split}
+\int\cdots\int\mel{X}{\hat{H}}{X'}\braket{X'}{\Phi}\;\cdots\mathrm{d}x'_{\kappa\bm{\alpha}}\cdots &= E_\Phi\braket{X}{\Phi}\\
+\implies\int\mel{X}{\hat{H}}{X'}\Phi(X')\;\mathrm{d}X' &= E_\Phi\Phi(X).
+\end{split}
+\end{equation}
+We have shortened the notation for ease of reading, with $\Phi(X) = \braket{X}{\Phi} = \cdots\phi_{\kappa\bm{\alpha}}(x)\cdots$ the product of mode eigenstates in the coordinate representation and $dX = \cdots\mathrm{d}x_{\kappa\bm{\alpha}}\cdots$ the product of coordinate differentials. The Hamiltonian matrix element can be further expanded as
+\begin{equation}
+\begin{split}
+&\mel{X}{\hat{H}}{X'} = \frac{1}{2}\sum_{\kappa\bm{\alpha}}\hbar\omega\left[\mel{X}{\frac{\hat{p}^2_{\kappa\bm{\alpha}}}{\hbar^2k^2}}{X'} + \mel{X}{k^2\hat{x}^2_{\kappa\bm{\alpha}}}{X'}\right]\\
+&= \frac{1}{2}\int\sum_{\kappa\bm{\alpha}}\hbar\omega\left[\frac{1}{\hbar^2k^2}\mel{X}{\hat{p}_{\kappa\bm{\alpha}}}{X''}\mel{X''}{\hat{p}_{\kappa\bm{\alpha}}}{X'} + k^2\mel{X}{\hat{x}_{\kappa\bm{\alpha}}}{X''}\mel{X''}{\hat{x}_{\kappa\bm{\alpha}}}{X'}\right]\mathrm{d}X''\\
+&= \frac{1}{2}\int\sum_{\kappa\bm{\alpha}}\hbar\omega\left[-\frac{\hbar^2}{\hbar^2k^2}\frac{\partial}{\partial x'_{\kappa\bm{\alpha}}}\{\delta(x'_{\kappa\bm{\alpha}} - x''_{\kappa\bm{\alpha}})\}\frac{\partial}{\partial x''_{\kappa\bm{\alpha}}}\{\delta(x''_{\kappa\bm{\alpha}} - x_{\kappa\bm{\alpha}})\} \vphantom{\prod_{\substack{\bm{\alpha}'\neq\bm{\alpha}\\\kappa'\neq\kappa}}}\prod_{\substack{\bm{\alpha}'\neq\bm{\alpha}\\\kappa'\neq\kappa}}\delta(x''_{\kappa'\bm{\alpha}'} - x_{\kappa'\bm{\alpha}'}) \right.\\
+&\hspace{0.05\textwidth}\left.\times\prod_{\substack{\bm{\alpha}'\neq\bm{\alpha}\\\kappa'\neq\kappa}}\delta(x'_{\kappa'\bm{\alpha}'} - x''_{\kappa'\bm{\alpha}'}) + k^2x'_{\kappa\bm{\alpha}}x''_{\kappa\bm{\alpha}}\prod_{\bm{\alpha},\kappa}\delta(x''_{\kappa\bm{\alpha}} - x_{\kappa\bm{\alpha}})\prod_{\bm{\alpha},\kappa}\delta(x'_{\kappa\bm{\alpha}} - x''_{\kappa\bm{\alpha}})\right]\mathrm{d}X''
+\end{split}
+\end{equation}
+Substituting this back into the integral of Eq. \eqref{eq:energyEigenvalueProjection} and integrating by parts with respect to $x'_{\kappa\bm{\alpha}}$ produces
+\begin{equation}
+\begin{split}
+E_\Phi\Phi(X) &= \frac{1}{2}\iint\sum_{\kappa\bm{\alpha}}\hbar\omega\left[ \vphantom{\prod_{\bm{\alpha},\kappa}} \frac{1}{k^2}\frac{\partial}{\partial x''_{\kappa\bm{\alpha}}}\{\delta(x''_{\kappa\bm{\alpha}} - x_{\kappa\bm{\alpha}})\}\delta(x'_{\kappa\bm{\alpha}} - x''_{\kappa\bm{\alpha}})\frac{\partial\Phi(X')}{\partial x'_{\kappa\bm{\alpha}}}\right.\\
+&\hspace{0.05\textwidth}\times\prod_{\substack{\bm{\alpha}'\neq\bm{\alpha}\\\kappa'\neq\kappa}}\delta(x''_{\kappa'\bm{\alpha}'} - x_{\kappa'\bm{\alpha}'})\prod_{\substack{\bm{\alpha}'\neq\bm{\alpha}\\\kappa'\neq\kappa}}\delta(x'_{\kappa'\bm{\alpha}'} - x''_{\kappa'\bm{\alpha}'}) + k^2x'_{\kappa\bm{\alpha}}x''_{\kappa\bm{\alpha}}\Phi(X')\\
+&\hspace{0.05\textwidth}\times\left.\prod_{\bm{\alpha},\kappa}\delta(x''_{\kappa\bm{\alpha}} - x_{\kappa\bm{\alpha}})\prod_{\bm{\alpha},\kappa}\delta(x'_{\kappa\bm{\alpha}} - x''_{\kappa\bm{\alpha}})\right]\mathrm{d}X''\,\mathrm{d}X'\\
+&=  \frac{1}{2}\int\sum_{\kappa\bm{\alpha}}\hbar\omega\left[\frac{1}{k^2}\frac{\partial}{\partial x'_{\kappa\bm{\alpha}}}\{\delta(x'_{\kappa\bm{\alpha}} - x_{\kappa\bm{\alpha}})\}\frac{\partial\Phi(X')}{\partial x'_{\kappa\bm{\alpha}}}\prod_{\substack{\bm{\alpha}'\neq\bm{\alpha}\\\kappa'\neq\kappa}}\delta(x'_{\kappa'\bm{\alpha}'} - x_{\kappa'\bm{\alpha}'})\right.\\
+&\hspace{0.05\textwidth}\left. + k^2x'^2_{\kappa\bm{\alpha}}\Phi(X')\prod_{\bm{\alpha},\kappa}\delta(x'_{\kappa\bm{\alpha}} - x_{\kappa\bm{\alpha}}) \vphantom{\prod_{\substack{\bm{\alpha}\neq\bm{\alpha}'\\\kappa\neq\kappa'}}} \right]\mathrm{d}X'\\
+\end{split}
+\end{equation}
+where the surface term resulting from the integration by parts has been evaluated to zero implicitly. Integrating by parts again and evaluating the Dirac deltas as appropriate gives
+\begin{equation}\label{eq:energyEigenvalue2}
+\begin{split}
+E_\Phi\Phi(X) &= \frac{1}{2}\sum_{\kappa\bm{\alpha}}\hbar\omega\left[-\frac{1}{k^2}\frac{\partial^2\Phi(X)}{\partial x_{\kappa\bm{\alpha}}^2} + k^2x_{\kappa\bm{\alpha}}^2\Phi(X)\right].
+\end{split}
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Coordinate Representation - Quantum Harmonic Oscillator Solutions}
+
+The only way for the sum of terms on the right hand side of Eq. \eqref{eq:energyEigenvalue2} to be equal to a constant times $\Phi(X)$ is for each of the terms themselves to be equal to a constant times $\Phi(X)$. We can then expand $E_\Phi$ such that $E_\Phi = \sum_{\kappa\bm{\alpha}}E_{\kappa\bm{\alpha}}$ and
+\begin{equation}
+\begin{split}
+E_{\kappa\bm{\alpha}}\Phi(X) &= \frac{\hbar\omega}{2}\left(-\frac{1}{k^2}\frac{\partial^2}{\partial x_{\kappa\bm{\alpha}}^2} + k^2x_{\kappa\bm{\alpha}}^2\right)\Phi(X)\\
+\implies E_{\kappa\bm{\alpha}}\phi_{\kappa\bm{\alpha}}(x) &= \frac{\hbar\omega}{2}\left(-\frac{1}{k^2}\frac{\partial^2}{\partial x_{\kappa\bm{\alpha}}^2} + k^2x_{\kappa\bm{\alpha}}^2\right)\phi_{\kappa\bm{\alpha}}(x),
+\end{split}
+\end{equation}
+where in the last line all of the eigenfunctions except for $(\bm{\alpha},\kappa)$ have been cancelled as the derivative operator does not act on them. Rearrangement and temporary removal of the coordinate labels for brevity provides
+\begin{equation}
+\frac{\partial^2\phi_{\kappa\bm{\alpha}}(x)}{\partial x^2} + \left(\frac{2k^2E_{\kappa\bm{\alpha}}}{\hbar\omega} - k^4x^2\right)\phi_{\kappa\bm{\alpha}}(x) = 0.
+\end{equation}
+Because all terms proportional to the coordinate $x$ or its derivative operators are even under the interchange $x\to-x$, we must have solutions which are either even ($\phi_{\kappa\bm{\alpha}}(-x) = \phi_{\kappa\bm{\alpha}}(x)$) or odd ($\phi_{\kappa\bm{\alpha}}(-x) = -\phi_{\kappa\bm{\alpha}}(x)$) under coordinate reflection. Further, we expect our solutions to decrease to zero at $x\to\pm\infty$, as the mode wavefunction should not have any probability density at infinite excitation strengths. It turns out that a streamlined solution strategy employs a test solution $\phi_{\kappa\bm{\alpha}}(x) = \psi_{\kappa\bm{\alpha}}(x)\exp(-k^2x^2/2)$ to produce
+\begin{equation}
+\frac{\partial\psi_{\kappa\bm{\alpha}}(x)}{\partial x^2} - 2k^2x\frac{\partial\psi_{\kappa\bm{\alpha}}(x)}{\partial x} + \left(\frac{2E_{\kappa\bm{\alpha}}}{\hbar\omega} - 1\right)k^2\psi_{\kappa\bm{\alpha}}(x) = 0.
+\end{equation}
+This differential equation is known as Hermite's equation and has well-known solutions. To retrofit them to our purposes, we can rebuild them quickly using the power series expansion $\psi_{\kappa\bm{\alpha}}(x) = \sum_{q = 0}^\infty a_q(kx)^q$. Substitution and elimination of terms equal to zero provides
+\begin{equation}
+\sum_{q = 0}^\infty\left(a_{q + 2}(q + 2)(q + 1) - a_q\left[2q + 1 - \frac{2E_{\kappa\bm{\alpha}}}{\hbar\omega}\right]\right)(kx)^q = 0.
+\end{equation}
+Together with the fact that our functions $\psi_{\kappa\bm{\alpha}}$ must have definite (even or odd) parity, this recursion relation tells us that we have two sets of solutions that must be independent. The even set begins with $a_0$ and the odd set with $a_1$, such that these unknown coefficients must be found independently. Before calculating further, however, it is important to note that each term of the summand above is itself identically zero
+\begin{equation}
+\begin{split}
+&a_{q + 2}(q + 2)(q + 1) - a_q\left((2q + 1) - \frac{2E_{\kappa\bm{\alpha}}}{\hbar\omega}\right) = 0\\
+\implies &a_{q + 2} = \frac{(2q + 1) - 2E_{\kappa\bm{\alpha}}/\hbar\omega}{(q + 2)(q + 2)}a_q.
+\end{split}
+\end{equation}
+Therefore, in the limit $q\to\infty$ each successive term is a factor $a_{q+2}/a_q\approx2/q$ times its predecessor such that the series behaves like a harmonic series. Such series are divergent, such that the only possible solutions of the form we have posited are those for which the series truncates at a finite value of $q$. Because $q$ is an integer, we therefore have an integer index, $n = \mathrm{max}\{q\}$, that characterizes each solution in either set. Importantly, truncation in a recursive system occurs when the $n^\mathrm{th}$ term in the sum goes to zero, nullifying all subsequent terms. This occurs for us only when
+\begin{equation}
+\begin{split}
+&2n + 1 = 2\frac{E_{\kappa\bm{\alpha}}}{\hbar\omega}\\
+\implies &E_{\kappa\bm{\alpha}}^{(n)} = \hbar\omega\left(n + \frac{1}{2}\right),
+\end{split}
+\end{equation}
+such that our solutions can only exist at discrete (quantized!) energies. The superscript to $E_{\kappa\bm{\alpha}}^{(n)}$ has been added to make this clear.
+
+With this identity fixed, we can reintroduce the index $(i)$ to our solutions $\phi_{\kappa\bm{\alpha}}^{(i)}(x)$ that we dropped earlier, but with the modification $i\to n$. Calculation of the solutions' explicit forms only requires a modest modification from here. Because our eigenfunctions are wavefunctions, they must be normalized according to $\int_{-\infty}^\infty|\phi_{\kappa\bm{\alpha}}^{(n)}(x)|^2\;\mathrm{d}x = 1$, i.e. the probability of finding any mode in a state of excitation $-\infty<x<\infty$ is always exactly one. To account for this external condition, we will introduce normalization constants $N_n$, such that
+\begin{equation}\label{eq:solnSep}
+\psi_{\kappa\bm{\alpha}}^{(n)}(x) = 
+\begin{cases}
+N_n\sum_{q = 0}^{n/2}a_{2q}(kx)^{2q},& n\;\mathrm{even},\\[0.5em]
+N_n\sum_{q = 0}^{(n-1)/2}a_{2q+1}(kx)^{2q+1},& n\;\mathrm{odd}.
+\end{cases}
+\end{equation}
+The recursion relations are unaffected by this scaling, such that all unknown coefficients and normalization constants with the exception of the zeroth and first are uniquely determined by the two boundary conditions of recursion and normalization. At the zeroth and first orders, recursion provides no additional restrictions to normalization, such that we can fix $N_0 = N_1 = 1$ and calculate $a_0$ and $a_1$ from normalization alone. Explicitly, for $n = 0$ one finds that $a_{q>0} = 0$ and
+\begin{equation}
+\begin{split}
+\psi_{\kappa\bm{\alpha}}^{(0)}(x) &= a_0,\\
+\phi_{\kappa\bm{\alpha}}^{(0)}(x) &= a_0\mathrm{e}^{-\frac{k^2x^2}{2}},\\
+\implies a_0 &= \left(\frac{k^2}{\pi}\right)^{\frac{1}{4}}.
+\end{split}
+\end{equation}
+Similarly, for $n = 1$, $a_{q>1} = 0$, $\psi_{\kappa\bm{\alpha}}^{(1)}(x) = a_1kx$, and $\phi_{\kappa\bm{\alpha}}^{(1)}(x) = a_1kx\exp(-k^2x^2/2)$, implying that, upon normalization, $a_1 = \sqrt{2}(k^2/\pi)^{1/4}$. Note that the $q = 0$ term has been excised from the $n = 1$ eigenfunction by the separation of the solutions into even and odd sets in Eq. \eqref{eq:solnSep}. Repetition of this process for $n = 2$ ($a_2 = -2a_0 = -2(k^2/\pi)^{1/4}$) and $n = 3$ ($a_3 = -(2/3)a_1 = -(2\sqrt{2}/3)(k^2/\pi)^{1/4}$) provides $N_2 = -1/\sqrt{2}$ and $N_3 = -\sqrt{3/2}$ along with an inference for the general form of the solutions for all $n$:
+\begin{equation}
+\phi_{\kappa\bm{\alpha}}^{(n)}(x) = \frac{1}{\sqrt{2^nn!}}\left(\frac{k^2}{\pi}\right)^\frac{1}{4}H_n(kx)\mathrm{e}^{-\frac{k^2x^2}{2}}.
+\end{equation}
+Here, $H_n(z)$ are the Hermite polynomials which are the solutions to Hermite's equation. The first four polynomials are $H_0(z) = 1$, $H_1(z) = 2z$, $H_2(z) = 4z^2 - 2$, and $H_3(z) = 8z^3 - 12z^2$, while the rest can be found with
+\begin{equation}
+H_n(z) = 
+\begin{cases}
+\displaystyle n!\sum_{q = 0}^{n/2}\frac{(-1)^{\frac{n}{2} - q}}{(2q)!\left(\frac{n}{2} - q\right)!}(2z)^{2q},& n\;\mathrm{even},\\[1.5em]
+\displaystyle n!\sum_{q = 0}^{(n-1)/2}\frac{(-1)^{\frac{n-1}{2} - q}}{(2q + 1)!\left(\frac{n-1}{2} - q\right)!}(2z)^{2q + 1},& n\;\mathrm{odd}.
+\end{cases}
+\end{equation}
+Note that some normalization coefficients are given a negative sign in order to align the wavefunctions with the sign convention used in the compilation of the Hermite polynomials, namely that the prefactor of the largest power of $z$ is always chosen to be positive. Physically, of course, a negative sign added to a wavefunction produces no difference to any observables.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Occupation Number Representation}
+
+With the form of the position and momentum operators as well as the eigenstates of the free electromagnetic field determined in the position basis, it is useful to simplify the notation where possible. The most important simplification can be found by analyzing the action of the oscillator operators
+\begin{equation}
+\begin{split}
+\hat{a}_{\kappa\bm{\alpha}} &= \frac{k\sqrt{2}}{2}\hat{x}_{\kappa\bm{\alpha}} + \frac{\mathrm{i}\sqrt{2}}{2\hbar k}\hat{p}_{\kappa\bm{\alpha}},\\
+\hat{a}_{\kappa\bm{\alpha}}^\dagger &= \frac{k\sqrt{2}}{2}\hat{x}_{\kappa\bm{\alpha}} - \frac{\mathrm{i}\sqrt{2}}{2\hbar k}\hat{p}_{\kappa\bm{\alpha}}
+\end{split}
+\end{equation}
+on $\ket{\Phi}$. Using integration by parts as well as the identities
+\begin{equation}
+\begin{split}
+\frac{\partial}{\partial x}\left\{H_n(kx)\right\} &= 2knH_{n-1}(kx),\\
+\frac{\partial}{\partial x}\left\{H_n(kx)\right\} &= 2k^2xH_{n}(kx) - kH_{n+1}(kx),
+\end{split}
+\end{equation}
+respectively, one can see that
+\begin{equation}
+\begin{split}
+\mel{X}{\hat{a}_{\kappa\bm{\alpha}}}{\Phi} &= \sqrt{n_{\kappa\bm{\alpha}}}\phi_{\kappa\bm{\alpha}}^{(n - 1)}(x)\prod_{\substack{\bm{\alpha}'\neq\bm{\alpha}\\\kappa'\neq\kappa}}\phi_{\kappa'\bm{\alpha}'}^{(n)}(x),\\
+\mel{X}{\hat{a}^\dagger_{\kappa\bm{\alpha}}}{\Phi} &= \sqrt{n_{\kappa\bm{\alpha}} + 1}\phi_{\kappa\bm{\alpha}}^{(n + 1)}(x)\prod_{\substack{\bm{\alpha}'\neq\bm{\alpha}\\\kappa'\neq\kappa}}\phi_{\kappa'\bm{\alpha}'}^{(n)}(x).
+\end{split}
+\end{equation}
+Here, we've adorned the mode energy index $n_{\kappa\bm{\alpha}}$ with its other associated mode indices to clarify the notation. Thus, the ``oscillator operators'' (as we've been calling them due to their origination as abstract field magnitudes) are better named ladder operators or raising/lowering operators due to their ability to increase or decrease the $n$ index of an eigenstate $\ket{\phi_{\kappa\bm{\alpha}}^{(n)}}$ and therefore increase or decrease the amount of energy stored in that state by $\hbar\omega$.
+
+Further, the operator $\hat{a}_{\kappa\bm{\alpha}}^\dagger\hat{a}_{\kappa\bm{\alpha}}$ that appears in the Hamiltonian in its simplified form in Eq. \eqref{eq:Hhat4} clearly obeys
+\begin{equation}
+\mel{X}{\hat{a}_{\kappa\bm{\alpha}}^\dagger\hat{a}_{\kappa\bm{\alpha}}}{\Phi} = n_{\kappa\bm{\alpha}}\Phi(X).
+\end{equation}
+Therefore, $\hat{a}_{\kappa\bm{\alpha}}^\dagger\hat{a}_{\kappa\bm{\alpha}}$ is a number operator that simply counts the energy index of the state $(\bm{\alpha},\kappa)$. Formally, we can also identify the energy quanta $E_{\kappa\bm{\alpha}}^{(n)}$ as \textit{photons} such that the ladder operators can be seen as annihilating or creating photons in a given state and the number operator can be seen as counting the number of photon quanta. Simplifying the notation of the states further to identify them by $n_{\kappa\bm{\alpha}}$, we can let $\ket{\phi_{\kappa\bm{\alpha}}^{(n)}}\to\ket{n_{\kappa\bm{\alpha}}}$ such that $\ket{\Phi} = \prod_{\bm{\alpha},\kappa}\ket{n_{\kappa\bm{\alpha}}}$. Further,
+\begin{equation}\label{eq:raiseLowerOp}
+\begin{split}
+\hat{a}_{\kappa\bm{\alpha}}\ket{\Phi} &= \sqrt{n_{\kappa\bm{\alpha}}}\ket{n_{\kappa\bm{\alpha}} - 1}\prod_{\substack{\bm{\alpha}'\neq\bm{\alpha}\\\kappa'\neq\kappa}}\ket{n_{\kappa'\bm{\alpha}'}},\\
+\hat{a}_{\kappa\bm{\alpha}}^\dagger\ket{\Phi} &= \sqrt{n_{\kappa\bm{\alpha}} + 1}\ket{n_{\kappa\bm{\alpha}} + 1}\prod_{\substack{\bm{\alpha}'\neq\bm{\alpha}\\\kappa'\neq\kappa}}\ket{n_{\kappa'\bm{\alpha}'}},\\
+\hat{a}_{\kappa\bm{\alpha}}^\dagger\hat{a}_{\kappa\bm{\alpha}}\ket{\Phi} &= n_{\kappa\bm{\alpha}}\ket{\Phi}.
+\end{split}
+\end{equation}
+These identities form the core of the occupation number formulation of quantum electrodynamics and allow for an enlightening simplification of the Hamiltonian. While $\hat{a}_{\kappa\bm{\alpha}}^\dagger\hat{a}_{\kappa\bm{\alpha}}$ delivers the number of photons in a given mode, the remaining operator in the Hamiltonian of Eq. \eqref{eq:Hhat4} produces $\mel{X}{\hat{a}_{\kappa\bm{\alpha}}\hat{a}^\dagger_{\kappa\bm{\alpha}}}{\Phi} = (n_{\kappa\bm{\alpha}} + 1)\Phi(X)$ and can be dubbed the ``number plus one'' operator, as it always returns one more than the energy index. Combining the two number operators and summing and integrating over $\bm{\alpha}$ and $\kappa$ provides
+\begin{equation} 
+\begin{split}
+\mel{X}{\hat{H}}{\Phi} &= \frac{1}{2}\sum_{\kappa\bm{\alpha}}\hbar\omega\left[2n_{\kappa\bm{\alpha}} + 1\right]\Phi(X)\\
+&= \mel{X}{\sum_{\kappa\bm{\alpha}}\hbar\omega\left[\hat{a}_{\kappa\bm{\alpha}}^\dagger\hat{a}_{\kappa\bm{\alpha}} + \frac{1}{2}\right]}{\Phi}
+\end{split}
+\end{equation}
+such that the Hamiltonian can be simplified to 
+\begin{equation}\label{eq:Hhat5}
+\hat{H} = \sum_{\kappa\bm{\alpha}}\hbar\omega\left[\hat{a}_{\kappa\bm{\alpha}}^\dagger\hat{a}_{\kappa\bm{\alpha}} + \frac{1}{2}\right].
+\end{equation}
+The consequence of the second term in brackets above is that, even in the case where the total number of photons in the universe is zero (i.e. a vacuum), the energy bound in the electromagnetic field is not zero. In fact, it's infinite. This ``zero point energy'' or ``vacuum energy'' can be seen to produce vacuum fluctuation effects such as spontaneous decay as well as vacuum coupling effects such as the Lamb shift. Quantum electrodynamics has therefore revealed that empty space, far from being inert as is surmised in classical mechanics, can have important, if subtle, effects on the electromagnetic properties of matter.
+
+Another example of the utility of the occupation number picture is the simple definition of coherent states of light. These states are the closest quantum analog to classical electromagnetism and are defined in a single-mode basis as $\ket{\psi_\mathrm{coh}} = \sum_{n = 0}^\infty\ket{n}\exp(-|u|^2/2)u^n/\sqrt{n!}$ such that $\hat{a}\ket{\psi_\mathrm{coh}} = u\ket{\psi_\mathrm{coh}}$. In our full multi-mode basis, a coherent state in the mode $(\bm{\alpha},\omega)$ complemented by a vacuum in each other state is given by
+\begin{equation}
+\begin{split}
+\ket{\Psi_\mathrm{coh}} &= \sum_{n = 0}^\infty \mathrm{e}^{-\frac{|u|^2}{2}}\frac{u^n}{\sqrt{n!}}\ket{n_{\kappa\bm{\alpha}}}\prod_{\substack{\bm{\alpha}'\neq\bm{\alpha}\\\kappa'\neq\kappa}}\ket{0_{\kappa'\bm{\alpha}'}}\\
+&=\sum_{n = 0}^\infty \mathrm{e}^{-\frac{|u|^2}{2}}\frac{u^n}{\sqrt{n!}}\prod_{\bm{\alpha}',\kappa'}\left[(1-\delta_{\bm{\alpha}\bm{\alpha}'}\delta_{\kappa\kappa'})\ket{0_{\kappa'\bm{\alpha}'}} + \delta_{\bm{\alpha}\bm{\alpha}'}\delta_{\kappa\kappa'}\ket{n_{\kappa\bm{\alpha}}}\right],\\[1.0em]
+\hat{a}_{\kappa\bm{\alpha}}\ket{\Psi_\mathrm{coh}} &= u\ket{\Psi_\mathrm{coh}}.
+\end{split}
+\end{equation}
+To see how the unitless amplitude $u$ is produced by application of the lowering operator, one can use the identities
+\begin{equation}
+\begin{split}
+\sum_{n = 1}^\infty \mathrm{e}^{-|u|^2}\frac{u^n(u^*)^{n-1}}{(n - 1)!} &= u,\\
+\sum_{n = 0}^\infty \mathrm{e}^{-|u|^2}\frac{u^n(u^*)^{n+1}}{n!} &= u^*\\
+\end{split}
+\end{equation}
+(which can be derived from $\sum_{n = 0}^\infty\exp(-|u|^2)u^n(u^*)^n/n! = 1$) along with the identities of Eq. \eqref{eq:raiseLowerOp}.
+
+The analogy between coherent states is made clear by taking the expectation value of the electric field operator with respect to these coherent states. This is done formally by
+\begin{equation}
+\begin{split}
+&\mel{\Psi_\mathrm{coh}}{\hat{\mathbf{E}}(\mathbf{r},t)}{\Psi_\mathrm{coh}} = \mel{\Psi_\mathrm{coh}}{\mathrm{i} k\sqrt{\frac{\hbar\omega}{\pi L}}\sum_{\kappa\bm{\alpha}}\left[\hat{a}_{\bm{\alpha}}(\kappa,t) - \hat{a}_{\bm{\alpha}}^\dagger(\kappa,t)\right]\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)}{\Psi_\mathrm{coh}}\\
+&= \bra{\Psi_\mathrm{coh}}\sum_{\kappa\bm{\alpha}}\sum_{n = 0}\mathrm{e}^{-\frac{|u|^2}{2}}\frac{u^n}{\sqrt{n!}}\mathrm{i}k\sqrt{\frac{\hbar\omega}{\pi L}}\left[\mathrm{e}^{-\mathrm{i}\omega t}\sqrt{n}\delta_{\bm{\alpha}\bm{\alpha}'}\delta_{\kappa\kappa'}\ket{n_{\bm{\alpha'}}(\kappa') - 1}\prod_{\substack{\bm{\alpha}''\neq\bm{\alpha}'\\\kappa''\neq\kappa'}}\ket{0_{\bm{\alpha}''}(\kappa'')}\right.\\
+&\hspace{0.05\textwidth}- \mathrm{e}^{\mathrm{i}\omega t}\left(\sqrt{n + 1}\delta_{\bm{\alpha}\bm{\alpha}'}\delta_{\kappa\kappa'}\ket{n_{\bm{\alpha}'}(\kappa') + 1}\prod_{\substack{\bm{\alpha}''\neq\bm{\alpha}'\\\kappa''\neq\kappa'}}\ket{0_{\bm{\alpha}''}(\kappa'')}\right.\\
+&\hspace{0.05\textwidth}\left.\left.+ \delta_{\bm{\alpha}\bm{\alpha}''}\delta_{\kappa\kappa''}\ket{n_{\bm{\alpha}'}(\kappa')}\ket{1_{\bm{\alpha}''}(\kappa'')}\prod_{\substack{\bm{\alpha}'''\neq\bm{\alpha}''\neq\bm{\alpha}'\\\kappa'''\neq\kappa''\neq\kappa'}}\ket{0_{\bm{\alpha}'''}(\kappa''')}\right)\right]\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)\\
+&= \mathrm{i}k'\sqrt{\frac{\hbar\omega'}{\pi L}}\left[\sum_{n=1}^\infty\sqrt{n}\mathrm{e}^{|u|^2}\frac{u^n(u^*)^{n-1}}{\sqrt{n!(n-1)!}}\mathrm{e}^{-\mathrm{i}\omega' t} - \sum_{n = 0}^\infty\sqrt{n+1}\mathrm{e}^{-|u|^2}\frac{u^n(u^*)^{n+1}}{\sqrt{n!(n+1)!}}\mathrm{e}^{\mathrm{i}\omega' t}\right]\mathbf{X}_{\bm{\alpha}'}(\mathbf{r},k')\\[1.0em]
+&= \mathrm{i}k'\sqrt{\frac{\hbar\omega'}{\pi L}}\left(u\mathrm{e}^{-\mathrm{i}\omega't} - u^*\mathrm{e}^{\mathrm{i}\omega't}\right)\mathbf{X}_{\bm{\alpha}'}(\mathbf{r},k').
+\end{split}
+\end{equation}
+Letting $u = |u|\exp(\mathrm{i}\eta)$ with $\eta$ a phase angle, one finds
+\begin{equation}
+\begin{split}
+\mel{\Psi_\mathrm{coh}}{\hat{\mathbf{E}}(\mathbf{r},t)}{\Psi_\mathrm{coh}} &= k'\sqrt{\frac{\hbar\omega'}{\pi L}}|u|\left(\mathrm{e}^{-\mathrm{i}\omega't + \mathrm{i}\eta + \mathrm{i}\frac{\pi}{2}} + \mathrm{e}^{\mathrm{i}\omega't - \mathrm{i}\eta - \mathrm{i}\frac{\pi}{2}}\right)\mathbf{X}_{\bm{\alpha}'}(\mathbf{r},k')\\
+&= 2k'|u|\sqrt{\frac{\hbar\omega'}{\pi L}}\cos(\omega't - \eta - \frac{\pi}{2})\mathbf{X}_{\bm{\alpha}'}(\mathbf{r},k'),
+\end{split}
+\end{equation}
+which, letting the characteristic electric field strength be $E_0 = 2k'|u|\sqrt{\hbar \omega'/\pi L}$, is simply the electric field of a monochromatic spherical wave of angular frequency $\omega'$ (wavenumber $k'$) and with a field profile determined by $\bm{\alpha}'$. In Fourier space, this field is described by
+\begin{equation}
+\begin{split}
+\mel{\Psi_\mathrm{coh}}{\hat{\mathbf{E}}(\mathbf{r},\omega)}{\Psi_\mathrm{coh}} &= \int \mel{\Psi_\mathrm{coh}}{\hat{\mathbf{E}}(\mathbf{r},t)}{\Psi_\mathrm{coh}}\mathrm{e}^{\mathrm{i}\omega t}\;\mathrm{d}t\\
+&= E_0\left[\pi\delta(\omega - \omega')\mathrm{e}^{\mathrm{i}(\eta + \frac{\pi}{2})} + \pi\delta(\omega + \omega')\mathrm{e}^{\mathrm{-i}(\eta + \frac{\pi}{2})}\right]\mathbf{X}_{\bm{\alpha}'}(\mathbf{r},k'),
+\end{split}
+\end{equation}
+which highlights the monochromatic nature of the wave through the spectral density functions $\delta(\omega\mp\omega')$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\appendix
+
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+
+
+
+
+
+\section{Wave Equation Details}
+
+Maxwell's equations in free space in both classical and quantum electrodynamics can be written as
+\begin{equation}
+\begin{split}
+\nabla\cdot\mathbf{E}(\mathbf{r},t) &= 4\pi\rho(\mathbf{r},t),\\
+\nabla\cdot\mathbf{B}(\mathbf{r},t) &= 0,\\
+\nabla\times\mathbf{E}(\mathbf{r},t) &= -\frac{1}{c}\frac{\partial}{\partial t}\mathbf{B}(\mathbf{r},t),\\
+\nabla\times\mathbf{B}(\mathbf{r},t) &= \frac{4\pi}{c}\mathbf{J}(\mathbf{r},t) + \frac{1}{c}\frac{\partial}{\partial t}\mathbf{E}(\mathbf{r},t),
+\end{split}
+\end{equation}
+where in classical mechanics the electric field, magnetic field, current density, and charge density are real vector or scalar fields obeying the appropriate Poisson bracket relations and in quantum mechanics they are real vector or scalar field \textit{operators} that act on the photon field in the Fock representation and obey the appropriate commutation bracket relations. To specify that they are operators, one can include hats ``$\;\hat{}\;$'' on each field to distinguish them from the non-operator variables $\mathbf{r}$ and $t$.
+
+The wave equations for $\mathbf{E}(\mathbf{r},t)$ and $\mathbf{B}(\mathbf{r},t)$ are then found by taking the curl of Faraday's law and Amp\`{e}re's law, such that
+\begin{equation}\label{eq:waveEqTime}
+\begin{split}
+\nabla\times\nabla\times\mathbf{E}(\mathbf{r},t) + \frac{1}{c^2}\frac{\partial^2}{\partial t^2}\mathbf{E}(\mathbf{r},t) &= -\frac{4\pi}{c^2}\frac{\partial}{\partial t}\mathbf{J}(\mathbf{r},t),\\
+\nabla\times\nabla\times\mathbf{B}(\mathbf{r},t) + \frac{1}{c^2}\frac{\partial^2}{\partial t^2}\mathbf{B}(\mathbf{r},t) &= \frac{4\pi}{c}\nabla\times\mathbf{J}(\mathbf{r},t).
+\end{split}
+\end{equation}
+The solutions to these are often easier to describe in the Fourier domain, in which the time-derivative operators are converted to algebraic prefactors $\partial/\partial t\to-\mathrm{i}\omega$ such that the four-dimensional PDEs become three-dimension PDEs more susceptible to solutions via common boundary value methods. Explicitly, the wave equations become
+\begin{equation}\label{eq:waveEqFreq}
+\begin{split}
+\nabla\times\nabla\times\mathbf{E}(\mathbf{r},\omega) - \frac{\omega^2}{c^2}\mathbf{E}(\mathbf{r},\omega) &= \frac{4\pi\mathrm{i}\omega}{c^2}\mathbf{J}(\mathbf{r},\omega),\\
+\nabla\times\nabla\times\mathbf{B}(\mathbf{r},\omega) - \frac{\omega^2}{c^2}\mathbf{B}(\mathbf{r},\omega) &= \frac{4\pi}{c}\nabla\times\mathbf{J}(\mathbf{r},\omega),
+\end{split}
+\end{equation}
+where we note that the field functions $\mathbf{F}(\mathbf{r},t)$ and $\mathbf{F}(\mathbf{r},\omega)$ are in general different at fixed $\mathbf{r}$ for identical numerical values of $t$ and $\omega$, respectively, but we will omit the traditional modifications ``$\;\tilde{}\;$'' to the function symbols that indicate this difference due to the resulting heaviness in the notation.
+
+
+
+
+
+
+
+
+
+
+
+\section{Green's Function Details}\label{app:greenFuncDetails}
+
+\subsection{Green's Function of Free Space}
+
+In spherical coordinates, the Green function to the Helmholtz equation of free space (Eq. [\ref{eq:waveEqFreq}]) is given by
+\begin{equation}\label{eq:G0}
+\begin{split}
+\mathbf{G}_0(\mathbf{r},\mathbf{r}';\omega) &= \frac{\mathrm{i}\omega}{4\pi c}\sum_{p\ell m}\left[\bm{\mathcal{M}}_{p\ell m}(\mathbf{r},k)\mathbf{M}_{p\ell m}(\mathbf{r}',k) + \bm{\mathcal{N}}_{p\ell m}(\mathbf{r},k)\mathbf{N}_{p\ell m}(\mathbf{r}',k)\right]\Theta(r - r') + \\
+&+ \frac{\mathrm{i}\omega}{4\pi c}\sum_{p\ell m}\left[\mathbf{M}_{p\ell m}(\mathbf{r},k)\bm{\mathcal{M}}_{p\ell m}(\mathbf{r}',k) + \mathbf{N}_{p\ell m}(\mathbf{r},k)\bm{\mathcal{N}}_{p\ell m}(\mathbf{r}',k)\right]\Theta(r' - r) - \frac{1}{k^2}\hat{\mathbf{r}}\hat{\mathbf{r}}\delta(\mathbf{r} - \mathbf{r}').
+\end{split}
+\end{equation}
+Here $k = \omega/c$ is the wavenumber of light traveling through vacuum with freqeuncy $\omega$. The vector solid spherical harmonics $\mathbf{M}_{p\ell m}(\mathbf{r},k)$, $\mathbf{N}_{p\ell m}(\mathbf{r},k)$, $\bm{\mathcal{M}}_{p\ell m}(\mathbf{r},k)$, and $\bm{\mathcal{N}}_{p\ell m}(\mathbf{r},k)$, describe the magnitude of excitation of a given mode $T,p,\ell,m$ of the field by a current $\mathbf{J}(\mathbf{r},\omega)$, as described by the solution to Eq. \ref{eq:waveEqFreq},
+\begin{equation}
+\mathbf{E}(\mathbf{r},\omega) = \frac{4\pi\mathrm{i}\omega}{c}\int\mathbf{G}_0(\mathbf{r},\mathbf{r}';\omega)\cdot\frac{\mathbf{J}(\mathbf{r}',\omega)}{c}\;\mathrm{d}^3\mathbf{r}'.
+\end{equation}
+Details of the harmonics are given in Section \ref{sec:harmDef}. 
+
+% The Dirac delta in Eq. \eqref{eq:G0} removes the field divergence at the location of the current, i.e. at $\mathbf{r} = \mathbf{r}'$. 
+
+% To see this, we can use the vector spherical harmonic identity
+% \begin{equation}
+% \int_0^\infty\frac{\kappa^3}{\kappa^2 - k^2}\mathbf{X}_{Tp\ell m}(\mathbf{r},\kappa)\mathbf{X}_{Tp\ell m}(\mathbf{r}',\kappa)\;\mathrm{d}\kappa = \frac{\mathrm{i}\pi k^2}{2}
+% \begin{cases}
+% \mathcal{\bm{X}}_{Tp\ell m}(\mathbf{r},k)\mathbf{X}_{Tp\ell m}(\mathbf{r}',k), & r > r',\\
+% \mathbf{X}_{Tp\ell m}(\mathbf{r},k)\mathcal{\bm{X}}_{Tp\ell m}(\mathbf{r}',k), & r < r',\\
+% \end{cases}
+% \end{equation}
+% along with Eq. \eqref{eq:completeness} to say
+
+
+
+
+
+
+
+
+\subsection{Harmonic Definitions}\label{sec:harmDef}
+
+The dyadic Green's function of a sphere is composed of transverse vector spherical harmonics
+\begin{equation}
+\begin{split}
+\mathbf{M}_{p\ell m}(\mathbf{r},k) &= \sqrt{K_{\ell m}}\left[\frac{(-1)^{p + 1}m}{\sin\theta}j_\ell(kr)P_{\ell m}(\cos\theta)S_{p+1}(m\phi)\hat{\bm{\theta}} - j_\ell(kr)\frac{\partial P_{\ell m}(\cos\theta)}{\partial\theta}S_p(m\phi)\hat{\bm{\phi}}\right]\\[0.5em]
+\mathbf{N}_{p\ell m}(\mathbf{r},k) &= \sqrt{K_{\ell m}}\left[\frac{\ell(\ell + 1)}{kr}j_\ell(kr)P_{\ell m}(\cos\theta)S_p(m\phi)\hat{\mathbf{r}}\right.\\
+&+ \left.\frac{1}{kr}\frac{\partial\{rj_\ell(kr)\}}{\partial r}\left(\frac{\partial P_{\ell m}(\cos\theta)}{\partial\theta}S_p(m\phi)\hat{\bm{\theta}} + \frac{(-1)^{p+1}m}{\sin\theta}P_{\ell m}(\cos\theta)S_{p + 1}(m\phi)\hat{\bm{\phi}}\right)\right],
+\end{split}
+\end{equation}
+and longitudinal vector spherical harmonics
+\begin{equation}
+\begin{split}
+\nabla f_{p\ell m}^{<}(\mathbf{r}) &= \nabla\left\{\sqrt{(2 - \delta_{m0})\frac{(\ell - m)!}{(\ell + m)!}}r^\ell P_{\ell m}(\cos\theta)S_p(m\phi)\right\},\\
+\nabla f_{p\ell m}^{>}(\mathbf{r}) &= \nabla\left\{\sqrt{(2 - \delta_{m0})\frac{(\ell - m)!}{(\ell + m)!}}\frac{1}{r^{\ell + 1}}P_{\ell m}(\cos\theta)S_p(m\phi)\right\},
+\end{split}
+\end{equation}
+where $j_\ell(x)$ are spherical Bessel functions, $P_{\ell m}(x)$ are associated Legendre polynomials, and 
+\begin{equation}
+S_p(x) = 
+\begin{cases}
+\cos(x), & p\;\;\mathrm{even},\\
+\sin(x), & p \;\;\mathrm{odd}.
+\end{cases}
+\end{equation}
+Further, the prefactors $K_{\ell m}$, which are set to $1$ in most texts, are set to
+\begin{equation}
+K_{\ell m} = (2 - \delta_{m0})\frac{2\ell + 1}{\ell(\ell + 1)}\frac{(\ell - m)!}{(\ell + m)!}
+\end{equation}
+in an effort to regularize the transverse harmonics, i.e. ensure that their maximum magnitudes in $\mathbf{r}$ for fixed $k$ are similar for all index combinations $p,\ell,m$. The prefactors of the longitudinal harmonics are defined similarly.
+
+The above transverse harmonics will be herein referred to as \textit{interior} vector spherical harmonics as they are generally used for $\mathbf{r}$ confined within some closed spherical surface such that $r<\infty$ always. To describe fields in regions that do not include the origin, one can find the second set of solutions to the second-order wave equation PDE, which are the so-called \textit{exterior} vector spherical harmonics $\bm{\mathcal{M}}_{p\ell m}(\mathbf{r},k)$ and $\bm{\mathcal{N}}_{p\ell m}(\mathbf{r},k)$. These harmonics are defined with the simple substitutions
+\begin{equation}
+\begin{split}
+\bm{\mathcal{M}}_{p\ell m}(\mathbf{r},k) &= \left.\mathbf{M}_{p\ell m}(\mathbf{r},k)\right|_{j_\ell(kr)\to h_\ell^{(1)}(kr)},\\
+\bm{\mathcal{N}}_{p\ell m}(\mathbf{r},k) &= \left.\mathbf{N}_{p\ell m}(\mathbf{r},k)\right|_{j_\ell(kr)\to h_\ell^{(1)}(kr)},
+\end{split}
+\end{equation}
+where the functions $h_\ell^{(1)}(kr) = j_\ell(kr) + \mathrm{i}y_\ell(kr)$ replacing the spherical Bessel functions are the spherical Hankel functions of the first kind and involve the spherical Bessel functions of the second kind, $y_\ell(kr)$, which are irregular at $r\to0$. The pair of longitudinal harmonics defined above already includes both the interior and exterior harmonics: the first is clearly zero at $r = 0$ for $\ell > 0$, while the second diverges at the origin and must only be used to describe fields outside an origin-inclusive boundary.
+
+For shorthand, we can define the transverse vector harmonics more compactly as
+\begin{equation}
+\begin{split}
+\mathbf{X}_{Tp\ell m}(\mathbf{r},k) &= 
+\begin{cases}
+\mathbf{M}_{p\ell m}(\mathbf{r},k), & T=M,\\
+\mathbf{N}_{p\ell m}(\mathbf{r},k), & T=E;
+\end{cases}\\[1.0em]
+\bm{\mathcal{X}}_{Tp\ell m}(\mathbf{r},k) &=
+\begin{cases}
+\bm{\mathcal{M}}_{p\ell m}(\mathbf{r},k), & T=M,\\
+\bm{\mathcal{N}}_{p\ell m}(\mathbf{r},k), & T=E.
+\end{cases}
+\end{split}
+\end{equation}
+Here, we have introduced the fourth ``type'' index $T = E,M$, which signifies whether the harmonic $\mathbf{X}_{Tp\ell m}$ is of electric or magnetic type, etc. We can condense the notation further by writing the string of four indices as $\bm{\alpha} = (T,p,\ell,m)$. The longitudinal harmonics only appear of electric type. The symmetries of the transverse vector spherical harmonics are such that
+\begin{equation}
+\begin{split}
+\mathbf{M}_{p\ell m}^*(\mathbf{r},k) &= (-1)^\ell\mathbf{M}_{p\ell m}(\mathbf{r},-k),\\
+\mathbf{N}_{p\ell m}^*(\mathbf{r},k) &= (-1)^{\ell + 1}\mathbf{N}_{p\ell m}(\mathbf{r},-k),
+\end{split}
+\end{equation}
+with identical relations for the respective exterior transverse harmonics. Further, they obey the duality
+\begin{equation}
+\begin{split}
+\nabla\times\mathbf{M}_{p\ell m}(\mathbf{r},k) &= k\mathbf{N}_{p\ell m}(\mathbf{r},k),\\
+\nabla\times\mathbf{N}_{p\ell m}(\mathbf{r},k) &= k\mathbf{M}_{p\ell m}(\mathbf{r},k),
+\end{split}
+\end{equation}
+and similar for the exterior transverse harmonics, such that a second set of transverse harmonics can be defined as 
+\begin{equation}
+\begin{split}
+\mathbf{Y}_{\bm{\alpha}}(\mathbf{r},k) &= \frac{1}{k}\nabla\times\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k),\\
+\bm{\mathcal{Y}}_{\bm{\alpha}}(\mathbf{r},k) &= \frac{1}{k}\nabla\times\bm{\mathcal{X}}_{\bm{\alpha}}(\mathbf{r},k),
+\end{split}
+\end{equation}
+which obey the same conjugation symmetry as $\mathbf{X}_{\bm{\alpha}}$ and $\bm{\mathcal{X}}_{\bm{\alpha}}$ but with an extra factor of $-1$ such that
+\begin{equation}
+\begin{split}
+\bm{\mathcal{X}}_{\bm{\alpha}}^*(\mathbf{r},k) &= 
+\begin{cases}
+(-1)^{\ell}\bm{\mathcal{X}}_{\bm{\alpha}}(\mathbf{r},-k), & T = M,\\
+(-1)^{\ell + 1}\bm{\mathcal{X}}_{\bm{\alpha}}(\mathbf{r},-k), & T = E;\\
+\end{cases}\\
+\bm{\mathcal{Y}}_{\bm{\alpha}}^*(\mathbf{r},k) &= 
+\begin{cases}
+(-1)^{\ell + 1}\bm{\mathcal{Y}}_{\bm{\alpha}}(\mathbf{r},-k), & T = M,\\
+(-1)^{\ell}\bm{\mathcal{Y}}_{\bm{\alpha}}(\mathbf{r},-k), & T = E;\\
+\end{cases}
+\end{split}
+\end{equation}
+and similar for the interior transverse harmonics.
+
+The interior harmonics obey the orthogonality relations
+\begin{equation}\label{eq:orthogonality}
+\int \mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)\cdot\mathbf{X}_{\bm{\alpha}'}(\mathbf{r},k')\;\mathrm{d}^3\mathbf{r} = \frac{2\pi^2}{k^2}\delta(k - k')\delta_{TT'}\delta_{pp'}\delta_{\ell\ell'}\delta_{mm'}\\
+\end{equation}
+for $k,k' > 0$ and
+\begin{equation}
+\int_0^{2\pi}\int_0^\pi\int_0^R\nabla f_{p\ell m}(\mathbf{r})\cdot\nabla f_{p'\ell'm'}(\mathbf{r})r^2\sin\theta\;\mathrm{d}r\,\mathrm{d}\theta\,\mathrm{d}\phi = 4\pi\frac{\ell}{2\ell + 1}R^{2\ell + 1}\delta_{pp'}\delta_{\ell\ell'}\delta_{mm'}.
+\end{equation}
+The exterior harmonics, similar to the interior longitudinal harmonics, cannot be normalized over all space as they diverge at the origin. The transverse exterior harmonics do however satisfy the convenient relation at large radii
+\begin{equation}
+\begin{split}
+\lim_{r\to\infty}\int_0^{2\pi}\int_0^\pi \bm{\mathcal{X}}_{\bm{\alpha}}(\mathbf{r},k)&\times\bm{\mathcal{Y}}_{\bm{\alpha}'}(\mathbf{r},k)\cdot\hat{\mathbf{r}}r^2\sin\theta\;\mathrm{d}\theta\,\mathrm{d}\phi = \\
+&(1 + \delta_{p0}\delta_{m0} - \delta_{p1}\delta_{m1})2\pi\frac{(-1)^{\ell + 1}\mathrm{i}^{2\ell + 1}}{k^2}\frac{\ell(\ell + 1)}{2\ell + 1}\frac{(\ell + m)!}{(\ell - m)!}\delta_{\bm{\alpha}\bm{\alpha}'}.
+\end{split}
+\end{equation}
+The associated completeness relations to these orthogonality conditions can be derived from the Helmholtz expansion of $\bm{1}_2\delta(\mathbf{r} - \mathbf{r}')$, which states that 
+\begin{equation}
+\begin{split}
+\bm{1}_2\delta(\mathbf{r} - \mathbf{r}') &= \frac{1}{2\pi^2}\int_0^\infty\sum_{\bm{\alpha}}k^2\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)\mathbf{X}_{\bm{\alpha}}(\mathbf{r}',k)\;\mathrm{d}k\\
+&+ \frac{1}{4\pi}\sum_{p\ell m}\left[\nabla f_{p\ell m}^>(\mathbf{r})\nabla'f_{p\ell m}^<(\mathbf{r}')\Theta(r - r') + \nabla f_{p\ell m}^<(\mathbf{r})\nabla'f_{p\ell m}^>(\mathbf{r}')\Theta(r' - r)\right].
+\end{split}
+\end{equation}
+Note that, as is clear form the derivation of Section \ref{sec:helmholtzDelta}, the second term is longitudinal in both the $\mathbf{r}$ and $\mathbf{r}'$ as it can be rewritten with the gradient operators acting on the entire function. The first term is clearly transverse by a similar argument, as both transverse vector harmonics can be rewritten as curls and then the curl operators can be pulled to the front of the expression.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Miscellaneous Proofs and Derivations}
+
+\subsection{Orthogonality of Transverse and Longitudinal Vector Fields}\label{sec:ortho}
+
+A vector field $\mathbf{F}(\mathbf{r})$ can be broken into a transverse part $\mathbf{F}_\perp(\mathbf{r})$ and a longitudinal part $\mathbf{F}_\parallel(\mathbf{r})$ through Helmholtz decomposition. The divergence-free transverse part can be written as the curl of another vector field, such that $\mathbf{F}_\perp(\mathbf{r}) = \nabla\times\mathbf{A}(\mathbf{r})$. The curl-free longitudinal part can be written as the gradient of a scalar field, such that $\mathbf{F}_\parallel(\mathbf{r}) = \nabla\Phi(\mathbf{r})$. Therefore, using the identities $\nabla\cdot\{\mathbf{A}(\mathbf{r})\Phi(\mathbf{r})\} = \mathbf{A}(\mathbf{r})\cdot\nabla\Phi(\mathbf{r}) + \Phi(\mathbf{r})\nabla\cdot\mathbf{A}(\mathbf{r})$ and $\nabla\cdot\nabla\times\mathbf{A}(\mathbf{r}) = 0$, one can use integration by parts and Gauss' law to see that
+\begin{equation}
+\begin{split}
+\int\mathbf{F}_\perp(\mathbf{r})\cdot\mathbf{F}_\parallel(\mathbf{r})\;\mathrm{d}^3\mathbf{r} &= \int\nabla\times\mathbf{A}(\mathbf{r})\cdot\nabla\Phi(\mathbf{r})\;\mathrm{d}^3\mathbf{r}\\
+&=\int\left(\nabla\cdot\left\{\Phi(\mathbf{r})\nabla\times\mathbf{A}(\mathbf{r})\right\} - \Phi(\mathbf{r})\nabla\cdot\{\nabla\times\mathbf{A}(\mathbf{r})\}\right)\;\mathrm{d}^3\mathbf{r}\\
+&= \oint\Phi(\mathbf{r})\nabla\times\mathbf{A}(\mathbf{r})\cdot\mathrm{d}^2\mathbf{s} + 0.
+\end{split}
+\end{equation}
+Here, $\int\mathrm{d}^3\mathbf{r}$ represents integration over all space and $\oint\mathrm{d}^2\mathbf{s}$ represents integration across the surface at infinity wherein the surface elements $\mathrm{d}^2\mathbf{s}$ have outward-facing normal vectors. The surface integral vanishes for all $\mathbf{A}(\mathbf{r})$ and $\Phi(\mathbf{r})$ that go to zero at infinity, such that any physical vector field $\mathbf{F}(\mathbf{r})$ obeys
+\begin{equation}
+\int\mathbf{F}_\perp(\mathbf{r})\cdot\mathbf{F}_\parallel(\mathbf{r})\;\mathrm{d}^3\mathbf{r} = 0.
+\end{equation}
+
+
+
+
+
+
+
+\subsection{Helmholtz Decomposition of $\bm{1}_2\delta(\mathbf{r} - \mathbf{r}')$ into Spherical Mode Functions}\label{sec:helmholtzDelta}
+
+Because both the divergence 
+\begin{equation}
+\begin{split}
+\nabla\cdot\mathbf{1}_2\delta(\mathbf{r} - \mathbf{r}') &= \sum_{i = 1}^3\hat{\mathbf{e}}_i\frac{\partial}{\partial r_i}\cdot\sum_{j = 1}^3\hat{\mathbf{e}}_j\hat{\mathbf{e}}_j\delta(\mathbf{r} - \mathbf{r}')\\
+&= \sum_{i = 1}^3\hat{\mathbf{e}}_i\frac{\partial}{\partial r_i}\delta(\mathbf{r} - \mathbf{r}')\\
+&= \nabla\delta(\mathbf{r} - \mathbf{r}')
+\end{split}
+\end{equation}
+and the curl
+\begin{equation}
+\nabla\times\bm{1}_2\delta(\mathbf{r} - \mathbf{r}') = \sum_{ijk}\varepsilon_{ijk}\frac{\partial}{\partial r_j}\delta(\mathbf{r} - \mathbf{r}')\hat{\mathbf{e}}_i\hat{\mathbf{e}}_k
+\end{equation}
+are well-defined operators on the rank-2 tensor $\bm{1}_2\delta(\mathbf{r} - \mathbf{r}')$, the longitudinal and transverse components of the tensor can be found through Helmholtz decomposition in the usual way:
+\begin{equation}
+\bm{1}_2\delta(\mathbf{r} - \mathbf{r}') = -\frac{1}{4\pi}\nabla\int\frac{\nabla''\delta(\mathbf{r}''-\mathbf{r}')}{|\mathbf{r} - \mathbf{r}''|}\;\mathrm{d}^3\mathbf{r}'' + \frac{1}{4\pi}\nabla\times\int\frac{\nabla''\times\left\{\bm{1}_2\delta(\mathbf{r}'' - \mathbf{r}')\right\}}{|\mathbf{r} - \mathbf{r}''|}\;\mathrm{d}^3\mathbf{r}'',
+\end{equation}
+with
+\begin{equation}
+\begin{split}
+\left[\bm{1}_2\delta(\mathbf{r} - \mathbf{r}')\right]_\parallel &= -\frac{1}{4\pi}\nabla\int\frac{\nabla''\delta(\mathbf{r}''-\mathbf{r}')}{|\mathbf{r} - \mathbf{r}''|}\;\mathrm{d}^3\mathbf{r}'',\\
+\left[\bm{1}_2\delta(\mathbf{r} - \mathbf{r}')\right]_\perp &= \frac{1}{4\pi}\nabla\times\int\frac{\nabla''\times\left\{\bm{1}_2\delta(\mathbf{r}'' - \mathbf{r}')\right\}}{|\mathbf{r} - \mathbf{r}''|}\;\mathrm{d}^3\mathbf{r}''.
+\end{split}
+\end{equation}
+The longitudinal component is easily expanded with the identities
+\begin{equation}
+\nabla\int\frac{\nabla''\delta(\mathbf{r}''-\mathbf{r}')}{|\mathbf{r} - \mathbf{r}''|}\;\mathrm{d}^3\mathbf{r}'' = -\nabla\nabla'\left\{\frac{1}{|\mathbf{r} - \mathbf{r}'|}\right\}
+\end{equation}
+and
+\begin{equation}
+\frac{1}{|\mathbf{r} - \mathbf{r}'|} = \sum_{p\ell m}\left[f_{p\ell m}^>(\mathbf{r})f_{p\ell m}^<(\mathbf{r}')\Theta(r - r') + f_{p\ell m}^<(\mathbf{r})f_{p\ell m}^>(\mathbf{r}')\Theta(r' - r)\right]
+\end{equation}
+such that
+\begin{equation}
+\left[\bm{1}_2\delta(\mathbf{r} - \mathbf{r}')\right]_\parallel = \frac{1}{4\pi}\sum_{p\ell m}\nabla\nabla'\left\{f_{p\ell m}^>(\mathbf{r}) f_{p\ell m}^<(\mathbf{r}')\Theta(r - r') + f_{p\ell m}^<(\mathbf{r})f_{p\ell m}^>(\mathbf{r}')\Theta(r' - r)\right\}.
+\end{equation}
+To simplify, we can see that $f_{p\ell m}^>(\mathbf{r}) f_{p\ell m}^<(\mathbf{r}') = f_{p\ell m}^<(\mathbf{r})f_{p\ell m}^>(\mathbf{r}')$ at $\mathbf{r} = \mathbf{r}'$. Further, with $\nabla\Theta(\pm\mathbf{r} \mp \mathbf{r}') = \pm\hat{\mathbf{r}}\delta(\mathbf{r} - \mathbf{r}')$, we can see that the product rule gives
+\begin{equation}
+\begin{split}
+\frac{1}{4\pi}\sum_{p\ell m}\nabla\nabla'&\left\{f_{p\ell m}^>(\mathbf{r}) f_{p\ell m}^<(\mathbf{r}')\Theta(r - r') + f_{p\ell m}^<(\mathbf{r})f_{p\ell m}^>(\mathbf{r}')\Theta(r' - r)\right\}\\
+&= \frac{1}{4\pi}\sum_{p\ell m}\nabla\left\{f_{p\ell m}^>(\mathbf{r})\nabla'f_{p\ell m}^<(\mathbf{r}')\Theta(r - r') - f_{p\ell m}^>(\mathbf{r})f_{p\ell m}^<(\mathbf{r}')\hat{\mathbf{r}}'\delta(\mathbf{r} - \mathbf{r}')\right.\\
+&\hspace{0.05\textwidth}\left.+ f_{p\ell m}^<(\mathbf{r})\nabla'f_{p\ell m}^>(\mathbf{r}')\Theta(r - r') + f_{p\ell m}^<(\mathbf{r})f_{p\ell m}^>(\mathbf{r}')\hat{\mathbf{r}}'\delta(\mathbf{r} - \mathbf{r}')\right\}\\
+&= \frac{1}{4\pi}\sum_{p\ell m}\nabla\left\{f_{p\ell m}^>(\mathbf{r})\nabla'f_{p\ell m}^<(\mathbf{r}')\Theta(r - r') + f_{p\ell m}^<(\mathbf{r})\nabla'f_{p\ell m}^>(\mathbf{r}')\Theta(r - r')\right\}.
+\end{split}
+\end{equation}
+Carrying the second gradient through similarly produces
+\begin{equation}
+\left[\bm{1}_2\delta(\mathbf{r} - \mathbf{r}')\right]_\parallel = \frac{1}{4\pi}\sum_{p\ell m}\left\{\nabla f_{p\ell m}^>(\mathbf{r}) \nabla'f_{p\ell m}^<(\mathbf{r}')\Theta(r - r') + \nabla f_{p\ell m}^<(\mathbf{r})\nabla'f_{p\ell m}^>(\mathbf{r}')\Theta(r' - r)\right\}.
+\end{equation}
+The transverse component is more difficult to transform, but can be expanded using the identities
+\begin{equation}
+\begin{split}
+\nabla\times\left\{\bm{1}_2\delta(\mathbf{r} - \mathbf{r}')\right\} &= \frac{1}{2\pi^2}\int_0^\infty\sum_{p\ell m}k^3\left[\mathbf{N}_{p\ell m}(\mathbf{r},k)\mathbf{M}_{p\ell m}(\mathbf{r}',k) + \mathbf{M}_{p\ell m}(\mathbf{r},k)\mathbf{N}_{p\ell m}(\mathbf{r}',k)\right]\;\mathrm{d}k\\
+&= \nabla\times\left\{\frac{1}{2\pi^2}\int_0^\infty\sum_{\bm{\alpha}}k^2\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)\mathbf{X}_{\bm{\alpha}}(\mathbf{r}',k)\;\mathrm{d}k\right\},
+\end{split}
+\end{equation}
+$\nabla\times\{\mathbf{A}(\mathbf{r})f(\mathbf{r})\} = f(\mathbf{r})\nabla\times\mathbf{A}(\mathbf{r}) - \mathbf{A}(\mathbf{r})\times\nabla f(\mathbf{r})$, and $\nabla\times\{\mathbf{c}\times \mathbf{A}(\mathbf{r})\} = \mathbf{c}\nabla\cdot \mathbf{A}(\mathbf{r}) - \mathbf{c}\cdot\nabla \mathbf{A}(\mathbf{r})$ to give
+\begin{equation}
+\begin{split}
+\nabla\times\int\frac{\nabla''\times\left\{\bm{1}_2\delta(\mathbf{r}'' - \mathbf{r}')\right\}}{|\mathbf{r} - \mathbf{r}''|}&\;\mathrm{d}^3\mathbf{r}'' = \int\left[\nabla\times\nabla''\times\left\{\frac{1}{|\mathbf{r} - \mathbf{r}''|}\frac{1}{2\pi^2}\int_0^\infty\sum_{\bm{\alpha}}k^2\mathbf{X}_{\bm{\alpha}}(\mathbf{r}'',k)\mathbf{X}_{\bm{\alpha}}(\mathbf{r}',k)\;\mathrm{d}k\right\}\right.\\
+&+\frac{1}{2\pi^2}\int_0^\infty\sum_{\bm{\alpha}}k^2\mathbf{X}_{\bm{\alpha}}(\mathbf{r}'',k)\mathbf{X}_{\bm{\alpha}}(\mathbf{r}',k)\;\mathrm{d}k\left(\nabla\cdot\nabla''\left\{\frac{1}{|\mathbf{r} - \mathbf{r}''|}\right\}\right)\\
+&\left.-\frac{1}{2\pi^2}\int_0^\infty\sum_{\bm{\alpha}}k^2\mathbf{X}_{\bm{\alpha}}(\mathbf{r}'',k)\mathbf{X}_{\bm{\alpha}}(\mathbf{r}',k)\;\mathrm{d}k\cdot\nabla\nabla''\left\{\frac{1}{|\mathbf{r} - \mathbf{r}''|}\right\}\right]\mathrm{d}^3\mathbf{r}''
+\end{split}
+\end{equation}
+The third term above contains a rank-2 tensor $\nabla\nabla''\{1/|\mathbf{r} - \mathbf{r}''|\}$ that, while tensor valued, is still curl-free with respect to the $\mathbf{r}''$ coordinate system. In other words, $\nabla''\times\nabla\nabla''\{1/|\mathbf{r} - \mathbf{r}''|\} = 0$. Moreover, $\mathbf{X}_{\bm{\alpha}}(\mathbf{r}'',k)$ is transverse such that the volume integral over $\mathbf{r}''$ produces zero as can be proved through a modified version of the vector-field orthogonality condition in Section \ref{sec:ortho}.
+
+The first term above can be simplified through Gauss' law for curls, i.e. $\int\nabla\times\mathbf{F}(\mathbf{r})\;\mathrm{d}^3\mathbf{r} = \oint\mathrm{d}^2\mathbf{s}\times\mathbf{F}(\mathbf{r})$. The integrand is clearly zero at all points on the boundary at infinity such that the first term is also zero. Finally, we can let $\nabla''\{1/|\mathbf{r} - \mathbf{r}''|\} = -\nabla\{1/|\mathbf{r} - \mathbf{r}''|\}$ and $\nabla\cdot\nabla\{1/|\mathbf{r} - \mathbf{r}''|\} = -4\pi\delta(\mathbf{r} - \mathbf{r}'')$ in the second term to produce
+\begin{equation}
+\nabla\times\int\frac{\nabla''\times\left\{\bm{1}_2\delta(\mathbf{r}'' - \mathbf{r}')\right\}}{|\mathbf{r} - \mathbf{r}''|}\;\mathrm{d}^3\mathbf{r}'' = 4\pi\frac{1}{2\pi^2}\int_0^\infty\sum_{\bm{\alpha}}k^2\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)\mathbf{X}_{\bm{\alpha}}(\mathbf{r}',k)\;\mathrm{d}k
+\end{equation}
+and, therefore,
+\begin{equation}
+\left[\bm{1}_2\delta(\mathbf{r} - \mathbf{r}')\right]_\perp = \frac{1}{2\pi^2}\int_0^\infty\sum_{\bm{\alpha}}k^2\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)\mathbf{X}_{\bm{\alpha}}(\mathbf{r}',k)\;\mathrm{d}k.
+\end{equation}
+Note that, through the identity $\nabla\times\{\mathbf{A}(\mathbf{r})\mathbf{B}(\mathbf{r})\} = [\nabla\times\mathbf{B}(\mathbf{r})]\mathbf{A}(\mathbf{r}) - [\mathbf{B}(\mathbf{r})\times\nabla]\{\mathbf{A}(\mathbf{r})\}$, one can see that
+\begin{equation}
+\nabla\times\nabla'\times\left\{\mathbf{A}(\mathbf{r})\mathbf{B}(\mathbf{r}')\right\} = [\nabla\times\mathbf{A}(\mathbf{r})][\nabla'\times\mathbf{B}(\mathbf{r}')]
+\end{equation}
+such that 
+\begin{equation}
+\left[\bm{1}_2\delta(\mathbf{r} - \mathbf{r}')\right]_\perp = \frac{1}{2\pi^2}\int_0^\infty\sum_{\bm{\alpha}}k^2\nabla\times\nabla'\times\left\{\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)\mathbf{X}_{\bm{\alpha}}(\mathbf{r}',k)\right\}\;\mathrm{d}k
+\end{equation}
+is clearly transverse in both $\mathbf{r}$ and $\mathbf{r}'$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

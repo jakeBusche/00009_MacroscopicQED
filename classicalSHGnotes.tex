@@ -1,0 +1,1343 @@
+\documentclass{article}
+\input{default_preamble}
+
+%%%%%%%%%%%%%%%%%%%%%%%%% Additional Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Used to get bibliogrpahy options that I want
+\usepackage[comma,super,sort&compress]{natbib}
+
+% Used to get nice physics macros
+\usepackage{physics}
+
+% Used to get tables that span page breaks
+\usepackage{longtable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% New Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                  
+% Used to place references in text
+\newcommand{\citen}[1]{
+	\begingroup
+		\hspace{-18pt}
+		\setcitestyle{numbers} % cite style is no longer superscript
+		\cite{#1}
+		\hspace{-6.5pt}
+	\endgroup
+}
+
+\begin{document}
+
+\title{Derivations of the SHG Fields of a Nonmagnetic, Second-Order Nonlinear Dielectric Sphere}
+\author{Jacob A Busche}
+\maketitle
+
+\section{Nonlinear Wave Equation First Principles}\label{sec:nonlinearFirstPrinciplesClassical}
+
+We begin from Maxwell's equations in the presence of a second-order nonlinear, nonmagnetic, isotropic, local dielectric medium:
+\begin{equation}
+\begin{split}
+\nabla\cdot\mathbf{D}(\mathbf{r},\omega) &= 4\pi\rho(\mathbf{r},\omega),\\
+\nabla\cdot\mathbf{B}(\mathbf{r},\omega) &= 0,\\
+\nabla\times\mathbf{E}(\mathbf{r},\omega) &= \frac{\mathrm{i}\omega}{c}\mathbf{B}(\mathbf{r},\omega),\\
+\nabla\times\mathbf{B}(\mathbf{r},\omega) &= \frac{4\pi}{c}\mathbf{J}(\mathbf{r},\omega) - \frac{\mathrm{i}\omega}{c}\mathbf{D}(\mathbf{r},\omega),
+\end{split}
+\end{equation}
+where the electric displacement field is given by
+\begin{equation}
+\mathbf{D}(\mathbf{r},\omega) = \mathbf{E}(\mathbf{r},\omega) + 4\pi\left[\mathbf{P}^{(1)}(\mathbf{r},\omega) + \mathbf{P}^{(2)}(\mathbf{r},\omega)\right]
+\end{equation}
+with linear and nonlinear polarization fields
+\begin{equation}
+\begin{split}
+\mathbf{P}^{(1)}(\mathbf{r},\omega) &= \chi^{(1)}(\mathbf{r},\omega)\mathbf{E}(\mathbf{r},\omega),\\
+\mathbf{P}^{(2)}(\mathbf{r},\omega) &= \int_{-\infty}^\infty\mathbf{E}(\mathbf{r},\omega - \omega')\cdot\bm{\chi}^{(2)}(\mathbf{r};\omega',\omega - \omega')\cdot\mathbf{E}(\mathbf{r},\omega')\;\frac{\mathrm{d}\omega'}{2\pi}.
+\end{split}
+\end{equation}
+
+
+Taking the curl of Faraday's law delivers, immediately,
+\begin{equation}
+\nabla\times\nabla\times\mathbf{E}(\mathbf{r},\omega) - \frac{\omega^2}{c^2}\mathbf{D}(\mathbf{r},\omega) = \frac{4\pi\mathrm{i}\omega}{c^2}\mathbf{J}(\mathbf{r},\omega),
+\end{equation}
+such that the free current $\mathbf{J}(\mathbf{r},\omega)$ accounts for all of the driving effects of the electric field and the free charges $\rho(\mathbf{r},\omega)$ can be ignored. This equation is not simple to solve, however, as $\mathbf{D}$ does not depend linearly on $\mathbf{E}$. To make our lives easier, we can, in the limit where $\chi^{(2)}(\mathbf{r},\omega)$ is sufficiently small everywhere, expand the fields and susceptibilities such that
+\begin{equation}
+\mathbf{E}(\mathbf{r},\omega) = \sum_{n= 1}^\infty\lambda^{n - 1}\bar{\mathbf{E}}^{(n)}(\mathbf{r},\omega)
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+\chi^{(1)}(\mathbf{r},\omega) &= \bar{\chi}^{(1)}(\mathbf{r},\omega),\\
+\bm{\chi}^{(2)}(\mathbf{r},\omega) &= \lambda\bar{\bm{\chi}}^{(2)}(\mathbf{r};\omega',\omega - \omega').
+\end{split}
+\end{equation}
+Here, $\lambda^n$ is a small constant such that $\lambda^{n+1}\ll\lambda^n$ and the barred fields and susceptibilities have similar magnitudes for all $n$. In other words, we have assumed that all higher-order terms are small and pulled the ``small'' part out as a constant.
+
+Expanding in powers of $\lambda$ and assuming that the driving current is large such that $\mathbf{J}\propto\lambda^0$, we find that
+\begin{equation}\label{eq:nonLinWaveEq1}
+\begin{split}
+\nabla\times\nabla\times\mathbf{E}^{(1)}(\mathbf{r},\omega) - \epsilon(\mathbf{r},\omega)\frac{\omega^2}{c^2}\mathbf{E}^{(1)}(\mathbf{r},\omega) &= \frac{4\pi\mathrm{i}\omega}{c^2}\mathbf{J}(\mathbf{r},\omega),\\
+\nabla\times\nabla\times\mathbf{E}^{(2)}(\mathbf{r},\omega) - \epsilon(\mathbf{r},\omega)\frac{\omega^2}{c^2}\mathbf{E}^{(2)}(\mathbf{r},\omega) &= \\
+&\hspace{-0.2\textwidth}4\pi\frac{\omega^2}{c^2}\int_{-\infty}^\infty\mathbf{E}^{(1)}(\mathbf{r},\omega')\cdot\bm{\chi}^{(2)}(\mathbf{r};\omega',\omega - \omega')\cdot\mathbf{E}^{(1)}(\mathbf{r},\omega - \omega')\;\frac{\mathrm{d}\omega'}{2\pi},\\
+&\hspace{0.0125\textwidth}\vdots
+\end{split}
+\end{equation}
+wherein $\epsilon(\mathbf{r},\omega) = 1 + 4\pi\chi^{(1)}(\mathbf{r},\omega)$. These are the coupled second-order nonlinear wave equations.
+
+
+
+
+
+
+
+\subsection{Separation Into Components}\label{sec:fieldSep}
+
+The wave equations of Eq. \eqref{eq:nonLinWaveEq1} can be simplified by recognizing that every wave equation in the presence of a source can be modified to separately describe both the response fields of the nearby polarized media and the free fields of the source in accordance with the principle of superposition. In other words, the sources set up electric fields as if the media were not present that obey the wave equation
+\begin{equation}\label{eq:waveEqFreeOrderN}
+\nabla\times\nabla\times\mathbf{E}_\infty^{(n)}(\mathbf{r},\omega) - \frac{\omega^2}{c^2}\mathbf{E}_\infty^{(n)}(\mathbf{r},\omega) = \frac{4\pi\mathrm{i}\omega}{c^2}\mathbf{J}^{(n)}(\mathbf{r},\omega),
+\end{equation}
+and the media then polarize and set up their own fields in response. The expansion orders of the fields have been left as the general $n$ and $\infty$ denotes the fields' validity throughout the universe. Further, the current term is $\mathbf{J}^{(n)}(\mathbf{r},\omega) = -\Theta_{n>1}\mathrm{i}\omega\mathbf{P}^{(n)}(\mathbf{r},\omega) + \delta_{n1}\mathbf{J}(\mathbf{r},\omega)$.
+
+The original wave equation must describe the sum of Eq. \eqref{eq:waveEqFreeOrderN} and a wave equation that describes the response of the media, such that $\mathbf{E}^{(n)}(\mathbf{r},\omega) = \mathbf{E}_\infty^{(n)}(\mathbf{r},\omega) + \mathbf{E}_\mathrm{res}^{(n)}(\mathbf{r},\omega)$ where $\mathbf{E}^{(n)}(\mathbf{r},\omega)$ is taken to be any of the field terms from Eq. \eqref{eq:nonLinWaveEq1} and $\mathbf{E}^{(n)}_\mathrm{res}(\mathbf{r},\omega)$ is the $n^\mathrm{th}$-order term of the field set up by the polarized dielectric. Thus, we have
+\begin{equation}\label{eq:waveEqOrderN}
+\nabla\times\nabla\times\mathbf{E}^{(n)}(\mathbf{r},\omega) - \epsilon(\mathbf{r},\omega)\frac{\omega^2}{c^2}\mathbf{E}^{(n)}(\mathbf{r},\omega) = \frac{4\pi\mathrm{i}\omega}{c^2}\mathbf{J}^{(n)}(\mathbf{r},\omega)
+\end{equation}
+and
+\begin{equation}\label{eq:waveEqResOrderN}
+\nabla\times\nabla\times\mathbf{E}^{(n)}_\mathrm{res}(\mathbf{r},\omega) - \epsilon(\mathbf{r},\omega)\frac{\omega^2}{c^2}\mathbf{E}^{(n)}_\mathrm{res}(\mathbf{r},\omega) = 4\pi\frac{\omega^2}{c^2}\chi^{(1)}(\mathbf{r},\omega)\mathbf{E}^{(n)}_\infty(\mathbf{r},\omega).
+\end{equation}
+Simple addition of Eqs. \eqref{eq:waveEqResOrderN} and \eqref{eq:waveEqFreeOrderN} reproduces Eq. \eqref{eq:waveEqOrderN}.
+
+In summary, the wave equation at $n^\mathrm{th}$-order can be broken into a term that describes the free fields of the $n^\mathrm{th}$-order current and an equation that describes the material response. Intuitively, the driving term for the latter equation is proportional to $\chi^{(1)}(\mathbf{r},\omega)$, highlighting that the response field is set up by a region of polarized matter and that, in the case where the linear electric susceptibility goes to zero everywhere, the response fields similarly vanish. 
+
+
+
+
+
+
+
+
+
+\newpage
+\section{Second Harmonic Generation with a Monochromatic Plane Wave Source (Classical)}\label{sec:SHGclassical}
+
+We begin our analysis of the second-order nonlinear behavior of a spherical $\chi^{(2)}$-material from the Green's function (or integral) representations of the coupled equations of Eq. \eqref{eq:nonLinWaveEq1}. Explicitly,
+\begin{equation}
+\begin{split}
+\mathbf{E}^{(1)}(\mathbf{r},\omega) &= \frac{4\pi\mathrm{i}\omega}{c}\int\mathbf{G}(\mathbf{r},\mathbf{r}';\omega)\cdot\frac{\mathbf{J}(\mathbf{r},\omega)}{c}\;\mathrm{d}^3\mathbf{r}',\\
+\mathbf{E}^{(2)}(\mathbf{r},\omega) &= \frac{4\pi\mathrm{i}\omega}{c}\int\mathbf{G}(\mathbf{r},\mathbf{r}';\omega)\cdot\frac{\mathbf{J}^{(2)}(\mathbf{r},\omega)}{c}\;\mathrm{d}^3\mathbf{r}',\\
+&\hspace{0.0125\textwidth}\vdots
+\end{split}
+\end{equation}
+where we have let $\mathbf{J}^{(2)}(\mathbf{r},\omega) = -\mathrm{i}\omega\int\mathbf{E}^{(1)}(\mathbf{r},\omega')\cdot\bm{\chi}^{(2)}(\mathbf{r};\omega',\omega - \omega')\cdot\mathbf{E}^{(1)}(\mathbf{r},\omega - \omega')\;\mathrm{d}\omega'/2\pi$. The details of the Green's function $\mathbf{G}$ are left for Appendix \ref{app:greenFuncDetails}, but we will suffice to say that it takes a different form depending on whether the source coordinate $\mathbf{r}$ and observer coordinate $\mathbf{r}'$ are located within the sphere or outside the sphere's surface. To be precise, we will let the set of points outside the material be labeled $\mathbb{V}_1$ and the points inside be labeled $\mathbb{V}_2$, such that
+\begin{equation}
+\mathbf{G}(\mathbf{r},\mathbf{r}';\omega) = \mathbf{G}_1(\mathbf{r},\mathbf{r}';\omega) + \mathbf{G}_2(\mathbf{r},\mathbf{r}';\omega)
+\end{equation}
+and
+\begin{equation}
+\mathbf{G}_{i}(\mathbf{r},\mathbf{r}';\omega) = \mathbf{G}_{i1}(\mathbf{r},\mathbf{r}';\omega) + \mathbf{G}_{i2}(\mathbf{r},\mathbf{r}';\omega).
+\end{equation}
+Here, the individual Green's function components have been labeled with the index convention $\mathbf{G}_\mathrm{region-of-observer}$ or $\mathbf{G}_\mathrm{region-of-observer,region-of-source}$ and are defined using Heaviside functions $\Theta(\mathbf{r}\in\mathbb{V}_i)$, etc.
+
+
+
+
+
+
+
+
+
+
+\subsection{First-order Solution}\label{sec:firstOrderSolution}
+
+A plane-wave source will in general be composed of a current $\mathbf{J}(\mathbf{r},\omega)$ that is unknown to an experimentalist or, reciprocally, an electric field that we can call $\mathbf{E}_0(\mathbf{r},\omega)$ that is known but isn't explicitly represented in Eq. \ref{eq:nonLinWaveEq1}. However, we can use the tricks of Section \ref{sec:fieldSep} to see that
+\begin{equation}
+\nabla\times\nabla\times\mathbf{E}_0(\mathbf{r},\omega) - \frac{\omega^2}{c^2}\mathbf{E}_0(\mathbf{r},\omega) = \frac{4\pi\mathrm{i}\omega}{c^2}\mathbf{J}(\mathbf{r},\omega)
+\end{equation}
+such that the first-order response fields are given by
+\begin{equation}
+\nabla\times\nabla\times\mathbf{E}^{(1)}_\mathrm{res}(\mathbf{r},\omega) - \epsilon(\mathbf{r},\omega)\frac{\omega^2}{c^2}\mathbf{E}^{(1)}_\mathrm{res}(\mathbf{r},\omega) = 4\pi\frac{\omega^2}{c^2}\chi^{(1)}(\mathbf{r},\omega)\mathbf{E}_0(\mathbf{r},\omega).
+\end{equation}
+Using the simplest model of a plane wave oscillating at frequency $\omega_0$, travelling in the $z$-direction, and polarized along the $x$-axis, we can say
+\begin{equation}
+\begin{split}
+\mathbf{E}_0(\mathbf{r},\omega) &= E_0\hat{\mathbf{x}}\pi\left[\mathrm{e}^{\mathrm{i}\omega_0z/c}\delta(\omega - \omega_0) + \mathrm{e}^{-\mathrm{i}\omega_0z/c}\delta(\omega + \omega_0)\right]\\[1.0em]
+&= E_0\pi\delta(\omega - \omega_0)\sum_\ell\mathrm{i}^\ell\sqrt{\frac{2\ell + 1}{2\ell(\ell + 1)}\frac{(\ell + 1)!}{(\ell - 1)!}}\left[\mathbf{M}_{1\ell1}(\mathbf{r},k_0) - \mathrm{i}\mathbf{N}_{0\ell1}(\mathbf{r},k_0)\right]\\
+&+ E_0\pi\delta(\omega + \omega_0)\sum_\ell\mathrm{i}^\ell\sqrt{\frac{2\ell + 1}{2\ell(\ell + 1)}\frac{(\ell + 1)!}{(\ell - 1)!}}\left[\mathbf{M}_{1\ell1}(\mathbf{r},-k_0) - \mathrm{i}\mathbf{N}_{0\ell1}(\mathbf{r},-k_0)\right],
+\end{split}
+\end{equation}
+wherein $k_0 = \omega_0/c$ and the expansion of $\hat{\mathbf{x}}\exp(\pm\mathrm{i}k_0z)$ into vector spherical harmonics is useful for matching the plane wave expression to the symmetry of the sphere.
+
+The value of this symmetry matching rests on the orthogonality conditions of Eq. \ref{eq:vectorSphericalHarmonicOrthogonality}. First looking at the response fields exterior to the sphere, we can see that their solution is given by
+\begin{equation}
+\begin{split}
+\mathbf{E}_\mathrm{res,1}^{(1)}(\mathbf{r},\omega) &= \frac{4\pi\mathrm{i}\omega}{c}\int\mathbf{G}_{1}(\mathbf{r},\mathbf{r}';\omega)\cdot\frac{1}{c}\left[\frac{c^2}{4\pi\mathrm{i}\omega}4\pi\frac{\omega^2}{c^2}\chi^{(1)}(\mathbf{r}',\omega)\mathbf{E}_0(\mathbf{r}',\omega)\right]\mathrm{d}^3\mathbf{r}'\\
+&= \frac{4\pi\omega^2}{c^2}\int_{\mathbb{V}_2}\mathbf{G}_{12}(\mathbf{r},\mathbf{r}';\omega)\chi^{(1)}(\omega)\\
+&\quad\cdot\left(E_0\pi\delta(\omega - \omega_0)\sum_\ell\mathrm{i}^\ell\sqrt{\frac{2\ell + 1}{2\ell(\ell + 1)}\frac{(\ell + 1)!}{(\ell - 1)!}}\left[\mathbf{M}_{1\ell 1}(\mathbf{r}',k_0) - \mathrm{i}\mathbf{N}_{0\ell 1}(\mathbf{r}',k_0)\right] + \mathrm{c.c.r.}\right)\;\mathrm{d}^3\mathbf{r}',\\
+\end{split}
+\end{equation}
+where we have let $\chi^{(1)}(\mathbf{r},\omega) = \chi^{(1)}(\omega)\Theta(\mathbf{r}\in\mathbb{V}_2)$ and used the shorthand ``c.c.r.'' to designate the second term in the expansion of the incident field, which is simply the complex conjugate reverse (in frequency) of the first. Expanding the Green's function, we find that
+\begin{equation}
+\begin{split}
+\mathbf{E}_\mathrm{res,1}^{(1)}(\mathbf{r},\omega) &= 4\pi k^2\chi^{(1)}(\omega)E_0\pi\delta(\omega - \omega_0)\int_{\mathbb{V}_2}\frac{\mathrm{i}k\sqrt{\epsilon(\omega)}}{4\pi}\sum_{p\ell m}\left[A_{p\ell m}^<(\omega)\bm{\mathcal{M}}_{p\ell m}(\mathbf{r},k)\mathbf{M}_{p\ell m}(\mathbf{r}',\sqrt{\epsilon(\omega)}k)\right.\\
+&\quad+\left.B_{p\ell m}^<(\omega)\bm{\mathcal{N}}_{p\ell m}(\mathbf{r},k)\mathbf{N}_{p\ell m}(\mathbf{r}',\sqrt{\epsilon(\omega)}k)\right]\cdot\sum_{\ell'}\mathrm{i}^{\ell'}\sqrt{\frac{2\ell'+1}{2\ell'(\ell'+1)}\frac{(\ell'+1)!}{(\ell'-1)!}}\left[\mathbf{M}_{1\ell'1}(\mathbf{r}',k_0)\right.\\
+&\quad-\left.\mathrm{i}\mathbf{N}_{0\ell'1}(\mathbf{r}',k_0)\right]\;\mathrm{d}^3\mathbf{r}' + \mathrm{c.c.r.}\\[1.0em]
+&=\mathrm{i}k^3\chi^{(1)}(\omega)\sqrt{\epsilon(\omega)}E_0\pi\delta(\omega - \omega_0)\sum_{p\ell m,\ell'}\mathrm{i}^{\ell'}\sqrt{\frac{2\ell'+1}{2\ell'(\ell'+1)}\frac{(\ell'+1)!}{(\ell'-1)!}}\\
+&\quad\times\left(A_{p\ell m}^<(\omega)\bm{\mathcal{M}}_{p\ell m}(\mathbf{r},k)2\pi(1 - \delta_{p1}\delta_{m0})\frac{1 + \delta_{m0}}{2 - \delta_{m0}}\delta_{p1}\delta_{\ell\ell'}\delta_{m1}R_\ell^<(\sqrt{\epsilon(\omega)}k,k_0;0,a)\right.\\
+&\quad-\mathrm{i}B_{p\ell m}^<(\omega)\bm{\mathcal{N}}_{p\ell m}(\mathbf{r},k)2\pi(1 - \delta_{p1}\delta_{m0})\frac{1 + \delta_{m0}}{2 - \delta_{m0}}\delta_{p0}\delta_{\ell\ell'}\delta_{m1}\left[\frac{\ell + 1}{2\ell + 1}R^<_{\ell - 1}(\sqrt{\epsilon(\omega)}k,k_0;0,a)\right.\\
+&\quad\left.\left.+ \frac{\ell}{2\ell + 1}R^<_{\ell + 1}(\sqrt{\epsilon(\omega)}k,k_0;0,a)\right]\right) + \mathrm{c.c.r.}\\[1.0em]
+&= \mathrm{i}k^3\chi^{(1)}(\omega)\sqrt{\epsilon(\omega)}E_0\pi^2\delta(\omega - \omega_0)\sum_\ell\mathrm{i}^{\ell}\sqrt{\frac{2\ell+1}{2\ell(\ell+1)}\frac{(\ell+1)!}{(\ell-1)!}}\\
+&\quad\times\left( \vphantom{\frac{\ell + 1}{2\ell + 1}} A_{1\ell1}^<(\omega)\bm{\mathcal{M}}_{1\ell1}(\mathbf{r},k)R_\ell^<(\sqrt{\epsilon(\omega)}k,k_0;0,a) - \mathrm{i}B_{0\ell1}^<(\omega)\bm{\mathcal{N}}_{0\ell1}(\mathbf{r},k)\right.\\
+&\quad\times\left.\left[\frac{\ell + 1}{2\ell + 1}R_{\ell -1}^<(\sqrt{\epsilon(\omega)}k,k_0;0,a) + \frac{\ell}{2\ell + 1}R_{\ell + 1}^<(\sqrt{\epsilon(\omega)}k,k;0,a)\right]\right) + \mathrm{c.c.r.}
+\end{split}
+\end{equation}
+where we have let the radius of the sphere be $a$ and noted from the symmetry properties of the Green's function and electric susceptibility that the total expression for $\mathbf{E}_\mathrm{res}^{(1)}$ separates into two sums that are conjugate reverses of one another.
+
+The calculation of the response fields inside the sphere is similar and produces a similarly cumbersome result,
+\begin{equation}
+\begin{split}
+\mathbf{E}_\mathrm{res,2}^{(1)}(\mathbf{r},\omega) &= 4\pi k^2\chi^{(1)}(\omega)E_0\pi\delta(\omega - \omega_0)\int_{\mathbb{V}_2}\frac{\mathrm{i}k\sqrt{\epsilon(\omega)}}{4\pi}\sum_{p\ell m}\left[C_{p\ell m}^<(\omega)\mathbf{M}_{p\ell m}(\mathbf{r},\sqrt{\epsilon(\omega)}k)\bm{\mathcal{M}}_{p\ell m}(\mathbf{r}',\sqrt{\epsilon(\omega)}k)\right.\\
+&\quad+\left.D_{p\ell m}^<(\omega)\mathbf{N}_{p\ell m}(\mathbf{r},\sqrt{\epsilon(\omega)}k)\bm{\mathcal{N}}_{p\ell m}(\mathbf{r}',\sqrt{\epsilon(\omega)}k)\right]\cdot\sum_{\ell'}\mathrm{i}^{\ell'}\sqrt{\frac{2\ell'+1}{2\ell'(\ell'+1)}\frac{(\ell'+1)!}{(\ell'-1)!}}\left[\mathbf{M}_{1\ell'1}(\mathbf{r}',k_0)\right.\\
+&\quad-\left.\mathrm{i}\mathbf{N}_{0\ell'1}(\mathbf{r}',k_0)\right]\;\mathrm{d}^3\mathbf{r}' + \mathrm{c.c.r.}\\
+&\quad+ 4\pi k^2\chi^{(1)}(\omega)\int_{\mathbb{V}_2}\mathbf{G}_0(\mathbf{r},\mathbf{r}';\sqrt{\epsilon(\omega)}\omega)\cdot\mathbf{E}_0(\mathbf{r}',\omega)\;\mathrm{d}^3\mathbf{r}'\\[1.0em] 
+&= \mathrm{i}k^3\chi^{(1)}(\omega)\sqrt{\epsilon(\omega)}E_0\pi^2\delta(\omega - \omega_0)\sum_\ell\mathrm{i}^{\ell}\sqrt{\frac{2\ell+1}{2\ell(\ell+1)}\frac{(\ell+1)!}{(\ell-1)!}}\\
+&\quad\times\left( \vphantom{\frac{\ell + 1}{2\ell + 1}} C_{1\ell1}^<(\omega)\mathbf{M}_{1\ell1}(\mathbf{r},\sqrt{\epsilon(\omega)}k)R_\ell^{><}(\sqrt{\epsilon(\omega)}k,k_0;0,a) - \mathrm{i}D_{0\ell1}^<(\omega)\mathbf{N}_{0\ell1}(\mathbf{r},\sqrt{\epsilon(\omega)}k)\right.\\
+&\quad\times\left.\left[\frac{\ell + 1}{2\ell + 1}R_{\ell -1}^{><}(\sqrt{\epsilon(\omega)}k,k_0;0,a) + \frac{\ell}{2\ell + 1}R_{\ell + 1}^{><}(\sqrt{\epsilon(\omega)}k,k_0;0,a)\right]\right) + \mathrm{c.c.r.}\\[0.5em]
+&\quad+ 4\pi k^2\chi^{(1)}(\omega)\int_{\mathbb{V}_2}\mathbf{G}_0(\mathbf{r},\mathbf{r}';\sqrt{\epsilon(\omega)}\omega)\cdot\mathbf{E}_0(\mathbf{r}',\omega)\;\mathrm{d}^3\mathbf{r}',
+\end{split}
+\end{equation}
+where the additional term on the last line details the formation of free-space-like waves in the polarization of the sphere. Expanding this term, we find
+\begin{equation}
+\begin{split}
+&4\pi k^2\chi^{(1)}(\omega)\int_{\mathbb{V}_2}\mathbf{G}_0(\mathbf{r},\mathbf{r}';\sqrt{\epsilon(\omega)}\omega)\cdot\mathbf{E}_0(\mathbf{r}',\omega)\;\mathrm{d}^3\mathbf{r}' = \\
+&4\pi k^2\chi^{(1)}(\omega)\int_{\mathbb{V}_2}\frac{\mathrm{i}\sqrt{\epsilon(\omega)}k}{4\pi}\sum_{p\ell m}\left( \vphantom{\frac{1}{2}} \left[\bm{\mathcal{M}}_{p\ell m}(\mathbf{r},\sqrt{\epsilon(\omega)}k)\mathbf{M}_{p\ell m}(\mathbf{r}',\sqrt{\epsilon(\omega)}k)\right.\right.\\
+&\left.\quad+ \bm{\mathcal{N}}_{p\ell m}(\mathbf{r},\sqrt{\epsilon(\omega)}k)\mathbf{N}_{p\ell m}(\mathbf{r}',\sqrt{\epsilon(\omega)}k)\right]\Theta(r - r') +\left[\mathbf{M}_{p\ell m}(\mathbf{r},\sqrt{\epsilon(\omega)}k)\bm{\mathcal{M}}_{p\ell m}(\mathbf{r}',\sqrt{\epsilon(\omega)}k)\right.\\
+&\quad+\left.\left. \mathbf{N}_{p\ell m}(\mathbf{r},\sqrt{\epsilon(\omega)}k)\bm{\mathcal{N}}_{p\ell m}(\mathbf{r}',\sqrt{\epsilon(\omega)}k)\right]\Theta(r' - r) \vphantom{\frac{1}{2}} \right)\cdot\left(E_0\pi\delta(\omega - \omega_0)\sum_{\ell'}\mathrm{i}^{\ell'}\sqrt{\frac{2\ell'+1}{2\ell'(\ell'+1)}\frac{(\ell'+1)!}{(\ell'-1)!}}\right.\\
+&\quad\left.\times\left[\mathbf{M}_{1\ell'1}(\mathbf{r}',k_0) - \mathrm{i}\mathbf{N}_{0\ell'1}(\mathbf{r}',k_0)\right] + \mathrm{c.c.r.} \vphantom{\sum_{\ell'}} \right)\;\mathrm{d}^3\mathbf{r}'\\[1.0em]
+&= \mathrm{i}k^3\chi^{(1)}(\omega)\sqrt{\epsilon(\omega)}E_0\pi^2\delta(\omega - \omega_0)\sum_\ell\mathrm{i}^\ell\sqrt{\frac{2\ell + 1}{2\ell(\ell + 1)}\frac{(\ell + 1)!}{(\ell - 1)!}}\\
+&\quad\times\left[\bm{\mathcal{M}}_{1\ell1}(\mathbf{r},\sqrt{\epsilon(\omega)}k)R_\ell^<(\sqrt{\epsilon(\omega)}k,k_0;0,r) + \mathbf{M}_{1\ell1}(\mathbf{r},\sqrt{\epsilon(\omega)}k)R_\ell^{><}(\sqrt{\epsilon(\omega)}k,k_0;r,a)\right.\\
+&\quad-\mathrm{i}\bm{\mathcal{N}}_{0\ell1}(\mathbf{r},\sqrt{\epsilon(\omega)}k)\left(\frac{\ell + 1}{2\ell + 1}R_{\ell - 1}^<(\sqrt{\epsilon(\omega)}k,k_0;0,r) + \frac{\ell}{2\ell + 1}R_{\ell+1}^<(\sqrt{\epsilon(\omega)}k,k_0;0,r)\right)\\
+&\left.\quad-\mathrm{i}\mathbf{N}_{0\ell1}(\mathbf{r},\sqrt{\epsilon(\omega)}k)\left(\frac{\ell + 1}{2\ell + 1}R_{\ell - 1}^{><}(\sqrt{\epsilon(\omega)}k,k_0;r,a) + \frac{\ell}{2\ell + 1}R_{\ell+1}^{><}(\sqrt{\epsilon(\omega)}k,k_0;r,a)\right)\right]\\
+&\quad+\mathrm{c.c.r.}
+\end{split}
+\end{equation}
+where in the last equation we note that $R_\ell^<(\sqrt{\epsilon(\omega)}k,k_0;0,r)$ falls of faster as $r\to0$ than any component of $\bm{\mathcal{M}}_{1\ell1}(\mathbf{r},\sqrt{\epsilon(\omega)}k)$ or $\bm{\mathcal{N}}_{1\ell1}(\mathbf{r},\sqrt{\epsilon(\omega)}k)$ blows up, such than none of the terms above diverge for any $\mathbf{r}\in\mathbb{V}_2$.
+
+We can now finalize our analysis. However, because the expressions for the first-order fields are so cumbersome, this process benefits from some updates to the notation. First, we will shorten the ever-present constant inside the sums over $\ell$ to
+\begin{equation}
+\kappa_\ell = \mathrm{i}^\ell\sqrt{\frac{2\ell + 1}{2\ell(\ell + 1)}\frac{(\ell + 1)!}{(\ell - 1)!}}.
+\end{equation}
+Next, we can define modified expansion coefficients
+\begin{equation}
+\begin{split}
+a_{p\ell m}^<(\omega) &= A_{p\ell m}^<(\omega)R_\ell^<(\sqrt{\epsilon(\omega)}k,k_0;0,a),\\
+c_{p\ell m}^<(\omega) &= C_{p\ell m}^<(\omega)R_\ell^{><}(\sqrt{\epsilon(\omega)}k,k_0;0,a),\\
+b_{p\ell m}^<(\omega) &= B_{p\ell m}^<(\omega)\left[\frac{\ell + 1}{2\ell + 1}R_{\ell - 1}^<(\sqrt{\epsilon(\omega)}k,k_0;0,a) + \frac{\ell}{2\ell + 1}R_{\ell + 1}^<(\sqrt{\epsilon(\omega)}k,k_0;0,a)\right],\\
+d_{p\ell m}^<(\omega) &= D_{p\ell m}^<(\omega)\left[\frac{\ell + 1}{2\ell + 1}R_{\ell - 1}^{><}(\sqrt{\epsilon(\omega)}k,k_0;0,a) + \frac{\ell}{2\ell + 1}R_{\ell + 1}^{><}(\sqrt{\epsilon(\omega)}k,k_0;0,a)\right]
+\end{split}
+\end{equation}
+to simplify the response field inside the sphere. We can further define a pair of ``intermediate'' harmonics
+\begin{equation}
+\begin{split}
+\widebar{\mathbf{M}}_{p\ell m}(\mathbf{r},k) &= k_0^3\left[\bm{\mathcal{M}}_{p\ell m}(\mathbf{r},k)R_\ell^<(k,k_0;0,r) + \mathbf{M}_{p\ell m}(\mathbf{r},k)R_\ell^{><}(k,k_0;r,a)\right],\\
+\widebar{\mathbf{N}}_{p\ell m}(\mathbf{r},k) &= k_0^3\left[\bm{\mathcal{N}}_{p\ell m}(\mathbf{r},k)\left(\frac{\ell + 1}{2\ell + 1}R_{\ell-1}^<(k,k_0;0,r) + \frac{\ell}{2\ell + 1}R_{\ell+1}^<(k,k_0;0,r)\right)\right.\\
+&\left.\quad+\mathbf{N}_{p\ell m}(\mathbf{r},k)\left(\frac{\ell + 1}{2\ell + 1}R_{\ell-1}^{><}(k,k_0;r,a) + \frac{\ell}{2\ell + 1}R_{\ell+1}^{><}(k,k_0;r,a)\right)\right]
+\end{split}
+\end{equation}
+to further simplify the term in $\mathbf{E}^{(1)}_{\mathrm{res},2}$ arising from the term proportional $\mathbf{G}_0(\mathbf{r},\mathbf{r}';\sqrt{\epsilon(\omega)}\omega)$ in $\mathbf{G}_{22}(\mathbf{r},\mathbf{r}';\omega)$. These new functions are simply superpositions of the internal and external harmonics with radius-dependent weights set by the radial integral factors $R_\ell^<(k,k_0;0,r)$, etc. The purpose of the prefactors $k_0^3$ is to cancel the units of volume carried by the radial integrals (see Appendix \ref{app:greenFuncDetails}) such that the intermediate harmonics are unitless. Thus, we have
+\begin{equation}\label{eq:firstOrderSolution}
+\begin{split}
+\mathbf{E}_0(\mathbf{r},\omega) &= E_0\pi\delta(\omega - \omega_0)\sum_\ell\kappa_\ell\left[\mathbf{M}_{1\ell1}(\mathbf{r},k_0) - \mathrm{i}\mathbf{N}_{0\ell1}(\mathbf{r},k_0)\right] + \mathrm{c.c.r.},\\
+\mathbf{E}^{(1)}_{\mathrm{res},1}(\mathbf{r},\omega) &= \mathrm{i}\pi k^3\chi^{(1)}(\omega)\sqrt{\epsilon(\omega)}E_0\pi\delta(\omega - \omega_0)\sum_\ell\kappa_\ell\left[a_{1\ell1}^<(\omega)\bm{\mathcal{M}}_{1\ell1}(\mathbf{r},k)-\mathrm{i}b_{0\ell1}^<(\omega)\bm{\mathcal{N}}_{0\ell1}(\mathbf{r},k)\right] + \mathrm{c.c.r.}\\
+\mathbf{E}^{(1)}_{\mathrm{res},2}(\mathbf{r},\omega) &= \mathrm{i}\pi k^3\chi^{(1)}(\omega)\sqrt{\epsilon(\omega)}E_0\pi\delta(\omega - \omega_0)\sum_\ell\kappa_\ell\left[c_{1\ell1}^<(\omega)\mathbf{M}_{1\ell1}(\mathbf{r},\sqrt{\epsilon(\omega)}k) + k_0^{-3}\widebar{\mathbf{M}}_{1\ell1}(\mathbf{r},\sqrt{\epsilon(\omega)}k)\right.\\
+&\left.\quad-\mathrm{i}d_{0\ell1}^<(\omega)\mathbf{N}_{0\ell1}(\mathbf{r},\sqrt{\epsilon(\omega)}k) - \mathrm{i}k_0^{-3}\widebar{\mathbf{N}}_{0\ell 1}(\mathbf{r},\sqrt{\epsilon(\omega)}k)\right] + \mathrm{c.c.r.}
+\end{split}
+\end{equation}
+
+
+
+
+
+\subsubsection{Boundary Condition Satisfaction}
+
+To see that these first-order solutions are correct, we can test whether they satisfy the Maxwell boundary conditions. Importantly, however, we must note that $\mathbf{E}_0$ and $\mathbf{E}^{(1)}_\mathrm{res}$ satisfy different boundary conditions by construction---since we've defined $\mathbf{E}_0(\mathbf{r},\omega)$ as the component of the total field that is not affected by any media, it only needs to satisfy the boundary conditions of free space. That is, $\mathbf{E}_0(\mathbf{r},\omega)\to0$ for $r\to\infty$, which is guaranteed by the nullification of $\mathbf{M}_{p\ell m}(\mathbf{r},k)$ and $\mathbf{N}_{p\ell m}(\mathbf{r},k)$ at large $r$.
+
+The response fields, however, must also satisfy Maxwell boundary conditions at $r = a$, as they modify and are modified by rearrangement of the bound charges and currents of the sphere. To begin our boundary condition analysis, we note that, conveniently,
+\begin{equation}
+\begin{split}
+\widebar{\mathbf{M}}_{p\ell m}(r = a,\theta,\phi;k) &= k_0^3\bm{\mathcal{M}}_{p\ell m}(r=a,\theta,\phi;k)R_\ell^<(k,k_0;0,a),\\
+\widebar{\mathbf{N}}_{p\ell m}(r = a,\theta,\phi;k) &= k_0^3\bm{\mathcal{N}}_{p\ell m}(r=a,\theta,\phi;k)\left[\frac{\ell + 1}{2\ell + 1}R_{\ell-1}^<(k,k_0;0,a) + \frac{\ell}{2\ell + 1}R_{\ell+1}^<(k,k_0;0,a)\right].
+\end{split}
+\end{equation}
+Together with
+\begin{equation}\label{eq:parallelIdentity1}
+\begin{split}
+j_\ell(\sqrt{\epsilon(\omega)}ka)C_{p\ell m}^<(\omega) + h_\ell^{(1)}(\sqrt{\epsilon(\omega)}ka) &= h_\ell^{(1)}(ka)A_{p\ell m}^<(\omega),\\
+\psi_\ell(\sqrt{\epsilon(\omega)}ka)D_{p\ell m}^<(\omega) + \xi_\ell(\sqrt{\epsilon(\omega)}ka) &= \sqrt{\epsilon(\omega)}\xi_\ell(ka)B_{p\ell m}^<(\omega),
+\end{split}
+\end{equation}
+these identities can be used to show that
+\begin{equation}\label{eq:parallelIdentity2}
+\begin{split}
+\left[c_{1\ell1}^<(\omega)\mathbf{M}_{1\ell 1}(r=a,\theta,\phi;\sqrt{\epsilon(\omega)}k) + k_0^{-3}\widebar{\mathbf{M}}_{1\ell1}(r=a,\theta,\phi;\sqrt{\epsilon(\omega)}k)\right]\cdot\hat{\mathbf{e}}_\parallel &= \\
+a_{1\ell1}^<(\omega)\bm{\mathcal{M}}&_{1\ell1}(r=a,\theta,\phi;k)\cdot\hat{\mathbf{e}}_\parallel,\\[1.0em]
+\left[d_{0\ell1}^<(\omega)\mathbf{N}_{0\ell 1}(r=a,\theta,\phi;\sqrt{\epsilon(\omega)}k) + k_0^{-3}\widebar{\mathbf{N}}_{0\ell1}(r=a,\theta,\phi;\sqrt{\epsilon(\omega)}k)\right]\cdot\hat{\mathbf{e}}_\parallel &= \\
+b_{0\ell1}^<(\omega)\bm{\mathcal{N}}&_{0\ell1}(r=a,\theta,\phi;k)\cdot\hat{\mathbf{e}}_\parallel,
+\end{split}
+\end{equation}
+wherein $\hat{\mathbf{e}}_\parallel \in \{\hat{\bm{\theta}},\hat{\bm{\phi}}\}$ is either of the spherical unit vectors parallel to the substrate. To see this, one should note that $\mathbf{M}_{p\ell m}(\mathbf{r},k)\cdot\hat{\mathbf{e}}_\parallel\sim j_\ell(rk)$, $\bm{\mathcal{M}}_{p\ell m}(r,k)\cdot\hat{\mathbf{e}}_\parallel\sim h_\ell^{(1)}(kr)$, $\mathbf{N}_{p\ell m}(r,k)\cdot\hat{\mathbf{e}}_\parallel\sim\psi_\ell(kr)/kr$, and $\bm{\mathcal{N}}_{p\ell m}(\mathbf{r},k)\cdot\hat{\mathbf{e}}_\parallel\sim \xi_\ell(kr)/kr$. Further, the angular factors of the surface-parallel components of vector spherical harmonics of the same type are equal, such that all angular factors cancel in either equation of Eq. \eqref{eq:parallelIdentity2}. Finally, the radial integrals present in the modified expansion coefficients and the associated intermediate harmonics are also equal at $r = a$. Thus, all terms in Eq. \eqref{eq:parallelIdentity2} not present in Eq. \eqref{eq:parallelIdentity1} cancel and the equality holds.
+
+Multiplication of Eq. \eqref{eq:parallelIdentity2} by the appropriate prefactors from Eq. \eqref{eq:firstOrderSolution} demonstrates immediately that the Maxwell boundary condition
+\begin{equation}
+\hat{\mathbf{r}}\times[\mathbf{E}^{(1)}_{\mathrm{res},1}(\mathbf{r},\omega) - \mathbf{E}^{(1)}_{\mathrm{res},2}(\mathbf{r},\omega)]_{r = a} = \bm{0}
+\end{equation}
+is satisfied. The boundary condition on the surface-perpendicular part of the electric displacement fields,
+\begin{equation}
+\hat{\mathbf{r}}\cdot[\mathbf{E}^{(1)}_{\mathrm{res},1}(\mathbf{r},\omega) - \epsilon(\omega)\mathbf{E}^{(1)}_{\mathrm{res},2}(\mathbf{r},\omega)]_{r = a} = 0,
+\end{equation} requires another identity
+\begin{equation}\label{eq:perpIdentity1}
+j_\ell(\sqrt{\epsilon(\omega)}ka)D_{p\ell m}^<(\omega) + h_\ell^{(1)}(\sqrt{\epsilon(\omega)}ka) = \frac{1}{\sqrt{\epsilon(\omega)}}h_\ell^{(1)}(ka)B_{p\ell m}^<(\omega)
+\end{equation}
+to prove, but is otherwise simpler to deal with since only the electric harmonics have radial components. Explicitly, this new identity provides
+\begin{equation}\label{eq:perpIdentity2}
+\begin{split}
+\epsilon(\omega)\left[d_{0\ell1}^<(\omega)\mathbf{N}_{0\ell 1}(r=a,\theta,\phi;\sqrt{\epsilon(\omega)}k) + k_0^{-3}\widebar{\mathbf{N}}_{0\ell1}(r=a,\theta,\phi;\sqrt{\epsilon(\omega)}k)\right]\cdot\hat{\mathbf{r}} &= \\
+b_{0\ell1}^<(\omega)\bm{\mathcal{N}}&_{0\ell1}(r=a,\theta,\phi;k)\cdot\hat{\mathbf{r}},
+\end{split}
+\end{equation}
+which, via multiplication of the appropriate prefactors, guarantees the satisfaction of the perpendicular boundary condition of $\mathbf{E}^{(1)}_\mathrm{res}$.
+
+
+
+
+
+
+
+
+\subsection{Second-order Solution}
+
+The solution to the second-order wave equation of Eq. \eqref{eq:nonLinWaveEq1} can be constructed straightforwardly, if not simply, from the results of Section \ref{sec:firstOrderSolution}. Explicitly, the term on the right hand side of the equation can be rewritten as a current as was alluded to in Eq. \eqref{eq:waveEqFreeOrderN}, such that
+\begin{equation}
+\nabla\times\nabla\times\mathbf{E}^{(2)}(\mathbf{r},\omega) - \epsilon(\mathbf{r},\omega)\frac{\omega^2}{c^2}\mathbf{E}^{(2)}(\mathbf{r},\omega) = \frac{4\pi\mathrm{i}\omega}{c^2}\mathbf{J}^{(2)}(\mathbf{r},\omega),
+\end{equation}
+wherein
+\begin{equation}
+\mathbf{J}^{(2)}(\mathbf{r},\omega) = -\mathrm{i}\omega\int_{-\infty}^\infty\mathbf{E}^{(1)}(\mathbf{r},\omega')\cdot\bm{\chi}^{(2)}(\mathbf{r};\omega',\omega - \omega')\cdot\mathbf{E}^{(1)}(\mathbf{r},\omega - \omega')\;\frac{\mathrm{d}\omega'}{2\pi}.
+\end{equation}
+Simple substitution of the fields of Section \ref{sec:firstOrderSolution} into the integral above provides the analytical description of the second-order driving current. 
+
+We are now in a strong position to derive a tractable form for $\mathbf{J}^{(2)}$. First, we can solidify our assumption that the sphere has an isotropic second-order susceptibility by letting $\bm{\chi}^{(2)}(\mathbf{r};\omega',\omega - \omega') = \bm{1}_3\Theta(a - r)\chi^{(2)}(\omega',\omega - \omega')$, where $\bm{1}_3$ is a rank-3 identity matrix. Therefore,
+\begin{equation}\label{eq:J2_1}
+\begin{split}
+\mathbf{J}^{(2)}(\mathbf{r},\omega) &= -\mathrm{i}\omega\int_{-\infty}^\infty \left[\left(E_0\pi\delta(\omega' - \omega_0)\mathrm{i}\pi k'^3\chi^{(1)}(\omega')\sqrt{\epsilon(\omega')}\sum_\ell\kappa_\ell\left[c_{1\ell1}^<(\omega')\mathbf{M}_{1\ell1}(\mathbf{r},\sqrt{\epsilon(\omega')}k')\right.\right.\right.\\
+&\quad+\left.\left.k_0^{-3}\widebar{\mathbf{M}}_{1\ell1}(\mathbf{r},\sqrt{\epsilon(\omega')}k') - \mathrm{i}d_{0\ell1}^<(\omega')\mathbf{N}_{0\ell1}(\mathbf{r},\sqrt{\epsilon(\omega')}k') - \mathrm{i}k_0^{-3}\widebar{\mathbf{N}}_{0\ell 1}(\mathbf{r},\sqrt{\epsilon(\omega')}k')\right] + \mathrm{c.c.r.} \vphantom{\sum_\ell} \right)\\
+&\quad+\left.\left(E_0\pi\delta(\omega' - \omega_0)\sum_\ell\kappa_\ell\left[\mathbf{M}_{1\ell1}(\mathbf{r},k') - \mathrm{i}\mathbf{N}_{0\ell1}(\mathbf{r},k')\right] + \mathrm{c.c.r.}\right)\right]\\
+&\quad\cdot\bm{1}_3\chi^{(2)}(\omega',\omega - \omega')\cdot\left[\left(E_0\pi\delta([\omega - \omega'] - \omega_0)\mathrm{i}\pi(k - k')^3\chi^{(1)}(\omega - \omega')\sqrt{\epsilon(\omega - \omega')}\vphantom{\sum_\ell\kappa_\ell}\right.\right.\\
+&\quad\times\sum_\ell\kappa_\ell\left[c_{1\ell1}^<(\omega - \omega')\mathbf{M}_{1\ell1}(\mathbf{r},\sqrt{\epsilon(\omega - \omega')}[k - k']) + k_0^{-3}\widebar{\mathbf{M}}_{1\ell1}(\mathbf{r},\sqrt{\epsilon(\omega - \omega')}[k - k'])\right.\\
+&\quad-\left.\left.\mathrm{i}d_{0\ell1}^<(\omega - \omega')\mathbf{N}_{0\ell1}(\mathbf{r},\sqrt{\epsilon(\omega - \omega')}[k - k']) - \mathrm{i}k_0^{-3}\widebar{\mathbf{N}}_{0\ell1}(\mathbf{r},\sqrt{\epsilon(\omega - \omega')}[k - k'])\right] + \mathrm{c.c.r.} \vphantom{\sum_\ell} \right)\\
+&\quad+\left.\left(E_0\pi\delta([\omega - \omega']-\omega_0)\sum_\ell\kappa_\ell\left[\mathbf{M}_{1\ell1}(\mathbf{r},k - k')-\mathrm{i}\mathbf{N}_{0\ell1}(\mathbf{r},k - k')\right] + \mathrm{c.c.r.}\right)\right]\;\frac{\mathrm{d}\omega'}{2\pi}.
+\end{split}
+\end{equation}
+While deciphering this expression is difficult, it is useful to note that the Dirac deltas in the unwritten conjugate terms can be written as $\delta(\omega' + \omega_0)$ and $\delta([\omega - \omega'] + \omega_0)$ due to the symmetry properties of the Dirac delta. Given this, one can see that any terms inside the integral of Eq. \eqref{eq:J2_1} proportional to $\delta(\omega' - \omega_0)\delta([\omega - \omega'] + \omega_0)$ or the same with $\omega_0\to-\omega_0$ will restrict $\omega$ to be zero. The current in these cases also goes to zero due to the leading factor of $-\mathrm{i}\omega$.
+
+Thus, the only terms in the sum that contribute to a nonzero current are those proportional to the products $\delta(\omega' \mp \omega_0)\delta([\omega - \omega'] \mp \omega_0)$ that, after integration, become $\delta(\omega \mp 2\omega_0)$. Straightforwardly, then, Eq. \eqref{eq:J2_1} becomes
+\begin{equation}\label{eq:J2_2}
+\begin{split}
+\mathbf{J}^{(2)}(\mathbf{r},\omega) &= -\frac{\mathrm{i}\omega}{2\pi}E_0^2\pi^2\delta(\omega - 2\omega_0)\chi^{(2)}(\omega_0,\omega - \omega_0)\\
+&\quad\times\sum_{\ell\ell'}\kappa_\ell\kappa_{\ell'}\left[\mathrm{i}\pi k_0^3\chi^{(1)}(\omega_0)\sqrt{\epsilon(\omega_0)}\left(c_{1\ell1}^<(\omega_0)\mathbf{M}_{1\ell1}(\mathbf{r},\sqrt{\epsilon(\omega_0)}k_0)\right.\right.\\
+&\quad+\left.k_0^{-3}\widebar{\mathbf{M}}_{1\ell1}(\mathbf{r},\sqrt{\epsilon(\omega_0)}k_0) - \mathrm{i}d_{0\ell 1}^<(\omega_0)\mathbf{N}_{0\ell 1}(\mathbf{r},\sqrt{\epsilon(\omega_0)}k_0) - \mathrm{i}k_0^{-3}\widebar{\mathbf{N}}_{0\ell1}(\mathbf{r},\sqrt{\epsilon(\omega_0)}k_0)\right)\\
+&\quad+\left.\left(\mathbf{M}_{1\ell1}(\mathbf{r},k_0) - \mathrm{i}\mathbf{N}_{0\ell1}(\mathbf{r},k_0) \vphantom{\chi^{(1)}} \right)\right] \cdot\bm{1}_3\cdot \left[\mathrm{i}\pi k_0^3\chi^{(1)}(\omega_0)\sqrt{\epsilon(\omega_0)}\left(c_{1\ell'1}^<(\omega_0)\mathbf{M}_{1\ell'1}(\mathbf{r},\sqrt{\epsilon(\omega_0)}k_0)\right.\right.\\
+&\quad+\left.k_0^{-3}\widebar{\mathbf{M}}_{1\ell'1}(\mathbf{r},\sqrt{\epsilon(\omega_0)}k_0) - \mathrm{i}d_{0\ell'1}^<(\omega_0)\mathbf{N}_{0\ell'1}(\mathbf{r},\sqrt{\epsilon(\omega_0)}k_0) - \mathrm{i}k_0^{-3}\widebar{\mathbf{N}}_{0\ell'1}(\mathbf{r},\sqrt{\epsilon(\omega_0)}k_0)\right)\\
+&\quad+\left.\left(\mathbf{M}_{1\ell'1}(\mathbf{r},k_0) - \mathrm{i}\mathbf{N}_{0\ell'1}(\mathbf{r},k_0) \vphantom{\chi^{(1)}} \right)\right] + \mathrm{c.c.r.}
+\end{split}
+\end{equation}
+Even as it splits nicely into positive- and negative-frequency second-harmonic terms, Eq. \eqref{eq:J2_2} is so cumbersome that it is only really useful as a quantity that helps us when calculating final observables. However, defining shorthand notation to make life easier is possible.
+
+Separating the wave equation for $\mathbf{E}^{(2)}(\mathbf{r},\omega)$ into free-space and response components, we have
+\begin{equation}
+\begin{split}
+\nabla\times\nabla\times\mathbf{E}^{(2)}_\infty(\mathbf{r},\omega)-\frac{\omega^2}{c^2}\mathbf{E}^{(2)}_\infty(\mathbf{r},\omega) &= \frac{4\pi\mathrm{i}\omega}{c^2}\mathbf{J}^{(2)}(\mathbf{r},\omega),\\
+\nabla\times\nabla\times\mathbf{E}^{(2)}_\mathrm{res}(\mathbf{r},\omega)-\epsilon(\mathbf{r},\omega)\frac{\omega^2}{c^2}\mathbf{E}^{(2)}_\mathrm{res}(\mathbf{r},\omega) &= 4\pi\frac{\omega^2}{c^2}\chi^{(1)}(\omega)\mathbf{E}^{(2)}_\infty(\mathbf{r},\omega).
+\end{split}
+\end{equation}
+Therefore,
+\begin{equation}
+\begin{split}
+\mathbf{E}^{(2)}_\infty(\mathbf{r},\omega) &= \frac{4\pi\mathrm{i}\omega}{c}\int\mathbf{G}_0(\mathbf{r},\mathbf{r}';\omega)\cdot\frac{\mathbf{J}^{(2)}(\mathbf{r}',\omega)}{c}\;\mathrm{d}^3\mathbf{r}',
+\end{split}
+\end{equation}
+which, due to the extended form of Eq. \eqref{eq:J2_2}, is extremely unwieldy to write in its full form. However, we can use several notation modifications to produce sensible results. First, we can define a unitless function to standardize and simplify the notation of our radial integrals and intermediate harmonics,
+\begin{equation}\label{eq:U}
+U_{T\ell}^i(k_1,k_2;r_1,r_2) = 
+\begin{cases}
+k_2^3R_\ell^i(k_1,k_2;r_1,r_2), & T = M,\\[0.25em]
+k_2^3\left(\dfrac{\ell + 1}{2\ell + 1}R_{\ell - 1}^i(k_1,k_2;r_1,r_2) + \dfrac{\ell}{2\ell + 1}R_{\ell + 1}^i(k_1,k_2;r_1,r_2)\right), & T = E,
+\end{cases}
+\end{equation}
+with $i \in\{<,<>\}$ such that
+\begin{equation}
+\widebar{\mathbf{X}}_{Tp\ell m}(\mathbf{r},k) = \mathbf{X}_{Tp\ell m}(\mathbf{r},k)U_{T\ell}^{<>}(k,k_0;r,a) + \bm{\mathcal{X}}_{Tp\ell m}(\mathbf{r},k)U_{T\ell}^<(k,k_0;0,r).
+\end{equation}
+% \begin{equation}
+% \widebar{\mathbf{N}}_{p\ell m}(\mathbf{r},k) = \mathbf{N}_{p\ell m}(\mathbf{r},k)k_0^3U_\ell^{<>}(k,k_0;r,a) + \bm{\mathcal{N}}_{p\ell m}(\mathbf{r},k)k_0^3U_\ell^<(k,k_0;0,r),
+% \end{equation}
+Next, we can see that the integration of the second-order current against the free-space Green's function will simplify into a sum of integrals each taken over three vector harmonics and, possibly, a number of $r$-dependent factors. To define these integrals, we will first simplify our notation by using the collective indices $\bm{\alpha}_i = (T_i,p_i,\ell_i,m_i)$ to label the modes of the first-order solution that contribute to $\mathbf{J}^{(2)}$ and the modes of the second-order fields. We will then also define values $t_i\in\{0,1\}$ that designate the presence of factors $U_{T\ell}^i$ that depend on $r$. In total, we have a set of four integrals
+\begin{equation}
+\begin{split}
+I^{<<<}_{\bm{\alpha}_1\bm{\alpha}_2\bm{\alpha}_3}&(k_1,k_2,k_3;t_1,t_2,t_3;r_1,r_2) = \int_0^{2\pi}\int_0^\pi\int_{r_1}^{r_2}\left[U_{\bm{\alpha}_1}^{<>}(k_1,k_0;r,r_2)\right]^{t_1}\left[U_{\bm{\alpha}_2}^{<>}(k_2,k_0;r,r_2)\right]^{t_2}\\
+&\times\left[U_{\bm{\alpha}_3}^{<>}(k_3,k_0;r,r_2)\right]^{t_3}\mathbf{X}_{\bm{\alpha}_1}(\mathbf{r},k_1)\cdot\left[\mathbf{X}_{\bm{\alpha}_2}(\mathbf{r},k_2)\cdot\bm{1}_3\cdot\mathbf{X}_{\bm{\alpha}_3}(\mathbf{r},k_3)\right]r^2\sin\theta\;\mathrm{d}r\,\mathrm{d}\theta\,\mathrm{d}\phi,\\[0.5em]
+I^{><<}_{\bm{\alpha}_1\bm{\alpha}_2\bm{\alpha}_3}&(k_1,k_2,k_3;t_1,t_2,t_3;r_1,r_2) = \int_0^{2\pi}\int_0^\pi\int_{r_1}^{r_2}\left[U_{\bm{\alpha}_1}^{<}(k_1,k_0;r_1,r)\right]^{t_1}\left[U_{\bm{\alpha}_2}^{<>}(k_2,k_0;r,r_2)\right]^{t_2}\\
+&\times\left[U_{\bm{\alpha}_3}^{<>}(k_3,k_0;r,r_2)\right]^{t_3}\bm{\mathcal{X}}_{\bm{\alpha}_1}(\mathbf{r},k_1)\cdot\left[\mathbf{X}_{\bm{\alpha}_2}(\mathbf{r},k_2)\cdot\bm{1}_3\cdot\mathbf{X}_{\bm{\alpha}_3}(\mathbf{r},k_3)\right]r^2\sin\theta\;\mathrm{d}r\,\mathrm{d}\theta\,\mathrm{d}\phi,\\[0.5em]
+I^{>><}_{\bm{\alpha}_1\bm{\alpha}_2\bm{\alpha}_3}&(k_1,k_2,k_3;t_1,t_2,t_3;r_1,r_2) = \int_0^{2\pi}\int_0^\pi\int_{r_1}^{r_2}\left[U_{\bm{\alpha}_1}^{<}(k_1,k_0;r_1,r)\right]^{t_1}\left[U_{\bm{\alpha}_2}^{<}(k_2,k_0;r_1,r)\right]^{t_2}\\
+&\times\left[U_{\bm{\alpha}_3}^{<>}(k_3,k_0;r,r_2)\right]^{t_3}\bm{\mathcal{X}}_{\bm{\alpha}_1}(\mathbf{r},k_1)\cdot\left[\bm{\mathcal{X}}_{\bm{\alpha}_2}(\mathbf{r},k_2)\cdot\bm{1}_3\cdot\mathbf{X}_{\bm{\alpha}_3}(\mathbf{r},k_3)\right]r^2\sin\theta\;\mathrm{d}r\,\mathrm{d}\theta\,\mathrm{d}\phi,\\[0.5em]
+I^{>>>}_{\bm{\alpha}_1\bm{\alpha}_2\bm{\alpha}_3}&(k_1,k_2,k_3;t_1,t_2,t_3;r_1,r_2) = \int_0^{2\pi}\int_0^\pi\int_{r_1}^{r_2}\left[U_{\bm{\alpha}_1}^{<}(k_1,k_0;r_1,r)\right]^{t_1}\left[U_{\bm{\alpha}_2}^{<}(k_2,k_0;r_1,r)\right]^{t_2}\\
+&\times\left[U_{\bm{\alpha}_3}^{<}(k_3,k_0;r_1,r)\right]^{t_3}\bm{\mathcal{X}}_{\bm{\alpha}_1}(\mathbf{r},k_1)\cdot\left[\bm{\mathcal{X}}_{\bm{\alpha}_2}(\mathbf{r},k_2)\cdot\bm{1}_3\cdot\bm{\mathcal{X}}_{\bm{\alpha}_3}(\mathbf{r},k_3)\right]r^2\sin\theta\;\mathrm{d}r\,\mathrm{d}\theta\,\mathrm{d}\phi
+\end{split}
+\end{equation} 
+that can be used to calculate our fields in each region. Permutations of the region indices $<$, $>$ and their associated $\bm{\alpha}_i$, $t_i$, and $k_i$ values are possible, and do not require separate definitions.
+
+Using this simplified notation, we can define the expansion coefficient
+\begin{equation}
+w_{\bm{\alpha}}(\omega) = 
+\begin{cases}
+c_{1\ell1}^<(\omega), & T = M,\\
+d_{0\ell1}^<(\omega), & T = E,
+\end{cases}
+\end{equation}
+wherein we have assumed that $\bm{\alpha} \in \{(M,1,\ell,1),(E,0,\ell,1)\}$. This, in turn, allows for the shortening of the expression for the second-order bound current
+\begin{equation}
+\begin{split}
+\mathbf{J}^{(2)}(\mathbf{r},\omega) &= -\frac{\mathrm{i}\omega}{2}E_0^2\delta(\omega - 2\omega_0)\chi^{(2)}(\omega_0,\omega - \omega_0)\\
+&\times\sum_{\bm{\alpha},\bm{\alpha}'}\kappa_\ell\kappa_{\ell'}(-\mathrm{i})^{\delta_{TE}+\delta_{T'E}}\left[\mathrm{i}\pi k_0^3\chi^{(1)}(\omega_0)\sqrt{\epsilon(\omega_0)}w_{\bm{\alpha}}(\omega_0)\mathbf{X}_{\bm{\alpha}}(\mathbf{r},\sqrt{\epsilon(\omega_0)}k_0)\right.\\
+&+ \left.\mathrm{i}\pi\chi^{(1)}(\omega_0)\sqrt{\epsilon(\omega_0)}\widebar{\mathbf{X}}_{\bm{\alpha}}(\mathbf{r},\sqrt{\epsilon(\omega_0)}k_0) + \mathbf{X}_{\bm{\alpha}}(\mathbf{r},k_0)\right]\cdot\bm{1}_3\cdot\left[\mathrm{i}\pi k_0^3\chi^{(1)}(\omega_0)\sqrt{\epsilon(\omega_0)}w_{\bm{\alpha}'}(\omega_0)\right.\\
+&\times\left.\mathbf{X}_{\bm{\alpha}'}(\mathbf{r},\sqrt{\epsilon(\omega_0)}k_0) + \mathrm{i}\pi\chi^{(1)}(\omega_0)\sqrt{\epsilon(\omega_0)}\widebar{\mathbf{X}}_{\bm{\alpha}'}(\mathbf{r},\sqrt{\epsilon(\omega_0)}k_0) + \mathbf{X}_{\bm{\alpha}'}(\mathbf{r},k_0)\right] + \mathrm{c.c.r.},
+\end{split}
+\end{equation}
+wherein the sums on $\bm{\alpha}$ and $\bm{\alpha}'$ are shorthand for sums over $T$, $\ell$, $T'$, and $\ell'$. Moving forward, we can see that, outside the sphere,
+\begin{equation}\label{eq:Efree2_1}
+\begin{split}
+\mathbf{E}_{\infty,1}^{(2)}(\mathbf{r},\omega) &= \Theta(r - a)\frac{4\pi\mathrm{i}\omega}{c}\int\frac{\mathrm{i}\omega}{4\pi c}\sum_{\bm{\beta}}\left[\bm{\mathcal{X}}_{\bm{\beta}}(\mathbf{r},k)\mathbf{X}_{\bm{\beta}}(\mathbf{r}',k)\right]\cdot\frac{\mathbf{J}^{(2)}(\mathbf{r}',\omega)}{c}\;\mathrm{d}^3\mathbf{r}'\\
+&= \Theta(r - a)\frac{\mathrm{i}\omega^3}{2c^3}E_0^2\pi\delta(\omega - 2\omega_0)\chi^{(2)}(\omega_0,\omega - \omega_0)\\
+&\quad\times\sum_{\bm{\beta}\bm{\alpha}\bm{\alpha}'}\kappa_\ell\kappa_{\ell'}(-\mathrm{i})^{\delta_{TE} + \delta_{T'E}}I^{<}_{\bm{\beta}\bm{\alpha}\bm{\alpha}'}(k;0,a)\bm{\mathcal{X}}_{\bm{\beta}}(\mathbf{r},k) + \mathrm{c.c.r.}\\
+&=\Theta(r - a)E_0^2\pi\delta(\omega - 2\omega_0)\chi^{(2)}(\omega_0,\omega_0)\sum_{\bm{\beta}}u_{\bm{\beta}}^<(k)\bm{\mathcal{X}}_{\bm{\beta}}(\mathbf{r},k) + \mathrm{c.c.r.}
+\end{split}
+\end{equation}
+Here, the overlap integrals $I^{<}_{\bm{\beta}\bm{\alpha}\bm{\alpha}'}(k;0,a)$ are defined such that
+\begin{equation}
+\begin{split}
+I^{<}_{\bm{\beta}\bm{\alpha}\bm{\alpha}'}(k;r_1,r_2) &= \left(-\pi^2k_0^6\left[\chi^{(1)}(\omega_0)\right]^2\epsilon(\omega_0)w_{\bm{\alpha}}(\omega_0)w_{\bm{\alpha}'}(\omega_0)I_{\bm{\beta}\bm{\alpha}\bm{\alpha}'}^{<<<}(k,\sqrt{\epsilon(\omega_0)}k_0,\sqrt{\epsilon(\omega_0)}k_0;0,0,0;r_1,r_2)\right.\\
+&\quad - \pi^2k_0^3\left[\chi^{(1)}(\omega_0)\right]^2\epsilon(\omega_0)w_{\bm{\alpha}}(\omega_0)\left[I_{\bm{\beta}\bm{\alpha}\bm{\alpha}'}^{<<<}(k,\sqrt{\epsilon(\omega_0)}k_0,\sqrt{\epsilon(\omega_0)}k_0;0,0,1;r_1,r_2)\right.\\
+&\quad\quad + \left.I_{\bm{\beta}\bm{\alpha}\bm{\alpha}'}^{<<>}(k,\sqrt{\epsilon(\omega_0)}k_0,\sqrt{\epsilon(\omega_0)}k_0;0,0,1;r_1,r_2)\right]\\
+&\quad + \mathrm{i}\pi k_0^3\chi^{(1)}(\omega_0)\sqrt{\epsilon(\omega_0)}w_{\bm{\alpha}}(\omega_0)I_{\bm{\beta}\bm{\alpha}\bm{\alpha}'}^{<<<}(k,\sqrt{\epsilon(\omega_0)}k_0,k_0;0,0,0;r_1,r_2)\\
+&\quad - \pi^2k_0^3\left[\chi^{(1)}(\omega_0)\right]^2\epsilon(\omega_0)w_{\bm{\alpha}'}(\omega_0)\left[I_{\bm{\beta}\bm{\alpha}\bm{\alpha}'}^{<<<}(k,\sqrt{\epsilon(\omega_0)}k_0,\sqrt{\epsilon(\omega_0)}k_0;0,1,0;r_1,r_2)\right.\\
+&\quad\quad + \left.I_{\bm{\beta}\bm{\alpha}\bm{\alpha}'}^{<><}(k,\sqrt{\epsilon(\omega_0)}k_0,\sqrt{\epsilon(\omega_0)}k_0;0,1,0;r_1,r_2)\right]\\
+&\quad - \pi^2\left[\chi^{(1)}(\omega_0)\right]^2\epsilon(\omega_0)\left[I_{\bm{\beta}\bm{\alpha}\bm{\alpha}}^{<<<}(k,\sqrt{\epsilon(\omega_0)}k_0,\sqrt{\epsilon(\omega_0)}k_0;0,1,1;r_1,r_2)\right.\\
+&\quad\quad + I_{\bm{\beta}\bm{\alpha}\bm{\alpha}'}^{<<>}(k,\sqrt{\epsilon(\omega_0)}k_0,\sqrt{\epsilon(\omega_0)}k_0;0,1,1;r_1,r_2)\\
+&\quad\quad + I_{\bm{\beta}\bm{\alpha}\bm{\alpha}'}^{<><}(k,\sqrt{\epsilon(\omega_0)}k_0,\sqrt{\epsilon(\omega_0)}k_0;0,1,1;r_1,r_2)\\
+&\quad\quad + \left.I_{\bm{\beta}\bm{\alpha}\bm{\alpha}'}^{<>>}(k,\sqrt{\epsilon(\omega_0)}k_0,\sqrt{\epsilon(\omega_0)}k_0;0,1,1;r_1,r_2)\right]\\
+&\quad + \mathrm{i}\pi\chi^{(1)}(\omega_0)\sqrt{\epsilon(\omega_0)}\left[I_{\bm{\beta}\bm{\alpha}\bm{\alpha}'}^{<<<}(k,\sqrt{\epsilon(\omega_0)}k_0,k_0;0,1,0;r_1,r_2)\right.\\
+&\quad\quad + \left.I_{\bm{\beta}\bm{\alpha}\bm{\alpha}'}^{<><}(k,\sqrt{\epsilon(\omega_0)}k_0,k_0;0,1,0;r_1,r_2)\right]\\
+&\quad + \mathrm{i}\pi k_0^3\chi^{(1)}(\omega_0)\sqrt{\epsilon(\omega_0)}w_{\bm{\alpha}'}(\omega_0)I_{\bm{\beta}\bm{\alpha}\bm{\alpha}'}^{<<<}(k,k_0,\sqrt{\epsilon(\omega_0)}k_0;0,0,0;r_1,r_2)\\
+&\quad + \mathrm{i}\pi\chi^{(1)}(\omega_0)\sqrt{\epsilon(\omega_0)}\left[I_{\bm{\beta}\bm{\alpha}\bm{\alpha}'}^{<<<}(k,k_0,\sqrt{\epsilon(\omega_0)}k_0;0,0,1;r_1,r_2)\right.\\
+&\quad\quad + \left.I_{\bm{\beta}\bm{\alpha}\bm{\alpha}'}^{<<>}(k,k_0,\sqrt{\epsilon(\omega_0)}k_0;0,0,1;r_1,r_2)\right]\\
+&\quad + \left.I_{\bm{\beta}\bm{\alpha}\bm{\alpha}'}^{<<<}(k,k_0,k_0;0,0,0;r_1,r_2) \vphantom{\left[\chi^{(1)}(\omega_0)\right]^2} \right),
+\end{split}
+\end{equation}
+and
+\begin{equation}
+u_{\bm{\beta}}^<(k;r_1,r_2) = \sum_{\bm{\alpha}\bm{\alpha}'}\kappa_{\ell}\kappa_{\ell'}(-\mathrm{i})^{\delta_{TE} + \delta_{T'E}}\frac{\mathrm{i}\omega^3}{2 c^3}I_{\bm{\beta}\bm{\alpha}\bm{\alpha}'}^<(k;r_1,r_2),
+\end{equation}
+with the shorthand
+\begin{equation}
+u_{\bm{\beta}}^<(k) = u_{\bm{\beta}}^<(k;0,a)
+\end{equation}
+defined for brevity. We wish to similarly define the free fields inside the sphere, but we would like to do so without repeating the horrible accounting of terms that we just did above. Fortuitously, the symmetry of the Green's function allows us to avoid undue effort. Noting that
+\begin{equation}
+\begin{split}
+\mathbf{E}_{\infty,2}^{(2)}(\mathbf{r},\omega) &= \Theta(a - r)\frac{4\pi\mathrm{i}\omega}{c}\int\frac{\mathrm{i}\omega}{4\pi c}\sum_{\bm{\beta}}\left[\bm{\mathcal{X}}_{\bm{\beta}}(\mathbf{r},k)\mathbf{X}_{\bm{\beta}}(\mathbf{r}',k)\Theta(r - r')\right.\\
+& + \left.\mathbf{X}_{\bm{\beta}}(\mathbf{r},k)\bm{\mathcal{X}}_{\bm{\beta}}(\mathbf{r}',k)\Theta(r' - r)\right]\cdot\frac{\mathbf{J}^{(2)}(\mathbf{r}',\omega)}{c}\;\mathrm{d}^3\mathbf{r}'
+\end{split}
+\end{equation}
+involves nearly the same integration as above except that it is broken into two segments below and above $r$, we can define
+\begin{equation}
+\begin{split}
+I_{\bm{\beta}\bm{\alpha}\bm{\alpha}'}^{>}(k;r_1,r_2) &= \left.I_{\bm{\beta}\bm{\alpha}\bm{\alpha}'}^{<}(k;r_1,r_2)\right|_{\mathbf{X}_{\bm{\beta}}\to\bm{\mathcal{X}}_{\bm{\beta}}},\\
+u_{\bm{\beta}}^>(k;r_1,r_2) &= \left.u_{\bm{\beta}}^<(k;r_1,r_2)\right|_{\mathbf{X}_{\bm{\beta}}\to\bm{\mathcal{X}}_{\bm{\beta}}},
+\end{split}
+\end{equation} 
+which lead directly to
+\begin{equation}\label{eq:Efree2_2}
+\begin{split}
+\mathbf{E}_{\infty,2}^{(2)}(\mathbf{r},\omega) &= \Theta(a - r)\frac{\mathrm{i}\omega^3}{2c^3}E_0^2\pi\delta(\omega - 2\omega_0)\chi(\omega_0,\omega - \omega_0)\sum_{\bm{\beta}\bm{\alpha}\bm{\alpha}'}\kappa_\ell\kappa_{\ell'}(-\mathrm{i})^{\delta_{TE} + \delta_{T'E}}\\
+&\times\left(I_{\bm{\beta}\bm{\alpha}\bm{\alpha}'}^{<}(k;0,r)\bm{\mathcal{X}}_{\bm{\beta}}(\mathbf{r},k) + I_{\bm{\beta}\bm{\alpha}\bm{\alpha}'}^{>}(k;r,a)\mathbf{X}_{\bm{\beta}}(\mathbf{r},k) \right) + \mathrm{c.c.r.}\\
+&= \Theta(a - r)E_0^2\pi\delta(\omega - 2\omega_0)\chi^{(2)}(\omega_0,\omega_0)\sum_{\bm{\beta}}\left(u_{\bm{\beta}}^<(k;0,r)\bm{\mathcal{X}}_{\bm{\beta}}(\mathbf{r},k) + u_{\bm{\beta}}^>(k;r,a)\mathbf{X}_{\bm{\beta}}(\mathbf{r},k)\right) + \mathrm{c.c.r.}
+\end{split}
+\end{equation}
+
+The expression for the response fields follows in a similar vein. We can make life easier by defining
+\begin{equation}
+\begin{split}
+V_{Tp\ell m}(\omega) &= 
+\begin{cases}
+A_{p\ell m}^<(\omega), & T = M,\\
+B_{p\ell m}^<(\omega), & T = E,
+\end{cases}\\
+W_{Tp\ell m}(\omega) &=
+\begin{cases}
+C_{p\ell m}^<(\omega), & T = M,\\
+D_{p\ell m}^<(\omega), & T = E,
+\end{cases}
+\end{split}
+\end{equation}
+such that
+\begin{equation}
+\begin{split}
+\mathbf{E}_{\mathrm{res},1}^{(2)}(\mathbf{r},\omega) &= \Theta(r - a)\frac{4\pi\mathrm{i}\omega}{c}\int\mathbf{G}_{12}(\mathbf{r},\mathbf{r}';\omega)\cdot\frac{\mathbf{J}^{(2)}(\mathbf{r}',\omega)}{c}\;\mathrm{d}^3\mathbf{r}'\\
+&= \frac{4\pi\mathrm{i}\omega}{c}\int_{\mathbb{V}_2}\frac{\mathrm{i}\omega\sqrt{\epsilon(\omega)}}{4\pi c}\sum_{\bm{\beta}}V_{\bm{\beta}}(\omega)\bm{\mathcal{X}}_{\bm{\beta}}(\mathbf{r},k)\mathbf{X}_{\bm{\beta}}\!\left(\mathbf{r}',\sqrt{\epsilon(\omega)}k\right)\cdot\mathbf{J}^{(2)}(\mathbf{r}',\omega)\;\mathrm{d}^3\mathbf{r}'\\
+&= \Theta(r - a)\frac{\mathrm{i}\omega^3}{2c^3}\sqrt{\epsilon(\omega)}E_0^2\pi\delta(\omega - 2\omega_0)\chi^{(2)}(\omega_0,\omega - \omega_0)\\
+&\quad\times\sum_{\bm{\beta}\bm{\alpha}\bm{\alpha}'}V_{\bm{\beta}}(\omega)\kappa_\ell\kappa_{\ell'}(-\mathrm{i})^{\delta_{TE} + \delta_{T'E}}I_{\bm{\beta}\bm{\alpha}\bm{\alpha}'}^<\!\left(\sqrt{\epsilon(\omega)}k;0,a\right)\bm{\mathcal{X}}_{\bm{\beta}}(\mathbf{r},k) + \mathrm{c.c.r.}\\[1.0em]
+&= \Theta(r - a)\sqrt{\epsilon(\omega)}E_0^2\pi\delta(\omega - 2\omega_0)\chi^{(2)}(\omega_0,\omega_0)\\
+&\quad\times\sum_{\bm{\beta}}V_{\bm{\beta}}(\omega)u_{\bm{\beta}}^<\!\left(\sqrt{\epsilon(\omega)}k\right)\bm{\mathcal{X}}_{\bm{\beta}}(\mathbf{r},k) + \mathrm{c.c.r.}
+\end{split}
+\end{equation}
+Further, 
+\begin{equation}
+\begin{split}
+\mathbf{E}_{\mathrm{res},2}^{(2)}(\mathbf{r},\omega) &= \Theta(a - r)\frac{4\pi\mathrm{i}\omega}{c}\int\mathbf{G}_{22}(\mathbf{r},\mathbf{r}';\omega)\cdot\frac{\mathbf{J}^{(2)}(\mathbf{r}',\omega)}{c}\;\mathrm{d}^3\mathbf{r}'\\
+&=\Theta(a-r)\frac{4\pi\mathrm{i}\omega}{c}\int\frac{\mathrm{i}\omega\sqrt{\epsilon(\omega)}}{4\pi c}\sum_{\bm{\beta}}\left[W_{\bm{\beta}}(\omega)\mathbf{X}_{\bm{\beta}}\!\left(\mathbf{r},\sqrt{\epsilon(\omega)}k\right)\mathbf{X}_{\bm{\beta}}\!\left(\mathbf{r}',\sqrt{\epsilon(\omega)}k\right)\right.\\
+&\quad+\bm{\mathcal{X}}_{\bm{\beta}}\!\left(\mathbf{r},\sqrt{\epsilon(\omega)}k\right)\mathbf{X}_{\bm{\beta}}\!\left(\mathbf{r}',\sqrt{\epsilon(\omega)}k\right)\Theta(r - r')\\
+&\quad + \left.\mathbf{X}_{\bm{\beta}}\!\left(\mathbf{r},\sqrt{\epsilon(\omega)}k\right)\bm{\mathcal{X}}_{\bm{\beta}}\!\left(\mathbf{r}',\sqrt{\epsilon(\omega)}k\right)\Theta(r' - r)\right]\cdot\frac{\mathbf{J}^{(2)}(\mathbf{r}',\omega)}{c}\;\mathrm{d}^3\mathbf{r}'\\
+&=\Theta(a - r)\frac{\mathrm{i}\omega^3}{2c^3}\sqrt{\epsilon(\omega)}E_0^2\pi\delta(\omega - 2\omega_0)\chi^{(2)}(\omega_0,\omega - \omega_0)\\
+&\quad\times\sum_{\bm{\beta}\bm{\alpha}\bm{\alpha}'}\kappa_\ell\kappa_{\ell'}(-\mathrm{i})^{\delta_{TE} + \delta_{T'E}}\left[W_{\bm{\beta}}(\omega)I_{\bm{\beta}\bm{\alpha}\bm{\alpha}'}^<\!\left(\sqrt{\epsilon(\omega)}k;0,a\right)\mathbf{X}_{\bm{\beta}}\!\left(\mathbf{r},\sqrt{\epsilon(\omega)}k\right)\right.\\
+&\quad + \left.I_{\bm{\beta}\bm{\alpha}\bm{\alpha}'}^<\!\left(\sqrt{\epsilon(\omega)}k;0,r\right)\bm{\mathcal{X}}_{\bm{\beta}}\!\left(\mathbf{r},\sqrt{\epsilon(\omega)}k\right) + I_{\bm{\beta}\bm{\alpha}\bm{\alpha}'}^>\!\left(\sqrt{\epsilon(\omega)}k;r,a\right)\mathbf{X}_{\bm{\beta}}\!\left(\mathbf{r},\sqrt{\epsilon(\omega)}k\right)\right]\\
+&\quad + \mathrm{c.c.r.},
+\end{split}
+\end{equation}
+such that
+\begin{equation}
+\begin{split}
+\mathbf{E}_{\mathrm{res},2}^{(2)}(\mathbf{r},\omega) &=\Theta(a - r)\sqrt{\epsilon(\omega)}E_0^2\pi\delta(\omega - 2\omega_0)\chi^{(2)}(\omega_0,\omega_0)\\
+&\times\sum_{\bm{\beta}}\left[W_{\bm{\beta}}(\omega)u_{\bm{\beta}}^<\!\left(\sqrt{\epsilon(\omega)}k\right)\mathbf{X}_{\bm{\beta}}\!\left(\mathbf{r},\sqrt{\epsilon(\omega)}k\right) + u_{\bm{\beta}}^<\!\left(\sqrt{\epsilon(\omega)}k;0,r\right)\bm{\mathcal{X}}_{\bm{\beta}}\!\left(\mathbf{r},\sqrt{\epsilon(\omega)}k\right)\right.\\
+&+ \left.u_{\bm{\beta}}^>\!\left(\sqrt{\epsilon(\omega)}k;r,a\right)\mathbf{X}_{\bm{\beta}}\!\left(\mathbf{r},\sqrt{\epsilon(\omega)}k\right)\right] + \mathrm{c.c.r.}
+\end{split}
+\end{equation}
+
+
+
+
+
+
+
+\subsubsection{Boundary Condition Satisfaction}
+
+The solution for the free fields can be seen to straightforwardly satisfy the Maxwell boundary conditions at $r = a$. Because they satisfy the wave equation with $\epsilon(\mathbf{r},\omega)\to1$, both the surface parallel and perpendicular terms of the field must be continuous, a condition which is immediately satisfied by letting $r\to a$ in Eq. \eqref{eq:Efree2_2} and noting that 1) the second term under the sum proportional to $u_{\bm{\beta}}^{>}(k;r,a)$ goes to zero and 2) the first becomes precisely equal to the expression of Eq. \eqref{eq:Efree2_1}.
+
+The response fields' boundary conditions can be seen to be satisfied using Eqs. \eqref{eq:parallelIdentity1} and \eqref{eq:perpIdentity1}, which, alongside the identity $u_{\bm{\beta}}^>(\sqrt{\epsilon(\omega)}k;a,a) = 0$, provides
+\begin{equation}
+\begin{split}
+\left[W_{\bm{\beta}}(\omega)\mathbf{X}_{\bm{\beta}}(\mathbf{r},\sqrt{\epsilon(\omega)}k) + \bm{\mathcal{X}}_{\bm{\beta}}(\mathbf{r},\sqrt{\epsilon(\omega)}k)\right]_{r= a}\cdot\hat{\mathbf{e}}_\parallel = \left.V_{\bm{\beta}}(\omega)\bm{\mathcal{X}}_{\bm{\beta}}(\mathbf{r},k)\right|_{r = a}\cdot\hat{\mathbf{e}}_\parallel,\\
+\epsilon(\omega)\left[W_{\bm{\beta}}(\omega)\mathbf{X}_{\bm{\beta}}(\mathbf{r},\sqrt{\epsilon(\omega)}k) + \bm{\mathcal{X}}_{\bm{\beta}}(\mathbf{r},\sqrt{\epsilon(\omega)}k)\right]_{r= a}\cdot\hat{\mathbf{r}} = \left.V_{\bm{\beta}}(\omega)\bm{\mathcal{X}}_{\bm{\beta}}(\mathbf{r},k)\right|_{r = a}\cdot\hat{\mathbf{r}}.
+\end{split}
+\end{equation}
+The boundary conditions
+\begin{equation}
+\begin{split}
+\hat{\mathbf{r}}\times\left[\mathbf{E}_{\mathrm{res},1}^{(2)}(\mathbf{r},\omega) - \mathbf{E}_{\mathrm{res},2}^{(2)}(\mathbf{r},\omega)\right]_{r = a} &= \bm{0},\\
+\hat{\mathbf{r}}\cdot\left[\mathbf{E}_{\mathrm{res},1}^{(2)}(\mathbf{r},\omega) - \epsilon(\omega)\mathbf{E}_{\mathrm{res},2}^{(2)}(\mathbf{r},\omega)\right]_{r = a} &= 0
+\end{split}
+\end{equation}
+are thus satisfied by inspection.
+
+
+
+
+
+
+
+
+
+
+
+
+\subsubsection{Scattered Power}
+
+To calculate the power scattered by the SHG fields, one must first calculate the magnetic fields associated with $\mathbf{E}^{(2)}(\mathbf{r},\omega)$. These fields can be quickly determined from Faraday's law,
+\begin{equation}
+\mathbf{B}^{(2)}(\mathbf{r},\omega) = \frac{1}{\mathrm{i}k}\nabla\times\mathbf{E}^{(2)}(\mathbf{r},\omega).
+\end{equation}
+First looking at the free fields, we find
+\begin{equation}
+\begin{split}
+\mathbf{B}_{\infty,1}^{(2)}(\mathbf{r},\omega) &= -\mathrm{i}\Theta(r - a)E_0^2\pi\delta(\omega - 2\omega_0)\chi^{(2)}(\omega_0,\omega_0)\sum_{\bm{\beta}}u_{\bm{\beta}}^<(k)\bm{\mathcal{Y}}_{\bm{\beta}}(\mathbf{r},k) + \mathrm{c.c.r.},\\
+\mathbf{B}_{\infty,2}^{(2)}(\mathbf{r},\omega) &= -\mathrm{i}\Theta(a - r)E_0^2\pi\delta(\omega - 2\omega_0)\chi^{(2)}(\omega_0,\omega_0)\sum_{\bm{\beta}}\left[u_{\bm{\beta}}^<(k;0,r)\bm{\mathcal{Y}}_{\bm{\beta}}(\mathbf{r},k)\right.\\
+&\left. + \frac{1}{k}\nabla u_{\bm{\beta}}^<(k;r,a)\times\bm{\mathcal{X}}_{\bm{\beta}}(\mathbf{r},k) +  u_{\bm{\beta}}^>(k;r,a)\mathbf{Y}_{\bm{\beta}}(\mathbf{r},k) + \frac{1}{k}\nabla u_{\bm{\beta}}^>(k;r,a)\times\mathbf{X}_{\bm{\beta}}(\mathbf{r},k)\right] + \mathrm{c.c.r.},
+\end{split}
+\end{equation}
+where we have defined new vector spherical harmonic functions
+\begin{equation}
+\begin{split}
+\mathbf{Y}_{\bm{\beta}}(\mathbf{r},k) &= \frac{1}{k}\nabla\times\mathbf{X}_{\bm{\beta}}(\mathbf{r},k),\\
+\bm{\mathcal{Y}}_{\bm{\beta}}(\mathbf{r},k) &= \frac{1}{k}\nabla\times\bm{\mathcal{X}}_{\bm{\beta}}(\mathbf{r},k)
+\end{split}
+\end{equation}
+that, due to the relations
+\begin{equation}
+\begin{split}
+\nabla\times\mathbf{M}_{\bm{\beta}}(\mathbf{r},k) &= k\mathbf{N}_{\bm{\beta}}(\mathbf{r},k),\\
+\nabla\times\mathbf{N}_{\bm{\beta}}(\mathbf{r},k) &= k\mathbf{M}_{\bm{\beta}}(\mathbf{r},k),
+\end{split}
+\end{equation}
+and similar for $\mathbf{X}_{\bm{\beta}}(\mathbf{r},k)\to\bm{\mathcal{X}}_{\bm{\beta}}(\mathbf{r},k)$ above, define our new spherical harmonics as simply the old ones but with the ``wrong'' type index, i.e. with the transformation $M\to E$ or vice-versa. Further, we can see that neither field $\mathbf{B}_{\infty,i}^{(2)}(\mathbf{r},\omega)$ contains a term with a derivative acting on the Heaviside functions. It is straightforward to see why---taking the curl of the total free electric field, one can see that any terms proportional to $\nabla\Theta(\pm [r - a]) = \pm\delta(r - a)\hat{\mathbf{r}}$ exactly cancel such that the region-separated free fields need not carry these eventually-nullified terms in their definitions.
+
+The definitions of the response field in each region follows from above, such that
+\begin{equation}
+\begin{split}
+\mathbf{B}_{\mathrm{res},1}^{(2)}&(\mathbf{r},\omega) = -\mathrm{i}\Theta(r - a)\sqrt{\epsilon(\omega)}E_0^2\pi\delta(\omega - 2\omega_0)\chi^{(2)}(\omega_0,\omega_0)\\
+&\times\sum_{\bm{\beta}}V_{\bm{\beta}}(\omega)u_{\bm{\beta}}^<\!\left(\sqrt{\epsilon(\omega)}k\right)\bm{\mathcal{Y}}_{\bm{\beta}}(\mathbf{r},k) + \mathrm{c.c.r.},\\[0.5em]
+\mathbf{B}_{\mathrm{res},2}^{(2)}&(\mathbf{r},\omega) = -\mathrm{i}\Theta(a - r)\sqrt{\epsilon(\omega)}E_0^2\pi\delta(\omega - 2\omega_0)\chi^{(2)}(\omega_0,\omega_0)\\
+&\times\sum_{\bm{\beta}}\left[W_{\bm{\beta}}(\omega)\sqrt{\epsilon(\omega)}u_{\bm{\beta}}^<\!\left(\sqrt{\epsilon(\omega)}k\right)\mathbf{Y}_{\bm{\beta}}\!\left(\mathbf{r},\sqrt{\epsilon(\omega)}k\right) + \sqrt{\epsilon(\omega)}u_{\bm{\beta}}^<\!\left(\sqrt{\epsilon(\omega)}k;0,r\right)\bm{\mathcal{Y}}_{\bm{\beta}}\!\left(\mathbf{r},\sqrt{\epsilon(\omega)}k\right)\right.\\
+&\hspace{0.05\textwidth}\left. + \frac{1}{k}\nabla u_{\bm{\beta}}^<\!\left(\sqrt{\epsilon(\omega)}k;0,r\right)\times\bm{\mathcal{X}}_{\bm{\beta}}\!\left(\mathbf{r},\sqrt{\epsilon(\omega)}k\right) + \sqrt{\epsilon(\omega)}u_{\bm{\beta}}^>\!\left(\sqrt{\epsilon(\omega)}k;r,a\right)\mathbf{Y}_{\bm{\beta}}\!\left(\mathbf{r},\sqrt{\epsilon(\omega)}k\right)\right.\\
+&\hspace{0.05\textwidth}\left. + \frac{1}{k}\nabla u_{\bm{\beta}}^>\!\left(\sqrt{\epsilon(\omega)}k;r,a\right)\times\mathbf{X}_{\bm{\beta}}\!\left(\mathbf{r},\sqrt{\epsilon(\omega)}k\right)\right] + \mathrm{c.c.r.}
+\end{split}
+\end{equation}
+We are now ready to calculate the scattered second-harmonic power. In general, we will do this by calculating the time-averaged energy flux carried away to infinity by the second-harmonic fields, i.e.
+\begin{equation}
+\bar{P}(2\omega_0) = \frac{2\omega_0}{2\pi}\int_{-\pi/2\omega_0}^{\pi/2\omega_0} \oint\mathbf{S}^{(2)}(\mathbf{r},t)\cdot\mathrm{d}\mathbf{a}\,\mathrm{d}t,
+\end{equation}
+wherein
+\begin{equation}
+\mathbf{S}^{(2)}(\mathbf{r},t) = \frac{c}{4\pi}\mathbf{E}^{(2)}(\mathbf{r},t)\times\mathbf{B}^{(2)}(\mathbf{r},t)
+\end{equation}
+is the Poynting vector of the second-harmonic fields and the surface integral is taken over a sphere centered at the origin with a radius that is taken to infinity. Using the convolution theorem, we can see that
+\begin{equation}
+\int_{-\tau}^\tau\mathbf{S}^{(2)}(\mathbf{r},t)\;\mathrm{d}t = \frac{c}{2\pi}\iint\frac{\sin([\omega - \omega']\tau)}{\omega - \omega'}\mathbf{E}^{(2)}(\mathbf{r},\omega)\times\mathbf{B}^{(2)*}(\mathbf{r},\omega')\;\frac{\mathrm{d}\omega\mathrm{d}\omega'}{4\pi^2},
+\end{equation}
+such that with $\mathrm{d}\mathbf{a} = \hat{\mathbf{r}}r^2\sin\theta\,\mathrm{d}\theta\mathrm{d}\phi$ we have
+\begin{equation}
+\bar{P}(2\omega_0) = \lim_{r\to\infty}\frac{c\omega_0}{2\pi^2}\int_0^{2\pi}\int_0^\pi\iint\frac{\sin([\omega - \omega']\frac{\pi}{2\omega_0})}{\omega - \omega'}\mathbf{E}^{(2)}(\mathbf{r},\omega)\times\mathbf{B}^{(2)*}(\mathbf{r},\omega')\;\frac{\mathrm{d}\omega\mathrm{d}\omega'}{4\pi^2}\cdot\hat{\mathbf{r}}r^2\sin\theta\;\mathrm{d}\theta\mathrm{d}\phi.
+\end{equation}
+Thus, including only the fields outside the sphere, we have
+\begin{equation}
+\begin{split}
+\bar{P}(2\omega_0) &= \lim_{r\to\infty}\frac{c\omega_0}{2\pi^2}\int_0^{2\pi}\int_0^\pi\iint\frac{\sin([\omega - \omega']\frac{\pi}{2\omega_0})}{\omega - \omega'}\left( \vphantom{\sum_{\bm{\beta}}} E_0^2\pi\delta(\omega - 2\omega_0)\chi^{(2)}(\omega_0,\omega_0)\right.\\
+&\left.\times\sum_{\bm{\beta}}\left[\sqrt{\epsilon(\omega)}V_{\bm{\beta}}(\omega)u_{\bm{\beta}}^<\!\left(\sqrt{\epsilon(\omega)}k\right) + u_{\bm{\beta}}^<(k)\right]\bm{\mathcal{X}}_{\bm{\beta}}(\mathbf{r},k) + \mathrm{c.c.r.}\right)\\
+&\times\left(\mathrm{i}E_0^2\pi\delta(\omega' - 2\omega_0)\chi^{(2)*}(\omega_0,\omega_0)\sum_{\bm{\beta}'}\left[\sqrt{\epsilon^*(\omega')}V_{\bm{\beta}'}^*(\omega')u_{\bm{\beta}'}^{<*}\!\left(\sqrt{\epsilon(\omega')}k'\right)\right.\right.\\
+&+ \left.\left.u_{\bm{\beta}'}^{<*}(k')\right]\bm{\mathcal{Y}}_{\bm{\beta}'}^*(\mathbf{r},k') + \mathrm{c.c.r.} \vphantom{\sum_{\bm{\beta}'}} \right)\;\frac{\mathrm{d}\omega\mathrm{d}\omega'}{4\pi^2}\cdot\hat{\mathbf{r}}r^2\sin\theta\,\mathrm{d}\theta\mathrm{d}\phi.
+\end{split}
+\end{equation}
+
+Because
+\begin{equation}
+\begin{split}
+\lim_{[\omega - \omega']\to\pm2\pi}\frac{\sin([\omega - \omega']\frac{\pi}{2\omega_0})}{\omega - \omega'} &= 0,\\
+\lim_{[\omega - \omega']\to0}\frac{\sin([\omega - \omega']\frac{\pi}{2\omega_0})}{\omega - \omega'} &= \frac{\pi}{2\omega_0},
+\end{split}
+\end{equation}
+we can see that only terms above that are proportional to $\delta(\omega\mp2\omega_0)\delta(\omega'\mp2\omega_0)$ are nonzero. Thus, the expression for the scattered power becomes
+\begin{equation}
+\begin{split}
+\bar{P}(2\omega_0) &= \frac{\mathrm{i}c}{16\pi}E_0^4\left|\chi^{(2)}(\omega_0,\omega_0)\right|^2\sum_{\bm{\beta}\bm{\beta}'}\left[\sqrt{\epsilon(2\omega_0)}V_{\bm{\beta}}(2\omega_0)u_{\bm{\beta}}^<\!\left(\sqrt{\epsilon(2\omega_0)}2k_0\right) + u_{\bm{\beta}}^<(2k_0)\right]\\ 
+&\hspace{0.1\textwidth}\times\left[\sqrt{\epsilon^*(2\omega_0)}V_{\bm{\beta}'}^*(2\omega_0)u_{\bm{\beta}'}^{<*}\!\left(\sqrt{\epsilon(2\omega_0)}2k_0\right) + u_{\bm{\beta}'}^{<*}(2k_0)\right]\\
+&\hspace{0.1\textwidth}\times\lim_{r\to\infty}\int_0^{2\pi}\int_0^\pi\bm{\mathcal{X}}_{\bm{\beta}}(\mathbf{r},2k_0)\times\bm{\mathcal{Y}}_{\bm{\beta}'}^*(\mathbf{r},2k_0)\cdot\hat{\mathbf{r}}r^2\sin\theta\;\mathrm{d}\theta\mathrm{d}\phi + \mathrm{c.c.}
+\end{split}
+\end{equation}
+To simplify this expression, we can use the identities
+\begin{equation}
+\begin{split}
+\lim_{r\to\infty}\int_0^{2\pi}\int_0^\pi\bm{\mathcal{X}}_{\bm{\beta}}(\mathbf{r},k)\times\bm{\mathcal{Y}}_{\bm{\beta}'}^*(\mathbf{r},k)\cdot\hat{\mathbf{r}}r^2\sin\theta\;\mathrm{d}\theta\mathrm{d}\phi &= 4\pi(1 - \delta_{p1}\delta_{m0})\frac{(-1)^{\ell + 1}\mathrm{i}^{2\ell + 1}}{k^2}\delta_{\bm{\beta}\bm{\beta}'},\\
+\lim_{r\to\infty}\int_0^{2\pi}\int_0^\pi\bm{\mathcal{X}}_{\bm{\beta}}(\mathbf{r},k)\times\bm{\mathcal{X}}_{\bm{\beta}'}^*(\mathbf{r},k)\cdot\hat{\mathbf{r}}r^2\sin\theta\;\mathrm{d}\theta\mathrm{d}\phi &= 0,
+\end{split}
+\end{equation}
+along with $\mathrm{i}^{2\ell + 2}(-1)^{\ell + 1} = 1$, to provide us with
+\begin{equation}
+\begin{split}
+\bar{P}(2\omega_0) = \sum_{\bm{\beta}}(1 - \delta_{p1}\delta_{m0})\frac{c}{16k_0^2}E_0^4\left|\chi^{(2)}(\omega_0,\omega_0)\right|^2\left|\sqrt{\epsilon(2\omega_0)}V_{\bm{\beta}}(2\omega_0)u_{\bm{\beta}}^<\!\left(\sqrt{\epsilon(2\omega_0)}2k_0\right) + u_{\bm{\beta}}^<(2k_0)\right|^2.
+\end{split}
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Appendix %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\appendix
+\numberwithin{equation}{section}
+
+
+
+
+
+\section{Dyadic Green's Function of a Sphere}
+
+Beginning with a general wave equation of a nonmagnetic, isotropic spherical dielectric material
+\begin{equation}
+\nabla\times\nabla\times\mathbf{E}(\mathbf{r},\omega) - \epsilon(\mathbf{r},\omega)\frac{\omega^2}{c^2}\mathbf{E}(\mathbf{r},\omega) = \frac{4\pi\mathrm{i}\omega}{c^2}\mathbf{J}(\mathbf{r},\omega),
+\end{equation}
+one can employ dyadic generalizations to Green's identities to define a Green's function $\mathbf{G}(\mathbf{r},\mathbf{r}';\omega)$ that obeys the electric-type Maxwell boundary conditions as well as the Lippmann-Schwinger equation
+\begin{equation}
+\mathbf{E}(\mathbf{r},\omega) = \frac{4\pi\mathrm{i}\omega}{c}\int\mathbf{G}(\mathbf{r},\mathbf{r}';\omega)\cdot\frac{\mathbf{J}(\mathbf{r}',\omega)}{c}\;\mathrm{d}^3\mathbf{r}'.
+\end{equation}
+The dielectric function here is assumed to obey the relations
+\begin{equation}
+\begin{split}
+\epsilon(\mathbf{r},\omega) &= \epsilon(\omega)\Theta(r < a) + \Theta(r > a),\\
+\epsilon(t - t') &= \epsilon(t - t')\Theta(t' \leq t)
+\end{split}
+\end{equation}
+in the frequency- and time-domains, respectively, wherein
+\begin{equation}
+\epsilon(\omega) = \int_{-\infty}^t \epsilon(t - t')\mathrm{e}^{\mathrm{i}\omega(t - t')}\;\mathrm{d}(t-t')
+\end{equation}
+with $t$ taken to be a real constant parameter. 
+
+Under these assumptions, the Green's function takes different forms depending on the locations of the observer ($\mathbf{r}$) and source current ($\mathbf{r}'$). This discontinuity is analogous to that found in the Green's function of free space ($\epsilon(\mathbf{r},\omega)\to1$), which is given by
+\begin{equation}\label{eq:G0}
+\begin{split}
+\mathbf{G}_0(\mathbf{r},\mathbf{r}';\omega) &= \frac{1}{4\pi}\left(\bm{1}_2 - \frac{c^2}{\omega^2}\nabla'\nabla\right)\left\{\frac{\mathrm{e}^{\mathrm{i}\omega|\mathbf{r} - \mathbf{r}'|/c}}{|\mathbf{r} - \mathbf{r}'|}\right\}\\
+&= \frac{\mathrm{i}\omega}{4\pi c}\sum_{p\ell m}\left[\bm{\mathcal{M}}_{p\ell m}(\mathbf{r},k)\mathbf{M}_{p\ell m}(\mathbf{r}',k) + \bm{\mathcal{N}}_{p\ell m}(\mathbf{r},k)\mathbf{N}_{p\ell m}(\mathbf{r}',k)\right]\Theta(r - r')\\
+&+ \frac{\mathrm{i}\omega}{4\pi c}\sum_{p\ell m}\left[\mathbf{M}_{p\ell m}(\mathbf{r},k)\bm{\mathcal{M}}_{p\ell m}(\mathbf{r}',k) + \mathbf{N}_{p\ell m}(\mathbf{r},k)\bm{\mathcal{N}}_{p\ell m}(\mathbf{r}',k)\right]\Theta(r' - r) - \frac{c^2}{\omega^2}\hat{\mathbf{r}}\hat{\mathbf{r}}\delta(\mathbf{r} - \mathbf{r}').
+\end{split}
+\end{equation}
+The notation here includes $k= \omega/c$ as well as the vector spherical harmonics $\mathbf{M}_{p\ell m}(\mathbf{r},k)$, etc., which take different forms depending on whether the observer coordinate is closer to the origin than the source coordinate. The formal definitions of the vector harmonics are given in Appendix \ref{app:greenFuncDetails}.
+
+Notably, $\mathbf{G}_0(\mathbf{r},\mathbf{r}';\omega)$ is defined using Heaviside functions which arise due to the irregularity of one of the solutions to the wave equation at the origin. Geometrically, the source coordinate's radial component sets the radius of a Gaussian surface that serves as a boundary between two regions with different boundary conditions and different viable solutions. The Dirac delta term serves simply to eliminate from consideration the divergent fields arising in the unphysical case $\mathbf{r} = \mathbf{r}'$, and will be largely ignored in the following discussion.
+
+The boundary of a dielectric sphere forms another natural boundary across which the form of the Green's function can be discontinuous. Explicitly, we will let the region outside the sphere be labeled as a set of points $\mathbb{V}_1$ and the region inside be similarly labeled $\mathbb{V}_2$. First defining the Green's function that is valid for an observer outside the sphere as
+\begin{equation}
+\mathbf{G}_1(\mathbf{r},\mathbf{r}';\omega) = \mathbf{G}_{11}(\mathbf{r},\mathbf{r}';\omega) + \mathbf{G}_{12}(\mathbf{r},\mathbf{r}';\omega)
+\end{equation}
+where we have used the convention $\mathbf{G}_{\mathrm{obs},\mathrm{src}}$ to label each term, we can see that the function's components each display Heaviside behavior:
+\begin{equation}
+\begin{split}
+&\mathbf{G}_{11}(\mathbf{r},\mathbf{r}';\omega) = \mathbf{G}_0(\mathbf{r},\mathbf{r}';\omega)\Theta(\mathbf{r}\in\mathbb{V}_1)\Theta(\mathbf{r}'\in\mathbb{V}_1)\\[0.5em]
+&+\frac{\mathrm{i}\omega}{4\pi c}\sum_{p\ell m}\left[A^>_{p\ell m}(\omega)\bm{\mathcal{M}}_{p\ell m}(\mathbf{r},k)\bm{\mathcal{M}}_{p\ell m}(\mathbf{r}',k) + B_{p\ell m}^>(\omega)\bm{\mathcal{N}}_{p\ell m}(\mathbf{r},k)\bm{\mathcal{N}}_{p\ell m}(\mathbf{r}',k)\right]\Theta(\mathbf{r}\in\mathbb{V}_1)\Theta(\mathbf{r}' \in \mathbb{V}_1)\\
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+\mathbf{G}_{12}(\mathbf{r},\mathbf{r}';\omega) &= \frac{\mathrm{i}\omega\sqrt{\epsilon(\omega)}}{4\pi c}\sum_{p\ell m}\left[A_{p\ell m}^<(\omega)\bm{\mathcal{M}}_{p\ell m}(\mathbf{r},k)\mathbf{M}_{p\ell m}(\mathbf{r}',\sqrt{\epsilon(\omega)}k) + \right.\\
+&+\left.B_{p\ell m}^<(\omega)\bm{\mathcal{N}}_{p\ell m}(\mathbf{r},k)\mathbf{N}_{p\ell m}(\mathbf{r}',\sqrt{\epsilon(\omega)}k)\right]\Theta(\mathbf{r}\in\mathbb{V}_1)\Theta(\mathbf{r}'\in\mathbb{V}_2).
+\end{split}
+\end{equation}
+The expansion coefficients $A_{p\ell m}^{\cdot}(\omega),\ldots$ are given in Appendix \ref{app:greenFuncDetails} for brevity.
+
+The sum is taken over three indices, $p$, $\ell$, and $m$, that detail each harmonic's reflection symmetry about the $x$-axis, its Legendre polynomial order, and its Legendre polynomial degree, respectively. Further, in the case of $\mathbf{G}_{12}(\mathbf{r},\mathbf{r}';\omega)$, the frequency argument of the source harmonics has been multiplied by the refractive index $\sqrt{\epsilon(\omega)}$, detailing the effects of wave retardation and attenuation within a medium such that the complete angular and radial dependence of the fields set up outside the sphere by a given source current are captured simply by the series representation of $\mathbf{G}_1$.
+
+The Green's function valid for an observer inside the sphere,
+\begin{equation}
+\mathbf{G}_2(\mathbf{r},\mathbf{r}';\omega) = \mathbf{G}_{21}(\mathbf{r},\mathbf{r}';\omega) + \mathbf{G}_{22}(\mathbf{r},\mathbf{r}';\omega),
+\end{equation}
+takes a similar form. Explicitly,
+\begin{equation}
+\begin{split}
+\mathbf{G}_{21}(\mathbf{r},\mathbf{r}';\omega) &= \frac{\mathrm{i}\omega}{4\pi c}\sum_{p\ell m}\left[C_{p\ell m}^>(\omega)\mathbf{M}_{p\ell m}(\mathbf{r},\sqrt{\epsilon(\omega)}k)\bm{\mathcal{M}}(\mathbf{r}',k)\right.\\
+&\left.+ D_{p\ell m}^>(\omega)\mathbf{N}_{p\ell m}(\mathbf{r},k)\bm{\mathcal{N}}_{p\ell m}(\mathbf{r}',k)\right]\Theta(\mathbf{r}\in\mathbb{V}_2)\Theta(\mathbf{r}'\in\mathbb{V}_1)
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+\mathbf{G}_{22}(\mathbf{r},\mathbf{r}';\omega) &= \mathbf{G}_0(\mathbf{r},\mathbf{r}';\sqrt{\epsilon(\omega)}\omega)\Theta(\mathbf{r}\in\mathbb{V}_2)\Theta(\mathbf{r}'\in\mathbb{V}_2)\\[0.5em]
+&+ \frac{\mathrm{i}\omega\sqrt{\epsilon(\omega)}}{4\pi c}\sum_{p\ell m}\left[C_{p\ell m}^<(\omega)\mathbf{M}_{p\ell m}(\mathbf{r},\sqrt{\epsilon(\omega)}k)\mathbf{M}(\mathbf{r}',\sqrt{\epsilon(\omega)}k)\right.\\
+&\left.+ D_{p\ell m}^<(\omega)\mathbf{N}_{p\ell m}(\mathbf{r},\sqrt{\epsilon(\omega)}k)\mathbf{N}_{p\ell m}(\mathbf{r}',\sqrt{\epsilon(\omega)}k)\right]\Theta(\mathbf{r}\in\mathbb{V}_2)\Theta(\mathbf{r}'\in\mathbb{V}_2).
+\end{split}
+\end{equation}
+
+
+
+
+
+
+
+
+\section{Green's Function Details}\label{app:greenFuncDetails}
+
+
+
+\subsection{Harmonic Definitions}
+
+The dyadic Green's function of a sphere is composed of transverse vector spherical harmonics
+\begin{equation}
+\begin{split}
+\mathbf{M}_{p\ell m}(\mathbf{r},k) &= \sqrt{K_{\ell m}}\left[\frac{(-1)^{p + 1}m}{\sin\theta}j_\ell(kr)P_{\ell m}(\cos\theta)S_{p+1}(m\phi)\hat{\bm{\theta}} - j_\ell(kr)\frac{\partial P_{\ell m}(\cos\theta)}{\partial\theta}S_p(m\phi)\hat{\bm{\phi}}\right],\\[0.5em]
+\mathbf{N}_{p\ell m}(\mathbf{r},k) &= \sqrt{K_{\ell m}}\left[\frac{\ell(\ell + 1)}{kr}j_\ell(kr)P_{\ell m}(\cos\theta)S_p(m\phi)\hat{\mathbf{r}}\right.\\
+&+ \left.\frac{1}{kr}\frac{\partial\{rj_\ell(kr)\}}{\partial r}\left(\frac{\partial P_{\ell m}(\cos\theta)}{\partial\theta}S_p(m\phi)\hat{\bm{\theta}} + \frac{(-1)^{p+1}m}{\sin\theta}P_{\ell m}(\cos\theta)S_{p + 1}(m\phi)\hat{\bm{\phi}}\right)\right],
+\end{split}
+\end{equation}
+which each have zero divergence, i.e. $\nabla\cdot\mathbf{M}_{p\ell m}(\mathbf{r},k) = \nabla\cdot\mathbf{N}_{p\ell m}(\mathbf{r},k) = 0$, and longitudinal vector spherical harmonics
+\begin{equation}
+\begin{split}
+\mathbf{L}_{p\ell m}(\mathbf{r},k) &= \frac{1}{k}\nabla\left\{\sqrt{K_{\ell m}}\sqrt{\ell(\ell + 1)}j_\ell(kr)P_{\ell m}(\cos\theta)S_p(m\phi)\right\}\\
+&= \sqrt{K_{\ell m}}\sqrt{\ell(\ell + 1)}\left[\frac{1}{k}\frac{\partial\{j_\ell(kr)\}}{\partial r}P_{\ell m}(\cos\theta)S_p(m\phi)\hat{\mathbf{r}} + \frac{1}{kr}j_\ell(kr)\frac{\partial P_{\ell m}(\cos\theta)}{\partial\theta}S_p(m\phi)\hat{\bm{\theta}}\right.\\
+&\left. + \frac{(-1)^{p+1}m}{kr\sin\theta}j_\ell(kr)P_{\ell m}(\cos\theta)S_{p+1}(m\phi)\hat{\bm{\phi}}\right]
+\end{split}
+\end{equation}
+which obey $\nabla\times\mathbf{L}_{p\ell m}(\mathbf{r},k) = 0$. Here $j_\ell(x)$ are spherical Bessel functions with $\ell = 1,2,3,\ldots,\infty$; $P_{\ell m}(x)$ are associated Legendre polynomials with the same range in $\ell$; $m = 0,1,2,\ldots,\ell$; and 
+\begin{equation}
+S_p(mx) = 
+\begin{cases}
+\cos(mx), & p\;\;\mathrm{even},\\
+\sin(mx), & p \;\;\mathrm{odd}
+\end{cases}
+\end{equation}
+and the same range in $m$. Due to the binary nature of $p$, we will in general need to use special notation to assert that $S_p(x) = S_{p + 2}(x) = S_{p+4}(x) = \cdots$. However, to save space, we will use the convention that any nonzero even value of $p$ is automatically replaced by 0 and any non-one odd value of $p$ is automatically replaced by 1 in what follows. Further, the prefactors $K_{\ell m}$, which are set to $1$ in most texts, are set to
+\begin{equation}
+K_{\ell m} = (2 - \delta_{m0})\frac{2\ell + 1}{\ell(\ell + 1)}\frac{(\ell - m)!}{(\ell + m)!}
+\end{equation}
+in an effort to regularize the transverse harmonics, i.e. ensure that their maximum magnitudes in $\mathbf{r}$ for fixed $k$ are similar for all index combinations $T,p,\ell,m$. The prefactors of the Laplacian harmonics are defined similarly, but with an added factor of $\delta_{TE}$. Here, $T$ is a fourth ``type'' index, similar to the parity ($p$), order ($\ell$), and degree ($m$) indices, that takes values of $M$ (magnetic type) or $E$ (electric type) to describe whether the characteristic field profiles of each mode resemble those of magnetic or electric multipoles. Only the electric longitudinal modes $\mathbf{L}_{p\ell m}(\mathbf{r})$ are nonzero such that we won't bother to invent a second symbol for magnetic longitudinal modes, but the transverse harmonics clearly come in two different types: magnetic modes $\mathbf{M}_{p\ell m}(\mathbf{r},k)$ ($T = M$) and electric modes $\mathbf{N}_{p\ell m}(\mathbf{r},k)$ ($T = E$).
+
+Both the transverse and Laplacian modes also come with a fifth modifier, the ``region'' index, taking values of $<$ for \textit{interior} harmonics and $>$ for \textit{exterior} harmonics, although we have neglected append our definitions with yet another symbol. The interior harmonics, listed above as $\mathbf{L}$, $\mathbf{M}$, and $\mathbf{N}$, are generally used for $\mathbf{r}$ confined within some closed spherical surface such that $r<\infty$ always and $r = 0$ somwhere within the region. To describe fields in regions that do not include the origin, one can find the second set of solutions to the second-order wave equation PDE, which are the so-called \textit{exterior} vector spherical harmonics $\bm{\mathcal{L}}_{p\ell m}(\mathbf{r})$, $\bm{\mathcal{M}}_{p\ell m}(\mathbf{r},k)$, and $\bm{\mathcal{N}}_{p\ell m}(\mathbf{r},k)$. These harmonics are defined with the simple substitutions $j_\ell(kr)\to h_\ell(kr)$ and are explicitly given by
+\begin{equation}
+\begin{split}
+\bm{\mathcal{L}}_{p\ell m}(\mathbf{r},k) &= \frac{1}{k}\nabla\left\{\sqrt{K_{\ell m}}\sqrt{\ell(\ell + 1)}h_\ell(kr)P_{\ell m}(\cos\theta)S_p(m\phi)\right\},\\
+&= \sqrt{K_{\ell m}}\sqrt{\ell(\ell + 1)}\left[\frac{1}{k}\frac{\partial\{h_\ell(kr)\}}{\partial r}P_{\ell m}(\cos\theta)S_p(m\phi)\hat{\mathbf{r}} + \frac{1}{kr}h_\ell(kr)\frac{\partial P_{\ell m}(\cos\theta)}{\partial\theta}S_p(m\phi)\hat{\bm{\theta}}\right.\\
+&\left. + \frac{(-1)^{p+1}m}{kr\sin\theta}h_\ell(kr)P_{\ell m}(\cos\theta)S_{p+1}(m\phi)\hat{\bm{\phi}}\right],\\[1.0em]
+\bm{\mathcal{M}}_{p\ell m}(\mathbf{r},k) &= \sqrt{K_{\ell m}}\left[\frac{(-1)^{p + 1}m}{\sin\theta}h_\ell(kr)P_{\ell m}(\cos\theta)S_{p+1}(m\phi)\hat{\bm{\theta}} - h_\ell(kr)\frac{\partial P_{\ell m}(\cos\theta)}{\partial\theta}S_p(m\phi)\hat{\bm{\phi}}\right],\\[0.5em]
+\bm{\mathcal{N}}_{p\ell m}(\mathbf{r},k) &= \sqrt{K_{\ell m}}\left[\frac{\ell(\ell + 1)}{kr}h_\ell(kr)P_{\ell m}(\cos\theta)S_p(m\phi)\hat{\mathbf{r}}\right.\\
+&+ \left.\frac{1}{kr}\frac{\partial\{rh_\ell(kr)\}}{\partial r}\left(\frac{\partial P_{\ell m}(\cos\theta)}{\partial\theta}S_p(m\phi)\hat{\bm{\theta}} + \frac{(-1)^{p+1}m}{\sin\theta}P_{\ell m}(\cos\theta)S_{p + 1}(m\phi)\hat{\bm{\phi}}\right)\right].
+\end{split}
+\end{equation}
+The functions $h_\ell(kr) = j_\ell(kr) + \mathrm{i}y_\ell(kr)$ are the spherical Hankel functions of the first kind and involve the spherical Bessel functions of both the first kind ($j_\ell[kr]$) and the second kind, $y_\ell(kr)$, the latter of which are irregular at $r\to0$, justifying their exclusion from use in all regions that include the point $r = 0$.
+
+We would like the notation for the transverse harmonics to be as succinct as that of the longitudinal harmonics. Therefore, for shorthand, we can define the transverse vector harmonics more compactly as
+\begin{equation}
+\begin{split}
+\mathbf{X}_{Tp\ell m}(\mathbf{r},k) &= 
+\begin{cases}
+\mathbf{M}_{p\ell m}(\mathbf{r},k), & T=M,\\
+\mathbf{N}_{p\ell m}(\mathbf{r},k), & T=E;
+\end{cases}\\[1.0em]
+\bm{\mathcal{X}}_{Tp\ell m}(\mathbf{r},k) &=
+\begin{cases}
+\bm{\mathcal{M}}_{p\ell m}(\mathbf{r},k), & T=M,\\
+\bm{\mathcal{N}}_{p\ell m}(\mathbf{r},k), & T=E.
+\end{cases}
+\end{split}
+\end{equation}
+Here, we have finally introduced the fourth ``type'' index to the transverse harmonic notation. We can condense the notation further by writing the string of four indices as $\bm{\alpha} = (T,p,\ell,m)$, such that our harmonics can now be written as $\mathbf{L}_{\bm{\alpha}}(\mathbf{r},k)$, $\bm{\mathcal{L}}_{\bm{\alpha}}(\mathbf{r},k)$, $\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)$, and $\bm{\mathcal{X}}_{\bm{\alpha}}(\mathbf{r},k)$. By convention, we'll let $\mathbf{L}_{Mp\ell m}(\mathbf{r},k) = 0$ and $\bm{\mathcal{L}}_{Mp\ell m}(\mathbf{r},k) = 0$ as well as $\mathbf{L}_{Ep\ell m}(\mathbf{r},k) = \mathbf{L}_{p\ell m}(\mathbf{r},k)$ and $\bm{\mathcal{L}}_{Ep\ell m}(\mathbf{r},k) = \bm{\mathcal{L}}_{p\ell m}(\mathbf{r},k)$.
+
+The symmetries of the transverse vector spherical harmonics are such that
+\begin{equation}
+\begin{split}
+\mathbf{M}_{p\ell m}^*(\mathbf{r},k) &= (-1)^\ell\mathbf{M}_{p\ell m}(\mathbf{r},-k),\\
+\mathbf{N}_{p\ell m}^*(\mathbf{r},k) &= (-1)^{\ell + 1}\mathbf{N}_{p\ell m}(\mathbf{r},-k),
+\end{split}
+\end{equation}
+with identical relations for the respective exterior transverse harmonics. Further, they obey the duality
+\begin{equation}
+\begin{split}
+\nabla\times\mathbf{M}_{p\ell m}(\mathbf{r},k) &= k\mathbf{N}_{p\ell m}(\mathbf{r},k),\\
+\nabla\times\mathbf{N}_{p\ell m}(\mathbf{r},k) &= k\mathbf{M}_{p\ell m}(\mathbf{r},k),
+\end{split}
+\end{equation}
+and similar for the exterior transverse harmonics, such that a second set of transverse harmonics can be defined as 
+\begin{equation}
+\begin{split}
+\mathbf{Y}_{\bm{\alpha}}(\mathbf{r},k) &= \frac{1}{k}\nabla\times\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k),\\
+\bm{\mathcal{Y}}_{\bm{\alpha}}(\mathbf{r},k) &= \frac{1}{k}\nabla\times\bm{\mathcal{X}}_{\bm{\alpha}}(\mathbf{r},k).
+\end{split}
+\end{equation}
+These obey the same conjugation symmetry as $\mathbf{X}_{\bm{\alpha}}$ and $\bm{\mathcal{X}}_{\bm{\alpha}}$ but with an extra factor of $-1$ such that
+\begin{equation}
+\begin{split}
+\bm{\mathcal{X}}_{\bm{\alpha}}^*(\mathbf{r},k) &= 
+\begin{cases}
+(-1)^{\ell}\bm{\mathcal{X}}_{\bm{\alpha}}(\mathbf{r},-k), & T = M,\\
+(-1)^{\ell + 1}\bm{\mathcal{X}}_{\bm{\alpha}}(\mathbf{r},-k), & T = E;\\
+\end{cases}\\
+\bm{\mathcal{Y}}_{\bm{\alpha}}^*(\mathbf{r},k) &= 
+\begin{cases}
+(-1)^{\ell + 1}\bm{\mathcal{Y}}_{\bm{\alpha}}(\mathbf{r},-k), & T = M,\\
+(-1)^{\ell}\bm{\mathcal{Y}}_{\bm{\alpha}}(\mathbf{r},-k), & T = E;\\
+\end{cases}
+\end{split}
+\end{equation}
+and similar for the interior transverse harmonics. The longitudinal vector spherical harmonics obey the symmetries
+\begin{equation}
+\begin{split}
+\mathbf{L}_{p\ell m}(\mathbf{r},k) &= (-1)^{\ell+1}\mathbf{L}_{p\ell m}(\mathbf{r},-k),\\
+\bm{\mathcal{L}}_{p\ell m}^*(\mathbf{r},k) &= (-1)^{\ell+1}\bm{\mathcal{L}}_{p\ell m}(\mathbf{r},-k).
+\end{split}
+\end{equation}
+
+Due to their regularity at all points $\mathbf{r}$, the transverse interior harmonics obey the orthogonality condition
+\begin{equation}\label{eq:vectorSphericalHarmonicOrthogonality}
+\int \mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)\cdot\mathbf{X}_{\bm{\alpha}'}(\mathbf{r},k')\;\mathrm{d}^3\mathbf{r} = \frac{2\pi^2}{k^2}\delta(k - k')(1 - \delta_{p1}\delta_{m0})\delta_{TT'}\delta_{pp'}\delta_{\ell\ell'}\delta_{mm'}\\
+\end{equation}
+for $k,k' > 0$ and integration across the entire universe. The simpler orthogonality relations that contribute to this simple result are given in Appendix \ref{sec:simpleOrthogonality}. The longitudinal interior harmonics obey the orthogonality condition
+\begin{equation}\label{eq:longitudinalHarmonicOrthogonality}
+\int\mathbf{L}_{\bm{\alpha}}(\mathbf{r},k)\cdot\mathbf{L}_{\bm{\alpha}'}(\mathbf{r},k')\;\mathrm{d}^3\mathbf{r} = \frac{2\pi^2}{k^2}\delta(k - k')(1 - \delta_{p1}\delta_{m0})\delta_{TE}\delta_{TT'}\delta_{pp'}\delta_{\ell\ell'}\delta_{mm'}.
+\end{equation}
+Accordingly, the transverse and longitudinal harmonics also satisfy convenient orthogonality relations when integrated over finite regions in $r$. Explicitly,
+\begin{equation}\label{eq:vectorSphericalHarmonicOrthogonalityConditionFinite}
+\begin{split}
+\int_0^{2\pi}\int_0^\pi\int_a^b\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)\cdot\mathbf{X}_{\bm{\alpha}'}(\mathbf{r},k')r^2\sin\theta\;\mathrm{d}r\,\mathrm{d}\theta\,\mathrm{d}\phi &= 4\pi(1 - \delta_{p1}\delta_{m0})\delta_{\bm{\alpha}\bm{\alpha}'}R_{T\ell}^{\ll}(k,k';a,b),\\
+\int_0^{2\pi}\int_0^\pi\int_a^b\mathbf{L}_{\bm{\alpha}}(\mathbf{r},k)\cdot\mathbf{L}_{\bm{\alpha}'}(\mathbf{r},k')r^2\sin\theta\;\mathrm{d}r\,\mathrm{d}\theta\,\mathrm{d}\phi &= 4\pi(1 - \delta_{p1}\delta_{m0})\delta_{\bm{\alpha}\bm{\alpha}'}R_{L\ell}^{\ll}(k,k';a,b)
+\end{split}
+\end{equation}
+where $R_{T\ell}^\ll(k,k';a,b)$ and $R_{L\ell}^\ll(k,k';a,b)$ are radial integral functions defined by
+\begin{equation}\label{eq:finiteRadialIntegrals}
+\begin{split}
+R_{M\ell}^\ll(k,k';a,b) &= \int_a^bj_\ell(kr)j_\ell(k'r)r^2\;\mathrm{d}r\\
+&= \left.\frac{r^2}{k^2 - k'^2}\left[k'j_{\ell - 1}(k'r)j_\ell(kr) - kj_{\ell - 1}(kr)j_\ell(k'r)\right]\right|_a^b,\\[0.5em]
+R_{E\ell}^\ll(k,k';a,b) &= \frac{\ell + 1}{2\ell + 1}R_{M,\ell - 1}^\ll(k,k';a,b) + \frac{\ell}{2\ell + 1}R_{M,\ell + 1}^\ll(k,k';a,b),\\
+R_{L\ell}^\ll(k,k';a,b) &= \frac{\ell + 1}{2\ell + 1}R_{M,\ell + 1}^\ll(k,k';a,b) + \frac{\ell}{2\ell + 1}R_{M,\ell - 1}^\ll(k,k';a,b).
+\end{split}
+\end{equation}
+The superscript $\ll$ indicates that the integral involves two spherical Bessel functions of the first kind and thus arises from the integration of two interior harmonics. 
+
+From their opposing Helmholtz symmetries, we can conclude that integrals of the inner product of $\mathbf{M}$ or $\mathbf{N}$ and $\mathbf{L}$ over all space are null. However, the same is not true when integrating over finite regions of space. Again choosing the region of integration to be finite in $r$, we can see that
+\begin{equation}\label{eq:vectorSphericalHarmonicOrthogonalityConditionFiniteMixed}
+\begin{split}
+\int_0^{2\pi}\int_0^{\pi}\int_a^b\mathbf{L}_{\bm{\alpha}}(\mathbf{r},k)\cdot\mathbf{X}_{\bm{\alpha}'}(\mathbf{r},k')r^2\sin\theta\;\mathrm{d}r\,\mathrm{d}\theta\,\mathrm{d}\phi &= 4\pi(1 - \delta_{p1}\delta_{m0})\sqrt{\ell(\ell + 1)}\delta_{TE}\delta_{T'E}\delta_{pp'}\delta_{\ell\ell'}\delta_{mm'}\\[-0.5em]
+&\qquad\times\frac{1}{kk'}\left[bj_\ell(kb)j_\ell(k'b) - aj_\ell(ka)j_\ell(k'a)\right].
+\end{split}
+\end{equation}
+Note that integration of the longitudinal and transverse magnetic harmonics always produces zero, even when carried out over finite regions in $r$. Integration of the longitudinal and transverse electric harmonics can be seen to produce zero in the limit where the integration region is allowed to become infinite. Explicitly, with $a\to0$ and $b\to\infty$, one can see that $\lim_{r\to0}rj_\ell(kr)j_\ell(k'r) = \lim_{r\to\infty}rj_\ell(kr)j_\ell(k'r) = 0$ for all real, positive $k$ and $k'$ if $\ell$ is an integer greater than 0.
+
+An important case of this integral occurs when $b\to a$ and $a\to0$, i.e. during integration over a finite sphere. In this case, the characteristic wavenumbers are often defined such that $k = z_{\ell n}/a$ and $k' = z_{\ell n'}/a$, where $z_{\ell n}$ is the $n^\mathrm{th}$ unitless root of $j_\ell(x)$ with $n = 1,2,\ldots$. With these values of $k$ and $k'$ fixed, we can easily see that $R_{M\ell}^\ll(z_{\ell n}/a,z_{\ell n'}/a;0,a) = 0$ for $n\neq n'$. Further, with
+\begin{equation}
+\lim_{k'\to k}R_{M\ell}^\ll(k,k';0,a) = \frac{a^3}{2}\left[j_\ell^2(ka) - j_{\ell - 1}(ka)j_{\ell + 1}(ka)\right]
+\end{equation}
+by L'Hopital's rule, we can see that
+\begin{equation}
+R_{M\ell}^\ll\left(\frac{z_{\ell n}}{a},\frac{z_{\ell n'}}{a};0,a\right) = -\delta_{nn'}\frac{a^3}{2}j_{\ell - 1}(z_{\ell n})j_{\ell + 1}(z_{\ell n}).
+\end{equation}
+Finally, using the recursion identity $j_\ell(x) = [x/(2\ell + 1)][j_{\ell - 1}(x) + j_{\ell 1}(x)]$, we can see that $j_{\ell - 1}(z_{n\ell}) = -j_{\ell + 1}(z_{n\ell})$. Therefore, letting $k_{\bm{\alpha}n} = z_{\ell n}/a$ and $k_{\bm{\alpha}'n'} = z_{\ell'n'}/a$, we have
+\begin{equation}
+\begin{split}
+\int_0^{2\pi}\int_0^\pi\int_0^a\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k_{\bm{\alpha}n})\cdot\mathbf{X}_{\bm{\alpha}'}(\mathbf{r},k_{\bm{\alpha}'n'})r^2\sin\theta\;\mathrm{d}r\;\mathrm{d}\theta\;\mathrm{d}\phi &= 2\pi a^3(1 - \delta_{p1}\delta_{m0})\delta_{\bm{\alpha}\bm{\alpha}'}\delta_{nn'}j_{\ell + 1}^2(z_{\ell n}),\\
+\int_0^{2\pi}\int_0^\pi\int_0^a\mathbf{L}_{\bm{\alpha}}(\mathbf{r},k_{\bm{\alpha}n})\cdot\mathbf{L}_{\bm{\alpha}'}(\mathbf{r},k_{\bm{\alpha}'n'})r^2\sin\theta\;\mathrm{d}r\;\mathrm{d}\theta\;\mathrm{d}\phi &= 2\pi a^3(1 - \delta_{p1}\delta_{m0})\delta_{\bm{\alpha}\bm{\alpha}'}\delta_{nn'}j_{\ell + 1}^2(z_{\ell n}).
+\end{split}
+\end{equation}
+
+\noindent\rule{\textwidth}{0.5pt}\\
+
+For calculations involving one or more \textit{exterior} harmonics, one simply replaces one or both of the spherical Bessel functions with spherical Hankel functions. More explicitly, if we define 
+\begin{equation}
+z_\ell^i(x) = 
+\begin{cases}
+j_\ell(x), & i = \,<,\\
+h_\ell(x), & i = \,>,
+\end{cases}
+\end{equation}
+then we can generalize Eq. \eqref{eq:finiteRadialIntegrals} with
+\begin{equation}
+\begin{split}
+R_{M\ell}^{ij}(k,k';a,b) &= \int_a^bz_\ell^i(kr)z_\ell^j(k'r)r^2\;\mathrm{d}r\\
+&= \lim_{\kappa\to k'}\frac{r^2}{k^2 - \kappa^2}\left[\kappa z_{\ell-1}^j(\kappa r)z_{\ell}^i(kr) - kz_{\ell-1}^i(kr)z_{\ell}^j(\kappa r)\right]_a^b
+\end{split}
+\end{equation}
+and $R_{E\ell}^{ij}(k,k';a,b) = (\ell+1)R_{M,\ell - 1}^{ij}(k,k';a,b)/(2\ell + 1) + \ell R_{M,\ell + 1}^{ij}(k,k';a,b)/(2\ell + 1)$. For $k'\neq k$, the limits within both the magnetic and electric radial integrals can be evaluated with simple substitution, but for $k'=k$ it is necessary to evaluate the limit carefully.
+
+
+
+
+and Laplacian vector spherical harmonics
+\begin{equation}
+\begin{split}
+\mathbf{F}_{Tp\ell m}(\mathbf{r}) &= \nabla\left\{\delta_{TE}\sqrt{(2 - \delta_{m0})\frac{(\ell - m)!}{(\ell + m)!}}r^\ell P_{\ell m}(\cos\theta)S_p(m\phi)\right\},\\
+% \nabla f_{Tp\ell m}^{>}(\mathbf{r}) &= \nabla\left\{\delta_{TE}\sqrt{(2 - \delta_{m0})\frac{(\ell - m)!}{(\ell + m)!}}\frac{1}{r^{\ell + 1}}P_{\ell m}(\cos\theta)S_p(m\phi)\right\},
+&= \delta_{TE}\sqrt{(2 - \delta_{m0})\frac{(\ell - m)!}{(\ell + m)!}}\left[ \vphantom{\frac{(-1)^{p+1}}{\sin\theta}} \ell r^{\ell - 1}P_{\ell m}(\cos\theta)S_p(m\phi)\hat{\mathbf{r}}\right.\\
+&\qquad+ \left. r^{\ell - 1}\frac{\partial P_{\ell m}(\cos\theta)}{\partial \theta}S_p(m\phi)\hat{\bm{\theta}} + \frac{(-1)^{p+1}m}{\sin\theta}r^{\ell - 1}P_{\ell m}(\cos\theta)S_{p+1}(m\phi)\hat{\bm{\phi}} \right]
+\end{split}
+\end{equation}
+which have neither curl ($\nabla\times\mathbf{F}_{Tp\ell m}(\mathbf{r}) = 0$) or divergence ($\nabla\cdot\mathbf{F}_{Tp\ell m}(\mathbf{r}) = 0$). 
+
+\begin{equation}
+\begin{split}
+\mathbf{M}_{p\ell m}(\mathbf{r},k) &= \sqrt{K_{\ell m}}\left[\frac{(-1)^{p + 1}m}{\sin\theta}j_\ell(kr)P_{\ell m}(\cos\theta)S_{p+1}(m\phi)\hat{\bm{\theta}} - j_\ell(kr)\frac{\partial P_{\ell m}(\cos\theta)}{\partial\theta}S_p(m\phi)\hat{\bm{\phi}}\right],\\[0.5em]
+\mathbf{N}_{p\ell m}(\mathbf{r},k) &= \sqrt{K_{\ell m}}\left[\frac{\ell(\ell + 1)}{kr}j_\ell(kr)P_{\ell m}(\cos\theta)S_p(m\phi)\hat{\mathbf{r}}\right.\\
+&+ \left.\frac{1}{kr}\frac{\partial\{rj_\ell(kr)\}}{\partial r}\left(\frac{\partial P_{\ell m}(\cos\theta)}{\partial\theta}S_p(m\phi)\hat{\bm{\theta}} + \frac{(-1)^{p+1}m}{\sin\theta}P_{\ell m}(\cos\theta)S_{p + 1}(m\phi)\hat{\bm{\phi}}\right)\right],
+\end{split}
+\end{equation}
+
+
+\begin{equation}
+\begin{split}
+\bm{\mathcal{F}}_{Tp\ell m}(\mathbf{r},k) &= \nabla\left\{\delta_{TE}\sqrt{(2 - \delta_{m0})\frac{(\ell - m)!}{(\ell + m)!}}\frac{1}{r^{\ell + 1}} P_{\ell m}(\cos\theta)S_p(m\phi)\right\},\\
+&= \delta_{TE}\sqrt{(2 - \delta_{m0})\frac{(\ell - m)!}{(\ell + m)!}}\left[(-\ell - 1)\frac{1}{r^{\ell + 2}}P_{\ell m}(\cos\theta)S_p(m\phi)\hat{\mathbf{r}}\right.\\
+&\qquad+ \left.\frac{1}{r^{\ell + 2}}\frac{\partial P_{\ell m}(\cos\theta)}{\partial \theta}S_p(m\phi)\hat{\bm{\theta}} + \frac{(-1)^{p+1}m}{\sin\theta}\frac{1}{r^{\ell + 2}}P_{\ell m}(\cos\theta)S_{p+1}(m\phi)\hat{\bm{\phi}} \right]
+\end{split}
+\end{equation}
+ 
+
+
+
+
+
+ The Laplacian harmonics are either irregular at infinity ($r^\ell$) or at the origin ($1/r^{\ell + 1}$) for $\ell > 0$, such that their orthogonality relations can only be defined across finite regions in $r$:
+\begin{equation}\label{eq:laplacianHarmonicOrthogonality}
+\begin{split}
+\int_0^{2\pi}\int_0^\pi\int_a^b\mathbf{F}_{\bm{\alpha}}(\mathbf{r})\cdot\mathbf{F}_{\bm{\alpha}'}(\mathbf{r})r^2\sin\theta\;\mathrm{d}r\,\mathrm{d}\theta\,\mathrm{d}\phi &= 4\pi\frac{\ell}{2\ell + 1}\left(b^{2\ell + 1} - a^{2\ell + 1}\right)\delta_{T\!E}\delta_{TT'}\delta_{pp'}\delta_{\ell\ell'}\delta_{mm'},\\
+\int_0^{2\pi}\int_0^\pi\int_a^b\bm{\mathcal{F}}_{\bm{\alpha}}(\mathbf{r})\cdot\bm{\mathcal{F}}_{\bm{\alpha}'}(\mathbf{r})r^2\sin\theta\;\mathrm{d}r\,\mathrm{d}\theta\,\mathrm{d}\phi &= -4\pi\frac{\ell + 1}{2\ell + 1}\left(b^{-2\ell - 1} - a^{-2\ell - 1}\right)\delta_{TE}\delta_{TT'}\delta_{pp'}\delta_{\ell\ell'}\delta_{mm'},\\
+\int_0^{2\pi}\int_0^\pi\int_a^b\mathbf{F}_{\bm{\alpha}}(\mathbf{r})\cdot\bm{\mathcal{F}}_{\bm{\alpha}'}(\mathbf{r})r^2\sin\theta\;\mathrm{d}r\,\mathrm{d}\theta\,\mathrm{d}\phi &= 0.
+\end{split}
+\end{equation}
+
+A useful mixed Laplacian-transverse orthogonality conditions also exists:
+\begin{equation}\label{eq:angularMixedOrthogonalityNf}
+\begin{split}
+\int_0^{2\pi}\int_0^\pi&\left[\hat{\mathbf{r}}\cdot\mathbf{N}_{p\ell m}(r,\theta,\phi;k)\right]f_{p'\ell'm'}^i(r,\theta,\phi)\sin\theta\;\mathrm{d}\theta\,\mathrm{d}\phi\\
+&= 4\pi\delta_{pp'}\delta_{\ell\ell'}\delta_{mm'}(1 - \delta_{p1}\delta_{m0})\sqrt{\frac{\ell(\ell + 1)}{2\ell + 1}}\frac{j_\ell(kr)}{kr}\left[r^\ell\delta_{i,<} + \frac{\delta_{i,>}}{r^{\ell + 1}}\right],
+\end{split}
+\end{equation}
+as does the mixed Laplacian-longitudinal orthogonality condition
+\begin{equation}\label{eq:angularMixedOrthogonalityLf}
+\begin{split}
+\int_0^{2\pi}\int_0^\pi&\left[\hat{\mathbf{r}}\cdot\mathbf{L}_{p\ell m}(r,\theta,\phi;k)\right]f_{p'\ell'm'}^i(r,\theta,\phi)\sin\theta\;\mathrm{d}\theta\,\mathrm{d}\phi\\
+&= 4\pi\delta_{pp'}\delta_{\ell\ell'}\delta_{mm'}(1 - \delta_{p1}\delta_{m0})\frac{1}{\sqrt{2\ell + 1}}\frac{1}{k}\frac{\partial j_\ell(kr)}{\partial r}\left[r^\ell\delta_{i,<} + \frac{\delta_{i,>}}{r^{\ell + 1}}\right].
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\int_{r<a}\mathbf{F}_{\bm{\alpha}}(\mathbf{r})\cdot\mathbf{X}_{\bm{\beta}}(\mathbf{r},k)\;\mathrm{d}^3\mathbf{r} &= \int_{r < a}\mathbf{X}_{\bm{\beta}}(\mathbf{r},k)\cdot\nabla f_{\bm{\alpha}}^<(\mathbf{r})\;\mathrm{d}^3\mathbf{r}\\
+&= \int_{r < a}\nabla\cdot\left\{\mathbf{X}_{\bm{\beta}}(\mathbf{r},k) f_{\bm{\alpha}}^<(\mathbf{r})\right\}\;\mathrm{d}^3\mathbf{r} - \int_{r < a}\nabla\cdot\mathbf{X}_{\bm{\beta}}(\mathbf{r},k)f_{\bm{\alpha}}^<(\mathbf{r})\;\mathrm{d}^3\mathbf{r}\\
+&= \int_0^{2\pi}\int_0^\pi\mathbf{X}_{\bm{\beta}}(a,\theta,\phi;k)f_{\bm{\alpha}}^<(a,\theta,\phi)\cdot \hat{\mathbf{r}}a^2\sin\theta\;\mathrm{d}\theta\,\mathrm{d}\phi - 0\\
+&= \delta_{TE}\delta_{T'E}\int_0^{2\pi}\int_0^\pi\left[\mathbf{N}_{p\ell m}(a,\theta,\phi;k)\cdot\hat{\mathbf{r}}\right]f_{p'\ell' m'}^<(a,\theta,\phi)a^2\sin\theta\;\mathrm{d}\theta\,\mathrm{d}\phi\\
+&= 4\pi\delta_{TE}\delta_{T'E}\delta_{pp'}\delta_{\ell\ell'}\delta_{mm'}(1 - \delta_{p1}\delta_{m0})\sqrt{\frac{\ell(\ell + 1)}{2\ell + 1}}\frac{j_\ell(ka)}{ka}a^{\ell+2}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\int_{a<r<b}\mathbf{F}_{\bm{\alpha}}(\mathbf{r})\cdot\mathbf{L}_{\bm{\beta}}(\mathbf{r},k)\;\mathrm{d}^3\mathbf{r} &= 4\pi\delta_{TE}\delta_{T'E}\delta_{pp'}\delta_{\ell\ell'}\delta_{mm'}(1 - \delta_{p1}\delta_{m0})\frac{\ell}{\sqrt{2\ell+1}}\left(\frac{j_\ell(kb)}{kb}b^{\ell+2} - \frac{j_\ell(ka)}{ka}a^{\ell+2}\right),\\
+\int_{a<r<b}\bm{\mathcal{F}}_{\bm{\alpha}}(\mathbf{r})\cdot\mathbf{L}_{\bm{\beta}}(\mathbf{r},k)\;\mathrm{d}^3\mathbf{r} &= 4\pi\delta_{TE}\delta_{T'E}\delta_{pp'}\delta_{\ell\ell'}\delta_{mm'}(1 - \delta_{p1}\delta_{m0})\frac{\ell+1}{\sqrt{2\ell+1}}\frac{1}{k}\left(\frac{1}{a^\ell}j_\ell(ka) - \frac{1}{b^\ell}j_\ell(kb)\right).
+\end{split}
+\end{equation}
+
+The associated completeness relations to these orthogonality conditions can be derived from the Helmholtz expansion of $\bm{1}_2\delta(\mathbf{r} - \mathbf{r}')$, which states that 
+\begin{equation}\label{eq:vectorSphericalHarmonicCompleteness}
+\begin{split}
+\bm{1}_2\delta(\mathbf{r} - \mathbf{r}') &= \frac{1}{2\pi^2}\int_0^\infty\sum_{\bm{\alpha}}k^2\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)\mathbf{X}_{\bm{\alpha}}(\mathbf{r}',k)\;\mathrm{d}k\\
+&+ \frac{1}{4\pi}\sum_{\bm{\alpha}}\nabla\nabla'\left\{ f_{\bm{\alpha}}^>(\mathbf{r})f_{\bm{\alpha}}^<(\mathbf{r}')\Theta(r - r') +  f_{\bm{\alpha}}^<(\mathbf{r})f_{\bm{\alpha}}^>(\mathbf{r}')\Theta(r' - r)\right\}.
+\end{split}
+\end{equation}
+Here, the scalar harmonics 
+\begin{equation}\label{eq:scalarHarmonics}
+f_{\bm{\alpha}}^i(\mathbf{r}) = \delta_{TE}\sqrt{(2 - \delta_{m0})\frac{(\ell - m)!}{(\ell + m)!}}P_{\ell m}(\cos\theta)S_p(m\phi)\times
+\begin{cases}
+r^\ell, & i = \, <,\\
+\dfrac{1}{r^{\ell + 1}}, & i = \,>
+\end{cases}
+\end{equation}
+are defined such that $\mathbf{F}_{\bm{\alpha}}(\mathbf{r}) = \nabla f_{\bm{\alpha}}^<(\mathbf{r})$ and $\bm{\mathcal{F}}_{\bm{\alpha}}(\mathbf{r}) = \nabla f_{\bm{\alpha}}^>(\mathbf{r})$.
+Note that, as is clear form the derivation of Section \ref{app:helmholtzDelta}, the second term is curl-free in both the $\mathbf{r}$ and $\mathbf{r}'$ and the first term is likewise transverse in both coordinate systems.
+
+The transverse exterior harmonics also satisfy the convenient relation at large radii
+\begin{equation}
+\begin{split}
+\lim_{r\to\infty}\int_0^{2\pi}\int_0^\pi \bm{\mathcal{X}}_{\bm{\alpha}}(\mathbf{r},k)&\times\bm{\mathcal{Y}}_{\bm{\alpha}'}(\mathbf{r},k)\cdot\hat{\mathbf{r}}r^2\sin\theta\;\mathrm{d}\theta\,\mathrm{d}\phi = \\
+&(1 + \delta_{p0}\delta_{m0} - \delta_{p1}\delta_{m0})2\pi\frac{(-1)^{\ell + 1}\mathrm{i}^{2\ell + 1}}{k^2}\frac{\ell(\ell + 1)}{2\ell + 1}\frac{(\ell + m)!}{(\ell - m)!}\delta_{\bm{\alpha}\bm{\alpha}'}.
+\end{split}
+\end{equation}
+
+It is also useful from time to time to use the unitless regularized longitudinal harmonics
+\begin{equation}
+\begin{split}
+\mathbf{Z}_{\bm{\alpha}}(\mathbf{r};s) &= s^{-\ell + 1}\nabla f_{\bm{\alpha}}^<(\mathbf{r})\Theta(s - r) + s^{\ell + 2}\nabla f_{\bm{\alpha}}^>(\mathbf{r})\Theta(r - s)\\
+&= \nabla\left\{s^{-\ell + 1} f_{\bm{\alpha}}^<(\mathbf{r})\Theta(s - r) + s^{\ell + 2} f_{\bm{\alpha}}^>(\mathbf{r})\Theta(r - s)\right\}\\
+&= s^{-\ell + 1}\mathbf{F}_{\bm{\alpha}}(\mathbf{r})\Theta(s - r) + s^{\ell + 2}\bm{\mathcal{F}}_{\bm{\alpha}}(\mathbf{r})\Theta(r - s)
+\end{split}
+\end{equation}
+which obey the orthogonality conditions
+\begin{equation}
+\begin{split}
+\int\mathbf{Z}_{\bm{\alpha}}(\mathbf{r};a)\cdot\mathbf{Z}_{\bm{\beta}}(\mathbf{r};b)\;\mathrm{d}^3\mathbf{r} &= 4\pi\delta_{TE}\delta_{\bm{\alpha}\bm{\beta}}(1 - \delta_{p1}\delta_{m0})\left[\Theta(a - b)\frac{b^{\ell + 2}}{a^{\ell - 1}} + \Theta(b - a)\frac{a^{\ell + 2}}{b^{\ell - 1}}\right],\\
+\int\mathbf{Z}_{\bm{\alpha}}(\mathbf{r};s)\cdot\mathbf{Z}_{\bm{\beta}}(\mathbf{r};s)\;\mathrm{d}^3\mathbf{r} &= 4\pi s^3\delta_{TE}\delta_{\bm{\alpha}\bm{\beta}}(1 - \delta_{p1}\delta_{m0}).
+\end{split}
+\end{equation}
+
+
+
+\subsection{Expansion Coefficient Definitions}
+
+The expansion coefficients of the Green's function are divided into two sets, one for a source coordinate $\mathbf{r}'\in\mathbb{V}_2$ confined inside the sphere and denoted by the superscript ``$<$'', and another for $\mathbf{r}'\in\mathbb{V}_1$ and denoted by ``$>$''. Within these sets, the coefficients $A$ and $B$ are reserved for Green's function terms for which the observer is outside the sphere surface, and the coefficients $C$ and $D$ are used for terms in which the observer coordinate is inside. Explicitly, the coefficients are defined as
+\begin{equation}
+\begin{split}
+A_{p\ell m}^>(\mathcal{k}) &= \frac{j_\ell(\mathcal{k}a)\psi_\ell\left(\sqrt{\epsilon(\omega)}\mathcal{k}a\right) - j_\ell\left(\sqrt{\epsilon(\omega)}\mathcal{k}a\right)\psi_\ell(\mathcal{k}a)}{j_\ell\left(\sqrt{\epsilon(\omega)}\mathcal{k}a\right)\xi_\ell(\mathcal{k}a) - h_\ell^{(1)}(\mathcal{k}a)\psi_\ell\left(\sqrt{\epsilon(\omega)}\mathcal{k}a\right)},\\[1.0em]
+B_{p\ell m}^>(\mathcal{k}) &= \frac{j_\ell(\mathcal{k}a)\psi_\ell\left(\sqrt{\epsilon(\omega)}\mathcal{k}a\right) - \epsilon(\omega) j_\ell\left(\sqrt{\epsilon(\omega)}\mathcal{k}a\right)\psi_\ell(\mathcal{k}a)}{\epsilon(\omega) j_\ell\left(\sqrt{\epsilon(\omega)}\mathcal{k}a\right)\xi_\ell(\mathcal{k}a) - h_\ell^{(1)}(\mathcal{k}a)\xi_\ell\left(\sqrt{\epsilon(\omega)}\mathcal{k}a\right)},\\[1.0em]
+C_{p\ell m}^>(\mathcal{k}) &= \frac{j_\ell(\mathcal{k}a)\xi_\ell(\mathcal{k}a) - h_\ell^{(1)}(\mathcal{k}a)\psi_\ell(\mathcal{k}a)}{j_\ell\left(\sqrt{\epsilon(\omega)}\mathcal{k}a\right)\xi_\ell(\mathcal{k}a) - h_\ell^{(1)}(\mathcal{k}a)\psi_\ell\left(\sqrt{\epsilon(\omega)}\mathcal{k}a\right)},\\[1.0em]
+D_{p\ell m}^>(\mathcal{k}) &= \frac{\sqrt{\epsilon(\omega)}\left[j_\ell(\mathcal{k}a)\xi_\ell(\mathcal{k}a) - h_\ell^{(1)}(\mathcal{k}a)\psi_\ell(\mathcal{k}a)\right]}{\epsilon(\omega) j_\ell\left(\sqrt{\epsilon(\omega)}\mathcal{k}a\right)\xi_\ell(\mathcal{k}a) - h_\ell^{(1)}(\mathcal{k}a)\psi_\ell\left(\sqrt{\epsilon(\omega)}\mathcal{k}a\right)},
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+A_{p\ell m}^<(\mathcal{k}) &= \frac{\psi_\ell\left(\sqrt{\epsilon(\omega)}\mathcal{k}a\right)h_\ell^{(1)}\left(\sqrt{\epsilon(\omega)}\mathcal{k}a\right) - \xi_\ell\left(\sqrt{\epsilon(\omega)}\mathcal{k}a\right)j_\ell\left(\sqrt{\epsilon(\omega)}\mathcal{k}a\right)}{\psi_\ell\left(\sqrt{\epsilon(\omega)}\mathcal{k}a\right)h_\ell^{(1)}(\mathcal{k}a) - \xi_\ell(\mathcal{k}a)j_\ell\left(\sqrt{\epsilon(\omega)}\mathcal{k}a\right)},\\[1.0em]
+B_{p\ell m}^<(\mathcal{k}) &= \frac{\sqrt{\epsilon(\omega)}\left[\psi_\ell\left(\sqrt{\epsilon(\omega)}\mathcal{k}a\right)h_\ell^{(1)}\left(\sqrt{\epsilon(\omega)}\mathcal{k}a\right) - \xi_\ell\left(\sqrt{\epsilon(\omega)}\mathcal{k}a\right)j_\ell\left(\sqrt{\epsilon(\omega)}\mathcal{k}a\right)\right]}{\psi_\ell\left(\sqrt{\epsilon(\omega)}\mathcal{k}a\right)h_\ell^{(1)}(\mathcal{k}a) - \epsilon(\omega)\xi_\ell(\mathcal{k}a)j_\ell\left(\sqrt{\epsilon(\omega)}\mathcal{k}a\right)},\\[1.0em]
+C_{p\ell m}^<(\mathcal{k}) &= \frac{\xi_\ell(\mathcal{k}a)h_\ell^{(1)}\left(\sqrt{\epsilon(\omega)}\mathcal{k}a\right) - \xi_\ell\left(\sqrt{\epsilon(\omega)}\mathcal{k}a\right)h_\ell^{(1)}(\mathcal{k}a)}{\psi_\ell\left(\sqrt{\epsilon(\omega)}\mathcal{k}a\right)h_\ell^{(1)}(\mathcal{k}a) - \xi_\ell(\mathcal{k}a)j_\ell\left(\sqrt{\epsilon(\omega)}\mathcal{k}a\right)},\\[1.0em]
+D_{p\ell m}^<(\mathcal{k}) &= \frac{\epsilon(\omega)\xi_\ell(\mathcal{k}a)h_\ell^{(1)}\left(\sqrt{\epsilon(\omega)}\mathcal{k}a\right) - \xi_\ell\left(\sqrt{\epsilon(\omega)}\mathcal{k}a\right)h_\ell^{(1)}(\mathcal{k}a)}{\psi_\ell\left(\sqrt{\epsilon(\omega)}\mathcal{k}a\right)h_\ell^{(1)}(\mathcal{k}a) - \epsilon(\omega)\xi_\ell(\mathcal{k}a)j_\ell\left(\sqrt{\epsilon(\omega)}\mathcal{k}a\right)}.
+\end{split}
+\end{equation}
+Here, in addition to the spherical Bessel and Hankel functions we use the Riccati-Bessel function derivatives
+\begin{equation}
+\begin{split}
+\psi_\ell(x) &= \frac{\mathrm{d}}{\mathrm{d}x}\left\{xj_\ell(x)\right\}\\
+&= \frac{x}{2\ell + 1}\left[(\ell + 1)j_{\ell - 1}(x) - \ell j_{\ell + 1}(x)\right], \\[0.5em]
+\xi_\ell(x) &= \frac{\mathrm{d}}{\mathrm{d}x}\left\{xh_\ell^{(1)}(x)\right\}\\
+&= \frac{x}{2\ell + 1}\left[(\ell + 1)h_{\ell - 1}^{(1)}(x) - \ell h_{\ell + 1}^{(1)}(x)\right].
+\end{split}
+\end{equation}
+
+These expansion coefficients transform under frequency inversion as
+\begin{equation}
+\begin{split}
+A_{p\ell m}^i(-k) &= A_{p\ell m}^{i*}(k),\\
+B_{p\ell m}^i(-k) &= B_{p\ell m}^{i*}(k),\\
+C_{p\ell m}^i(-k) &= C_{p\ell m}^{i*}(k),\\
+D_{p\ell m}^i(-k) &= D_{p\ell m}^{i*}(k)\\
+\end{split}
+\end{equation}
+where the $i$ can be replaced with either $<$ or $>$.
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Miscellaneous Proofs and Derivations}
+
+\subsection{Orthogonality of Transverse and Longitudinal Vector Fields}\label{sec:helmholtzOrthogonality}
+
+A vector field $\mathbf{F}(\mathbf{r})$ can be broken into a transverse part $\mathbf{F}_\perp(\mathbf{r})$ and a longitudinal part $\mathbf{F}_\parallel(\mathbf{r})$ through Helmholtz decomposition. The divergence-free transverse part can be written as the curl of another vector field, such that $\mathbf{F}_\perp(\mathbf{r}) = \nabla\times\mathbf{A}(\mathbf{r})$. The curl-free longitudinal part can be written as the gradient of a scalar field, such that $\mathbf{F}_\parallel(\mathbf{r}) = \nabla\Phi(\mathbf{r})$. Therefore, using the identities $\nabla\cdot\{\mathbf{A}(\mathbf{r})\Phi(\mathbf{r})\} = \mathbf{A}(\mathbf{r})\cdot\nabla\Phi(\mathbf{r}) + \Phi(\mathbf{r})\nabla\cdot\mathbf{A}(\mathbf{r})$ and $\nabla\cdot\nabla\times\mathbf{A}(\mathbf{r}) = 0$, one can use integration by parts and Gauss' law to see that
+\begin{equation}
+\begin{split}
+\int\mathbf{F}_\perp(\mathbf{r})\cdot\mathbf{F}_\parallel(\mathbf{r})\;\mathrm{d}^3\mathbf{r} &= \int\nabla\times\mathbf{A}(\mathbf{r})\cdot\nabla\Phi(\mathbf{r})\;\mathrm{d}^3\mathbf{r}\\
+&=\int\left(\nabla\cdot\left\{\Phi(\mathbf{r})\nabla\times\mathbf{A}(\mathbf{r})\right\} - \Phi(\mathbf{r})\nabla\cdot\{\nabla\times\mathbf{A}(\mathbf{r})\}\right)\;\mathrm{d}^3\mathbf{r}\\
+&= \oint\Phi(\mathbf{r})\nabla\times\mathbf{A}(\mathbf{r})\cdot\mathrm{d}^2\mathbf{s} + 0.
+\end{split}
+\end{equation}
+Here, $\int\mathrm{d}^3\mathbf{r}$ represents integration over all space and $\oint\mathrm{d}^2\mathbf{s}$ represents integration across the surface at infinity wherein the surface elements $\mathrm{d}^2\mathbf{s}$ have outward-facing normal vectors. The surface integral vanishes for all $\mathbf{A}(\mathbf{r})$ and $\Phi(\mathbf{r})$ that go to zero at infinity, such that any physical vector field $\mathbf{F}(\mathbf{r})$ obeys
+\begin{equation}\label{eq:helmholtzOrthogonality}
+\int\mathbf{F}_\perp(\mathbf{r})\cdot\mathbf{F}_\parallel(\mathbf{r})\;\mathrm{d}^3\mathbf{r} = 0.
+\end{equation}
+
+
+
+
+
+
+
+\subsection{Helmholtz Decomposition of $\bm{1}_2\delta(\mathbf{r} - \mathbf{r}')$ into Spherical Mode Functions}\label{app:helmholtzDelta}
+
+Consider the Laplace equation
+\begin{equation}
+\nabla^2\psi_{p\ell m}(\mathbf{r},k) = -k^2\psi_{p\ell m}(\mathbf{r},k)
+\end{equation}
+with the corresponding boundary condition $\lim_{r\to\infty}\psi_{p\ell m}(\mathbf{r},k)\to0$. The solutions, which take the form
+\begin{equation}
+\psi_{p\ell m}(\mathbf{r},k) = \sqrt{K_{\ell m}}j_\ell(kr)P_{\ell m}(\cos\theta)S_p(m\phi),
+\end{equation}
+are therefore defined here as eigenfunctions of the Laplacian operator in spherical coordinates with eigenvalues $-k^2$. The individual factors of the eigenfunctions are defined in Appendix \ref{app:greenFuncDetails}. 
+
+These eigenfunctions possess a special completeness property that is crucial to our ability to reconstruct complicated three-dimensional functions as linear combinations of simpler harmonic functions. To see how this completeness property arises, one can expand the Laplacian in spherical coordinates to find
+\begin{equation}
+\nabla^2\{\cdot\} = \frac{1}{r^2}\frac{\partial}{\partial r}\left\{r^2\frac{\partial}{\partial r}\left\{\cdot\right\}\right\} + \frac{1}{r^2\sin\theta}\frac{\partial}{\partial \theta}\left\{\sin\theta\frac{\partial}{\partial \theta}\{\cdot\}\right\} + \frac{1}{r^2\sin^2\theta}\frac{\partial^2}{\partial\phi^2}\{\cdot\}.
+\end{equation}
+Therefore, dropping the indices $(p,\ell,m)$ for a moment, the action of $\nabla^2 + k^2$ on any separable eigenfunction $\psi(\mathbf{r}) = R(r)\Theta(\theta)\Phi(\phi)$ can be seen to produce zero such that
+\begin{equation}\label{eq:diffEqExpansion}
+\begin{split}
+&\left(\nabla^2 + k^2\right)\{\psi(\mathbf{r})\} = \frac{r^2}{\psi(\mathbf{r})}\left(\nabla^2 + k^2\right)\{\psi(\mathbf{r})\},\\
+&= \frac{r}{R(r)}\left(k^2rR(r) + 2\frac{\partial R(r)}{\partial r} + r\frac{\partial^2 R(r)}{\partial r^2}\right) + \frac{1}{\tan(\theta)\Theta(\theta)}\left(\frac{\partial\Theta(\theta)}{\partial\theta} + \frac{\partial^2\Theta(\theta)}{\partial\theta^2}\right) + \frac{1}{\sin^2(\theta)\Phi(\phi)}\frac{\partial^2\Phi(\phi)}{\partial\phi^2}\\
+&= 0.
+\end{split}
+\end{equation}
+For any fixed values of $\theta$ and $\phi$, the above differential equation in $r$ is a particular form of Sturm-Liouville equation known as the spherical Bessel equation. As is discussed for the one-dimensional case in Titchmarsh,\cite{titchmarsh1946eigenfunction} solutions to Sturm-Liouville equations with specified boundary conditions form complete sets of orthogonal eigenfunctions from which any twice-differentiable function can be exactly reconstructed within the boundaries. Therefore, the set of functions $\{R(r)\}$ that are solutions to the above equation can completely describe any one-dimensional function of $r$ on the interval $(-\infty,\infty)$.
+
+The other two terms of Eq. \eqref{eq:diffEqExpansion} also form Sturm-Liouville equations, the associated Legendre and harmonic differential equations, when only $\theta$ or $\phi$ is allowed to vary, respectively. Therefore, $\{\Theta(\theta)\}$ and $\{\Phi(\phi)\}$ are complete sets on $\theta\in[0,\pi)$ and $\phi\in[0,2\pi)$, respectively, and the eigenfunctions $\{\psi(\mathbf{r})\}$ are guaranteed to be able to reproduce any twice-differentiable scalar field in $\mathbb{R}^3$.
+
+To extend our logic to the reconstruction of vector fields, we can note that three sets of vector eigenfunctions $\hat{\mathbf{e}}_i\psi_{p\ell m}(\mathbf{r},k)$ with $i = \{x,y,z\}$ can be defined that clearly are able to reproduce any vector field on $\mathbb{R}^3$. More precisely, these three sets of vector eigenfunctions are non-collinear\cite{stratton1941electromagnetic} and contain independent eigenfunctions of (the Sturm-Liouville operator) $\nabla^2$. The first property can be deduced from the nonzero cross-products between any two eigenfunctions from two different sets, and the second property can be deduced from the fact that $\nabla^2$ and $\hat{\mathbf{e}}_i$ commute. In other words, $\nabla^2\{\hat{\mathbf{e}}_i\psi_{p\ell m}(\mathbf{r},k)\} = \hat{\mathbf{e}}_i\nabla^2\{\psi_{p\ell m}(\mathbf{r},k)\} = -k^2\hat{\mathbf{e}}_i\psi_{p\ell m}(\mathbf{r},k)$.
+
+Because Cartesian vector functions are inconvenient to use for problems with spherical symmetry, Hansen\cite{hansen1935new} invented, as an alternative, the three functions $\mathbf{L}_{p\ell m}(\mathbf{r},k)$, $\mathbf{M}_{p\ell m}(\mathbf{r},k)$, and $\mathbf{N}_{p\ell m}(\mathbf{r},k)$ as an alternate basis. These three functions satisfy the two criteria above, the latter of which can be directly confirmed via $\nabla^2\{\nabla\psi_{p\ell m}(\mathbf{r},k)\} = \nabla\{\nabla^2\psi_{p\ell m}(\mathbf{r},k)\}$, $\nabla^2\{\nabla\times\{\mathbf{r}\psi_{p\ell m}(\mathbf{r},k)\}\} = \nabla\times\{\mathbf{r}\nabla^2\psi_{p\ell m}(\mathbf{r},k)\}$, and $\nabla^2\{\nabla\times\nabla\times\{\mathbf{r}\psi_{p\ell m}(\mathbf{r},k)\}\} = \nabla\times\nabla\times\{\mathbf{r}\nabla^2\psi_{p\ell m}(\mathbf{r},k)\}$. The non-collinearity of the three sets of functions can be seen by taking the cross-product of any two basis functions and noting that it is nonzero. 
+
+We are thus free to expand in terms of $\mathbf{L}_{p\ell m}(\mathbf{r},k)$, $\mathbf{M}_{p\ell m}(\mathbf{r},k)$, and/or $\mathbf{N}_{p\ell m}(\mathbf{r},k)$ any of the vector fields of our system that are smooth throughout the universe. As a matter of clarity, it is useful to show that we can expand the dyadic Dirac delta in terms of these basis functions as well. Assuming the Dirac delta to be the sharp limit of a smooth bump function, we can let 
+\begin{equation}
+\bm{1}_2\delta(\mathbf{r} - \mathbf{r}') = \sum_{p\ell m}\int_0^\infty\left[\mathbf{A}_{p\ell m}(\mathbf{r}',k)\mathbf{L}_{p\ell m}(\mathbf{r},k) + \mathbf{B}_{p\ell m}(\mathbf{r}',k)\mathbf{M}_{p\ell m}(\mathbf{r},k) + \mathbf{C}_{p\ell m}(\mathbf{r}',k)\mathbf{N}_{p\ell m}(\mathbf{r},k)\right]\mathrm{d}k,
+\end{equation}
+wherein $\mathbf{A}_{p\ell m}(\mathbf{r}',k)$, $\mathbf{B}_{p\ell m}(\mathbf{r}',k)$, and $\mathbf{C}_{p\ell m}(\mathbf{r}',k)$ are unknown vector fields. Using the orthogonality condition of Eq. \eqref{eq:longitudinalHarmonicOrthogonality}, we can see that
+\begin{equation}
+\begin{split}
+\int\bm{1}_2\delta(\mathbf{r} - \mathbf{r}')\cdot\mathbf{L}_{p'\ell'm'}(\mathbf{r},k')\;\mathrm{d}^3\mathbf{r} &= \mathbf{L}_{p'\ell'm'}(\mathbf{r}',k')\\
+&= \sum_{p\ell m}\int_0^\infty\int\mathbf{A}_{p\ell m}(\mathbf{r}',k)\mathbf{L}_{p\ell m}(\mathbf{r},k)\cdot\mathbf{L}_{p'\ell'm'}(\mathbf{r},k')\;\mathrm{d}^3\mathbf{r}\,\mathrm{d}k\\
+&= \sum_{p\ell m}\int_0^\infty\mathbf{A}_{p\ell m}(\mathbf{r}',k)\frac{2\pi^2}{k^2}\delta(k - k')(1 - \delta_{p0}\delta_{m0})\delta_{pp'}\delta_{\ell\ell'}\delta_{mm'}\\
+&= \frac{2\pi^2}{k'^2}(1 - \delta_{p'1}\delta_{m'0})\mathbf{A}_{p'\ell'm'}(\mathbf{r}',k').
+\end{split}
+\end{equation}
+Further, with $\mathbf{L}_{p'\ell'm'}(\mathbf{r}',k') = \mathbf{L}_{p'\ell'm'}(\mathbf{r}',k')(1 - \delta_{p'1}\delta_{m'0})$, we can see that
+\begin{equation}
+\mathbf{A}_{p\ell m}(\mathbf{r}',k) = \frac{k^2}{2\pi^2}\mathbf{L}_{p\ell m}(\mathbf{r}',k).
+\end{equation}
+Repeating this process for the transverse vector spherical harmonics using \eqref{eq:vectorSphericalHarmonicOrthogonality}, we can see that
+\begin{equation}
+\begin{split}
+\mathbf{B}_{p\ell m}(\mathbf{r}',k) &= \frac{k^2}{2\pi^2}\mathbf{M}_{p\ell m}(\mathbf{r}',k),\\
+\mathbf{C}_{p\ell m}(\mathbf{r}',k) &= \frac{k^2}{2\pi^2}\mathbf{N}_{p\ell m}(\mathbf{r}',k),
+\end{split}
+\end{equation}
+such that
+\begin{equation}\label{eq:dyadicDiracDelta}
+\bm{1}_2\delta(\mathbf{r} - \mathbf{r}') = \sum_{p\ell m}\int_0^\infty\frac{k^2}{2\pi^2}\left[\mathbf{L}_{p\ell m}(\mathbf{r}',k)\mathbf{L}_{p\ell m}(\mathbf{r},k) + \mathbf{M}_{p\ell m}(\mathbf{r}',k)\mathbf{M}_{p\ell m}(\mathbf{r},k) + \mathbf{N}_{p\ell m}(\mathbf{r}',k)\mathbf{N}_{p\ell m}(\mathbf{r},k)\right]\mathrm{d}k.
+\end{equation}
+This in turn can be separated into its transverse and longitudinal parts as
+\begin{equation}\label{eq:dyadicDiracDeltaSeparated}
+\begin{split}
+\left[\bm{1}_2\delta(\mathbf{r} - \mathbf{r}')\right]_\perp &=  \sum_{p\ell m}\int_0^\infty\frac{k^2}{2\pi^2}\left[\mathbf{M}_{p\ell m}(\mathbf{r}',k)\mathbf{M}_{p\ell m}(\mathbf{r},k) + \mathbf{N}_{p\ell m}(\mathbf{r}',k)\mathbf{N}_{p\ell m}(\mathbf{r},k)\right]\mathrm{d}k,\\
+\left[\bm{1}_2\delta(\mathbf{r} - \mathbf{r}')\right]_\parallel &= \sum_{p\ell m}\int_0^\infty\frac{k^2}{2\pi^2}\mathbf{L}_{p\ell m}(\mathbf{r}',k)\mathbf{L}_{p\ell m}(\mathbf{r},k)\;\mathrm{d}k.\\
+\end{split}
+\end{equation}
+
+Finally, we also deal in this manuscript with vector fields that are smooth within a finite radial boundary $a$ but are discontinuous across the boundary. This problem can be attacked in two ways, both of which will produce the same outcome. The more direct but mathematically complicated route is to represent the sharp boundary as the steep limit of a sigmoid function. This route has nice symmetry with our previous discussion as it involves the expansion of the vector field in the full eigenfunction basis of $\mathbb{R}^3$. However, it will require numerical evaluation of complicated overlap integrals involving spherical Bessel functions and will not, in general, produce expressions with advantageous explanatory power.
+
+The second route begins by setting our Sturm-Liouville boundary conditions such that we only use a subset of the total number vector spherical harmonics. More specifically, we will only use vector spherical harmonics in our expansion that have one or more components that go to zero at $r = a$, with the precise boundary requirements set by physical arguments. Because our boundary condition is a function of $r$, it is the radial index $k$ that will be restricted to certain values, and the completeness of the harmonic expansion of the sphere will depend on whether a set of vector harmonics with the ``allowed'' values of $k$ can be generated from a restricted set of scalar eigenfunctions $\psi_{p\ell m}(\mathbf{r},k)$ that is nonetheless complete within $r < a$.
+
+Conveniently, this set of scalar eigenfunctions is simple to define. The physical boundary conditions on the vector harmonics, as described in the main text, require their boundary-parallel components to go to zero at $r = a$ and their radial components to be nonzero. This behavior can be reproduced from scalar eigenfunctions $\psi_{p\ell m}(\mathbf{r},k_{\ell n})$, where $k_{\ell n}a$ is the $n^\mathrm{th}$ nonzero root of the $\ell^\mathrm{th}$ spherical Bessel function. These scalar eigenfunctions therefore all go to zero at the boundary. This is a valid Sturm-Liouville boundary condition, such that they form a complete set within the sphere. Therefore, we can rebuild our Dirac delta from the discrete set of vector harmonics that have the permitted wavenumbers $k_{\ell n}$. Explicitly,
+\begin{equation}
+\begin{split}
+\bm{1}_2\Theta(a - r)\delta(\mathbf{r} - \mathbf{r}') &= \Theta(a - r)\sum_{p\ell m n}\left[\mathbf{A}_{p\ell mn}(\mathbf{r}')\mathbf{L}_{p\ell m}(\mathbf{r},k_{\ell n})\right.\\
+&\qquad\left. + \mathbf{B}_{p\ell mn}(\mathbf{r}')\mathbf{M}_{p\ell m}(\mathbf{r},k_{\ell n}) + \mathbf{C}_{p\ell mn}(\mathbf{r}')\mathbf{N}_{p\ell m}(\mathbf{r},k_{\ell n})\right].
+\end{split}
+\end{equation}
+Projecting as before, we can see that, by the orthonormality conditions of Appendix \ref{app:greenFuncDetails},
+\begin{equation}
+\begin{split}
+\mathbf{A}_{p\ell mn}(\mathbf{r}') &= \frac{1}{2\pi a^3j_{\ell + 1}^2(k_{\ell n}a)}\mathbf{L}_{p\ell m}(\mathbf{r},k_{\ell n}),\\
+\mathbf{B}_{p\ell mn}(\mathbf{r}') &= \frac{1}{2\pi a^3j_{\ell + 1}^2(k_{\ell n}a)}\mathbf{M}_{p\ell m}(\mathbf{r},k_{\ell n}),\\
+\mathbf{C}_{p\ell mn}(\mathbf{r}') &= \frac{1}{2\pi a^3j_{\ell + 1}^2(k_{\ell n}a)}\mathbf{N}_{p\ell m}(\mathbf{r},k_{\ell n}).
+\end{split}
+\end{equation}
+Therefore,
+\begin{equation}
+\begin{split}
+&\bm{1}_2\Theta(a - r)\delta(\mathbf{r} - \mathbf{r}') = \Theta(a - r)\sum_{p\ell m n}\frac{1}{2\pi a^3j_{\ell + 1}^2(k_{\ell n}a)}\\
+&\qquad\times\left[\mathbf{L}_{p\ell m}(\mathbf{r}',k_{\ell n})\mathbf{L}_{p\ell m}(\mathbf{r},k_{\ell n}) + \mathbf{M}_{p\ell m}(\mathbf{r}',k_{\ell n})\mathbf{M}_{p\ell m}(\mathbf{r},k_{\ell n}) + \mathbf{N}_{p\ell m}(\mathbf{r}',k_{\ell n})\mathbf{N}_{p\ell m}(\mathbf{r},k_{\ell n})\right].
+\end{split}
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Useful Orthogonality Relations}\label{sec:simpleOrthogonality}
+
+A list of the useful and simple orthogonality relations useful to our calculations begins with the angular integral
+\begin{equation}
+\int_0^{2\pi}S_p(m\phi)S_{p'}(m'\phi)\;\mathrm{d}\phi = \pi(1 + \delta_{p0}\delta_{m0} - \delta_{p1}\delta_{m0})\delta_{pp'}\delta_{mm'},
+\end{equation}
+wherein the convention is used that the replacements $p + 2n\to 0$ for even $p$ and $p + 2n\to1$ for odd $p$ are taken automatically (here $n = 0,1,2,\ldots$ is a nonnegative integer). Similarly, $p + 2n + 1\to 1$ for even $p$ and $p + 2n + 1\to0$ for odd $p$ are implied. 
+
+Two more angular integrals, this time in $\theta$, are of use:
+\begin{equation}
+\int_0^\pi P_{\ell m}(\cos\theta)P_{\ell'm}(\cos\theta)\sin\theta\;\mathrm{d}\theta = \frac{2}{(2\ell + 1)}\frac{(\ell + m)!}{(\ell - m)!}\delta_{\ell\ell'}\\
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+\int_0^\pi\left(\frac{\partial P_{\ell m}(\cos\theta)}{\partial\theta}\frac{\partial P_{\ell'm}(\cos\theta)}{\partial\theta}\right. &+ \left.m^2\frac{P_{\ell m}(\cos\theta)P_{\ell'm}(\cos\theta)}{\sin^2\theta}\right)\sin\theta\;\mathrm{d}\theta\\
+&= \int_0^\pi\ell(\ell + 1)P_{\ell m}(\cos\theta)P_{\ell'm}(\cos\theta)\sin\theta\;\mathrm{d}\theta\\
+&= \frac{2\ell(\ell + 1)}{(2\ell + 1)}\frac{(\ell + m)!}{(\ell - m)!}\delta_{\ell\ell'},
+\end{split}
+\end{equation}
+for $\ell > 0$, $0 \leq m \leq \ell$. The second identity can be derived using the identity
+\begin{equation}
+\begin{split}
+&\frac{\partial}{\partial\theta}\left\{\sin\theta\frac{\partial P_{\ell'm}(\cos\theta)}{\partial\theta}P_{\ell m}(\cos\theta) + \sin\theta\frac{\partial P_{\ell m}(\cos\theta)}{\partial \theta}P_{\ell' m}(\cos\theta)\right\}\\
+&= 2\sin\theta\left(\frac{\partial P_{\ell m}(\cos\theta)}{\partial\theta}\frac{\partial P_{\ell'm}(\cos\theta)}{\partial\theta} + m^2\frac{P_{\ell m}(\cos\theta)P_{\ell'm}(\cos\theta)}{\sin^2\theta}\right) - 2\ell(\ell + 1)\sin\theta P_{\ell m}(\cos\theta)P_{\ell' m}(\cos\theta),
+\end{split}
+\end{equation}
+which can in turn be derived from the generalized Legendre equation defining the functions $P_{\ell m}(\cos\theta)$,
+\begin{equation}
+\frac{\partial^2}{\partial\theta^2}P_{\ell m}(\cos\theta) + \frac{\cos\theta}{\sin\theta}\frac{\partial}{\partial\theta}P_{\ell m}(\cos\theta) + \left(\ell(\ell + 1) - \frac{m^2}{\sin^2\theta}\right)P_{\ell m}(\cos\theta) = 0.
+\end{equation}
+
+Further,
+\begin{equation}
+\begin{split}
+\int_0^\pi\left[\frac{P_{\ell m}(\cos\theta)}{\sin\theta}\frac{\partial P_{\ell'm}(\cos\theta)}{\partial\theta} + \frac{P_{\ell'm}(\cos\theta)}{\sin\theta}\frac{\partial P_{\ell m}(\cos\theta)}{\partial\theta}\right]\sin\theta\,\mathrm{d}\theta &= \int_0^\pi\frac{\partial}{\partial \theta}\left\{P_{\ell m}(\cos\theta)P_{\ell' m}(\cos\theta)\right\}\mathrm{d}\theta\\
+&= \left.P_{\ell m}(\cos\theta)P_{\ell' m}(\cos\theta)\right|_0^\pi\\
+&= 2\delta_{m0}\delta_{\mathrm{par}(\ell),1},
+\end{split}
+\end{equation}
+where
+\begin{equation}
+\mathrm{par}(n) = 
+\begin{cases}
+0, & |n|\;\mathrm{even},\\
+1, & |n|\;\mathrm{odd}
+\end{cases}
+\end{equation}
+is the parity function that returns 0 for even integers and 1 for odd integers.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliography %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\bibliography{fieldAlgebraRefs}
+\bibliographystyle{unsrtnat}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% End document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
