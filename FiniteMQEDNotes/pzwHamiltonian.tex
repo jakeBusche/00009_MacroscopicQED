@@ -1,0 +1,188 @@
+%!TEX root = finiteMQED.tex
+
+\section{The Power-Zienau-Woolley Lagrangian and Hamiltonian}\label{sec:PZWderivation}
+
+We begin with a set of $N$ classical particles with positions $\mathbf{x}_i(t)$, velocities $\dot{\mathbf{x}}_i(t)$, and charges $q_i$ that are well-separated from a second set of $N_0$ particles with positions $\mathbf{x}_{0j}(t)$, velocities $\dot{\mathbf{x}}_{0j}(t)$, and charges $q_{0j}$. The first set of particles will be assumed to be sensitive to the influence of the system's electromagnetic fields, while the second set will be assumed to have their trajectories fixed, to good approximation, by forces outside of the system. The simplest Lagrangian density that defines such a system is
+\begin{equation}
+\begin{split}
+\mathcal{L}&\left[\mathbf{x}_1,\ldots,\mathbf{x}_N,\dot{\mathbf{x}}_1,\ldots,\dot{\mathbf{x}}_N;\mathbf{A},\dot{\mathbf{A}},\Phi,\dot{\Phi};\mathbf{A}_0,\dot{\mathbf{A}}_0,\Phi_0,\dot{\Phi}_0;\mathbf{r},t\right] = \sum_{i = 1}^N\frac{1}{2}m_i\dot{\mathbf{x}}_i^2(t)\delta[\mathbf{r} - \mathbf{x}_i(t)]\\
+& + \frac{1}{8\pi}\left[\mathbf{E}^2(\mathbf{r},t) - \mathbf{B}^2(\mathbf{r},t)\right] + \frac{1}{8\pi}\left[\mathbf{E}_0^2(\mathbf{r},t) - \mathbf{B}_0^2(\mathbf{r},t)\right]\\
+&+ \sum_{i = 1}^N\frac{q_i}{c}\dot{\mathbf{x}}_i(t)\delta[\mathbf{r} - \mathbf{x}_i(t)]\cdot\left[\mathbf{A}(\mathbf{r},t) + \mathbf{A}_0(\mathbf{r},t)\right] - \sum_{i = 1}^Nq_i\delta[\mathbf{r} - \mathbf{x}_i(t)]\left[\Phi(\mathbf{r},t) + \Phi_0(\mathbf{r},t)\right]\\
+&+\sum_{j = 1}^{N_0}\frac{q_{0j}}{c}\dot{\mathbf{x}}_{0j}(t)\delta[\mathbf{r} - \mathbf{x}_{0j}(t)]\cdot\mathbf{A}_0(\mathbf{r},t) - \sum_{j = 1}^{N_0}q_{0j}\Phi_0(\mathbf{r},t).
+%+ \sum_{j = 1}^{N_0}\frac{1}{2}m_{0j}\dot{\mathbf{x}}_{0j}^2(t)\delta[\mathbf{r} - \mathbf{x}_{0j}(t)]
+\end{split}
+\end{equation}
+Here, $\mathbf{A}(\mathbf{r},t)$ and $\Phi(\mathbf{r},t)$ are the vector and scalar potentials of the dynamical set of particles ($\{i\}$), respectively, with associated electric and magnetic fields $\mathbf{E}(\mathbf{r},t) = -\nabla\Phi(\mathbf{r},t) - (1/c)\dot{\mathbf{A}}(\mathbf{r},t)$ and $\mathbf{B}(\mathbf{r},t) = \nabla\times\mathbf{A}(\mathbf{r},t)$. The analogous fields of the nondynamical particles ($\{j\}$) are $\mathbf{A}_0(\mathbf{r},t)$, $\Phi_0(\mathbf{r},t)$, $\mathbf{E}_0(\mathbf{r},t) = -\nabla\Phi_0(\mathbf{r},t) - (1/c)\dot{\mathbf{A}}_0(\mathbf{r},t)$, and $\mathbf{B}_0(\mathbf{r},t) = \nabla\times\mathbf{A}_0(\mathbf{r},t)$. Importantly, however, in contrast to the fields of the nondynamical particles, the particles' positions and momenta $\mathbf{x}_{0j}(t)$ and $\dot{\mathbf{x}}_{0j}(t)$ are not included in the Lagrangian density's list of independent variables. Therefore, $\partial\mathcal{L}/\partial\mathbf{x}_{0j}(t) = 0$ and $\partial\mathcal{L}/\partial\dot{\mathbf{x}}_{0j}(t) = 0$.
+
+These last two properties are important for understanding how the equations of motion for the various quantities of the system are constructed. In particular, the Maxwell-Lorentz equations for the dynamical particles can be found via the Lagrangian $L[\ldots;t] = \int\mathcal{L}[\ldots;\mathbf{r},t]\;\mathrm{d}^3\mathbf{r}$ via the Euler-Lagrange equations
+\begin{equation}
+\frac{\mathrm{d}}{\mathrm{d}t}\left\{\frac{\partial L}{\partial \dot{\mathbf{x}}_i(t)}\right\} = \frac{\partial L}{\partial \mathbf{x}_i(t)}.
+\end{equation}
+Explicitly, these imply
+\begin{equation}\label{eq:ELcoord1}
+\begin{split}
+\frac{\mathrm{d}}{\mathrm{d}t}\left\{m_i\dot{\mathbf{x}}_i(t) + \frac{q_i}{c}\left(\mathbf{A}[\mathbf{x}_i(t),t] + \mathbf{A}_0[\mathbf{x}_i(t),t]\right)\right\} &= \frac{q_i}{c}\frac{\partial}{\partial\mathbf{x}_i(t)}\left\{\dot{\mathbf{x}}_i(t)\cdot\left(\mathbf{A}[\mathbf{x}_i(t),t] + \mathbf{A}_0[\mathbf{x}_i(t),t]\right)\right\}\\
+&- q_i\frac{\partial}{\partial\mathbf{x}_i(t)}\left\{\Phi[\mathbf{x}_i(t),t] + \Phi_0[\mathbf{x}_i(t),t]\right\},
+\end{split}
+\end{equation}
+where $\partial/\partial\mathbf{z}$ is simply another way to write $\nabla_{\mathbf{z}} = \sum_{k = 1}^3\hat{\mathbf{e}}_k\partial/\partial z_k$. Further, we have used the property $(\partial/\partial\mathbf{x})\{\mathbf{a}\cdot\mathbf{x}\} = \mathbf{a}$. Using the identities
+\begin{equation}
+\begin{split}
+\nabla\left\{\mathbf{a}\cdot\mathbf{F}(\mathbf{r})\right\} &= \mathbf{a}\times\left\{\nabla\times\mathbf{F}(\mathbf{r})\right\} + (\mathbf{a}\cdot\nabla)\left\{\mathbf{F}(\mathbf{r})\right\},\\
+\frac{\mathrm{d}}{\mathrm{d}t}\left\{\mathbf{A}[\mathbf{x}_i(t),t]\right\} &= \dot{\mathbf{A}}[\mathbf{x}_i(t),t] + \left(\dot{\mathbf{x}}_i(t)\cdot\nabla_{\mathbf{x}_i(t)}\right)\mathbf{A}[\mathbf{x}_i(t),t],
+\end{split}
+\end{equation}
+Eq. \eqref{eq:ELcoord1} simplifies to
+\begin{equation}
+\begin{split}
+m_i\ddot{\mathbf{x}}_i(t) &+ \frac{q_i}{c}\left(\dot{\mathbf{A}}[\mathbf{x}_i(t),t] + \dot{\mathbf{A}}_0[\mathbf{x}_i(t),t]\right) = -\frac{q_i}{c}\left([\dot{\mathbf{x}}_i(t)\cdot\nabla_{\mathbf{x}_i(t)}]\left\{\mathbf{A}[\mathbf{x}_i(t),t] + \mathbf{A}_0[\mathbf{x}_i(t),t]\right\}\right)\\
+&+ \frac{q_i}{c}\nabla_{\mathbf{x}_i(t)}\left\{\dot{\mathbf{x}}_i(t)\cdot\left(\mathbf{A}[\mathbf{x}_i(t),t] + \mathbf{A}_0[\mathbf{x}_i(t),t]\right)\right\} - q_i\nabla_{\mathbf{x}_i(t)}\left\{\Phi[\mathbf{x}_i(t),t] + \Phi_0[\mathbf{x}_i(t),t]\right\}\\
+&= \frac{q_i}{c}\dot{\mathbf{x}}_i(t)\times\left(\nabla_{\mathbf{x}_i(t)}\times\left\{\mathbf{A}[\mathbf{x}_i(t),t] + \mathbf{A}_0[\mathbf{x}_i(t),t]\right\}\right) - q_i\nabla_{\mathbf{x}_i(t)}\left\{\Phi[\mathbf{x}_i(t),t] + \Phi_0[\mathbf{x}_i(t),t]\right\}
+\end{split}
+\end{equation}
+such that, after rearranging to construct the electric and magnetic fields
+\begin{equation}
+\begin{split}
+-\nabla_{\mathbf{x}_i(t)}\left\{\Phi[\mathbf{x}_i(t),t] + \Phi_0[\mathbf{x}_i(t),t]\right\} - \frac{1}{c}\left(\dot{\mathbf{A}}[\mathbf{x}_i(t),t] + \dot{\mathbf{A}}_0[\mathbf{x}_i(t),t]\right) &= \mathbf{E}[\mathbf{x}_i(t),t] + \mathbf{E}_0[\mathbf{x}_i(t),t],\\
+\nabla_{\mathbf{x}_i(t)}\times\left\{\mathbf{A}[\mathbf{x}_i(t),t] + \mathbf{A}_0[\mathbf{x}_i(t),t]\right\} &= \mathbf{B}[\mathbf{x}_i(t),t] + \mathbf{B}_0[\mathbf{x}_i(t),t],
+\end{split}
+\end{equation}
+one finds the correct Maxwell-Lorentz force for the dynamical particle $i$:
+\begin{equation}
+m_i\ddot{\mathbf{x}}_i(t) = q_i\left(\mathbf{E}[\mathbf{x}_i(t),t] + \frac{\dot{\mathbf{x}}_i(t)}{c}\times\mathbf{B}[\mathbf{x}_i(t),t]\right).
+\end{equation}
+In contrast, the Euler-Lagrange equations return the tautology $0 = 0$ when searching for the equation of motion of $\mathbf{x}_{0j}(t)$ such that the motion of the nondynamical particles is beyond the scope of our Lagrangian.
+
+The motion of the nondynamical particles' fields, however, \textit{is} described by the Lagrangian. To see this, we can use the Euler-Lagrange equations for a general field $\mathbf{F}(\mathbf{r},t)$,
+\begin{equation}
+\frac{\mathrm{d}}{\mathrm{d}t}\left\{\frac{\partial \mathcal{L}}{\partial \dot{F}_\mu(\mathbf{r},t)}\right\} = \frac{\partial \mathcal{L}}{\partial F_\mu(\mathbf{r},t)} - \sum_{\nu = 1}^3\frac{\partial}{\partial r_\nu}\frac{\partial \mathcal{L}}{\partial\!\left(\frac{\partial F_\mu(\mathbf{r},t)}{\partial r_\nu}\right)},
+\end{equation}
+where $\mu\in\{1,2,3\}$ is a Cartesian index. The Euler-Lagrange equations for the components of $\mathbf{A}_0(\mathbf{r},t)$ give
+\begin{equation}
+\begin{split}
+\sum_\mu&\frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{\partial}{\partial\dot{A}_{0\mu}(\mathbf{r},t)}\left\{\frac{1}{8\pi}\left[\frac{2}{c}\nabla\Phi_0(\mathbf{r},t)\cdot\dot{\mathbf{A}}_0(\mathbf{r},t) + \frac{1}{c^2}\dot{\mathbf{A}}_0^2(\mathbf{r},t)\right]\right\}\right)\hat{\mathbf{e}}_\mu = \sum_{i}\frac{q_i}{c}\dot{\mathbf{x}}_i(t)\delta[\mathbf{r} - \mathbf{x}_i(t)]\\
+&+ \sum_j\frac{q_{0j}}{c}\dot{\mathbf{x}}_{0j}(t)\delta[\mathbf{r} - \mathbf{x}_{0j}(t)] - \sum_{\mu,\nu}\frac{\partial}{\partial r_\nu}\frac{\partial}{\partial\!\left(\frac{\partial A_{0\mu}(\mathbf{r},t)}{\partial r_\nu}\right)}\left\{-\frac{1}{8\pi}\left[\nabla\times\mathbf{A}(\mathbf{r},t)\right]^2\right\}\hat{\mathbf{e}}_\mu.
+\end{split}
+\end{equation}
+The equations simplify with the identity
+\begin{equation}
+\begin{split}
+\sum_{\mu,\nu}\frac{\partial}{\partial r_\nu}\frac{\partial}{\partial\!\left(\frac{\partial F_\mu(\mathbf{r},t)}{\partial r_\nu}\right)}\left\{\left[\nabla\times\mathbf{F}(\mathbf{r},t)\right]^2\right\}\hat{\mathbf{e}}_\mu &= -2\nabla\times\nabla\times\mathbf{F}(\mathbf{r},t),
+\end{split}
+\end{equation}
+such that
+\begin{equation}\label{eq:ELfield1}
+\frac{1}{4\pi c}\nabla\dot{\Phi}_0(\mathbf{r},t) + \frac{1}{4\pi c^2}\ddot{\mathbf{A}}_0(\mathbf{r},t) = \sum_{i}\frac{q_i}{c}\dot{\mathbf{x}}_i(t)\delta[\mathbf{r} - \mathbf{x}_i(t)] + \sum_j\frac{q_{0j}}{c}\dot{\mathbf{x}}_{0j}(t)\delta[\mathbf{r} - \mathbf{x}_{0j}(t)] - \frac{1}{4\pi}\nabla\times\nabla\times\mathbf{A}_0(\mathbf{r},t).
+\end{equation}
+With the definitions of the bound and free currents
+\begin{equation}
+\begin{split}
+\mathbf{J}_b(\mathbf{r},t) &= \sum_iq_i\dot{\mathbf{x}}_i(t)\delta[\mathbf{r} - \mathbf{x}_i(t)],\\
+\mathbf{J}_0(\mathbf{r},t) &= \sum_jq_{0j}\dot{\mathbf{x}}_{0j}(t)\delta[\mathbf{r} - \mathbf{x}_{0j}(t)],
+\end{split}
+\end{equation}
+one can rearrange Eq. \eqref{eq:ELfield1} to find the Amp\`{e}re-Maxwell equation
+\begin{equation}
+\nabla\times\mathbf{B}_0(\mathbf{r},t) = \frac{4\pi}{c}\left[\mathbf{J}_b(\mathbf{r},t) + \mathbf{J}_0(\mathbf{r},t)\right] + \frac{1}{c}\dot{\mathbf{E}}_0(\mathbf{r},t).
+\end{equation}
+We will, in what follows, use the approximation $\mathbf{J}_0(\mathbf{r},t)\gg\mathbf{J}_b(\mathbf{r},t)$ in the driving term of the fields of the nondynamical particles. In other words, we will assume that these fields are influenced minimally by the dynamical charges of the system such that
+\begin{equation}
+\nabla\times\mathbf{B}_0(\mathbf{r},t) \approx \frac{4\pi}{c}\mathbf{J}_0(\mathbf{r},t) + \frac{1}{c}\dot{\mathbf{E}}_0(\mathbf{r},t).
+\end{equation}
+Further, we will call thee fields of nondynamical particles ``free fields'' from here on to emphasize their independence from the complicated system motion.
+
+The Euler-Lagrange equation for the free scalar potential is simpler than the equations of the free vector potential:
+\begin{equation}
+\frac{\mathrm{d}}{\mathrm{d}t}\left\{\frac{\partial \mathcal{L}}{\partial \dot{\Phi}_0(\mathbf{r},t)}\right\} = \frac{\partial \mathcal{L}}{\partial \Phi_0(\mathbf{r},t)} - \sum_{\nu = 1}^3\frac{\partial}{\partial r_\nu}\frac{\partial \mathcal{L}}{\partial\!\left(\frac{\partial \Phi_0(\mathbf{r},t)}{\partial r_\nu}\right)}.
+\end{equation}
+It simplifies to
+\begin{equation}
+\begin{split}
+0 &= -\sum_iq_i\delta[\mathbf{r} - \mathbf{x}_i(t)] - \sum_jq_{0j}\delta[\mathbf{r} - \mathbf{x}_{0j}(t)] - \nabla\cdot\frac{\partial}{\partial\!\left(\nabla\Phi_0(\mathbf{r},t)\right)}\left\{\frac{1}{8\pi}\left([\nabla\Phi_0(\mathbf{r},t)]^2 + \frac{2}{c}\nabla\Phi_0(\mathbf{r},t)\cdot\dot{\mathbf{A}}_0(\mathbf{r},t)\right)\right\}\\
+&= -\sum_iq_i\delta[\mathbf{r} - \mathbf{x}_i(t)] - \sum_jq_{0j}\delta[\mathbf{r} - \mathbf{x}_{0j}(t)] - \nabla\cdot\left\{\frac{1}{4\pi}\nabla\Phi_0(\mathbf{r},t) + \frac{1}{4\pi c}\dot{\mathbf{A}}_0(\mathbf{r},t)\right\}
+\end{split}
+\end{equation}
+which, using the identities of the bound and free charge densities
+\begin{equation}
+\begin{split}
+\rho_b(\mathbf{r},t) &= \sum_iq_i\delta[\mathbf{r} - \mathbf{x}_i(t)],\\
+\rho_0(\mathbf{r},t) &= \sum_jq_{0j}\delta[\mathbf{r} - \mathbf{x}_{0j}(t)],\\
+\end{split}
+\end{equation}
+becomes Gauss' law,
+\begin{equation}
+\nabla\cdot\mathbf{E}_0(\mathbf{r},t) = 4\pi\left[\rho_b(\mathbf{r},t) + \rho_0(\mathbf{r},t)\right].
+\end{equation}
+Under the same approximation as above, the bound charges are assumed to contribute negligibly to the free field's divergence such that
+\begin{equation}
+\nabla\cdot\mathbf{E}_0(\mathbf{r},t) \approx 4\pi\rho_0(\mathbf{r},t).
+\end{equation}
+
+The Euler-Lagrange equations for the system potentials provides through an entirely analogous process the Amp\`{e}re-Maxwell and Gauss laws for the system fields,
+\begin{equation}
+\begin{split}
+\nabla\times\mathbf{B}(\mathbf{r},t) &= \frac{4\pi}{c}\mathbf{J}_b(\mathbf{r},t) + \frac{1}{c}\dot{\mathbf{E}}(\mathbf{r},t),\\
+\nabla\cdot\mathbf{E}(\mathbf{r},t) &= 4\pi\rho_b(\mathbf{r},t).
+\end{split}
+\end{equation}
+As opposed to the free fields, we will allow the system fields to be driven both the bound and free (dynamical and nondynamical) sources. The other two Maxwell equations, i.e. Faraday's law and the magnetic nondivergence law, are satisfied identically by our choice of potentials, so we can omit their derivations. 
+
+In systems where the total charge of all of the particles is zero, i.e. where $\sum_iq_i = 0$, it is often convenient to represent the bound current density as a polarization density $\mathbf{P}(\mathbf{r},t)$ rather than through the individual motion of each charge. In general, this can be done through
+\begin{equation}
+\mathbf{J}_b(\mathbf{r},t) = \dot{\mathbf{P}}(\mathbf{r},t) + c\nabla\times\mathbf{M}(\mathbf{r},t),
+\end{equation}
+however in nonmagnetic systems the last term containing the magnetization density $\mathbf{M}(\mathbf{r},t)$ is often neglected. To rewrite our Lagrangian in terms of a polarization density, it is simplest to use the (slightly modified) Power-Zienau-Woolley transformation
+\begin{equation}
+L_{PZW} = L - \frac{\mathrm{d}}{\mathrm{d}t}\left\{\int\mathbf{P}(\mathbf{r},t)\cdot\left[\mathbf{A}(\mathbf{r},t) + \mathbf{A}_0(\mathbf{r},t)\right]\mathrm{d}^3\mathbf{r}\right\}.
+\end{equation}
+Because adding a total time derivative to a Lagrangian leaves the action invariant and does not modify the Euler-Lagrange equations or equations of motion of the system, we can be confident that both the Maxwell-Lorentz forces and Maxwell equations implied by the Lagrangian are unchanged by the new term. Using the relationships between $\dot{\mathbf{x}}_i(t)$, $\mathbf{J}_b(\mathbf{r},t)$, and $\mathbf{P}(\mathbf{r},t)$, the PZW Lagrangian density simplifies to
+\begin{equation}
+\begin{split}
+\mathcal{L}_{PZW} &= \sum_i\frac{1}{2}m_i\dot{\mathbf{x}}_i^2(t)\delta[\mathbf{r} - \mathbf{x}_i(t)] + \frac{1}{8\pi}\left[\mathbf{E}^2(\mathbf{r},t) - \mathbf{B}^2(\mathbf{r},t)\right] + \frac{1}{8\pi}\left[\mathbf{E}_0^2(\mathbf{r},t) - \mathbf{B}_0^2(\mathbf{r},t)\right]\\
+& - \rho_b(\mathbf{r},t)\left[\Phi(\mathbf{r},t) + \Phi_0(\mathbf{r},t)\right] + \frac{\mathbf{J}_0(\mathbf{r},t)}{c}\cdot\mathbf{A}_0(\mathbf{r},t) - \rho_0(\mathbf{r},t)\Phi_0(\mathbf{r},t)\\
+& - \frac{1}{c}\mathbf{P}(\mathbf{r},t)\cdot\left[\dot{\mathbf{A}}(\mathbf{r},t) + \dot{\mathbf{A}}_0(\mathbf{r},t)\right]
+%+ \sum_j\frac{1}{2}m_{0j}\dot{\mathbf{x}}_{0j}^2(t)\delta[\mathbf{r} - \mathbf{x}_{0j}(t)]
+\end{split}
+\end{equation}
+with the assumption that $\mathbf{M}(\mathbf{r},t) = 0$.
+
+The conjugate momenta associated with $L_{PZW}$ are
+\begin{equation}
+\begin{split}
+\mathbf{p}_i(t) &= \frac{\partial L_{PZW}}{\partial \dot{\mathbf{x}}(t)} = m_i\dot{\mathbf{x}}_i(t),\\
+\bm{\pi}(\mathbf{r},t) &= \frac{\partial \mathcal{L}_{PZW}}{\partial \dot{\mathbf{A}}(\mathbf{r},t)} = -\frac{1}{4\pi c}\mathbf{E}(\mathbf{r},t) - \frac{1}{c}\mathbf{P}(\mathbf{r},t),\\
+\bm{\pi}_0(\mathbf{r},t) &= \frac{\partial \mathcal{L}_{PZW}}{\partial \dot{\mathbf{A}}_0(\mathbf{r},t)} = -\frac{1}{4\pi c}\mathbf{E}_0(\mathbf{r},t) - \frac{1}{c}\mathbf{P}(\mathbf{r},t),
+\end{split}
+\end{equation}
+such that, using the identities $\dot{\mathbf{A}}(\mathbf{r},t) = -c[\mathbf{E}(\mathbf{r},t) + \nabla\Phi(\mathbf{r},t)]$ and $\dot{\mathbf{A}}_0(\mathbf{r},t) = -c[\mathbf{E}_0(\mathbf{r},t) + \nabla\Phi_0(\mathbf{r},t)]$, the associated Hamiltonian is
+\begin{equation}
+\begin{split}
+H_{PZW} &= \sum_i\mathbf{p}_i(t)\cdot\dot{\mathbf{x}}_i(t) + \int\bm{\pi}(\mathbf{r},t)\cdot\dot{\mathbf{A}}(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r} + \int\bm{\pi}_0(\mathbf{r},t)\cdot\dot{\mathbf{A}}_0(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r} - L_{PZW}\\
+&= \sum_i\frac{1}{2}m_i\dot{\mathbf{x}}_i^2(t) + \frac{1}{8\pi}\int\left[\mathbf{E}^2(\mathbf{r},t) + \mathbf{B}^2(\mathbf{r},t)\right]\mathrm{d}^3\mathbf{r} + \frac{1}{8\pi}\int\left[\mathbf{E}_0^2(\mathbf{r},t) + \mathbf{B}_0^2(\mathbf{r},t)\right]\mathrm{d}^3\mathbf{r}\\
+&\qquad+\int\mathbf{P}(\mathbf{r},t)\cdot\left[\mathbf{E}(\mathbf{r},t) + \mathbf{E}_0(\mathbf{r},t) + \nabla\Phi(\mathbf{r},t) + \nabla\Phi_0(\mathbf{r},t)\right]\mathrm{d}^3\mathbf{r}\\
+&\qquad+ \frac{1}{4\pi}\int\mathbf{E}(\mathbf{r},t)\cdot\nabla\Phi(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r} + \frac{1}{4\pi}\int\mathbf{E}_0(\mathbf{r},t)\cdot\nabla\Phi_0(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r}\\
+&\qquad+ \int\rho_b(\mathbf{r},t)\left[\Phi(\mathbf{r},t) + \Phi_0(\mathbf{r},t)\right]\mathrm{d}^3\mathbf{r} + \int\rho_0(\mathbf{r},t)\Phi_0(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r}\\
+&\qquad - \frac{1}{c}\int\mathbf{J}_0(\mathbf{r},t)\cdot\mathbf{A}_0(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r} + \frac{1}{c}\int\mathbf{P}(\mathbf{r},t)\cdot\left[\dot{\mathbf{A}}(\mathbf{r},t) + \dot{\mathbf{A}}_0(\mathbf{r},t)\right]\mathrm{d}^3\mathbf{r}.
+\end{split}
+\end{equation}
+One can see through substitution of the potential form of the electric field that the fourth term of the second sum above cancels with the last term, i.e.
+\begin{equation}
+\int\mathbf{P}(\mathbf{r},t)\cdot\left[\mathbf{E}(\mathbf{r},t) + \mathbf{E}_0(\mathbf{r},t) + \nabla\Phi(\mathbf{r},t) + \nabla\Phi_0(\mathbf{r},t)\right]\mathrm{d}^3\mathbf{r} = -\frac{1}{c}\int\mathbf{P}(\mathbf{r},t)\cdot\left[\dot{\mathbf{A}}(\mathbf{r},t) + \dot{\mathbf{A}}_0(\mathbf{r},t)\right]\mathrm{d}^3\mathbf{r}.
+\end{equation}
+Further, integration by parts and use of the identities $\nabla\cdot\mathbf{E}(\mathbf{r},t) = 4\pi\rho_b(\mathbf{r},t)$ and $\nabla\cdot\mathbf{E}_0(\mathbf{r},t)\approx4\pi\rho_0(\mathbf{r},t)$ can be used to show that
+\begin{equation}
+\begin{split}
+\frac{1}{4\pi}\int\mathbf{E}(\mathbf{r},t)\cdot\nabla\Phi(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r} &= -\int\rho_b(\mathbf{r},t)\Phi(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r},\\
+\frac{1}{4\pi}\int\mathbf{E}_0(\mathbf{r},t)\cdot\nabla\Phi_0(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r} &= -\int\rho_0(\mathbf{r},t)\Phi_0(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r}.
+\end{split}
+\end{equation}
+Finally, with $\mathbf{E}^2(\mathbf{r},t) = \mathbf{E}(\mathbf{r},t)\cdot\mathbf{D}(\mathbf{r},t) - 4\pi\mathbf{E}(\mathbf{r},t)\cdot\mathbf{P}(\mathbf{r},t)$, the Hamiltonian simplifies to
+\begin{equation}\label{eq:Hpzw}
+\begin{split}
+H_{PZW} &= \sum_i\frac{1}{2}m_i\dot{\mathbf{x}}_i^2(t) - \frac{1}{2}\int\mathbf{E}(\mathbf{r},t)\cdot\mathbf{P}(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r}\\
+& + \frac{1}{8\pi}\int\left[\mathbf{E}(\mathbf{r},t)\cdot\mathbf{D}(\mathbf{r},t) + \mathbf{B}^2(\mathbf{r},t)\right]\mathrm{d}^3\mathbf{r} + \frac{1}{8\pi}\int\left[\mathbf{E}_0^2(\mathbf{r},t) + \mathbf{B}_0^2(\mathbf{r},t)\right]\mathrm{d}^3\mathbf{r}\\
+& + \int\rho_b(\mathbf{r},t)\Phi_0(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r} - \frac{1}{c}\int\mathbf{J}_0(\mathbf{r},t)\cdot\mathbf{A}_0(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r}.
+\end{split}
+\end{equation}
+
+This form of the Hamiltonian is conceptually convenient because it includes the energy bound in the macroscopic electromagnetic fields, $(1/8\pi)\int[\mathbf{E}(\mathbf{r,t})\cdot\mathbf{D}(\mathbf{r},t) + \mathbf{B}^2(\mathbf{r},t)]\;\mathrm{d}^3\mathbf{r}$, of a system that includes materials. However, as the conjugate momentum of the system vector potential is proportional to the displacement field, $\bm{\pi}(\mathbf{r},t) = -(1/4\pi c)\mathbf{D}(\mathbf{r},t)$, we need to eliminate the extraneous factor of $\mathbf{E}(\mathbf{r},t)$ inside the integral to bring the Hamiltonian into its canonical form.

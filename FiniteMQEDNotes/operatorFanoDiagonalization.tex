@@ -1,0 +1,454 @@
+%!TEX root = finiteMQED.tex
+
+\section{Fano Diagonalization of an Oscillator Coupled to a Bath}\label{app:fanoDiagonalization}
+
+Beginning with a Hamiltonian
+\begin{equation}
+\hat{H} = \hat{H}_0 + \hat{H}_\mathrm{int}
+\end{equation}
+where 
+\begin{equation}
+\begin{split}
+\hat{H}_0 &= \sum_{\bm{\alpha}}\int_0^\infty\frac{1}{2}\hbar\Omega\left[\hat{a}_{\bm{\alpha}}^\dagger(k,t)\hat{a}_{\bm{\alpha}}(k,t) + \hat{a}_{\bm{\alpha}}(k,t)\hat{a}_{\bm{\alpha}}^\dagger(k,t)\right]\mathrm{d}k\\
+&\qquad + \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty\frac{1}{2}\hbar\nu\left[\hat{b}_{\bm{\beta}}^\dagger(k,\nu;t)\hat{b}_{\bm{\beta}}(k,\nu;t) + \hat{b}_{\bm{\beta}}(k,\nu;t)\hat{b}_{\bm{\beta}}^\dagger(k,\nu;t)\right]\mathrm{d}\nu\,\mathrm{d}k
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\hat{H}_\mathrm{int} = \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty \hbar g(\nu)\left[\hat{a}_{\bm{\beta}}(k,t) + \hat{a}_{\bm{\beta}}^\dagger(k,t)\right]\left[\hat{b}_{\bm{\beta}}(k,\nu;t) + \hat{b}_{\bm{\beta}}^\dagger(k,\nu;t)\right]\mathrm{d}\nu\,\mathrm{d}k,
+\end{equation}
+we can define the boson operators $\hat{a}_{\bm{\alpha}}(k,t)$ and $\hat{b}_{\bm{\beta}}(k,\nu;t)$ by their commutation relations
+\begin{equation}
+\begin{split}
+\left[\hat{a}_{\bm{\alpha}}(k,t),\hat{a}_{\bm{\alpha}'}^\dagger(k',t)\right] &= \delta_{\bm{\alpha}\bm{\alpha}'}\delta(k - k'),\\
+\left[\hat{b}_{\bm{\beta}}(k,\nu;t),\hat{b}_{\bm{\beta}'}^\dagger(k',\nu';t)\right] &= \delta_{\bm{\beta}\bm{\beta}'}\delta(k - k')\delta(\nu - \nu')
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+\left[\hat{a}_{\bm{\alpha}}(k,t),\hat{a}_{\bm{\alpha}'}(k',t)\right] &= 0,\\
+\left[\hat{b}_{\bm{\beta}}(k,\nu;t),\hat{b}_{\bm{\beta}'}(k',\nu';t)\right] &= 0,\\
+\left[\hat{a}_{\bm{\alpha}}(k,t),\hat{b}_{\bm{\alpha}'}(k',\nu;t)\right] &= \left[\hat{a}_{\bm{\alpha}}(k,t),\hat{b}_{\bm{\alpha}'}^\dagger(k',\nu;t)\right] = 0.
+\end{split}
+\end{equation}
+Note that commutation relations between the system's creation operators follow from the above via the Hermitian conjugate identity $[\hat{A},\hat{B}]^\dagger = -[\hat{A}^\dagger,\hat{B}^\dagger]$. Diagonalization of this system can be performed by defining new boson operators
+\begin{equation}
+\hat{B}_{\bm{\beta}}(k,\nu;t) = q(\nu)\hat{a}_{\bm{\beta}}(k,t) + s(\nu)\hat{a}_{\bm{\beta}}^\dagger(k,t) + \int_0^\infty\left[u(\nu,\nu')\hat{b}_{\bm{\beta}}(k,\nu';t) + v(\nu,\nu')\hat{b}_{\bm{\beta}}^\dagger(k,\nu';t)\right]\mathrm{d}\nu'
+\end{equation}
+that obey commutation relations
+\begin{equation}
+\begin{split}
+\left[\hat{B}_{\bm{\beta}}(k,\nu;t),\hat{B}_{\bm{\beta}'}^\dagger(k',\nu';t)\right] &= \delta_{\bm{\beta}\bm{\beta}'}\delta(k - k')\delta(\nu - \nu'),\\
+\left[\hat{B}_{\bm{\beta}}(k,\nu;t),\hat{B}_{\bm{\beta}'}(k',\nu';t)\right] &= 0
+\end{split}
+\end{equation}
+and provide a new Hamiltonian
+\begin{equation}
+\hat{H} = \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty\hbar\nu\hat{B}_{\bm{\beta}}^\dagger(k,\nu;t)\hat{B}_{\bm{\beta}}(k,\nu;t)\;\mathrm{d}\nu\,\mathrm{d}k.
+\end{equation}
+
+The diagonalization process begins with the identification of the commutation relations
+\begin{equation}
+\begin{split}
+\left[\hat{a}_{\bm{\alpha}}(k,t),\hat{H}\right] &= \sum_{\bm{\alpha}'}\int_0^\infty\frac{1}{2}\hbar\Omega\left(\left[\hat{a}_{\bm{\alpha}}(k,t),\hat{a}_{\bm{\alpha}'}^\dagger(k',t)\hat{a}_{\bm{\alpha}'}(k',t)\right] + \left[\hat{a}_{\bm{\alpha}}(k,t),\hat{a}_{\bm{\alpha}'}(k',t)\hat{a}_{\bm{\alpha}'}^\dagger(k',t)\right]\right)\mathrm{d}k'\\
+&\qquad + \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty \hbar g(\nu)\left(\left[\hat{a}_{\bm{\alpha}}(k,t),\hat{a}_{\bm{\beta}}(k',t)\right] + \left[\hat{a}_{\bm{\alpha}}(k,t),\hat{a}_{\bm{\beta}}^\dagger(k',t)\right]\right)\\
+&\qquad\qquad\times\left[\hat{b}_{\bm{\beta}}(k',\nu;t) + \hat{b}_{\bm{\beta}}^\dagger(k',\nu;t)\right]\mathrm{d}\nu\,\mathrm{d}k'\\[0.5em]
+% &= \sum_{\bm{\alpha}'}\int_0^\infty\frac{1}{2}\hbar\Omega\left(\hat{a}_{\bm{\alpha}'}^\dagger(k',t)\left[\hat{a}_{\bm{\alpha}}(k,t),\hat{a}_{\bm{\alpha}'}(k',t)\right] + \hat{a}_{\bm{\alpha}'}(k',t)\left[\hat{a}_{\bm{\alpha}}(k,t),\hat{a}_{\bm{\alpha}'}^\dagger(k',t)\right]\right.\\
+% &\qquad \left. + \hat{a}_{\bm{\alpha}'}(k',t)\left[\hat{a}_{\bm{\alpha}}(k,t),\hat{a}_{\bm{\alpha}'}^\dagger(k',t)\right] + \hat{a}_{\bm{\alpha}'}^\dagger(k',t)\left[\hat{a}_{\bm{\alpha}}(k,t),\hat{a}_{\bm{\alpha}'}(k',t)\right]\right)\mathrm{d}k'\\
+% &\qquad + \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty \hbar g(\nu)\delta_{\bm{\alpha}\bm{\beta}}\delta(k - k')\left[\hat{b}_{\bm{\beta}}(k',\nu;t) + \hat{b}_{\bm{\beta}}^\dagger(k',\nu;t)\right]\mathrm{d}\nu\,\mathrm{d}k'\\
+% &= \sum_{\bm{\alpha}'}\int_0^\infty\frac{1}{2}\hbar\Omega\left[2\hat{a}_{\bm{\alpha}'}(k',t)\delta_{\bm{\alpha}\bm{\alpha}'}\delta(k - k')\right] + \int_0^\infty \hbar g(\nu)\left[\hat{b}_{\bm{\alpha}}(k,\nu;t) + \hat{b}_{\bm{\alpha}}^\dagger(k,\nu;t)\right]\mathrm{d}\nu\\
+&= \hbar\Omega\hat{a}_{\bm{\alpha}}(k,t) + \int_0^\infty \hbar g(\nu)\left[\hat{b}_{\bm{\alpha}}(k,\nu;t) + \hat{b}_{\bm{\alpha}}^\dagger(k,\nu;t)\right]\mathrm{d}\nu
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+\left[\hat{b}_{\bm{\beta}}(k,\nu;t),\hat{H}\right] &= \sum_{\bm{\beta}'}\int_0^\infty\int_0^\infty\frac{1}{2}\hbar\nu'\left(\left[\hat{b}_{\bm{\beta}}(k,\nu;t),\hat{b}_{\bm{\beta}'}^\dagger(k',\nu';t)\hat{b}_{\bm{\beta}'}(k',\nu';t)\right]\right.\\
+&\qquad\qquad\left. + \left[\hat{b}_{\bm{\beta}}(k,\nu;t),\hat{b}_{\bm{\beta}'}(k',\nu';t)\hat{b}_{\bm{\beta}'}^\dagger(k',\nu';t)\right]\right)\mathrm{d}\nu'\,\mathrm{d}k'\\
+&\qquad + \sum_{\bm{\beta}'}\int_0^\infty\int_0^\infty \hbar g(\nu')\left[\hat{a}_{\bm{\beta}'}(k',t) + \hat{a}_{\bm{\beta}'}^\dagger(k',t)\right]\\
+&\qquad\qquad\times\left(\left[\hat{b}_{\bm{\beta}}(k,\nu;t),\hat{b}_{\bm{\beta}'}(k',\nu';t)\right] + \left[\hat{b}_{\bm{\beta}}(k,\nu;t),\hat{b}_{\bm{\beta}'}^\dagger(k',\nu';t)\right]\right)\mathrm{d}\nu'\,\mathrm{d}k'\\[1.0em]
+% &= \sum_{\bm{\beta}'}\int_0^\infty\int_0^\infty\frac{1}{2}\hbar\nu'\left(\hat{b}_{\bm{\beta}'}^\dagger(k',\nu';t)\left[\hat{b}_{\bm{\beta}}(k,\nu;t),\hat{b}_{\bm{\beta}'}(k',\nu';t)\right]\right.\\
+% &\qquad\qquad + \hat{b}_{\bm{\beta}'}(k',\nu';t)\left[\hat{b}_{\bm{\beta}}(k,\nu;t),\hat{b}_{\bm{\beta}'}^\dagger(k',\nu';t)\right]\\
+% &\qquad\qquad + \hat{b}_{\bm{\beta}'}(k',\nu';t)\left[\hat{b}_{\bm{\beta}}(k,\nu;t),\hat{b}_{\bm{\beta}'}^\dagger(k',\nu';t)\right]\\
+% &\qquad\qquad \left. + \hat{b}_{\bm{\beta}'}^\dagger(k',\nu';t)\left[\hat{b}_{\bm{\beta}}(k,\nu;t),\hat{b}_{\bm{\beta}'}(k',\nu';t)\right]\right)\mathrm{d}\nu'\,\mathrm{d}k'\\
+% &\qquad + \sum_{\bm{\beta}'}\int_0^\infty\int_0^\infty \hbar g(\nu')\left[\hat{a}_{\bm{\beta}'}(k',t) + \hat{a}_{\bm{\beta}'}^\dagger(k',t)\right]\delta_{\bm{\beta}\bm{\beta}'}\delta(k - k')\delta(\nu - \nu')\mathrm{d}\nu'\,\mathrm{d}k'\\
+% &= \sum_{\bm{\beta}'}\int_0^\infty\int_0^\infty\frac{1}{2}\hbar\nu'2\hat{b}_{\bm{\beta}'}(k',\nu';t)\delta_{\bm{\beta}\bm{\beta}'}\delta(k - k')\delta(\nu - \nu')\;\mathrm{d}\nu'\,\mathrm{d}k' + \hbar g(\nu)\left[\hat{a}_{\bm{\beta}}(k,t) + \hat{a}_{\bm{\beta}}^\dagger(k,t)\right]\\
+&= \hbar\nu\hat{b}_{\bm{\beta}}(k,\nu;t) + \hbar g(\nu)\left[\hat{a}_{\bm{\beta}}(k,t) + \hat{a}_{\bm{\beta}}^\dagger(k,t)\right].
+\end{split}
+\end{equation}
+With these and the identity $[\hat{A},\hat{B}]^\dagger = -[\hat{A}^\dagger,\hat{B}^\dagger]$, we can calculate the commutator of our hybridized annihilation operators with both the hybridized and unhybridized forms of the Hamtilonian. In detail,
+\begin{equation}\label{eq:BcommH1}
+\begin{split}
+\left[\hat{B}_{\bm{\beta}}(k,\nu;t),\hat{H}\right] &= \sum_{\bm{\beta}'}\int_0^\infty\int_0^\infty\hbar\nu'\left[\hat{B}_{\bm{\beta}}(k,\nu;t),\hat{B}_{\bm{\beta}'}^\dagger(k',\nu';t)\hat{B}_{\bm{\beta}'}(k',\nu';t)\right]\mathrm{d}\nu'\,\mathrm{d}k'\\
+% &= \sum_{\bm{\beta}'}\int_0^\infty\int_0^\infty\hbar\nu'\left(\hat{B}_{\bm{\beta}'}^\dagger(k',\nu';t)\left[\hat{B}_{\bm{\beta}}(k,\nu;t),\hat{B}_{\bm{\beta}'}(k',\nu';t)\right]\right.\\
+% &\qquad\left. + \hat{B}_{\bm{\beta}'}(k',\nu';t)\left[\hat{B}_{\bm{\beta}}(k,\nu;t),\hat{B}_{\bm{\beta}'}^\dagger(k',\nu';t)\right]\right)\mathrm{d}\nu'\,\mathrm{d}k'\\
+% &= \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty\hbar\nu'\hat{B}_{\bm{\beta}'}(k',\nu';t)\delta_{\bm{\beta}'\bm{\beta}}\delta(k - k')\delta(\nu - \nu')\;\mathrm{d}\nu'\,\mathrm{d}k'\\
+% &= \hbar\nu\hat{B}_{\bm{\beta}}(k,\nu;t)\\
+&= \hbar\nu\left(q(\nu)\hat{a}_{\bm{\beta}}(k,t) + s(\nu)\hat{a}_{\bm{\beta}}^\dagger(k,t) + \int_0^\infty\left[u(\nu,\nu')\hat{b}_{\bm{\beta}}(k,\nu';t) + v(\nu,\nu')\hat{b}_{\bm{\beta}}^\dagger(k,\nu';t)\right]\mathrm{d}\nu'\right).
+\end{split}
+\end{equation}
+and
+\begin{equation}\label{eq:BcommH2}
+\begin{split}
+\left[\hat{B}_{\bm{\beta}}(k,\nu;t),\hat{H}\right] &= \left[q(\nu)\hat{a}_{\bm{\beta}}(k,t) + s(\nu)\hat{a}_{\bm{\beta}}^\dagger(k,t) + \int_0^\infty\left[u(\nu,\nu')\hat{b}_{\bm{\beta}}(k,\nu';t) + v(\nu,\nu')\hat{b}_{\bm{\beta}}^\dagger(k,\nu';t)\right]\mathrm{d}\nu',\hat{H}\right]\\
+&= q(\nu)\left(\hbar\Omega\hat{a}_{\bm{\alpha}}(k,t) + \int_0^\infty \hbar g(\nu')\left[\hat{b}_{\bm{\alpha}}(k,\nu';t) + \hat{b}_{\bm{\alpha}}^\dagger(k,\nu';t)\right]\mathrm{d}\nu'\right)\\
+&\qquad - s(\nu)\left(\hbar\Omega\hat{a}_{\bm{\alpha}}^\dagger(k,t) + \int_0^\infty \hbar g(\nu')\left[\hat{b}_{\bm{\alpha}}(k,\nu';t) + \hat{b}_{\bm{\alpha}}^\dagger(k,\nu';t)\right]\mathrm{d}\nu'\right)\\
+&\qquad + \int_0^\infty u(\nu,\nu')\left(\hbar\nu'\hat{b}_{\bm{\beta}}(k,\nu';t) + \hbar g(\nu')\left[\hat{a}_{\bm{\beta}}(k,t) + \hat{a}_{\bm{\beta}}^\dagger(k,t)\right]\right)\mathrm{d}\nu'\\
+&\qquad - \int_0^\infty v(\nu,\nu')\left(\hbar\nu'\hat{b}_{\bm{\beta}}^\dagger(k,\nu';t) + \hbar g(\nu')\left[\hat{a}_{\bm{\beta}}(k,t) + \hat{a}_{\bm{\beta}}^\dagger(k,t)\right]\right)\mathrm{d}\nu'.
+\end{split}
+\end{equation}
+Noting that each operator is linearly independent from the others, we can see that Eqs. \eqref{eq:BcommH1} and \eqref{eq:BcommH2} form a system of four equations,
+\begin{equation}\label{eq:hybridizationCoefficientsSystem}
+\begin{split}
+\hbar\nu q(\nu) &= \hbar\Omega q(\nu) + \int_0^\infty\left[u(\nu,\nu') - v(\nu,\nu')\right]\hbar g(\nu')\mathrm{d}\nu',\\
+\hbar\nu s(\nu) &= -\hbar\Omega s(\nu) + \int_0^\infty\left[u(\nu,\nu') - v(\nu,\nu')\right]\hbar g(\nu')\mathrm{d}\nu',\\
+\hbar\nu u(\nu,\nu') &= \hbar g(\nu')[q(\nu) - s(\nu)] + \hbar\nu'u(\nu,\nu'),\\
+\hbar\nu v(\nu,\nu') &= \hbar g(\nu')[q(\nu) - s(\nu)] - \hbar\nu'v(\nu,\nu').
+\end{split}
+\end{equation}
+From the first two equations of Eq. \eqref{eq:hybridizationCoefficientsSystem}, we can see that
+\begin{equation}
+s(\nu) = \frac{\nu - \Omega}{\nu + \Omega}q(\nu).
+\end{equation}
+This result can be plugged into the latter two lines to produce
+\begin{equation}
+\begin{split}
+(\nu - \nu')u(\nu,\nu') &= \frac{2\Omega}{\nu + \Omega} g(\nu')q(\nu),\\
+(\nu + \nu')v(\nu,\nu') &= \frac{2\Omega}{\nu + \Omega} g(\nu')q(\nu).\\
+\end{split}
+\end{equation}
+It will be useful later in our calculations to extend the definitions of our coefficients to negative bath frequencies, such that either equation above needs to be carefully handled where $\nu = \pm\nu'$, respectively. In these cases, the equations give no information about $u(\nu,\nu')$ or $v(\nu,\nu')$, such that we must use the formal solution $f(x) = PV\left\{1/x\right\} + \mathcal{C}\delta(x)$ to the equation $xf(x) = 1$ in order to proceed. With $PV$ indicating the Cauchy principal value and $\mathcal{C}$ a complex nonzero constant with respect to $x$, we can map this solution onto our current problem by letting $\nu$ be fixed such that 
+\begin{equation}
+\begin{split}
+u(\nu,\nu') &= \left[PV\left\{\frac{1}{\nu - \nu'}\right\} + [y(\nu) + r]\delta(\nu - \nu')\right]\frac{2\Omega}{\nu + \Omega}g(\nu')q(\nu),\\
+v(\nu,\nu') &= \left[PV\left\{\frac{1}{\nu + \nu'}\right\} + [x(\nu) + p]\delta(\nu + \nu')\right]\frac{2\Omega}{\nu + \Omega}g(\nu')q(\nu).
+\end{split}
+\end{equation}
+Here, $x(\nu)$ and $y(\nu)$ are complex functions of $\nu$ and $r$ and $p$ are complex constants. Plugging these coefficients back into either of the first two lines of Eq. \eqref{eq:hybridizationCoefficientsSystem} produces the condition
+\begin{equation}
+y(\nu) + r = \frac{\nu^2 - \Omega^2}{2\Omega g^2(\nu)} - \frac{1}{g^2(\nu)}\int_0^\infty\left[PV\left\{\frac{1}{\nu - \nu'}\right\} - PV\left\{\frac{1}{\nu + \nu'}\right\}\right]g^2(\nu')\;\mathrm{d}\nu'
+\end{equation}
+under the assumption that $g^2(-\nu) = -g^2(\nu)$. The simplest combination of constants that satisfies this condition is
+\begin{equation}
+\begin{split}
+p &= 0,\\
+x(\nu) &= 0,\\
+y(\nu) + r &= \frac{\nu^2 - \Omega^2}{2\Omega g^2(\nu)} - \frac{1}{g^2(\nu)}\int_0^\infty\left[PV\left\{\frac{1}{\nu - \nu'}\right\} - PV\left\{\frac{1}{\nu + \nu'}\right\}\right]g^2(\nu')\;\mathrm{d}\nu'\\
+% &= \frac{\nu^2 - \Omega^2}{2\Omega g^2(\nu)} - \frac{1}{g^2(\nu)}\int_0^\infty PV\left\{\frac{1}{\nu - \nu'}\right\}g^2(\nu')\;\mathrm{d}\nu' + \int_{-\nu' = 0}^{-\nu' = \infty}PV\left\{\frac{1}{\nu - \nu'}\right\}g^2(-\nu')\;\mathrm{d}(-\nu')\\
+% &= \frac{\nu^2 - \Omega^2}{2\Omega g^2(\nu)} - \frac{1}{g^2(\nu)}\int_0^\infty PV\left\{\frac{1}{\nu - \nu'}\right\}g^2(\nu')\;\mathrm{d}\nu' - \int_{\nu' = -\infty}^{\nu' = 0}PV\left\{\frac{1}{\nu - \nu'}\right\}g^2(\nu')\;\mathrm{d}\nu'\\
+&= \frac{\nu^2 - \Omega^2}{2\Omega g^2(\nu)} - \frac{1}{g^2(\nu)}\int_{-\infty}^\infty PV\left\{\frac{1}{\nu - \nu'}\right\}g^2(\nu')\;\mathrm{d}\nu',
+\end{split}
+\end{equation}
+such that we can now represent $u(\nu,\nu')$ and $v(\nu,\nu')$ as products of known quantities times $q(\nu)$.
+
+We are now left with the task of calculating $q(\nu)$. To do so, we can use the commutation relation
+\begin{equation}
+\begin{split}
+\left[\hat{B}_{\bm{\beta}}(k,\nu;t),\hat{B}_{\bm{\beta}'}^\dagger(k',\nu';t)\right] &= \left[\left(q(\nu)\hat{a}_{\bm{\beta}}(k,t) + s(\nu)\hat{a}_{\bm{\beta}}^\dagger(k,t) + \int_0^\infty u(\nu,\omega)\hat{b}_{\bm{\beta}}(k,\omega;t)\;\mathrm{d}\omega\right.\right.\\
+&\qquad + \left. \int_0^\infty v(\nu,\omega)\hat{b}_{\bm{\beta}}^\dagger(k,\omega;t)\;\mathrm{d}\omega \right),\left(q^*(\nu')\hat{a}_{\bm{\beta}'}^\dagger(k',\nu') + s^*(\nu')\hat{a}_{\bm{\beta}'}(k',\nu')  \vphantom{\int_0^\infty}\right.\\
+&\qquad + \left.\left.\int_0^\infty\left[u^*(\nu',\omega')\hat{b}_{\bm{\beta}'}^\dagger(k',\omega';t) + v^*(\nu',\omega')\hat{b}_{\bm{\beta}'}(k',\omega';t)\right]\;\mathrm{d}\omega'\right)\right]\\
+% &= [q(\nu)q^*(\nu') - s(\nu)s^*(\nu')]\delta(k - k')\delta_{\bm{\beta}\bm{\beta}'}\\
+% &\qquad + \int_0^\infty\int_0^\infty [u(\nu,\omega)u^*(\nu',\omega') - v(\nu,\omega)v^*(\nu',\omega')]\delta(k - k')\delta(\omega - \omega')\delta_{\bm{\beta}\bm{\beta}'}\;\mathrm{d}\omega\,\mathrm{d}\omega'\\
+&= [q(\nu)q^*(\nu') - s(\nu)s^*(\nu')]\delta(k - k')\delta_{\bm{\beta}\bm{\beta}'}\\
+&\qquad + \delta(k - k')\delta_{\bm{\beta}\bm{\beta}'}\int_0^\infty\left[u(\nu,\omega)u^*(\nu',\omega) - v(\nu,\omega)v^*(\nu',\omega)\right]\mathrm{d}\omega
+\end{split}
+\end{equation}
+Since we have demanded that
+\begin{equation}
+\left[\hat{B}_{\bm{\beta}}(k,\nu;t),\hat{B}_{\bm{\beta}'}^\dagger(k',\nu';t)\right] = \delta(k - k')\delta(\nu - \nu')\delta_{\bm{\beta}\bm{\beta}'},
+\end{equation}
+we can say
+\begin{equation}\label{eq:prefactorAlgebra1}
+\begin{split}
+\delta(\nu - \nu') &= q(\nu)q^*(\nu') - s(\nu)s^*(\nu') + \int_0^\infty\left[u(\nu,\omega)u
+^*(\nu',\omega) - v(\nu,\omega)v^*(\nu',\omega)\right]\mathrm{d}\omega\\
+% &= q(\nu)q(\nu')\left[1 - \frac{(\nu - \Omega)(\nu' - \Omega)}{(\nu + \Omega)(\nu' + \Omega)}\right] + \int_0^\infty\left[PV\left\{\frac{1}{\nu - \omega}\right\} + [y(\nu) + r]\delta(\nu - \omega)\right]\frac{2\Omega}{\nu + \Omega}g(\omega)q(\nu)\\
+% &\qquad\qquad\times \left[PV\left\{\frac{1}{\nu' - \omega}\right\} + [y(\nu') + r]^*\delta(\nu' - \omega)\right]\frac{2\Omega}{\nu' + \Omega}g(\omega)q(\nu')\;\mathrm{d}\omega\\
+% &\qquad - \int_0^\infty PV\left\{\frac{1}{\nu + \omega}\right\}\frac{2\Omega}{\nu + \Omega}g(\omega)q(\nu)PV\left\{\frac{1}{\nu' + \omega}\right\}\frac{2\Omega}{\nu' + \Omega}g(\omega)q(\nu')\;\mathrm{d}\omega\\
+% &= q(\nu)q^*(\nu')\left(\frac{2\Omega(\nu + \nu')}{(\nu + \Omega)(\nu' + \Omega)} + \int_0^\infty PV\left\{\frac{1}{(\nu - \omega)(\nu' - \omega)}\right\}\frac{4\Omega^2}{(\nu + \Omega)(\nu' + \Omega)}g^2(\omega)\;\mathrm{d}\omega\right.\\
+% &\qquad - \int_0^\infty PV\left\{\frac{1}{(\nu + \omega)(\nu' + \omega)}\right\}\frac{4\Omega^2}{(\nu + \Omega)(\nu' + \Omega)}g^2(\omega)\;\mathrm{d}\omega\\
+% &\qquad +  PV\left\{\frac{1}{\nu - \nu'}\right\}\frac{2\Omega}{\nu + \Omega}g(\nu')[y(\nu') + r]^*\frac{2\Omega}{\nu' + \Omega}g(\nu')\\
+% &\qquad + PV\left\{\frac{1}{\nu' - \nu}\right\}\frac{2\Omega}{\nu' + \Omega}g(\nu)[y(\nu) + r]\frac{2\Omega}{\nu + \Omega}g(\nu)\\
+% &\qquad\left. + \frac{4\Omega^2}{(\nu + \Omega)(\nu' + \Omega)}[y(\nu) + r][y(\nu') + r]^*g^2(\nu)\delta(\nu' - \nu) \vphantom{\int_0^\infty} \right)\\
+% &= q(\nu)q^*(\nu')\left(\frac{2\Omega(\nu + \nu')}{(\nu + \Omega)(\nu' + \Omega)} + \frac{4\Omega^2g^2(\nu)}{(\nu + \Omega)(\nu' + \Omega)}[y(\nu) + r][y(\nu') + r]^*\delta(\nu - \nu') \vphantom{\int_0^\infty} \right.\\
+% &\qquad + \int_0^\infty \left(PV\left\{\frac{1}{(\nu - \omega)(\nu' - \omega)}\right\} - PV\left\{\frac{1}{(\nu + \omega)(\nu' + \omega)}\right\}\right)\frac{4\Omega^2g^2(\omega)}{(\nu + \Omega)(\nu' + \Omega)}\;\mathrm{d}\omega\\
+% &\qquad\left. + \frac{4\Omega^2}{(\nu + \Omega)(\nu' + \Omega)}\left[PV\left\{\frac{1}{\nu' - \nu}\right\}g^2(\nu)[y(\nu) + r] + PV\left\{\frac{1}{\nu - \nu'}\right\}g^2(\nu')[y(\nu') + r]^*\right] \vphantom{\int_0^\infty} \right)\\
+&= q(\nu)q^*(\nu')\frac{4\Omega^2}{(\nu + \Omega)(\nu' + \Omega)}\left(\frac{\nu + \nu'}{2\Omega} + g^2(\nu)[y(\nu) + r][y(\nu') + r]^*\delta(\nu - \nu') \vphantom{\int_0^\infty} \right.\\
+&\qquad +  \int_{-\infty}^\infty PV\left\{\frac{1}{(\nu - \omega)(\nu' - \omega)}\right\}g^2(\omega)\;\mathrm{d}\omega\\
+&\qquad\left. + \left[PV\left\{\frac{1}{\nu' - \nu}\right\}g^2(\nu)[y(\nu) + r] + PV\left\{\frac{1}{\nu - \nu'}\right\}g^2(\nu')[y(\nu') + r]^*\right] \vphantom{\int_0^\infty} \right)
+\end{split}
+\end{equation}
+To simplify, we can note that
+\begin{equation}
+PV\left\{\frac{1}{x}\right\} = \lim_{\epsilon\to0}\frac{x}{x^2 + \epsilon^2}
+\end{equation}
+such that $PV\{-1/x\} = -PV\{1/x\}$. Further, noting that
+\begin{equation}
+\begin{split}
+\lim_{\epsilon\to0}\frac{\epsilon}{x^2 + \epsilon^2} &= \pi\delta(x),\\
+\lim_{\epsilon\to0}\frac{x^2}{x^2 + \epsilon^2} &= 1,
+\end{split}
+\end{equation}
+we can see that
+\begin{equation}
+\begin{split}
+&\left[PV\left\{\frac{1}{\nu' - \nu}\right\}g^2(\nu)[y(\nu) + r] + PV\left\{\frac{1}{\nu - \nu'}\right\}g^2(\nu')[y(\nu') + r]^*\right]\\
+% &= PV\left\{\frac{1}{\nu' - \nu}\right\}\left(\frac{\nu^2 - \Omega^2}{2\Omega} - \int_{-\infty}^\infty PV\left\{\frac{1}{\nu - \omega}\right\}g^2(\omega)\;\mathrm{d}\omega\right)\\
+% &\qquad + PV\left\{\frac{1}{\nu - \nu'}\right\}\left(\frac{\nu'^2 - \Omega^2}{2\Omega} - \int_{-\infty}^\infty PV\left\{\frac{1}{\nu' - \omega}\right\}g^2(\omega)\;\mathrm{d}\omega\right)\\
+% &= PV\left\{\frac{1}{\nu' - \nu}\right\}\frac{\nu^2 - \nu'^2}{2\Omega} - PV\left\{\frac{1}{\nu' - \nu}\right\}\int_{-\infty}^\infty\left(PV\left\{\frac{1}{\nu - \omega}\right\} - PV\left\{\frac{1}{\nu' - \omega}\right\}\right)g^2(\omega)\;\mathrm{d}\omega\\
+% &= -\lim_{\epsilon\to0}\frac{\nu' - \nu}{(\nu' - \nu)^2 + \epsilon^2}\frac{(\nu' - \nu)(\nu' + \nu)}{2\Omega}\\
+% &\qquad - \lim_{\epsilon\to0}\frac{\nu' - \nu}{(\nu' - \nu)^2 + \epsilon^2}\int_{-\infty}^\infty\lim_{\epsilon'\to0}\left(\frac{\nu - \omega}{(\nu - \omega)^2 + \epsilon'^2} - \frac{\nu' - \omega}{(\nu' - \omega)^2 + \epsilon'^2}\right)g^2(\omega)\;\mathrm{d}\omega\\
+% &= -\frac{\nu + \nu'}{2\Omega} - \lim_{\epsilon\to0}\frac{\nu' - \nu}{(\nu' - \nu)^2 + \epsilon^2}\int_{-\infty}^\infty\lim_{\epsilon'\to0}\left(\frac{(\nu - \omega)[(\nu' - \omega)^2 + \epsilon'^2]}{[(\nu - \omega)^2 + \epsilon'^2][(\nu' - \omega)^2 + \epsilon'^2]}\right.\\
+% &\qquad\left.- \frac{(\nu' - \omega)[(\nu - \omega)^2 + \epsilon'^2]}{[(\nu - \omega)^2 + \epsilon'^2][(\nu' - \omega)^2 + \epsilon'^2}\right)g^2(\omega)\;\mathrm{d}\omega\\
+% &= -\frac{\nu + \nu'}{2\Omega} - \lim_{\epsilon\to 0}\frac{\nu' - \nu}{(\nu' - \nu)^2 + \epsilon^2}\int_{-\infty}^\infty\lim_{\epsilon'\to0}\left(\frac{(\nu - \omega)(\nu' - \omega)(\nu' - \nu) - \epsilon'^2(\nu' - \nu)}{[(\nu - \omega)^2 + \epsilon'^2][(\nu' - \omega)^2 + \epsilon'^2]}\right)g^2(\omega)\;\mathrm{d}\omega\\
+% &= -\frac{\nu + \nu'}{2\Omega} - \int_{-\infty}^\infty PV\left\{\frac{1}{(\nu - \omega)(\nu' - \omega)}\right\}g^2(\omega)\;\mathrm{d}\omega + \int_{-\infty}^\infty\pi^2\delta(\nu - \omega)\delta(\nu' - \omega)g^2(\omega)\;\mathrm{d}\omega\\
+&= -\frac{\nu + \nu'}{2\Omega} - \int_{-\infty}^\infty PV\left\{\frac{1}{(\nu - \omega)(\nu' - \omega)}\right\}g^2(\omega)\;\mathrm{d}\omega + \pi^2\delta(\nu - \nu')g^2(\nu).
+\end{split}
+\end{equation}
+Plugging this result back into Eq. \eqref{eq:prefactorAlgebra1}, we find that
+\begin{equation}
+\delta(\nu - \nu') = q(\nu)q^*(\nu')\frac{4\Omega^2}{(\nu + \Omega)(\nu' + \Omega)}\left[g^2(\nu')[y(\nu') + r][y(\nu) + r]^*\delta(\nu - \nu') + \pi^2\delta(\nu - \nu')g^2(\nu) \vphantom{\sum} \right].
+\end{equation}
+This implies that
+\begin{equation}
+\begin{split}
+1 = |q(\nu)|^2(|y(\nu) + r|^2 + \pi^2)\frac{4\Omega^2g^2(\nu)}{(\nu + \Omega)^2}.
+\end{split}
+\end{equation}
+The most advantageous value of $r$ will turn out to be $r = 0$ such that
+\begin{equation}
+|y(\nu) + r|^2 + \pi^2 = |y(\nu) - \mathrm{i}\pi|^2
+\end{equation}
+and
+\begin{equation}
+q(\nu) = \frac{\nu + \Omega}{2\Omega g(\nu)[y(\nu) - \mathrm{i}\pi]}.
+\end{equation}
+Further, with
+\begin{equation}
+PV\left\{\frac{1}{x}\right\} = \lim_{\epsilon\to0}\frac{1}{x - \mathrm{i}\epsilon} - \mathrm{i}\pi\delta(x),
+\end{equation}
+we can see that
+\begin{equation}
+\begin{split}
+y(\nu) - \mathrm{i}\pi &= \frac{\nu^2 - \Omega^2}{2\Omega g^2(\nu)} - \frac{1}{g^2(\nu)}\int_{-\infty}^\infty\left[\lim_{\epsilon\to0}\frac{1}{\nu - \nu' - \mathrm{i}\epsilon} - \mathrm{i}\pi\delta(\nu - \nu')\right]g^2(\nu')\;\mathrm{d}\nu' - \mathrm{i}\pi\\
+% &= \frac{\nu^2 - \Omega^2}{2\Omega g^2(\nu)} - \frac{1}{g^2(\nu)}\int_{-\infty}^\infty\lim_{\epsilon\to0}\frac{1}{\nu - \nu' - \mathrm{i}\epsilon}g^2(\nu')\;\mathrm{d}\nu' - \mathrm{i}\pi + \mathrm{i}\pi\\
+&= \frac{\nu^2 - \Omega^2}{2\Omega g^2(\nu)} - \frac{1}{g^2(\nu)}\int_{-\infty}^\infty\lim_{\epsilon\to0}\frac{1}{\nu - \nu' - \mathrm{i}\epsilon}g^2(\nu')\;\mathrm{d}\nu'.
+\end{split}
+\end{equation}
+We can then define a new function
+\begin{equation}
+z(\nu) = 1 + \frac{2}{\Omega}\int_{-\infty}^\infty \frac{g^2(\omega)}{\nu - \omega - \mathrm{i}\epsilon}\mathrm{d}\omega
+\end{equation}
+such that
+\begin{equation}
+y(\nu) - \mathrm{i}\pi = \frac{\nu^2 - \Omega^2z(\nu)}{2\Omega g^2(\nu)},
+\end{equation}
+which allows us to finally define our expansions coefficients:
+\begin{equation}
+\begin{split}
+q(\nu) &= \frac{(\nu + \Omega)g(\nu)}{\nu^2 - \Omega^2 z(\nu)},\\
+s(\nu) &= \frac{(\nu - \Omega)g(\nu)}{\nu^2 - \Omega^2 z(\nu)},\\
+u(\nu,\nu') &= \delta(\nu - \nu') + \frac{2\Omega g(\nu)}{\nu^2 - \Omega^2z(\nu)}\frac{g(\nu')}{\nu - \nu' - \mathrm{i}\epsilon},\\
+v(\nu,\nu') &= \frac{2\Omega g(\nu)}{\nu^2 - \Omega^2z(\nu)}PV\left\{\frac{g(\nu')}{\nu + \nu'}\right\}.
+\end{split}
+\end{equation}
+
+Finally, we also need to be able to represent our unhybridized coordinates in terms of our hybridized ones. To do this, we can see that
+\begin{equation}
+\begin{split}
+\int_0^\infty&\left[q^*(\nu)\hat{B}_{\bm{\beta}}(k,\nu;t) - s(\nu)\hat{B}_{\bm{\beta}}^\dagger(k,\nu;t)\right]\mathrm{d}\nu = \hat{a}_{\bm{\beta}}(k,t)\int_0^\infty\left(|q(\nu)|^2 - |s(\nu)|^2\right)\mathrm{d}\nu\\
+& + \hat{a}^\dagger_{\bm{\beta}}(k,t)\int_0^\infty\left[q^*(\nu)s(\nu) - s(\nu)q^*(\nu)\right]\mathrm{d}\nu + \int_0^\infty\int_0^\infty\left[q^*(\nu)u(\nu,\nu') - s(\nu)v^*(\nu,\nu')\right]\hat{b}_{\bm{\beta}}(k,\nu';t)\;\mathrm{d}\nu'\,\mathrm{d}\nu\\
+& + \int_{0}^\infty\int_0^\infty\left[q^*(\nu)v(\nu,\nu') - s(\nu)u^*(\nu,\nu')\right]\hat{b}_{\bm{\beta}}^\dagger(k,\nu';t)\;\mathrm{d}\nu'\,\mathrm{d}\nu,
+\end{split}
+\end{equation}
+wherein the terms under integration must go to zero independently for the linear combination of hybridized coordinates to return an expression solely dependent on the operator $\hat{a}_{\bm{\beta}}(k,t)$. We can first immediately see that $q^*(\nu)s(\nu) - s(\nu)q^*(\nu) = 0$. Second,
+\begin{equation}\label{eq:consistencyCheckIntegral1}
+\begin{split}
+\int_0^\infty\left(|q(\nu)|^2 - |s(\nu)|^2\right)\mathrm{d}\nu &= \int_0^\infty\left[(\nu + \Omega)^2 - (\nu - \Omega)^2\right]\frac{g^2(\nu)}{[\nu^2 - \Omega^2z(\nu)]^2}\\
+&= \int_0^\infty\frac{4\nu\Omega g^2(\nu)}{|\nu^2 - \Omega^2z(\nu)|^2}\;\mathrm{d}\nu.
+\end{split}
+\end{equation}
+From here, we can note that integrals of the type in  Eq. \eqref{eq:consistencyCheckIntegral1} are often done via contour integration using a closed contour comprised of the real line and a semicircle of infinite radius that lies in the complex plane. Before we can construct such a contour, however, it is useful to first analyze the pole structure of the function $\nu^2 - \Omega^2z(\nu)$. Letting $\nu = a + \mathrm{i}b$, we can see that
+\begin{equation}\label{eq:complexRootCheck}
+\begin{split}
+(a + \mathrm{i}b)^2 - \Omega^2z(a + \mathrm{i}b) &= a^2 + 2\mathrm{i}ab - b^2 - \Omega^2 - 2\Omega\int_{-\infty}^\infty \frac{g^2(\omega)}{a + \mathrm{i}b - \omega - \mathrm{i}\epsilon}\;\mathrm{d}\omega\\
+% &= a^2 - b^2 - \Omega^2 + 2\mathrm{i}ab - 2\Omega\int_{-\infty}^\infty \frac{g^2(\omega)([a - \omega] - \mathrm{i}[b-\epsilon])}{(a - \omega)^2 + (b - \epsilon)^2}\;\mathrm{d}\omega\\
+&= a^2 - b^2 - \Omega^2 - 2\Omega\int_{-\infty}^\infty \frac{g^2(\omega)(a - \omega)}{(a - \omega)^2 + (b - \epsilon)^2}\;\mathrm{d}\omega\\
+&\qquad + \mathrm{i}(b - \epsilon)\left(2a + 2\Omega\int_{-\infty}^\infty \frac{g^2(\omega)}{(a - \omega)^2 + (b - \epsilon)^2}\;\mathrm{d}\omega\right).
+\end{split}
+\end{equation}
+There are two cases to consider here:
+\begin{itemize}
+    \item{
+    First, we can see that the imaginary part of $\nu^2 - \Omega^2z(\nu)$ is zero when $b = \epsilon$. In this case, the function has a zero if there exists a value $a$ such that
+    \begin{equation}
+    a^2 - \Omega^2 - \epsilon^2 - 2\Omega\int_{-\infty}^\infty\frac{g^2(\omega)}{a - \omega}\;\mathrm{d}\omega = 0.
+    \end{equation}
+    For functions $g^2(\omega)$ and frequencies $a$ defined such that $g^2(a)\neq0$, the integral above is divergent and $\nu^2 - \Omega^2z(\nu)$ has no zeros with $b = \epsilon$. Otherwise, there can exist any number of zeros, depending on the functional form of $g^2(\omega)$. An important case considered by Huttner and Barnett\cite{huttner1992quantization} is the case in which $g^2(\omega)$ is only zero at $\omega = 0$. In this case, with $g^2(a) = 0$ only at $a = 0$, and only one zero of $\nu^2 - \Omega^2z(\nu)$ exists at $a + \mathrm{i}b = \mathrm{i}\epsilon$.
+    }
+    \item{
+    Second, in the case that $b\neq\epsilon$, we can see that the imaginary part of the RHS of Eq. \eqref{eq:complexRootCheck} can be zero if the quantity inside the parentheses is zero. We will assume $b\neq\epsilon$ in the following logic. Because $g(\omega)\sim\omega\tilde{v}^2(\omega)$ and $\tilde{v}^2(\omega)$ is a nonnegative even function, the integrand of this term is always positive for positive $\omega$ and negative for negative $\omega$. Moreover, because the area under $1/[(a - \omega)^2 + (b - \epsilon)^2]$ is larger on the same side of the origin as the sign of $a$, the integral is always positive for positive $a$ and negative for negative $a$. The first term in the parentheses, $2a$, has the same signs in the same regions of the real line. Therefore, the imaginary part of $\nu^2 - \Omega^2z(\nu)$ can only be zero when $a = \mathrm{Re}\{\nu\} = 0$, such that $\nu^2 - \Omega^2z(\nu)$ can only have zeros along the imaginary axis. Further noting that $\int_{-\infty}^\infty g^2(\omega)/[\omega^2 + (b - \epsilon)^2]\;\mathrm{d}\omega \to 0$ as $\epsilon\to0$ due to the odd and even parities of the numerator and denominator, respectively, we can see that, in the limit $a\to0$, our function becomes
+    \begin{equation}
+    (\mathrm{i}b)^2 - \Omega^2z(\mathrm{i}b) = -(b^2 + \Omega^2) + 2\Omega\int_{-\infty}^\infty \frac{\omega g^2(\omega)}{\omega^2 + (b - \epsilon)^2}\;\mathrm{d}\omega.
+    \end{equation}
+    Because the first term on the RHS ($-[b^2 + \Omega^2]$) is strictly negative and the second is strictly positive, our function always has zeros at $b = \pm b_0$ except in the case where the two terms on the RHS never have equal magnitudes at any $b$. Because $b^2$ is strictly increasing with $|b|$ and $1/(\omega^2 + [b - \epsilon]^2)$ is strictly decreasing, the second term on the RHS can never be greater than the first for all $b$. Therefore, the only condition that guarantees the nonexistence of zeros is the condition that the sceond term on the RHS is always \textit{less} than the first, i.e.
+    \begin{equation}
+    2\Omega\int_{-\infty}^\infty\frac{\omega g^2(\omega)}{\omega^2 + (b - \epsilon)^2}\;\mathrm{d}\omega < b^2 + \Omega^2
+    \end{equation}
+    for all $b$. We can guarantee this condition by guaranteeing it is satisfied when the LHS is maximized and the RHS is minimized, which occurs at $b = 0$. Therefore, we can guarantee that $\nu^2 - \Omega^2z(\nu)$ has no zeros in the complex plane (other than $b = \epsilon$) only when 
+    \begin{equation}\label{eq:consistencyCondition1}
+    \begin{split}
+    2\int_{-\infty}^\infty \frac{\omega g^2(\omega)}{\omega^2 + \epsilon^2}\;\mathrm{d}\omega &= 4\int_0^\infty PV\left\{\frac{g^2(\omega)}{\omega}\right\}\mathrm{d}\omega < \Omega.
+    \end{split}
+    \end{equation}
+    }
+\end{itemize}
+
+Assuming that the second condition on $g(\nu)$ is satisfied, using contour integration to simplify Eq. \eqref{eq:consistencyCheckIntegral1} becomes much simpler. In more detail, since a contour comprised of the real line and a great semicircle in the lower complex half-plane contains no poles, the residue theorem tells us that
+\begin{equation}
+\int_{-\infty}^\infty\frac{4\Omega\nu g^2(\nu)}{|\nu^2 - \Omega ^2z(\nu)|^2}\;\mathrm{d}\nu = -\int_{C_R^-}\frac{4\Omega\nu g^2(\nu)}{|\nu^2 - \Omega ^2z(\nu)|^2}\;\mathrm{d}\nu
+\end{equation}
+with $C_R^-$ symbolizing the great circle portion of the contour. For our hybridization scheme to be consistent, we require the integral of Eq. \eqref{eq:consistencyCheckIntegral1} to be equal to one. Conveniently, we can see that the method of partial fractions gives
+\begin{equation}
+\frac{\mathrm{i}}{[x - (a + \mathrm{i}b)][x - (a - \mathrm{i}b)]} = -\frac{1}{2b}\frac{1}{x - (a + \mathrm{i}b)} + \frac{\mathrm{i}}{2b}\frac{1}{x - (a - \mathrm{i}b)}
+\end{equation}
+such that
+\begin{equation}
+\begin{split}
+\frac{1}{|\nu^2 - \Omega^2z(\nu)|^2} &= \frac{1}{[\nu^2 - \Omega^2z(\nu)][\nu^2 - \Omega^2z^*(\nu)]}\\
+% & = -\frac{\mathrm{i}}{2\Omega^2\mathrm{Im}\{z(\nu)\}}\frac{1}{\nu^2 - \Omega^2z(\nu)} + \frac{\mathrm{i}}{2\Omega^2\mathrm{Im}\{z(\nu)\}}\frac{1}{\nu^2 - \Omega^2z^*(\nu)}\\
+% &= -\frac{\mathrm{i}}{2\Omega^2}\left(\frac{2\pi}{\Omega}g^2(\nu)\right)^{-1}\frac{1}{\nu^2 - \Omega^2z(\nu)} + -\frac{\mathrm{i}}{2\Omega^2}\left(\frac{2\pi}{\Omega}g^2(\nu)\right)^{-1}\frac{1}{\nu^2 - \Omega^2z^*(\nu)}\\
+& = -\frac{\mathrm{i}}{4\pi\Omega g^2(\nu)}\frac{1}{\nu^2 - \Omega^2z(\nu)} + \frac{\mathrm{i}}{4\pi\Omega g^2(\nu)}\frac{1}{\nu^2 - \Omega^2z^*(\nu)}.
+\end{split}
+\end{equation}
+Therefore, using the fact that $z(-\nu) = z^*(\nu)$, as is clear from the expansion
+\begin{equation}
+\begin{split}
+z(\nu) &= 1 + \frac{2}{\Omega}\int_{-\infty}^\infty \frac{g^2(\omega)}{\nu - \omega - \mathrm{i}\epsilon}\mathrm{d}\omega\\
+% &= 1 + \frac{2}{\Omega}\left[\int_0^\infty \frac{g^2(\omega)}{\nu - \omega - \mathrm{i}\epsilon}\;\mathrm{d}\omega + \int_{-\infty}^0 \frac{g^2(\omega)}{\nu - \omega - \mathrm{i}\epsilon}\;\mathrm{d}\omega\right]\\
+% &= 1 + \frac{2}{\Omega}\left[\int_0^\infty \frac{g^2(\omega)}{\nu - \omega - \mathrm{i}\epsilon}\;\mathrm{d}\omega + \int_{-\omega = -\infty}^{-\omega = 0} \frac{g^2(-\omega)}{\nu + \omega - \mathrm{i}\epsilon}\;\mathrm{d}(-\omega)\right]\\
+% &= 1 + \frac{2}{\Omega}\left[\int_0^\infty \frac{g^2(\omega)}{\nu - \omega - \mathrm{i}\epsilon}\;\mathrm{d}\omega - \int^{\omega = \infty}_{\omega = 0} \frac{g^2(\omega)}{\nu + \omega - \mathrm{i}\epsilon}\;\mathrm{d}\omega\right]\\
+&= 1 + \frac{2}{\Omega}\left[\int_0^\infty \frac{g^2(\omega)}{\nu - \omega - \mathrm{i}\epsilon}\;\mathrm{d}\omega + \int^{\infty}_{0} \frac{g^2(\omega)}{-\nu - \omega + \mathrm{i}\epsilon}\;\mathrm{d}\omega\right],
+\end{split}
+\end{equation}
+we can say
+\begin{equation}
+\begin{split}
+\int_{0}^\infty\frac{4\Omega\nu g^2(\nu)}{|\nu^2 - \Omega^2z(\nu)|^2}\;\mathrm{d}\nu &= -\frac{\mathrm{i}}{\pi}\int_0^\infty\left(\frac{\nu}{\nu^2 - \Omega^2z(\nu)} - \frac{\nu}{\nu^2 - \Omega^2z^*(\nu)}\right)\mathrm{d}\nu\\
+% &= -\frac{\mathrm{i}}{\pi}\int_0^\infty\frac{\nu}{\nu^2 - \Omega^2z(\nu)}\;\mathrm{d}\nu + \frac{\mathrm{i}}{\pi}\int_{-\nu = 0}^{-\nu = \infty}\frac{(-\nu)}{(-\nu)^2 - \Omega^2z^*(-\nu)}\;\mathrm{d}(-\nu)\\
+% &= -\frac{\mathrm{i}}{\pi}\int_0^\infty\frac{\nu}{\nu^2 - \Omega^2z(\nu)}\;\mathrm{d}\nu - \frac{\mathrm{i}}{\pi}\int_{-\infty}^0\frac{\nu}{\nu^2 - \Omega^2z(\nu)}\;\mathrm{d}\nu\\
+% &= -\frac{\mathrm{i}}{\pi}\int_{-\infty}^\infty\frac{\nu}{\nu^2 - \Omega^2z(\nu)}\;\mathrm{d}\nu\\
+% &= \frac{\mathrm{i}}{\pi}\int_{C_R^-}\frac{\nu}{\nu^2 - \Omega^2z(\nu)}\;\mathrm{d}\nu\\
+&= \lim_{R\to\infty}\frac{\mathrm{i}}{\pi}\int_{-\pi}^0\frac{R\mathrm{e}^{\mathrm{i}\theta}}{R^2\mathrm{e}^{2\mathrm{i}\theta} - \Omega^2z(R\mathrm{e}^{\mathrm{i}\theta})}R\mathrm{i}\mathrm{e}^{\mathrm{i}\theta}\;\mathrm{d}\theta\\
+% &= -\frac{1}{\pi}(-\pi)\\
+&= 1,
+\end{split}
+\end{equation}
+wherein we have noticed that $|z[R\exp(\mathrm{i}\theta)]|\ll R^2$ for large $R$. Therefore, as long as Eq. \eqref{eq:consistencyCondition1} is satisfied, we have
+\begin{equation}
+\int_{0}^\infty\left(|q_\perp(\nu)|^2 - |s_\perp(\nu)|^2\right)\mathrm{d}\nu = 1.
+\end{equation}
+
+Next, we can see that
+\begin{equation}
+\begin{split}
+\int_0^\infty&\left[q^*(\nu)u(\nu,\nu') - s(\nu)v^*(\nu,\nu')\right]\mathrm{d}\nu = \int_0^\infty\left(\left[\delta(\nu - \nu') + \frac{2\Omega g(\nu)}{\nu^2 - \Omega^2z(\nu)}\frac{g(\nu')}{\nu - \nu' - \mathrm{i}\epsilon}\right]\frac{(\nu + \Omega)g(\nu)}{\nu^2 - \Omega^2z^*(\nu)}\right.\\
+&\qquad\left. - \frac{(\nu - \Omega)g(\nu)}{\nu^2 - \Omega^2z(\nu)}\frac{2\Omega g(\nu)}{\nu^2 - \Omega^2z^*(\nu)}PV\left\{\frac{g(\nu')}{\nu + \nu'}\right\}\right)\mathrm{d}\nu\\[0.5em]
+&= \\
+&= 0
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+\int_0^\infty&\left[q^*(\nu)v(\nu,\nu') - s(\nu)u^*(\nu,\nu')\right]\mathrm{d}\nu = \int_0^\infty\left(\frac{(\nu + \Omega)g(\nu)}{\nu^2 - \Omega^2z^*(\nu)}\frac{2\Omega g(\nu)}{\nu^2 - \Omega^2z(\nu)}PV\left\{\frac{g(\nu')}{\nu + \nu'}\right\}\right.\\
+&\qquad\left. - \frac{(\nu - \Omega)g(\nu)}{\nu^2 - \Omega^2z(\nu)}\left[\delta(\nu - \nu') + \frac{2\Omega g(\nu)}{\nu^2 - \Omega^2z^*(\nu)}\frac{g(\nu')}{\nu - \nu' + \mathrm{i}\epsilon}\right]\right)\mathrm{d}\nu\\[0.5em]
+&= \\
+&= 0
+\end{split}
+\end{equation}
+such that
+\begin{equation}
+\int_0^\infty\left[q^*(\nu)\hat{B}_{\bm{\beta}}(k,\nu;t) - s(\nu)\hat{B}_{\bm{\beta}}^\dagger(k,\nu;t)\right]\mathrm{d}\nu = \hat{a}_{\bm{\beta}}(k,t).
+\end{equation}
+
+We can repeat this process to find the representation of the bath operator $\hat{b}_{\bm{\beta}}(k,\nu;t)$ in terms of the hybrid operators. Beginning with
+\begin{equation}
+\begin{split}
+\int_0^\infty&\left[u^*(\nu',\nu)\hat{B}_{\bm{\beta}}(k,\nu';t) - v(\nu',\nu)\hat{B}_{\bm{\beta}}^\dagger(k,\nu';t)\right]\mathrm{d}\nu' = \hat{a}_{\bm{\beta}}(k,t)\int_0^\infty\left[q(\nu')u^*(\nu',\nu) - s^*(\nu')v(\nu',\nu)\right]\mathrm{d}\nu'\\
+&\qquad + \hat{a}_{\bm{\beta}}^\dagger(k,t)\int_0^\infty\left[s(\nu')u^*(\nu',\nu) - q^*(\nu')v(\nu',\nu)\right]\mathrm{d}\nu'\\
+&\qquad + \int_0^\infty\int_0^\infty\left[u^*(\nu',\nu)u(\nu',\omega) - v(\nu',\nu)v^*(\nu',\omega)\right]\hat{b}_{\bm{\beta}}(k,\omega;t)\;\mathrm{d}\nu'\,\mathrm{d}\omega\\
+&\qquad + \int_0^\infty\int_0^\infty\left[u^*(\nu',\nu)v(\nu',\omega) - v(\nu',\nu)u^*(\nu',\omega)\right]\hat{b}_{\bm{\beta}}^\dagger(k,\omega;t)\;\mathrm{d}\nu'\,\mathrm{d}\omega,
+\end{split}
+\end{equation}
+we can see that the integral prefactors of the first two terms on the RHS above are complex conjugates or reverses of integrals we already know to be zero and are thus themselves zero. The fourth term on the RHS is also zero, as is shown by
+\begin{equation}
+\begin{split}
+\int_0^\infty&\left[u^*(\nu',\nu)v(\nu',\omega) - v(\nu',\nu)u^*(\nu',\omega)\right]\mathrm{d}\nu' = \\
+&= \\
+&= 0.
+\end{split}
+\end{equation}
+Finally, the integral prefactor of the third term gives
+\begin{equation}
+\begin{split}
+\int_0^\infty&\left[u^*(\nu',\omega)u(\nu',\omega) - v(\nu',\nu)v^*(\nu',\omega)\right]\mathrm{d}\nu' = \\
+&= \\
+&= \delta(\nu - \omega)
+\end{split}
+\end{equation}
+such that
+\begin{equation}
+\begin{split}
+\int_0^\infty\left[u^*(\nu',\nu)\hat{B}_{\bm{\beta}}(k,\nu';t) - v(\nu',\nu)\hat{B}_{\bm{\beta}}^\dagger(k,\nu';t)\right]\mathrm{d}\nu' &= \int_0^\infty\delta(\nu - \omega)\hat{b}_{\bm{\beta}}(k,\omega;t)\;\mathrm{d}\omega\\
+&= \hat{b}_{\bm{\beta}}(k,\nu;t).
+\end{split}
+\end{equation}
+
+
+
+
+
+
+
+
+\subsection{Hybridized Operator Expansion Coefficients}
+
+The first hybridization step from the main text produces expansion coefficients
+\begin{equation}
+\begin{split}
+q_{\perp,\parallel}(\nu) &= \frac{\nu + \Omega_{\perp,\parallel}}{2}\frac{V_{\perp,\parallel}(\nu)}{\nu^2 - \Omega_{\perp,\parallel}^2z_{\perp,\parallel}(\nu)},\\
+s_{\perp,\parallel}(\nu) &= \frac{\nu - \Omega_{\perp,\parallel}}{2}\frac{V_{\perp,\parallel}(\nu)}{\nu^2 - \Omega_{\perp,\parallel}^2z_{\perp,\parallel}(\nu)},\\
+u_{\perp,\parallel}(\nu,\nu') &= \delta(\nu - \nu') + \frac{\Omega_{\perp,\parallel}}{2}\frac{V_{\perp,\parallel}(\nu)}{\nu^2 - \Omega_{\perp,\parallel}^2z_{\perp,\parallel}(\nu)}\frac{V_{\perp,\parallel}(\nu')}{\nu - \nu' - \mathrm{i}\epsilon},\\
+v_{\perp,\parallel}(\nu,\nu') &= \frac{\Omega_{\perp,\parallel}}{2}\frac{V_{\perp,\parallel}(\nu)}{\nu^2 - \Omega^2_{\perp,\parallel}z_{\perp,\parallel}(\nu)}PV\left\{\frac{V_{\perp,\parallel}(\nu)}{\nu + \nu'}\right\},
+\end{split}
+\end{equation}
+with the substitutions $g(\nu)\to V_{\perp,\parallel}(\nu)/2$, $\Omega\to\Omega_{\perp,\parallel}$, and
+\begin{equation}
+z(\nu) \to z_{\perp,\parallel}(\nu) = 1 + \frac{1}{2\Omega_{\perp,\parallel}}\int_{-\infty}^\infty\frac{V_{\perp,\parallel}^2(\omega)}{\nu - \omega - \mathrm{i}\epsilon}\;\mathrm{d}\omega.
+\end{equation}
+The second step uses the substitutions $\Omega\to\tilde{k}c$,
+\begin{equation}
+\begin{split}
+g(\nu)&\to\frac{\mathrm{i}}{2}\Lambda(k)\left[q_\perp(\nu) + s_\perp(\nu)\right]\\
+&= \frac{\mathrm{i}}{2}\Lambda(k)\left(\frac{\Omega_\perp V_\perp(\nu)}{\nu^2 - \Omega_\perp^2z_\perp(\nu)}\right),
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+z(\nu)\to\tilde{z}(\nu) &= 1 + \frac{2}{\tilde{k}c}\int_{-\infty}^\infty\frac{\left(\frac{\mathrm{i}}{2}\Lambda(k)[q_\perp(\omega) + s_\perp(\omega)]\right)^2}{\nu - \omega - \mathrm{i}\epsilon}\;\mathrm{d}\omega\\
+&= 1 - \frac{\Lambda^2(k)\Omega_\perp^2}{2\tilde{k}c}\int_{-\infty}^\infty\frac{V_\perp^2(\omega)}{[\omega^2 - \Omega_\perp^2z_\perp(\omega)]^2}\frac{1}{\nu - \omega - \mathrm{i}\epsilon}\;\mathrm{d}\omega
+\end{split}
+\end{equation}
+to produce
+\begin{equation}
+\begin{split}
+\tilde{q}(k,\nu) &= \mathrm{i}\frac{(\nu + \tilde{k}c)\Lambda(k)}{2}\frac{\Omega_\perp V_\perp(\nu)}{\nu^2 - \Omega_\perp^2z_\perp(\nu)}\frac{1}{\nu^2 - \tilde{k}^2c^2\tilde{z}(\nu)},\\
+\tilde{s}(k,\nu) &= \mathrm{i}\frac{(\nu - \tilde{k}c)\Lambda(k)}{2}\frac{\Omega_\perp V_\perp(\nu)}{\nu^2 - \Omega_\perp^2z_\perp(\nu)}\frac{1}{\nu^2 - \tilde{k}^2c^2\tilde{z}(\nu)},\\[0.5em]
+\tilde{u}(k;\nu,\nu') &= \delta(\nu - \nu') + \frac{2\tilde{k}c}{\nu^2 - \tilde{k}c\tilde{z}(\nu)}\frac{\mathrm{i}}{2}\Lambda(k)\frac{\Omega_\perp V_\perp(\nu)}{\nu^2 - \Omega_\perp^2z_\perp(\nu)}\frac{\mathrm{i}}{2}\Lambda(k)\frac{\Omega_\perp V_\perp(\nu')}{\nu'^2 - \Omega_\perp^2z_\perp(\nu')}\frac{1}{\nu - \nu' - \mathrm{i}\epsilon}\\
+&= \delta(\nu - \nu') - \frac{\tilde{k}c\Lambda^2(k)\Omega_\perp^2}{2}\frac{V_\perp(\nu)}{\left[\nu^2 - \tilde{k}^2c^2\tilde{z}(\nu)\right][\nu^2 - \Omega_\perp^2z_\perp(\nu)][\nu'^2 - \Omega_\perp^2z_\perp(\nu')]}\frac{V_\perp(\nu')}{\nu - \nu' - \mathrm{i}\epsilon},\\[0.5em]
+\tilde{v}(k;\nu,\nu') &= - \frac{\tilde{k}c\Lambda^2(k)\Omega_\perp^2}{2}\frac{V_\perp(\nu)}{\left[\nu^2 - \tilde{k}^2c^2\tilde{z}(\nu)\right][\nu^2 - \Omega_\perp^2z_\perp(\nu)][\nu'^2 - \Omega_\perp^2z_\perp(\nu')]}PV\left\{\frac{V_\perp(\nu')}{\nu + \nu'}\right\}.
+\end{split}
+\end{equation}

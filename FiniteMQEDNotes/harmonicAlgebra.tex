@@ -1,0 +1,386 @@
+%!TEX root = finiteMQED.tex
+
+\section{Harmonic Definitions}\label{app:harmonicAlgebra}
+
+The dyadic Green's function of a sphere is composed of transverse vector spherical harmonics
+\begin{equation}
+\begin{split}
+\mathbf{M}_{p\ell m}(\mathbf{r},k) &= \sqrt{K_{\ell m}}\left[\frac{(-1)^{p + 1}m}{\sin\theta}j_\ell(kr)P_{\ell m}(\cos\theta)S_{p+1}(m\phi)\hat{\bm{\theta}} - j_\ell(kr)\frac{\partial P_{\ell m}(\cos\theta)}{\partial\theta}S_p(m\phi)\hat{\bm{\phi}}\right],\\[0.5em]
+\mathbf{N}_{p\ell m}(\mathbf{r},k) &= \sqrt{K_{\ell m}}\left[\frac{\ell(\ell + 1)}{kr}j_\ell(kr)P_{\ell m}(\cos\theta)S_p(m\phi)\hat{\mathbf{r}}\right.\\
+&+ \left.\frac{1}{kr}\frac{\partial\{rj_\ell(kr)\}}{\partial r}\left(\frac{\partial P_{\ell m}(\cos\theta)}{\partial\theta}S_p(m\phi)\hat{\bm{\theta}} + \frac{(-1)^{p+1}m}{\sin\theta}P_{\ell m}(\cos\theta)S_{p + 1}(m\phi)\hat{\bm{\phi}}\right)\right],
+\end{split}
+\end{equation}
+which each have zero divergence, i.e. $\nabla\cdot\mathbf{M}_{p\ell m}(\mathbf{r},k) = \nabla\cdot\mathbf{N}_{p\ell m}(\mathbf{r},k) = 0$, and longitudinal vector spherical harmonics
+\begin{equation}
+\begin{split}
+\mathbf{L}_{p\ell m}(\mathbf{r},k) &= \frac{1}{k}\nabla\left\{\sqrt{K_{\ell m}}\sqrt{\ell(\ell + 1)}j_\ell(kr)P_{\ell m}(\cos\theta)S_p(m\phi)\right\}\\
+&= \sqrt{K_{\ell m}}\sqrt{\ell(\ell + 1)}\left[\frac{1}{k}\frac{\partial\{j_\ell(kr)\}}{\partial r}P_{\ell m}(\cos\theta)S_p(m\phi)\hat{\mathbf{r}} + \frac{1}{kr}j_\ell(kr)\frac{\partial P_{\ell m}(\cos\theta)}{\partial\theta}S_p(m\phi)\hat{\bm{\theta}}\right.\\
+&\left. + \frac{(-1)^{p+1}m}{kr\sin\theta}j_\ell(kr)P_{\ell m}(\cos\theta)S_{p+1}(m\phi)\hat{\bm{\phi}}\right]
+\end{split}
+\end{equation}
+which obey $\nabla\times\mathbf{L}_{p\ell m}(\mathbf{r},k) = 0$. Here $j_\ell(x)$ are spherical Bessel functions with $\ell = 1,2,3,\ldots,\infty$; $P_{\ell m}(x)$ are associated Legendre polynomials with the same range in $\ell$; $m = 0,1,2,\ldots,\ell$; and 
+\begin{equation}
+S_p(mx) = 
+\begin{cases}
+\cos(mx), & p\;\;\mathrm{even},\\
+\sin(mx), & p \;\;\mathrm{odd}
+\end{cases}
+\end{equation}
+and the same range in $m$. Due to the binary nature of $p$, we will in general need to use special notation to assert that $S_p(x) = S_{p + 2}(x) = S_{p+4}(x) = \cdots$. However, to save space, we will use the convention that any nonzero even value of $p$ is automatically replaced by 0 and any non-one odd value of $p$ is automatically replaced by 1 in what follows. Further, the prefactors $K_{\ell m}$, which are set to $1$ in most texts, are set to
+\begin{equation}
+K_{\ell m} = (2 - \delta_{m0})\frac{2\ell + 1}{\ell(\ell + 1)}\frac{(\ell - m)!}{(\ell + m)!}
+\end{equation}
+in an effort to regularize the transverse harmonics, i.e. ensure that their maximum magnitudes in $\mathbf{r}$ for fixed $k$ are similar for all index combinations $T,p,\ell,m$. The prefactors of the Laplacian harmonics are defined similarly, but with an added factor of $\delta_{TE}$. Here, $T$ is a fourth ``type'' index, similar to the parity ($p$), order ($\ell$), and degree ($m$) indices, that takes values of $M$ (magnetic type) or $E$ (electric type) to describe whether the characteristic field profiles of each mode resemble those of magnetic or electric multipoles. Only the electric longitudinal modes $\mathbf{L}_{p\ell m}(\mathbf{r})$ are nonzero such that we won't bother to invent a second symbol for magnetic longitudinal modes, but the transverse harmonics clearly come in two different types: magnetic modes $\mathbf{M}_{p\ell m}(\mathbf{r},k)$ ($T = M$) and electric modes $\mathbf{N}_{p\ell m}(\mathbf{r},k)$ ($T = E$).
+
+Both the transverse and Laplacian modes also come with a fifth modifier, the ``region'' index, taking values of $<$ for \textit{interior} harmonics and $>$ for \textit{exterior} harmonics, although we have neglected append our definitions with yet another symbol. The interior harmonics, listed above as $\mathbf{L}$, $\mathbf{M}$, and $\mathbf{N}$, are generally used for $\mathbf{r}$ confined within some closed spherical surface such that $r<\infty$ always and $r = 0$ somwhere within the region. To describe fields in regions that do not include the origin, one can find the second set of solutions to the second-order wave equation PDE, which are the so-called \textit{exterior} vector spherical harmonics $\bm{\mathcal{L}}_{p\ell m}(\mathbf{r})$, $\bm{\mathcal{M}}_{p\ell m}(\mathbf{r},k)$, and $\bm{\mathcal{N}}_{p\ell m}(\mathbf{r},k)$. These harmonics are defined with the simple substitutions $j_\ell(kr)\to h_\ell(kr)$ and are explicitly given by
+\begin{equation}
+\begin{split}
+\bm{\mathcal{L}}_{p\ell m}(\mathbf{r},k) &= \frac{1}{k}\nabla\left\{\sqrt{K_{\ell m}}\sqrt{\ell(\ell + 1)}h_\ell(kr)P_{\ell m}(\cos\theta)S_p(m\phi)\right\},\\
+&= \sqrt{K_{\ell m}}\sqrt{\ell(\ell + 1)}\left[\frac{1}{k}\frac{\partial\{h_\ell(kr)\}}{\partial r}P_{\ell m}(\cos\theta)S_p(m\phi)\hat{\mathbf{r}} + \frac{1}{kr}h_\ell(kr)\frac{\partial P_{\ell m}(\cos\theta)}{\partial\theta}S_p(m\phi)\hat{\bm{\theta}}\right.\\
+&\left. + \frac{(-1)^{p+1}m}{kr\sin\theta}h_\ell(kr)P_{\ell m}(\cos\theta)S_{p+1}(m\phi)\hat{\bm{\phi}}\right],\\[1.0em]
+\bm{\mathcal{M}}_{p\ell m}(\mathbf{r},k) &= \sqrt{K_{\ell m}}\left[\frac{(-1)^{p + 1}m}{\sin\theta}h_\ell(kr)P_{\ell m}(\cos\theta)S_{p+1}(m\phi)\hat{\bm{\theta}} - h_\ell(kr)\frac{\partial P_{\ell m}(\cos\theta)}{\partial\theta}S_p(m\phi)\hat{\bm{\phi}}\right],\\[0.5em]
+\bm{\mathcal{N}}_{p\ell m}(\mathbf{r},k) &= \sqrt{K_{\ell m}}\left[\frac{\ell(\ell + 1)}{kr}h_\ell(kr)P_{\ell m}(\cos\theta)S_p(m\phi)\hat{\mathbf{r}}\right.\\
+&+ \left.\frac{1}{kr}\frac{\partial\{rh_\ell(kr)\}}{\partial r}\left(\frac{\partial P_{\ell m}(\cos\theta)}{\partial\theta}S_p(m\phi)\hat{\bm{\theta}} + \frac{(-1)^{p+1}m}{\sin\theta}P_{\ell m}(\cos\theta)S_{p + 1}(m\phi)\hat{\bm{\phi}}\right)\right].
+\end{split}
+\end{equation}
+The functions $h_\ell(kr) = j_\ell(kr) + \mathrm{i}y_\ell(kr)$ are the spherical Hankel functions of the first kind and involve the spherical Bessel functions of both the first kind ($j_\ell[kr]$) and the second kind, $y_\ell(kr)$, the latter of which are irregular at $r\to0$, justifying their exclusion from use in all regions that include the point $r = 0$.
+
+We would like the notation for the harmonics to be as succinct as possible. Therefore, for shorthand, we can define the transverse vector harmonics more compactly as
+\begin{equation}
+\begin{split}
+\mathbf{X}_{Tp\ell m}(\mathbf{r},k) &= 
+\begin{cases}
+\mathbf{M}_{p\ell m}(\mathbf{r},k), & T=M,\\
+\mathbf{N}_{p\ell m}(\mathbf{r},k), & T=E;
+\end{cases}\\[1.0em]
+\bm{\mathcal{X}}_{Tp\ell m}(\mathbf{r},k) &=
+\begin{cases}
+\bm{\mathcal{M}}_{p\ell m}(\mathbf{r},k), & T=M,\\
+\bm{\mathcal{N}}_{p\ell m}(\mathbf{r},k), & T=E.
+\end{cases}
+\end{split}
+\end{equation}
+Here, we have finally introduced the fourth ``type'' index to the transverse harmonic notation. We can condense the notation further by writing the string of four indices as $\bm{\alpha} = (T,p,\ell,m)$, such that our harmonics can now be written as $\mathbf{L}_{\bm{\alpha}}(\mathbf{r},k)$, $\bm{\mathcal{L}}_{\bm{\alpha}}(\mathbf{r},k)$, $\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)$, and $\bm{\mathcal{X}}_{\bm{\alpha}}(\mathbf{r},k)$. By convention, we'll let $\mathbf{L}_{Mp\ell m}(\mathbf{r},k) = 0$ and $\bm{\mathcal{L}}_{Mp\ell m}(\mathbf{r},k) = 0$ as well as $\mathbf{L}_{Ep\ell m}(\mathbf{r},k) = \mathbf{L}_{p\ell m}(\mathbf{r},k)$ and $\bm{\mathcal{L}}_{Ep\ell m}(\mathbf{r},k) = \bm{\mathcal{L}}_{p\ell m}(\mathbf{r},k)$.
+
+The symmetries of the transverse vector spherical harmonics are such that
+\begin{equation}
+\begin{split}
+\mathbf{M}_{p\ell m}^*(\mathbf{r},k) &= (-1)^\ell\mathbf{M}_{p\ell m}(\mathbf{r},-k),\\
+\mathbf{N}_{p\ell m}^*(\mathbf{r},k) &= (-1)^{\ell + 1}\mathbf{N}_{p\ell m}(\mathbf{r},-k),
+\end{split}
+\end{equation}
+with identical relations for the respective exterior transverse harmonics. Further, they obey the duality
+\begin{equation}
+\begin{split}
+\nabla\times\mathbf{M}_{p\ell m}(\mathbf{r},k) &= k\mathbf{N}_{p\ell m}(\mathbf{r},k),\\
+\nabla\times\mathbf{N}_{p\ell m}(\mathbf{r},k) &= k\mathbf{M}_{p\ell m}(\mathbf{r},k),
+\end{split}
+\end{equation}
+and similar for the exterior transverse harmonics, such that a second set of transverse harmonics can be defined as 
+\begin{equation}
+\begin{split}
+\mathbf{Y}_{\bm{\alpha}}(\mathbf{r},k) &= \frac{1}{k}\nabla\times\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k),\\
+\bm{\mathcal{Y}}_{\bm{\alpha}}(\mathbf{r},k) &= \frac{1}{k}\nabla\times\bm{\mathcal{X}}_{\bm{\alpha}}(\mathbf{r},k).
+\end{split}
+\end{equation}
+These obey the same conjugation symmetry as $\mathbf{X}_{\bm{\alpha}}$ and $\bm{\mathcal{X}}_{\bm{\alpha}}$ but with an extra factor of $-1$ such that
+\begin{equation}
+\begin{split}
+\bm{\mathcal{X}}_{\bm{\alpha}}^*(\mathbf{r},k) &= 
+\begin{cases}
+(-1)^{\ell}\bm{\mathcal{X}}_{\bm{\alpha}}(\mathbf{r},-k), & T = M,\\
+(-1)^{\ell + 1}\bm{\mathcal{X}}_{\bm{\alpha}}(\mathbf{r},-k), & T = E;\\
+\end{cases}\\
+\bm{\mathcal{Y}}_{\bm{\alpha}}^*(\mathbf{r},k) &= 
+\begin{cases}
+(-1)^{\ell + 1}\bm{\mathcal{Y}}_{\bm{\alpha}}(\mathbf{r},-k), & T = M,\\
+(-1)^{\ell}\bm{\mathcal{Y}}_{\bm{\alpha}}(\mathbf{r},-k), & T = E;\\
+\end{cases}
+\end{split}
+\end{equation}
+and similar for the interior transverse harmonics. The longitudinal vector spherical harmonics obey the symmetries
+\begin{equation}
+\begin{split}
+\mathbf{L}_{p\ell m}(\mathbf{r},k) &= (-1)^{\ell+1}\mathbf{L}_{p\ell m}(\mathbf{r},-k),\\
+\bm{\mathcal{L}}_{p\ell m}^*(\mathbf{r},k) &= (-1)^{\ell+1}\bm{\mathcal{L}}_{p\ell m}(\mathbf{r},-k).
+\end{split}
+\end{equation}
+
+Due to their regularity at all points $\mathbf{r}$, the transverse interior harmonics obey the orthogonality condition
+\begin{equation}\label{eq:vectorSphericalHarmonicOrthogonality}
+\int \mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)\cdot\mathbf{X}_{\bm{\alpha}'}(\mathbf{r},k')\;\mathrm{d}^3\mathbf{r} = \frac{2\pi^2}{k^2}\delta(k - k')(1 - \delta_{p1}\delta_{m0})\delta_{TT'}\delta_{pp'}\delta_{\ell\ell'}\delta_{mm'}\\
+\end{equation}
+for $k,k' > 0$ and integration across the entire universe. The simpler orthogonality relations that contribute to this simple result are given in Appendix \ref{sec:simpleOrthogonality}. The longitudinal interior harmonics obey the orthogonality condition
+\begin{equation}\label{eq:longitudinalHarmonicOrthogonality}
+\int\mathbf{L}_{\bm{\alpha}}(\mathbf{r},k)\cdot\mathbf{L}_{\bm{\alpha}'}(\mathbf{r},k')\;\mathrm{d}^3\mathbf{r} = \frac{2\pi^2}{k^2}\delta(k - k')(1 - \delta_{p1}\delta_{m0})\delta_{TE}\delta_{TT'}\delta_{pp'}\delta_{\ell\ell'}\delta_{mm'}.
+\end{equation}
+Accordingly, the transverse and longitudinal harmonics also satisfy convenient orthogonality relations when integrated over finite regions in $r$. Explicitly,
+\begin{equation}\label{eq:vectorSphericalHarmonicOrthogonalityConditionFinite}
+\begin{split}
+\int_0^{2\pi}\int_0^\pi\int_a^b\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)\cdot\mathbf{X}_{\bm{\alpha}'}(\mathbf{r},k')r^2\sin\theta\;\mathrm{d}r\,\mathrm{d}\theta\,\mathrm{d}\phi &= 4\pi(1 - \delta_{p1}\delta_{m0})\delta_{\bm{\alpha}\bm{\alpha}'}R_{T\ell}^{\ll}(k,k';a,b),\\
+\int_0^{2\pi}\int_0^\pi\int_a^b\mathbf{L}_{\bm{\alpha}}(\mathbf{r},k)\cdot\mathbf{L}_{\bm{\alpha}'}(\mathbf{r},k')r^2\sin\theta\;\mathrm{d}r\,\mathrm{d}\theta\,\mathrm{d}\phi &= 4\pi(1 - \delta_{p1}\delta_{m0})\delta_{\bm{\alpha}\bm{\alpha}'}R_{L\ell}^{\ll}(k,k';a,b)
+\end{split}
+\end{equation}
+where $R_{T\ell}^\ll(k,k';a,b)$ and $R_{L\ell}^\ll(k,k';a,b)$ are radial integral functions defined by
+\begin{equation}\label{eq:finiteRadialIntegrals}
+\begin{split}
+R_{M\ell}^\ll(k,k';a,b) &= \int_a^bj_\ell(kr)j_\ell(k'r)r^2\;\mathrm{d}r\\
+&= \left.\frac{r^2}{k^2 - k'^2}\left[k'j_{\ell - 1}(k'r)j_\ell(kr) - kj_{\ell - 1}(kr)j_\ell(k'r)\right]\right|_a^b,\\[0.5em]
+R_{E\ell}^\ll(k,k';a,b) &= \frac{\ell + 1}{2\ell + 1}R_{M,\ell - 1}^\ll(k,k';a,b) + \frac{\ell}{2\ell + 1}R_{M,\ell + 1}^\ll(k,k';a,b),\\
+R_{L\ell}^\ll(k,k';a,b) &= \frac{\ell + 1}{2\ell + 1}R_{M,\ell + 1}^\ll(k,k';a,b) + \frac{\ell}{2\ell + 1}R_{M,\ell - 1}^\ll(k,k';a,b).
+\end{split}
+\end{equation}
+The superscript $\ll$ indicates that the integral involves two spherical Bessel functions of the first kind and thus arises from the integration of two interior harmonics. 
+
+From their opposing Helmholtz symmetries, we can conclude that integrals of the inner product of $\mathbf{M}$ or $\mathbf{N}$ and $\mathbf{L}$ over all space are null. However, the same is not true when integrating over finite regions of space. Again choosing the region of integration to be finite in $r$, we can see that
+\begin{equation}\label{eq:vectorSphericalHarmonicOrthogonalityConditionFiniteMixed}
+\begin{split}
+\int_0^{2\pi}\int_0^{\pi}\int_a^b\mathbf{L}_{\bm{\alpha}}(\mathbf{r},k)\cdot\mathbf{X}_{\bm{\alpha}'}(\mathbf{r},k')r^2\sin\theta\;\mathrm{d}r\,\mathrm{d}\theta\,\mathrm{d}\phi &= 4\pi(1 - \delta_{p1}\delta_{m0})\sqrt{\ell(\ell + 1)}\delta_{TE}\delta_{T'E}\delta_{pp'}\delta_{\ell\ell'}\delta_{mm'}\\[-0.5em]
+&\qquad\times\frac{1}{kk'}\left[bj_\ell(kb)j_\ell(k'b) - aj_\ell(ka)j_\ell(k'a)\right].
+\end{split}
+\end{equation}
+Note that integration of the longitudinal and transverse magnetic harmonics always produces zero, even when carried out over finite regions in $r$. Integration of the longitudinal and transverse electric harmonics can be seen to produce zero in the limit where the integration region is allowed to become infinite. Explicitly, with $a\to0$ and $b\to\infty$, one can see that $\lim_{r\to0}rj_\ell(kr)j_\ell(k'r) = \lim_{r\to\infty}rj_\ell(kr)j_\ell(k'r) = 0$ for all real, positive $k$ and $k'$ if $\ell$ is an integer greater than 0.
+
+An important case of this integral occurs when $b\to a$ and $a\to0$, i.e. during integration over a finite sphere. In this case, the characteristic wavenumbers are often defined such that $k = z_{\ell n}/a$ and $k' = z_{\ell n'}/a$, where $z_{\ell n}$ is the $n^\mathrm{th}$ unitless root of $j_\ell(x)$ with $n = 1,2,\ldots$. With these values of $k$ and $k'$ fixed, we can easily see that $R_{M\ell}^\ll(z_{\ell n}/a,z_{\ell n'}/a;0,a) = 0$ for $n\neq n'$. Further, with
+\begin{equation}
+\lim_{k'\to k}R_{M\ell}^\ll(k,k';0,a) = \frac{a^3}{2}\left[j_\ell^2(ka) - j_{\ell - 1}(ka)j_{\ell + 1}(ka)\right]
+\end{equation}
+by L'Hopital's rule, we can see that
+\begin{equation}
+R_{M\ell}^\ll\left(\frac{z_{\ell n}}{a},\frac{z_{\ell n'}}{a};0,a\right) = -\delta_{nn'}\frac{a^3}{2}j_{\ell - 1}(z_{\ell n})j_{\ell + 1}(z_{\ell n}).
+\end{equation}
+Finally, using the recursion identity $j_\ell(x) = [x/(2\ell + 1)][j_{\ell - 1}(x) + j_{\ell 1}(x)]$, we can see that $j_{\ell - 1}(z_{n\ell}) = -j_{\ell + 1}(z_{n\ell})$. Therefore, letting $k_{\bm{\alpha}n} = z_{\ell n}/a$ and $k_{\bm{\alpha}'n'} = z_{\ell'n'}/a$, we have
+\begin{equation}
+\begin{split}
+\int_0^{2\pi}\int_0^\pi\int_0^a\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k_{\bm{\alpha}n})\cdot\mathbf{X}_{\bm{\alpha}'}(\mathbf{r},k_{\bm{\alpha}'n'})r^2\sin\theta\;\mathrm{d}r\;\mathrm{d}\theta\;\mathrm{d}\phi &= 2\pi a^3(1 - \delta_{p1}\delta_{m0})\delta_{\bm{\alpha}\bm{\alpha}'}\delta_{nn'}j_{\ell + 1}^2(z_{\ell n}),\\
+\int_0^{2\pi}\int_0^\pi\int_0^a\mathbf{L}_{\bm{\alpha}}(\mathbf{r},k_{\bm{\alpha}n})\cdot\mathbf{L}_{\bm{\alpha}'}(\mathbf{r},k_{\bm{\alpha}'n'})r^2\sin\theta\;\mathrm{d}r\;\mathrm{d}\theta\;\mathrm{d}\phi &= 2\pi a^3(1 - \delta_{p1}\delta_{m0})\delta_{\bm{\alpha}\bm{\alpha}'}\delta_{nn'}j_{\ell + 1}^2(z_{\ell n}).
+\end{split}
+\end{equation}
+
+\noindent\rule{\textwidth}{0.5pt}\\
+
+For calculations involving one or more \textit{exterior} harmonics, one simply replaces one or both of the spherical Bessel functions with spherical Hankel functions. More explicitly, if we define 
+\begin{equation}
+z_\ell^i(x) = 
+\begin{cases}
+j_\ell(x), & i = \,<,\\
+h_\ell(x), & i = \,>,
+\end{cases}
+\end{equation}
+then we can generalize Eq. \eqref{eq:finiteRadialIntegrals} with
+\begin{equation}
+\begin{split}
+R_{M\ell}^{ij}(k,k';a,b) &= \int_a^bz_\ell^i(kr)z_\ell^j(k'r)r^2\;\mathrm{d}r\\
+&= \lim_{\kappa\to k'}\frac{r^2}{k^2 - \kappa^2}\left[\kappa z_{\ell-1}^j(\kappa r)z_{\ell}^i(kr) - kz_{\ell-1}^i(kr)z_{\ell}^j(\kappa r)\right]_a^b
+\end{split}
+\end{equation}
+and $R_{E\ell}^{ij}(k,k';a,b) = (\ell+1)R_{M,\ell - 1}^{ij}(k,k';a,b)/(2\ell + 1) + \ell R_{M,\ell + 1}^{ij}(k,k';a,b)/(2\ell + 1)$. For $k'\neq k$, the limits within both the magnetic and electric radial integrals can be evaluated with simple substitution, but for $k'=k$ it is necessary to evaluate the limit carefully.
+
+
+
+
+and Laplacian vector spherical harmonics
+\begin{equation}
+\begin{split}
+\mathbf{F}_{Tp\ell m}(\mathbf{r}) &= \nabla\left\{\delta_{TE}\sqrt{(2 - \delta_{m0})\frac{(\ell - m)!}{(\ell + m)!}}r^\ell P_{\ell m}(\cos\theta)S_p(m\phi)\right\},\\
+% \nabla f_{Tp\ell m}^{>}(\mathbf{r}) &= \nabla\left\{\delta_{TE}\sqrt{(2 - \delta_{m0})\frac{(\ell - m)!}{(\ell + m)!}}\frac{1}{r^{\ell + 1}}P_{\ell m}(\cos\theta)S_p(m\phi)\right\},
+&= \delta_{TE}\sqrt{(2 - \delta_{m0})\frac{(\ell - m)!}{(\ell + m)!}}\left[ \vphantom{\frac{(-1)^{p+1}}{\sin\theta}} \ell r^{\ell - 1}P_{\ell m}(\cos\theta)S_p(m\phi)\hat{\mathbf{r}}\right.\\
+&\qquad+ \left. r^{\ell - 1}\frac{\partial P_{\ell m}(\cos\theta)}{\partial \theta}S_p(m\phi)\hat{\bm{\theta}} + \frac{(-1)^{p+1}m}{\sin\theta}r^{\ell - 1}P_{\ell m}(\cos\theta)S_{p+1}(m\phi)\hat{\bm{\phi}} \right]
+\end{split}
+\end{equation}
+which have neither curl ($\nabla\times\mathbf{F}_{Tp\ell m}(\mathbf{r}) = 0$) or divergence ($\nabla\cdot\mathbf{F}_{Tp\ell m}(\mathbf{r}) = 0$). 
+
+\begin{equation}
+\begin{split}
+\mathbf{M}_{p\ell m}(\mathbf{r},k) &= \sqrt{K_{\ell m}}\left[\frac{(-1)^{p + 1}m}{\sin\theta}j_\ell(kr)P_{\ell m}(\cos\theta)S_{p+1}(m\phi)\hat{\bm{\theta}} - j_\ell(kr)\frac{\partial P_{\ell m}(\cos\theta)}{\partial\theta}S_p(m\phi)\hat{\bm{\phi}}\right],\\[0.5em]
+\mathbf{N}_{p\ell m}(\mathbf{r},k) &= \sqrt{K_{\ell m}}\left[\frac{\ell(\ell + 1)}{kr}j_\ell(kr)P_{\ell m}(\cos\theta)S_p(m\phi)\hat{\mathbf{r}}\right.\\
+&+ \left.\frac{1}{kr}\frac{\partial\{rj_\ell(kr)\}}{\partial r}\left(\frac{\partial P_{\ell m}(\cos\theta)}{\partial\theta}S_p(m\phi)\hat{\bm{\theta}} + \frac{(-1)^{p+1}m}{\sin\theta}P_{\ell m}(\cos\theta)S_{p + 1}(m\phi)\hat{\bm{\phi}}\right)\right],
+\end{split}
+\end{equation}
+
+
+\begin{equation}
+\begin{split}
+\bm{\mathcal{F}}_{Tp\ell m}(\mathbf{r},k) &= \nabla\left\{\delta_{TE}\sqrt{(2 - \delta_{m0})\frac{(\ell - m)!}{(\ell + m)!}}\frac{1}{r^{\ell + 1}} P_{\ell m}(\cos\theta)S_p(m\phi)\right\},\\
+&= \delta_{TE}\sqrt{(2 - \delta_{m0})\frac{(\ell - m)!}{(\ell + m)!}}\left[(-\ell - 1)\frac{1}{r^{\ell + 2}}P_{\ell m}(\cos\theta)S_p(m\phi)\hat{\mathbf{r}}\right.\\
+&\qquad+ \left.\frac{1}{r^{\ell + 2}}\frac{\partial P_{\ell m}(\cos\theta)}{\partial \theta}S_p(m\phi)\hat{\bm{\theta}} + \frac{(-1)^{p+1}m}{\sin\theta}\frac{1}{r^{\ell + 2}}P_{\ell m}(\cos\theta)S_{p+1}(m\phi)\hat{\bm{\phi}} \right]
+\end{split}
+\end{equation}
+ 
+
+
+
+
+
+ The Laplacian harmonics are either irregular at infinity ($r^\ell$) or at the origin ($1/r^{\ell + 1}$) for $\ell > 0$, such that their orthogonality relations can only be defined across finite regions in $r$:
+\begin{equation}\label{eq:laplacianHarmonicOrthogonality}
+\begin{split}
+\int_0^{2\pi}\int_0^\pi\int_a^b\mathbf{F}_{\bm{\alpha}}(\mathbf{r})\cdot\mathbf{F}_{\bm{\alpha}'}(\mathbf{r})r^2\sin\theta\;\mathrm{d}r\,\mathrm{d}\theta\,\mathrm{d}\phi &= 4\pi\frac{\ell}{2\ell + 1}\left(b^{2\ell + 1} - a^{2\ell + 1}\right)\delta_{T\!E}\delta_{TT'}\delta_{pp'}\delta_{\ell\ell'}\delta_{mm'},\\
+\int_0^{2\pi}\int_0^\pi\int_a^b\bm{\mathcal{F}}_{\bm{\alpha}}(\mathbf{r})\cdot\bm{\mathcal{F}}_{\bm{\alpha}'}(\mathbf{r})r^2\sin\theta\;\mathrm{d}r\,\mathrm{d}\theta\,\mathrm{d}\phi &= -4\pi\frac{\ell + 1}{2\ell + 1}\left(b^{-2\ell - 1} - a^{-2\ell - 1}\right)\delta_{TE}\delta_{TT'}\delta_{pp'}\delta_{\ell\ell'}\delta_{mm'},\\
+\int_0^{2\pi}\int_0^\pi\int_a^b\mathbf{F}_{\bm{\alpha}}(\mathbf{r})\cdot\bm{\mathcal{F}}_{\bm{\alpha}'}(\mathbf{r})r^2\sin\theta\;\mathrm{d}r\,\mathrm{d}\theta\,\mathrm{d}\phi &= 0.
+\end{split}
+\end{equation}
+
+A useful mixed Laplacian-transverse orthogonality conditions also exists:
+\begin{equation}\label{eq:angularMixedOrthogonalityNf}
+\begin{split}
+\int_0^{2\pi}\int_0^\pi&\left[\hat{\mathbf{r}}\cdot\mathbf{N}_{p\ell m}(r,\theta,\phi;k)\right]f_{p'\ell'm'}^i(r,\theta,\phi)\sin\theta\;\mathrm{d}\theta\,\mathrm{d}\phi\\
+&= 4\pi\delta_{pp'}\delta_{\ell\ell'}\delta_{mm'}(1 - \delta_{p1}\delta_{m0})\sqrt{\frac{\ell(\ell + 1)}{2\ell + 1}}\frac{j_\ell(kr)}{kr}\left[r^\ell\delta_{i,<} + \frac{\delta_{i,>}}{r^{\ell + 1}}\right],
+\end{split}
+\end{equation}
+as does the mixed Laplacian-longitudinal orthogonality condition
+\begin{equation}\label{eq:angularMixedOrthogonalityLf}
+\begin{split}
+\int_0^{2\pi}\int_0^\pi&\left[\hat{\mathbf{r}}\cdot\mathbf{L}_{p\ell m}(r,\theta,\phi;k)\right]f_{p'\ell'm'}^i(r,\theta,\phi)\sin\theta\;\mathrm{d}\theta\,\mathrm{d}\phi\\
+&= 4\pi\delta_{pp'}\delta_{\ell\ell'}\delta_{mm'}(1 - \delta_{p1}\delta_{m0})\frac{1}{\sqrt{2\ell + 1}}\frac{1}{k}\frac{\partial j_\ell(kr)}{\partial r}\left[r^\ell\delta_{i,<} + \frac{\delta_{i,>}}{r^{\ell + 1}}\right].
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\int_{r<a}\mathbf{F}_{\bm{\alpha}}(\mathbf{r})\cdot\mathbf{X}_{\bm{\beta}}(\mathbf{r},k)\;\mathrm{d}^3\mathbf{r} &= \int_{r < a}\mathbf{X}_{\bm{\beta}}(\mathbf{r},k)\cdot\nabla f_{\bm{\alpha}}^<(\mathbf{r})\;\mathrm{d}^3\mathbf{r}\\
+&= \int_{r < a}\nabla\cdot\left\{\mathbf{X}_{\bm{\beta}}(\mathbf{r},k) f_{\bm{\alpha}}^<(\mathbf{r})\right\}\;\mathrm{d}^3\mathbf{r} - \int_{r < a}\nabla\cdot\mathbf{X}_{\bm{\beta}}(\mathbf{r},k)f_{\bm{\alpha}}^<(\mathbf{r})\;\mathrm{d}^3\mathbf{r}\\
+&= \int_0^{2\pi}\int_0^\pi\mathbf{X}_{\bm{\beta}}(a,\theta,\phi;k)f_{\bm{\alpha}}^<(a,\theta,\phi)\cdot \hat{\mathbf{r}}a^2\sin\theta\;\mathrm{d}\theta\,\mathrm{d}\phi - 0\\
+&= \delta_{TE}\delta_{T'E}\int_0^{2\pi}\int_0^\pi\left[\mathbf{N}_{p\ell m}(a,\theta,\phi;k)\cdot\hat{\mathbf{r}}\right]f_{p'\ell' m'}^<(a,\theta,\phi)a^2\sin\theta\;\mathrm{d}\theta\,\mathrm{d}\phi\\
+&= 4\pi\delta_{TE}\delta_{T'E}\delta_{pp'}\delta_{\ell\ell'}\delta_{mm'}(1 - \delta_{p1}\delta_{m0})\sqrt{\frac{\ell(\ell + 1)}{2\ell + 1}}\frac{j_\ell(ka)}{ka}a^{\ell+2}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\int_{a<r<b}\mathbf{F}_{\bm{\alpha}}(\mathbf{r})\cdot\mathbf{L}_{\bm{\beta}}(\mathbf{r},k)\;\mathrm{d}^3\mathbf{r} &= 4\pi\delta_{TE}\delta_{T'E}\delta_{pp'}\delta_{\ell\ell'}\delta_{mm'}(1 - \delta_{p1}\delta_{m0})\frac{\ell}{\sqrt{2\ell+1}}\left(\frac{j_\ell(kb)}{kb}b^{\ell+2} - \frac{j_\ell(ka)}{ka}a^{\ell+2}\right),\\
+\int_{a<r<b}\bm{\mathcal{F}}_{\bm{\alpha}}(\mathbf{r})\cdot\mathbf{L}_{\bm{\beta}}(\mathbf{r},k)\;\mathrm{d}^3\mathbf{r} &= 4\pi\delta_{TE}\delta_{T'E}\delta_{pp'}\delta_{\ell\ell'}\delta_{mm'}(1 - \delta_{p1}\delta_{m0})\frac{\ell+1}{\sqrt{2\ell+1}}\frac{1}{k}\left(\frac{1}{a^\ell}j_\ell(ka) - \frac{1}{b^\ell}j_\ell(kb)\right).
+\end{split}
+\end{equation}
+
+The associated completeness relations to these orthogonality conditions can be derived from the Helmholtz expansion of $\bm{1}_2\delta(\mathbf{r} - \mathbf{r}')$, which states that 
+\begin{equation}\label{eq:vectorSphericalHarmonicCompleteness}
+\begin{split}
+\bm{1}_2\delta(\mathbf{r} - \mathbf{r}') &= \frac{1}{2\pi^2}\int_0^\infty\sum_{\bm{\alpha}}k^2\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)\mathbf{X}_{\bm{\alpha}}(\mathbf{r}',k)\;\mathrm{d}k\\
+&+ \frac{1}{4\pi}\sum_{\bm{\alpha}}\nabla\nabla'\left\{ f_{\bm{\alpha}}^>(\mathbf{r})f_{\bm{\alpha}}^<(\mathbf{r}')\Theta(r - r') +  f_{\bm{\alpha}}^<(\mathbf{r})f_{\bm{\alpha}}^>(\mathbf{r}')\Theta(r' - r)\right\}.
+\end{split}
+\end{equation}
+Here, the scalar harmonics 
+\begin{equation}\label{eq:scalarHarmonics}
+f_{\bm{\alpha}}^i(\mathbf{r}) = \delta_{TE}\sqrt{(2 - \delta_{m0})\frac{(\ell - m)!}{(\ell + m)!}}P_{\ell m}(\cos\theta)S_p(m\phi)\times
+\begin{cases}
+r^\ell, & i = \, <,\\
+\dfrac{1}{r^{\ell + 1}}, & i = \,>
+\end{cases}
+\end{equation}
+are defined such that $\mathbf{F}_{\bm{\alpha}}(\mathbf{r}) = \nabla f_{\bm{\alpha}}^<(\mathbf{r})$ and $\bm{\mathcal{F}}_{\bm{\alpha}}(\mathbf{r}) = \nabla f_{\bm{\alpha}}^>(\mathbf{r})$.
+Note that, as is clear form the derivation of Section \ref{app:helmholtzDelta}, the second term is curl-free in both the $\mathbf{r}$ and $\mathbf{r}'$ and the first term is likewise transverse in both coordinate systems.
+
+The transverse exterior harmonics also satisfy the convenient relation at large radii
+\begin{equation}
+\begin{split}
+\lim_{r\to\infty}\int_0^{2\pi}\int_0^\pi \bm{\mathcal{X}}_{\bm{\alpha}}(\mathbf{r},k)&\times\bm{\mathcal{Y}}_{\bm{\alpha}'}(\mathbf{r},k)\cdot\hat{\mathbf{r}}r^2\sin\theta\;\mathrm{d}\theta\,\mathrm{d}\phi = \\
+&(1 + \delta_{p0}\delta_{m0} - \delta_{p1}\delta_{m0})2\pi\frac{(-1)^{\ell + 1}\mathrm{i}^{2\ell + 1}}{k^2}\frac{\ell(\ell + 1)}{2\ell + 1}\frac{(\ell + m)!}{(\ell - m)!}\delta_{\bm{\alpha}\bm{\alpha}'}.
+\end{split}
+\end{equation}
+
+It is also useful from time to time to use the unitless regularized longitudinal harmonics
+\begin{equation}
+\begin{split}
+\mathbf{Z}_{\bm{\alpha}}(\mathbf{r};s) &= s^{-\ell + 1}\nabla f_{\bm{\alpha}}^<(\mathbf{r})\Theta(s - r) + s^{\ell + 2}\nabla f_{\bm{\alpha}}^>(\mathbf{r})\Theta(r - s)\\
+&= \nabla\left\{s^{-\ell + 1} f_{\bm{\alpha}}^<(\mathbf{r})\Theta(s - r) + s^{\ell + 2} f_{\bm{\alpha}}^>(\mathbf{r})\Theta(r - s)\right\}\\
+&= s^{-\ell + 1}\mathbf{F}_{\bm{\alpha}}(\mathbf{r})\Theta(s - r) + s^{\ell + 2}\bm{\mathcal{F}}_{\bm{\alpha}}(\mathbf{r})\Theta(r - s)
+\end{split}
+\end{equation}
+which obey the orthogonality conditions
+\begin{equation}
+\begin{split}
+\int\mathbf{Z}_{\bm{\alpha}}(\mathbf{r};a)\cdot\mathbf{Z}_{\bm{\beta}}(\mathbf{r};b)\;\mathrm{d}^3\mathbf{r} &= 4\pi\delta_{TE}\delta_{\bm{\alpha}\bm{\beta}}(1 - \delta_{p1}\delta_{m0})\left[\Theta(a - b)\frac{b^{\ell + 2}}{a^{\ell - 1}} + \Theta(b - a)\frac{a^{\ell + 2}}{b^{\ell - 1}}\right],\\
+\int\mathbf{Z}_{\bm{\alpha}}(\mathbf{r};s)\cdot\mathbf{Z}_{\bm{\beta}}(\mathbf{r};s)\;\mathrm{d}^3\mathbf{r} &= 4\pi s^3\delta_{TE}\delta_{\bm{\alpha}\bm{\beta}}(1 - \delta_{p1}\delta_{m0}).
+\end{split}
+\end{equation}
+
+
+
+
+
+
+
+
+\subsection{Useful Orthogonality Relations}\label{sec:simpleOrthogonality}
+
+A list of the useful and simple orthogonality relations useful to our calculations begins with the angular integral
+\begin{equation}
+\int_0^{2\pi}S_p(m\phi)S_{p'}(m'\phi)\;\mathrm{d}\phi = \pi(1 + \delta_{p0}\delta_{m0} - \delta_{p1}\delta_{m0})\delta_{pp'}\delta_{mm'},
+\end{equation}
+wherein the convention is used that the replacements $p + 2n\to 0$ for even $p$ and $p + 2n\to1$ for odd $p$ are taken automatically (here $n = 0,1,2,\ldots$ is a nonnegative integer). Similarly, $p + 2n + 1\to 1$ for even $p$ and $p + 2n + 1\to0$ for odd $p$ are implied. 
+
+Two more angular integrals, this time in $\theta$, are of use:
+\begin{equation}
+\int_0^\pi P_{\ell m}(\cos\theta)P_{\ell'm}(\cos\theta)\sin\theta\;\mathrm{d}\theta = \frac{2}{(2\ell + 1)}\frac{(\ell + m)!}{(\ell - m)!}\delta_{\ell\ell'}\\
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+\int_0^\pi\left(\frac{\partial P_{\ell m}(\cos\theta)}{\partial\theta}\frac{\partial P_{\ell'm}(\cos\theta)}{\partial\theta}\right. &+ \left.m^2\frac{P_{\ell m}(\cos\theta)P_{\ell'm}(\cos\theta)}{\sin^2\theta}\right)\sin\theta\;\mathrm{d}\theta\\
+&= \int_0^\pi\ell(\ell + 1)P_{\ell m}(\cos\theta)P_{\ell'm}(\cos\theta)\sin\theta\;\mathrm{d}\theta\\
+&= \frac{2\ell(\ell + 1)}{(2\ell + 1)}\frac{(\ell + m)!}{(\ell - m)!}\delta_{\ell\ell'},
+\end{split}
+\end{equation}
+for $\ell > 0$, $0 \leq m \leq \ell$. The second identity can be derived using the identity
+\begin{equation}
+\begin{split}
+&\frac{\partial}{\partial\theta}\left\{\sin\theta\frac{\partial P_{\ell'm}(\cos\theta)}{\partial\theta}P_{\ell m}(\cos\theta) + \sin\theta\frac{\partial P_{\ell m}(\cos\theta)}{\partial \theta}P_{\ell' m}(\cos\theta)\right\}\\
+&= 2\sin\theta\left(\frac{\partial P_{\ell m}(\cos\theta)}{\partial\theta}\frac{\partial P_{\ell'm}(\cos\theta)}{\partial\theta} + m^2\frac{P_{\ell m}(\cos\theta)P_{\ell'm}(\cos\theta)}{\sin^2\theta}\right) - 2\ell(\ell + 1)\sin\theta P_{\ell m}(\cos\theta)P_{\ell' m}(\cos\theta),
+\end{split}
+\end{equation}
+which can in turn be derived from the generalized Legendre equation defining the functions $P_{\ell m}(\cos\theta)$,
+\begin{equation}
+\frac{\partial^2}{\partial\theta^2}P_{\ell m}(\cos\theta) + \frac{\cos\theta}{\sin\theta}\frac{\partial}{\partial\theta}P_{\ell m}(\cos\theta) + \left(\ell(\ell + 1) - \frac{m^2}{\sin^2\theta}\right)P_{\ell m}(\cos\theta) = 0.
+\end{equation}
+
+Further,
+\begin{equation}
+\begin{split}
+\int_0^\pi\left[\frac{P_{\ell m}(\cos\theta)}{\sin\theta}\frac{\partial P_{\ell'm}(\cos\theta)}{\partial\theta} + \frac{P_{\ell'm}(\cos\theta)}{\sin\theta}\frac{\partial P_{\ell m}(\cos\theta)}{\partial\theta}\right]\sin\theta\,\mathrm{d}\theta &= \int_0^\pi\frac{\partial}{\partial \theta}\left\{P_{\ell m}(\cos\theta)P_{\ell' m}(\cos\theta)\right\}\mathrm{d}\theta\\
+&= \left.P_{\ell m}(\cos\theta)P_{\ell' m}(\cos\theta)\right|_0^\pi\\
+&= 2\delta_{m0}\delta_{\mathrm{par}(\ell),1},
+\end{split}
+\end{equation}
+where
+\begin{equation}
+\mathrm{par}(n) = 
+\begin{cases}
+0, & |n|\;\mathrm{even},\\
+1, & |n|\;\mathrm{odd}
+\end{cases}
+\end{equation}
+is the parity function that returns 0 for even integers and 1 for odd integers.
+
+
+
+
+
+
+
+
+\subsection{Useful recursion relations}
+It is sometimes useful to know that
+\begin{equation}
+\begin{split}
+z_\ell(x) &= \frac{x}{2\ell + 1}\left[z_{\ell - 1}(x) + z_{\ell + 1}(x)\right],\\
+\frac{\partial z_\ell(x)}{\partial x} &= z_{\ell - 1}(x) - \frac{\ell + 1}{x}z_\ell(x),\\
+\frac{\partial z_\ell(x)}{\partial x} &= -z_{\ell + 1}(x) + \frac{\ell}{x}z_\ell(x),
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\frac{\partial\{xz_\ell(x)\}}{\partial x} = \frac{x}{2\ell + 1}\left[(\ell + 1)z_{\ell - 1}(x) - \ell z_{\ell + 1}(x)\right]
+\end{equation}
+where $z_\ell(x)$ is any spherical Bessel or Hankel function. These identities can be combined to give
+\begin{equation}
+\begin{split}
+\ell(\ell + 1)\frac{w_\ell(x_1)z_\ell(x_2)}{x_1x_2} &+ \frac{1}{x_1x_2}\frac{\partial\{x_1w_\ell(x_1)\}}{\partial x_1}\frac{\partial\{x_2z_\ell(x_2)\}}{\partial x_2}\\
+&= \frac{1}{2\ell + 1}\left[(\ell + 1)w_{\ell - 1}(x_1)z_{\ell - 1}(x_2) + \ell w_{\ell + 1}(x_1)z_{\ell + 1}(x_2)\right]
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\frac{\partial z_\ell(x_1)}{\partial x_1}\frac{\partial w_\ell(x_2)}{\partial x_2} = \frac{\ell + 1}{2\ell + 1}z_{\ell + 1}(x_1)w_{\ell + 1}(x_2) + \frac{\ell}{2\ell + 1}z_{\ell - 1}(x_1)w_{\ell - 1}(x_2) - \frac{\ell(\ell + 1)}{x_1x_2}z_\ell(x_1)w_\ell(x_2)
+\end{equation}
+where $w_\ell$ and $z_\ell$ are any two spherical Bessel or Hankel functions.

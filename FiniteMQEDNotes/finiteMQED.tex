@@ -1,0 +1,1668 @@
+\documentclass{article}
+\input{default_preamble}
+
+%%%%%%%%%%%%%%%%%%%%%%%%% Additional Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Used to get bibliogrpahy options that I want
+\usepackage[comma,super,sort&compress]{natbib}
+
+% Used to get nice physics macros
+\usepackage{physics}
+
+% Used to get tables that span page breaks
+\usepackage{longtable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% New Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                  
+% Used to place references in text
+\newcommand{\citen}[1]{
+	\begingroup
+		\hspace{-18pt}
+		\setcitestyle{numbers} % cite style is no longer superscript
+		\cite{#1}
+		\hspace{-6.5pt}
+	\endgroup
+}
+
+\begin{document}
+
+\title{Macroscopic QED in Finite Particles}
+\author{Jacob A Busche}
+\maketitle
+
+
+\newpage
+
+\section{Derivation of the Wave Equation Satisfied by the Polarization Density}\label{app:polarizationWaveEquation}
+
+Before we can quantize a theory of light-matter interactions in a rigorous way, we need to describe the classical behavior of the matter we are working with. to do so, we begin with Maxwell's equations in the Fourier regime,
+\begin{equation}
+\begin{split}
+\nabla\cdot\mathbf{E}(\mathbf{r},\omega) &= 4\pi\rho(\mathbf{r},\omega),\\
+\nabla\cdot\mathbf{D}(\mathbf{r},\omega) &= 4\pi\rho_f(\mathbf{r},\omega),\\
+\nabla\cdot\mathbf{B}(\mathbf{r},\omega) &= 0,\\
+\nabla\times\mathbf{E}(\mathbf{r},\omega) &= \frac{\mathrm{i}\omega}{c}\mathbf{B}(\mathbf{r},\omega),\\
+\nabla\times\mathbf{B}(\mathbf{r},\omega) &= \frac{4\pi}{c}\mathbf{J}(\mathbf{r},\omega) - \frac{\mathrm{i}\omega}{c}\mathbf{E}(\mathbf{r},\omega),\\
+\nabla\times\mathbf{H}(\mathbf{r},\omega) &= \frac{4\pi}{c}\mathbf{J}_f(\mathbf{r},\omega) - \frac{\mathrm{i}\omega}{c}\mathbf{D}(\mathbf{r},\omega),
+\end{split}
+\end{equation}
+where
+\begin{equation}
+\begin{split}
+\mathbf{D}(\mathbf{r},\omega) &= \epsilon(\mathbf{r},\omega)\mathbf{E}(\mathbf{r},\omega),\\
+\mathbf{B}(\mathbf{r},\omega) &= \mu(\mathbf{r},\omega)\mathbf{H}(\mathbf{r},\omega),
+\end{split}
+\end{equation}
+are the electric and magnetic constitutive relations, respectively, and the charge and current distributions have been separated into bound and free contributions such that $\rho(\mathbf{r},\omega) = \rho_b(\mathbf{r},\omega) + \rho_f(\mathbf{r},\omega)$ and $\mathbf{J}(\mathbf{r},\omega) = \mathbf{J}_b(\mathbf{r},\omega) + \mathbf{J}_f(\mathbf{r},\omega)$. Alternatively, the electric and magnetic constitutive relations can be written as
+\begin{equation}
+\begin{split}
+\mathbf{D}(\mathbf{r},\omega) &= \mathbf{E}(\mathbf{r},\omega) + 4\pi\mathbf{P}(\mathbf{r},\omega),\\
+\mathbf{B}(\mathbf{r},\omega) &= \mathbf{H}(\mathbf{r},\omega) + 4\pi\mathbf{M}(\mathbf{r},\omega),
+\end{split}
+\end{equation}
+with $\mathbf{P}(\mathbf{r},\omega)$ the polarization density and $\mathbf{M}(\mathbf{r},\omega)$ the magnetization density of the matter. These lead straightforwardly to the definitions of the bound charge and current:
+\begin{equation}
+\begin{split}
+\rho_b(\mathbf{r},\omega) &= -\nabla\cdot\mathbf{P}(\mathbf{r},\omega),\\
+\mathbf{J}_b(\mathbf{r},\omega) &= -\mathrm{i}\omega\mathbf{P}(\mathbf{r},\omega) + c\nabla\times\mathbf{M}(\mathbf{r},\omega).
+\end{split}
+\end{equation}
+
+The constitutive relations are useful for defining a corollary to Faraday's law for the $\mathbf{D}(\mathbf{r},\omega)$- and $\mathbf{H}(\mathbf{r},\omega)$-fields:
+\begin{equation}
+\begin{split}
+\nabla\times\mathbf{D}(\mathbf{r},\omega) &= \epsilon(\mathbf{r},\omega)\nabla\times\mathbf{E}(\mathbf{r},\omega) + \nabla\epsilon(\mathbf{r},\omega)\times\mathbf{E}(\mathbf{r},\omega)\\
+&= \frac{\mathrm{i}\omega}{c}\epsilon(\mathbf{r},\omega)\mu(\mathbf{r},\omega)\mathbf{H}(\mathbf{r},\omega) + \nabla\epsilon(\mathbf{r},\omega)\times\mathbf{E}(\mathbf{r},\omega),
+\end{split}
+\end{equation}
+wherein we have used the identity $\nabla\times\left\{f(\mathbf{r})\mathbf{F}(\mathbf{r})\right\} = f(\mathbf{r})\nabla\times\mathbf{F}(\mathbf{r}) + \nabla f(\mathbf{r})\times\mathbf{F}(\mathbf{r})$. Application of the curl operator to Faraday's law and its corollary produces
+\begin{equation}\label{eq:waveEquationsEandD}
+\begin{split}
+\nabla\times\nabla\times\mathbf{E}(\mathbf{r},\omega) &= \frac{4\pi\mathrm{i}\omega}{c^2}\mu(\mathbf{r},\omega)\mathbf{J}_f(\mathbf{r},\omega) + \epsilon(\mathbf{r},\omega)\mu(\mathbf{r},\omega)\frac{\omega^2}{c^2}\mathbf{E}(\mathbf{r},\omega) + \frac{\mathrm{i}\omega}{c}\nabla\mu(\mathbf{r},\omega)\times\mathbf{H}(\mathbf{r},\omega),\\
+\nabla\times\nabla\times\mathbf{D}(\mathbf{r},\omega) &= \frac{4\pi\mathrm{i}\omega}{c^2}\epsilon(\mathbf{r},\omega)\mu(\mathbf{r},\omega)\mathbf{J}_f(\mathbf{r},\omega) + \epsilon(\mathbf{r},\omega)\mu(\mathbf{r},\omega)\frac{\omega^2}{c^2}\mathbf{D}(\mathbf{r},\omega)\\
+&\qquad + \frac{\mathrm{i}\omega}{c}\nabla\left\{\epsilon(\mathbf{r},\omega)\mu(\mathbf{r},\omega)\right\}\times\mathbf{H}(\mathbf{r},\omega) + \nabla\times\left\{\nabla\epsilon(\mathbf{r},\omega)\times\mathbf{E}(\mathbf{r},\omega)\right\}.
+\end{split}
+\end{equation}
+The last term on the right-hand side of the first equation and the last two terms on the right-hand side of the second equation are nonzero for any system with space-dependent (i.e. interesting) material properties. These terms also act as sources that depend on the state of the field at any given frequency, such that, on the surface, they appear to make our lives quite complicated. However, in the special case where the dielectric and diamagnetic functions are piece-wise constant in space, these terms disappear. To see this, we can begin with the first line of Eq. \eqref{eq:waveEquationsEandD} and let
+\begin{equation}
+\mathbf{E}(\mathbf{r},\omega) = \sum_i\Theta(\mathbf{r}\in\mathbb{V}_i)\mathbf{E}_i(\mathbf{r},\omega).
+\end{equation}
+Here, space is divided into a number of regions $i$ that each contain a set of points $\mathbb{V}_i$. Each volume $\mathbb{V}_i$ borders any other number neighboring of volumes $\mathbb{V}_j$ and possibly infinity. Each volume $\mathbb{V}_i$ shares a set of points along the surface $\partial\mathbb{V}_{ij}$ with its neighbor $\mathbb{V}_j$ along which the dielectric functions, diamagnetic functions, and fields are undefined. Letting $\partial\mathbb{V}_i$ be the total set of surface points surrounding the volume $\mathbb{V}_i$, we can define the Heaviside function
+\begin{equation}
+\Theta(\mathbf{r}\in\mathbb{V}_i) = 
+\begin{cases}
+\mathbf{r}\in\mathbb{V}_i\setminus\partial\mathbb{V}_i, & 1,\\
+\mathbf{r}\notin\mathbb{V}_i, & 0,\\
+\mathbf{r}\in\partial\mathbb{V}_i, & \mathrm{undefined}.
+\end{cases}
+\end{equation}
+Further, 
+\begin{equation}
+\mathbf{E}_i(\mathbf{r},\omega) = 
+\begin{cases}
+\mathbf{E}(\mathbf{r},\omega), & \mathbf{r}\in\mathbb{V}_i,\\
+0, & \mathrm{otherwise},
+\end{cases}
+\end{equation}
+such that our piece-wise definition of the electric field serves to ``stitch together'' the electric field in each separate region of space by connecting it along the system's boundaries to its neighbors. The dielectric and diamagnetic functions follow as
+\begin{equation}
+\begin{split}
+\epsilon(\mathbf{r},\omega) &= \sum_i\epsilon_i(\omega)\Theta(\mathbf{r}\in\mathbb{V}_i),\\
+\mu(\mathbf{r},\omega) &= \sum_i\mu_i(\omega)\Theta(\mathbf{r}\in\mathbb{V}_i),
+\end{split}
+\end{equation}
+but, in contrast with the definition of the electric field, are space-independent within each region.
+
+Using these definitions, we can apply the double-curl operator on the left-hand side of the first line of Eq. \eqref{eq:waveEquationsEandD} to find
+\begin{equation}\label{eq:waveEqEseparated}
+\begin{split}
+&\sum_i\Theta(\mathbf{r}\in\mathbb{V}_i)\nabla\times\nabla\times\mathbf{E}_i(\mathbf{r},\omega) + \sum_i\delta(\mathbf{r}\in\partial\mathbb{V}_i)\hat{\mathbf{n}}_i(\mathbf{r})\times\nabla\times\mathbf{E}_i(\mathbf{r},\omega)\\
+&\qquad + \sum_i\nabla\times\left\{\delta(\mathbf{r}\in\mathbb{V}_i)\hat{\mathbf{n}}_i(\mathbf{r})\times\mathbf{E}_i(\mathbf{r},\omega)\right\} = \sum_i\frac{4\pi\mathrm{i}\omega}{c}\mu_i(\omega)\mathbf{J}_{fi}(\mathbf{r},\omega)\Theta(\mathbf{r}\in\mathbb{V}_i)\\
+&\qquad + \frac{\omega^2}{c^2}\sum_i\mu_i(\omega)\epsilon_i(\omega)\mathbf{E}_i(\mathbf{r},\omega)\Theta(\mathbf{r}\in\mathbb{V}_i) + \sum_i\frac{\mathrm{i}\omega}{c}\mu_i(\omega)\delta(\mathbf{r}\in\partial\mathbb{V}_i)\hat{\mathbf{n}}_i(\mathbf{r})\times\mathbf{H}_i(\mathbf{r},\omega).
+\end{split}
+\end{equation}
+Here, we have used the identity $\nabla\Theta(\mathbf{r}\in\mathbb{V}_i) = \hat{\mathbf{n}}_i(\mathbf{r})\delta(\mathbf{r}\in\partial\mathbb{V}_i)$ to evaluate the derivatives, where $\hat{\mathbf{n}}_i(\mathbf{r})$ is the outward-facing surface-normal unit vector of the boundary of $\mathbb{V}_i$. Because the fields and material functions are not defined on the boundary exactly, we will take the Dirac deltas to imply limits as one approaches a point on a boundary from inside the associated bounded volume. In this case, we have let $\Theta(\mathbf{r}\in\mathbb{V}_i)\delta(\mathbf{r}\in\partial\mathbb{V}_i) = \delta(\mathbf{r}\in\partial\mathbb{V}_i)$. Moreover, we can see that along each shared boundary $\partial\mathbb{V}_{ij}$,
+\begin{equation}
+\hat{\mathbf{n}}_i(\mathbf{r}\in\partial\mathbb{V}_{ij})\times\mathbf{E}_i(\mathbf{r}\in\partial\mathbb{V}_{ij},\omega) = -\hat{\mathbf{n}}_j(\mathbf{r}\in\partial\mathbb{V}_{ij})\times\mathbf{E}_j(\mathbf{r}\in\partial\mathbb{V}_{ij},\omega)
+\end{equation}
+as the surface-parallel components of the electric fields are equal and the surface-normal vectors are equal and opposite. Therefore, we can see that
+\begin{equation}
+\sum_i\delta(\mathbf{r}\in\mathbb{V}_i)\hat{\mathbf{n}}_i(\mathbf{r})\times\mathbf{E}_i(\mathbf{r},\omega) = 0
+\end{equation}
+and, accordingly, $\sum_i\nabla\times\left\{\delta(\mathbf{r}\in\mathbb{V}_i)\hat{\mathbf{n}}_i(\mathbf{r})\times\mathbf{E}_i(\mathbf{r},\omega)\right\} = 0$. Moreover, we can see from Faraday's law that
+\begin{equation}
+\sum_i\Theta(\mathbf{r}\in\mathbb{V}_i)\nabla\times\mathbf{E}_i(\mathbf{r},\omega) + \sum_i\delta(\mathbf{r}\in\partial\mathbb{V}_i)\hat{\mathbf{n}}_i(\mathbf{r})\times\mathbf{E}_i(\mathbf{r},\omega) = \sum_i\frac{\mathrm{i}\omega}{c}\mathbf{B}_i(\mathbf{r},\omega)\Theta(\mathbf{r}\in\mathbb{V}_i).
+\end{equation}
+Since the second term on the left-hand side is zero, we can equate the remaining quantities point-wise within their respective regions:
+\begin{equation}
+\nabla\times\mathbf{E}_i(\mathbf{r},\omega) = \frac{\mathrm{i}\omega}{c}\mathbf{B}_i(\mathbf{r},\omega).
+\end{equation}
+\sloppy Combined with the definition $\mu_i(\omega)\mathbf{H}_i(\mathbf{r},\omega) = \mathbf{B}_i(\mathbf{r},\omega)$, we can use the region-separated form of Faraday's law to see that $\nabla\times\mathbf{E}_i(\mathbf{r},\omega) = \mathrm{i}\omega\mu_i(\omega)\mathbf{H}_i(\mathbf{r},\omega)/c$. We can then cancel the remaining terms on either side of Eq. \eqref{eq:waveEqEseparated} proportional to Dirac deltas. Further, as the rest of the terms feature sums of independent quantities, we can drop the sums and Heaviside functions as we did with Faraday's law, such that the double curl of $\mathbf{E}(\mathbf{r},\omega)$ provides
+\begin{equation}\label{eq:waveEqEseparated2}
+\nabla\times\nabla\times\mathbf{E}_i(\mathbf{r},\omega) = \frac{4\pi\mathrm{i}\omega}{c}\mu_i(\omega)\mathbf{J}_{fi}(\mathbf{r},\omega) + \frac{\omega^2}{c^2}\mu_i(\omega)\epsilon_i(\omega)\mathbf{E}_i(\mathbf{r},\omega).
+\end{equation}
+This is simply the wave equation for the electric field within region $i$. Therefore, we have proved that the wave equation for the electric field in Eq. \eqref{eq:waveEquationsEandD} can be decomposed into a series of wave equations in each region that must be solved individually and do \textit{not} contain any anomalous boundary terms proportional to $\nabla\mu(\mathbf{r},\omega)$.
+
+A similar process can be used to find the region-separated form of the wave equation of the $\mathbf{D}$-field. Letting
+\begin{equation}
+\begin{split}
+\mathbf{D}(\mathbf{r},\omega) &= \sum_i\Theta(\mathbf{r}\in\mathbb{V}_i)\epsilon_i(\omega)\mathbf{E}_i(\mathbf{r},\omega),\\
+\epsilon(\mathbf{r},\omega)\mu(\mathbf{r},\omega) &= \sum_i\Theta(\mathbf{r}\in\mathbb{V}_i)\epsilon_i(\omega)\mu_i(\omega),
+\end{split}
+\end{equation}
+we arrive at
+\begin{equation}
+\begin{split}
+&\sum_i\Theta(\mathbf{r}\in\mathbb{V}_i)\nabla\times\nabla\times\mathbf{D}_i(\mathbf{r},\omega) + \sum_i\epsilon_i(\omega)\delta(\mathbf{r}\in\partial\mathbb{V}_i)\hat{\mathbf{n}}_i(\mathbf{r})\times\nabla\times\mathbf{E}_i(\mathbf{r},\omega)\\
+&\qquad + \nabla\times\left\{\sum_i\epsilon_i(\omega)\delta(\mathbf{r}\in\partial\mathbb{V}_i)\hat{\mathbf{n}}_i(\mathbf{r})\times\mathbf{E}_i(\mathbf{r},\omega)\right\} = \sum_i\Theta(\mathbf{r}\in\mathbb{V}_i)\frac{4\pi\mathrm{i}\omega}{c^2}\epsilon_i(\omega)\mu_i(\omega)\mathbf{J}_{fi}(\mathbf{r},\omega)\\
+&\qquad + \sum_i\Theta(\mathbf{r}\in\mathbb{V}_i)\epsilon_i(\omega)\mu_i(\omega)\frac{\omega^2}{c^2}\mathbf{D}_i(\mathbf{r},\omega) + \sum_i\frac{\mathrm{i}\omega}{c}\epsilon_i(\omega)\mu_i(\omega)\delta(\mathbf{r}\in\delta\mathbb{V}_i)\hat{\mathbf{n}}_i(\mathbf{r})\times\mathbf{H}_i(\mathbf{r},\omega)\\
+&\qquad + \nabla\times\left\{\sum_i\epsilon_i(\omega)\delta(\mathbf{r}\in\partial\mathbb{V}_i)\hat{\mathbf{n}}_i(\mathbf{r})\times\mathbf{E}_i(\mathbf{r},\omega)\right\},
+\end{split}
+\end{equation}
+wherein $\mathbf{D}_i(\mathbf{r},\omega) = \epsilon_i(\omega)\mathbf{E}_i(\mathbf{r},\omega)$. We can immediately see that the last terms on both the left- and right-hand sides of the equation cancel. The second-to-last terms on either side of the equation can be seen to cancel using Faraday's law as was done in the previous paragraph, such that, after dropping sums and Heaviside functions, we find
+\begin{equation}\label{eq:waveEqDseparated2}
+\nabla\times\nabla\times\mathbf{D}_i(\mathbf{r},\omega) = \frac{4\pi\mathrm{i}\omega}{c^2}\epsilon_i(\omega)\mu_i(\omega)\mathbf{J}_{fi}(\mathbf{r},\omega) + \epsilon_i(\omega)\mu_i(\omega)\frac{\omega^2}{c^2}\mathbf{D}_i(\mathbf{r},\omega).
+\end{equation}
+
+We can now define the polarization field in each region as $\mathbf{P}_i(\mathbf{r},\omega)$ such that
+\begin{equation}
+\mathbf{P}(\mathbf{r},\omega) = \sum_i\Theta(\mathbf{r}\in\mathbb{V}_i)\mathbf{P}_i(\mathbf{r},\omega).
+\end{equation}
+This paves the wave for the identity
+\begin{equation}
+\mathbf{P}_i(\mathbf{r},\omega) = \frac{\mathbf{D}_i(\mathbf{r},\omega) - \mathbf{E}_i(\mathbf{r},\omega)}{4\pi}.
+\end{equation}
+Therefore, subtracting Eq. \eqref{eq:waveEqEseparated2} from Eq. \eqref{eq:waveEqDseparated2} and dividing by $4\pi$, we find
+\begin{equation}
+\nabla\times\nabla\times\mathbf{P}_i(\mathbf{r},\omega) - \epsilon_i(\omega)\mu_i(\omega)\frac{\omega^2}{c^2}\mathbf{P}_i(\mathbf{r},\omega) = \frac{\mathrm{i}\omega}{c}\mu_i(\omega)\left[\epsilon_i(\omega) - 1\right]\mathbf{J}_{fi}(\mathbf{r},\omega).
+\end{equation}
+Therefore, the polarization field in each region obeys the same wave equation as do the electric and $\mathbf{D}$-fields, modulo a space-independent prefactor in front of the free current source term on the right-hand side.
+
+
+
+
+
+
+
+
+\section{The First-Principles Lagrangian}\label{sec:LagrangianExpansion}
+
+To describe the quantum electrodynamical behavior of finite particles, we need to rebuild our first principles in terms of quantum-mechanical operators and organize these operators inside of a Hamiltonian formalism. To do so, we will begin with the classical Lagrangian density 
+\begin{equation}\label{eq:lagrangianDensityMQED}
+\begin{split}
+\mathcal{L}&\left[\{\mathbf{x}_{fi}(t)\},\{\dot{\mathbf{x}}_{fi}(t)\};\mathbf{Q}_m(\mathbf{r},t),\dot{\mathbf{Q}}_m(\mathbf{r},t);\{\tilde{\mathbf{Q}}_\nu(\mathbf{r},t)\},\{\dot{\tilde{\mathbf{Q}}}_\nu(\mathbf{r},t)\};\mathbf{A}(\mathbf{r},t),\dot{\mathbf{A}}(\mathbf{r},t)\right]\\
+&= \mathcal{L}_f + \mathcal{L}_m + \mathcal{L}_r + \mathcal{L}_\mathrm{int} + \mathcal{L}_\mathrm{bind} + \mathcal{L}_\mathrm{EM} + \mathcal{L}_\mathrm{NL}
+\end{split}
+\end{equation}
+where
+\begin{equation}
+\mathcal{L}_f = \sum_{i = 1}^{N_f}\frac{1}{2}m_{fi}\dot{\mathbf{x}}_{fi}^2(t)\delta[\mathbf{r} - \mathbf{x}_{fi}(t)]
+\end{equation}
+describes the kinetic energy of the free charges with coordinates $\mathbf{x}_{fi}(t)$ and velocities $\dot{\mathbf{x}}_{fi}(t)$,
+\begin{equation}
+\mathcal{L}_m = \frac{\mu_m(\mathbf{r})}{2}\left[\dot{\mathbf{Q}}_m^2(\mathbf{r},t) - \omega_0^2\mathbf{Q}_m^2(\mathbf{r},t)\right]
+%- \frac{\mu_m(\mathbf{r})\omega_0^2}{2}\mathbf{Q}_m^2(\mathbf{r},t)
+\end{equation}
+describes the kinetic and harmonic potential energies experienced by the mobile material charges with coordinate fields $\mathbf{Q}_m(\mathbf{r},t)$ (see Section \ref{sec:coordinateFields} for details),
+\begin{equation}
+\mathcal{L}_r = \int_0^\infty\frac{\mu_\nu(\mathbf{r})}{2}\left[\dot{\tilde{\mathbf{Q}}}_\nu^2(\mathbf{r},t) - \nu^2\tilde{\mathbf{Q}}_\nu^2(\mathbf{r},t)\right]\;\mathrm{d}\nu
+% - \int_0^\infty\frac{\mu_\nu(\mathbf{r})\nu^2}{2}\tilde{\mathbf{Q}}_\nu^2(\mathbf{r},t)\;\mathrm{d}\nu
+\end{equation}
+describes the kinetic and potential energies of reservoir charges that build in the system's damping,
+\begin{equation}
+\begin{split}
+\mathcal{L}_\mathrm{int} &= -\left[-e\nabla\cdot\left\{\bar{n}_m(\mathbf{r})\mathbf{Q}_m(\mathbf{r},t)\right\} + \rho_f(\mathbf{r},t)\right]\Phi(\mathbf{r},t) + \frac{1}{c}\left[e\bar{n}_m(\mathbf{r})\dot{\mathbf{Q}}_m(\mathbf{r},t) + \mathbf{J}_f(\mathbf{r},t)\right]\cdot\mathbf{A}(\mathbf{r},t)\\
+&- \int_0^\infty \tilde{v}(\nu)\mathbf{Q}_m(\mathbf{r},t)\cdot\dot{\tilde{\mathbf{Q}}}_\nu(\mathbf{r},t)\;\mathrm{d}\nu
+\end{split}
+\end{equation}
+describes the interactions between the electromagnetic field, mobile charges, and free charges,
+\begin{equation}
+\mathcal{L}_\mathrm{bind} = -\sum_{\alpha,\beta = m,b,r}\left[u_{\alpha\beta}^\infty(\mathbf{r}) + u_{\beta\alpha}^\infty(\mathbf{r})\right] - \sum_{\alpha = m,b,r,f}u_\alpha^\mathrm{self}
+\end{equation}
+describes the binding potentials and self-energies experienced by each charge, and
+\begin{equation}
+\mathcal{L}_\mathrm{EM} = \frac{1}{8\pi}\left[\left[\nabla\Phi(\mathbf{r},t)\right]^2 + \frac{1}{c^2}\dot{\mathbf{A}}^2(\mathbf{r},t) - \left[\nabla\times\mathbf{A}(\mathbf{r},t)\right]^2 + \frac{2}{c}\nabla\Phi(\mathbf{r},t)\cdot\dot{\mathbf{A}}(\mathbf{r},t)\right]
+\end{equation}
+describes the energy bound in the electromagnetic fields. Finally, 
+\begin{equation}
+\mathcal{L}_\mathrm{NL} = - \frac{\sigma_0}{3}\mu_m(\mathbf{r})\mathbf{Q}_m(\mathbf{r},t)\cdot\left[\mathbf{Q}_m(\mathbf{r},t)\cdot\bm{1}_3\cdot\mathbf{Q}_m(\mathbf{r},t)\right]
+\end{equation}
+describes the anharmonic portion of the potential energy experienced by the material charges. This term can be generalized as needed to describe the interesting nonlinear dynamics of the system.
+
+A formal derivation of this Lagrangian density from the canonical QED Lagrangian
+\begin{equation}\label{eq:lagrangianDensityQED}
+\begin{split}
+\mathcal{L}_\mathrm{QED}&\left[\mathbf{x}_1,\ldots,\mathbf{x}_N,\dot{\mathbf{x}}_1,\ldots,\dot{\mathbf{x}}_N;\mathbf{A},\dot{\mathbf{A}}\right] = \sum_{i = 1}^N\frac{1}{2}m_i\dot{\mathbf{x}}_i^2(t)\delta[\mathbf{r} - \mathbf{x}_i(t)] + \frac{1}{8\pi}\left[\mathbf{E}^2(\mathbf{r},t) - \mathbf{B}^2(\mathbf{r},t)\right]\\
+&+ \sum_{i = 1}^N\frac{e_i}{c}\dot{\mathbf{x}}_i(t)\delta[\mathbf{r} - \mathbf{x}_i(t)]\cdot\mathbf{A}(\mathbf{r},t) - \sum_{i = 1}^Ne_i\delta[\mathbf{r} - \mathbf{x}_i(t)]\Phi(\mathbf{r},t).
+\end{split}
+\end{equation}
+involves in-depth discussions of the atomic and molecular structure of a given material and will not be done here. Instead, we will simply define each of our terms and demonstrate that $\mathcal{L}$ reproduces the equations of motion we want for our material.
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Definitions of the coordinate fields}\label{sec:coordinateFields}
+
+In general, the charges that make up a material are not confined to small regions of space but are instead spread over larger volumes. In this sense, the usual charge densities $e_i\delta[\mathbf{r} - \mathbf{x}_i(t)]$ present in $\mathcal{L}_\mathrm{QED}$ (see Eq. \eqref{eq:lagrangianDensityQED}) are a bad approximation and must be replaced by a more general description. 
+
+In our model, we borrow from hydrodynamic models of media and assume that four separate charge distributions $\rho_\phi(\mathbf{r},t)$ exist within the volume $\mathbb{V}$ occupied by the material our system, where $\phi = \{m,b,r,f\}$ denotes the ``family'' the charges belong to. The first is the distribution of the mobile ($\phi = m$) charges, which are assumed to be responsible for the material's interactions with the electromagnetic field. Giving this charge density a characteristic charge magnitude $e$, we can define a number density of mobile charges via $n_m(\mathbf{r},t) = \rho_m(\mathbf{r},t)/e$. Moreover, we assume that this charge density can be expanded as $n_m(\mathbf{r},t) = \bar{n}_m(\mathbf{r}) + \delta n_m(\mathbf{r},t)$, with $\bar{n}_m(\mathbf{r})$ the equilibrium charge density that exists in the absence of driving and $\delta n_m(\mathbf{r},t)$ a perturbation density the encodes the material's response to electromagnetic stimuli.
+
+These mobile charges experience motion described by a velocity field $\dot{\mathbf{Q}}_m(\mathbf{r},t)$ and form a bound current density $\mathbf{J}_m(\mathbf{r})$ given by
+\begin{equation}
+\begin{split}
+\mathbf{J}_m(\mathbf{r},t) &= \sum_i\mathbf{j}_i(\mathbf{r},t)\\
+&= e\bar{n}_m(\mathbf{r})\dot{\mathbf{Q}}_m(\mathbf{r},t)
+\end{split}
+\end{equation}
+that captures the contributions of the microscopic currents $\mathbf{j}_i(\mathbf{r},t)$ that can be calculated through atomistic models. The mobile charge current obeys the hard-wall boundary condition $\mathbf{J}_m(\mathbf{r},t)\cdot\hat{\mathbf{n}}(\mathbf{r})|_{\partial \mathbb{V}}$ with $\hat{\mathbf{n}}(\mathbf{r})$ the outward-oriented surface-normal unit vector, such that no mobile charge enters or exits the material when the system is excited. More explicitly, the continuity equation
+\begin{equation}
+\begin{split}
+\frac{\partial \rho_m(\mathbf{r},t)}{\partial t} &= e\delta \dot{n}_m(\mathbf{r},t)\\
+&= -\nabla\cdot\mathbf{J}_m(\mathbf{r},t)\\
+&= -e\left[\bar{n}_m(\mathbf{r})\nabla\cdot\dot{\mathbf{Q}}_m(\mathbf{r},t) + \nabla\bar{n}_m(\mathbf{r})\cdot\dot{\mathbf{Q}}_m(\mathbf{r},t)\right]
+\end{split}
+\end{equation}
+contains no contribution from $\nabla\bar{n}_m(\mathbf{r})\cdot\dot{\mathbf{Q}}_m(\mathbf{r},t)|_{\mathbf{r}\in\partial\mathbb{V}}$, as $\nabla\bar{n}_m(\mathbf{r})|_{\mathbf{r}\in\partial\mathbb{V}}\sim\hat{\mathbf{n}}(\mathbf{r})$.
+
+The connection between the velocity field and the mobile charge coordinate field is now straightforward:
+\begin{equation}
+\mathbf{Q}_m(\mathbf{r},t) = \int_{-\infty}^t\dot{\mathbf{Q}}_m(\mathbf{r},t')\;\mathrm{d}t',
+\end{equation}
+where the system is assumed to be at rest at $t\to-\infty$. In parallel fashion, the mobile charge polarization field $\mathbf{P}_m(\mathbf{r},t)$ is related to the current density via
+\begin{equation}
+\begin{split}
+\mathbf{P}_m(\mathbf{r},t) &= \int_{-\infty}^t\mathbf{J}_m(\mathbf{r},t')\;\mathrm{d}t'\\
+&= e\bar{n}_m(\mathbf{r})\mathbf{Q}_m(\mathbf{r},t),
+\end{split}
+\end{equation}
+such that
+\begin{equation}
+\begin{split}
+\nabla\cdot\mathbf{P}_{m}(\mathbf{r},t) &= -e\,\delta n_{m}(\mathbf{r},t)\\
+&= e\left[\bar{n}_{m}(\mathbf{r})\nabla\cdot\mathbf{Q}_{m}(\mathbf{r},t) + \nabla\bar{n}_{m}(\mathbf{r})\cdot\mathbf{Q}_{m}(\mathbf{r},t)\right].
+\end{split}
+\end{equation}
+Interestingly, this suggests that $\nabla\bar{n}_{m}(\mathbf{r})\cdot\mathbf{Q}_{m}(\mathbf{r},t)|_{\mathbf{r}\in\partial\mathbb{V}}$ cannot be time-varying. Via our initial conditions, we have disallowed the existence of a static coordinate field, such that the polarization field has no surface-normal component at the material boundaries.
+
+The background ($\phi = b$) charge density is assumed to be static, such that $\rho_b(\mathbf{r},t) = \rho_b(\mathbf{r})$. We assume is has a number density $n_b(\mathbf{r})$ and an equal and opposite characteristic charge to the mobile charges, such that $\rho_b(\mathbf{r}) = -en_b(\mathbf{r})$. In the case where the equilibrium density mobile and background density have identical spatial distributions, $\rho_b(\mathbf{r}) + e\bar{n}_m(\mathbf{r}) = 0$.
+
+The reservoir charges ($\phi = r$) is treated in the same manner, with the exception that they are assumed to form a globally neutral system comprised of many independent densities $\rho_\nu(\mathbf{r},t)$. Each reservoir charge density is given a characteristic charge $e_\nu$ and a  number density $n_\nu(\mathbf{r},t)$ such that $\rho_\nu(\mathbf{r},t) = e_\nu n_\nu(\mathbf{r},t)$, and this number density is expanded around an equilibrium density such that $n_\nu(\mathbf{r},t) = \bar{n}_\nu(\mathbf{r}) + \delta n_\nu(\mathbf{r},t)$. In turn, the reservoir currents $\mathbf{J}_\nu(\mathbf{r},t) = e_\nu\bar{n}_\nu(\mathbf{r})\dot{\mathbf{Q}}_\nu(\mathbf{r},t)$ can be defined via the coordinate fields $\mathbf{Q}_\nu(\mathbf{r},t)$.
+
+Finally, the free charges ($\phi = f$) are left as the general charge distribution $\rho_f(\mathbf{r},t) = \sum_{i = 1}^{N_f}e_{fi}\delta[\mathbf{r} - \mathbf{x}_{fi}(t)]$ such that a more specific driving charge source can be specified later.
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Equations of motion}
+
+The derivations of the equations of motion of the generalized coordinates of $\mathcal{L}$ are straightforward. The equation of motion for the free charges is given by
+\begin{equation}
+\frac{\mathrm{d}}{\mathrm{d}t}\frac{\partial L}{\partial \dot{\mathbf{x}}_{fi}(t)} = \frac{\partial L}{\partial \mathbf{x}_{fi}(t)},
+\end{equation}
+where $L = \int\mathcal{L}\,\mathrm{d}^3\mathbf{r}$. Before we can evaluate these variational derivatives, we need to first define the free current $\mathbf{J}_f(\mathbf{r},t)$ that appears in $\mathcal{L}_\mathrm{int}$. It is straightforward to prove that, with the Dirac delta ``softened'' to be a very sharply-peaked but finite even function,
+\begin{equation}
+\frac{\partial}{\partial t}\left\{\delta[\mathbf{r} - \mathbf{x}_{fi}(t)]\right\} = -\dot{\mathbf{x}}_{fi}(t)\cdot\nabla\left\{\delta[\mathbf{r} - \mathbf{x}_i(t)]\right\},
+\end{equation}
+such that, with the definition
+\begin{equation}
+\mathbf{J}_{fi}(\mathbf{r},t) = \sum_{i = 1}^{N_f}e_{fi}\dot{\mathbf{x}}_{fi}(t)\delta[\mathbf{r} - \mathbf{x}_{fi}(t)],
+\end{equation}
+the continuity equation $(\partial/\partial t)\rho_f(\mathbf{r},t) + \nabla\cdot\mathbf{J}_f(\mathbf{r},t) = 0$ is satisfied for all $(\mathbf{r},t)$. Using this description and noting that $\partial/\partial \mathbf{x}_{fi}(t) = \sum_{k = x,y,z}\hat{\mathbf{e}}_k\partial/\partial [\hat{\mathbf{e}}_k\cdot\mathbf{x}_{fi}(t)]$ is simply a gradient operator with respect to $\mathbf{x}_{fi}(t)$ rather than the usual $\mathbf{r}$, we can see that the Euler-Lagrange equations for the free charges give
+\begin{equation}
+\begin{split}
+\frac{\mathrm{d}}{\mathrm{d}t}\frac{\partial}{\partial \dot{\mathbf{x}}_{fi}(t)}&\left\{\sum_j\frac{1}{2}m_{fj}\dot{\mathbf{x}}_{fj}^2(t) + \frac{1}{c}\sum_je_{fj}\dot{\mathbf{x}}_{fj}(t)\cdot\mathbf{A}[\mathbf{x}_{fj}(t),t] + \ldots\right\} = m_{fi}\ddot{\mathbf{x}}_{fi}^2(t) + \frac{1}{c}e_{fi}\frac{\mathrm{d}}{\mathrm{d}t}\{\mathbf{A}[\mathbf{x}_{fi}(t),t]\}\\
+&= m_{fi}\ddot{\mathbf{x}}_{fi}^2(t) + \frac{e_{fi}}{c}\left(\dot{\mathbf{A}}[\mathbf{x}_{fi}(t),t] + \left[\dot{\mathbf{x}}_{fi}(t)\cdot\nabla\right]\{\mathbf{A}[\mathbf{x}_{fi}(t),t]\}\right)
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+\frac{\partial}{\partial \mathbf{x}_{fi}(t)}&\left\{-\sum_je_{fj}\Phi[\mathbf{x}_{fj}(t),t] + \frac{1}{c}\sum_je_{fj}\dot{\mathbf{x}}_{fj}(t)\cdot\mathbf{A}[\mathbf{x}_{fj}(t),t] + \ldots\right\} = -e_{fi}\nabla\Phi[\mathbf{x}_{fi}(t),t]\\
+&\qquad + \frac{1}{c}\left(\dot{\mathbf{x}}_{fi}(t)\times\nabla\times\mathbf{A}[\mathbf{x}_{fi}(t),t] + \left[\dot{\mathbf{x}}_{fi}(t)\cdot\nabla\right]\{\mathbf{A}[\mathbf{x}_{fi}(t),t]\}\right),
+\end{split}
+\end{equation}
+wherein we have used the identities $\nabla\{\mathbf{a}\cdot\mathbf{B}(\mathbf{r})\} = \mathbf{a}\times\nabla\times\mathbf{B}(\mathbf{r}) + (\mathbf{a}\cdot\nabla)\{\mathbf{B}(\mathbf{r})\}$ and $\mathrm{d}/\mathrm{d}t\{\mathbf{F}[\mathbf{x}(t),t]\} = \partial\mathbf{F}[\mathbf{x}(t),t]/\partial t + \sum_i[\partial F_i[\mathbf{x}(t),t]/\partial x_i(t)]\partial x_i(t)/\partial t $ and assumed that the gradient operators are taken with respect to the coordinate that each field depends on. Therefore,
+\begin{equation}
+m_{fi}\ddot{\mathbf{x}}_{fi}^2(t) = e_{fi}\left(-\nabla\Phi[\mathbf{x}_{fi}(t),t] - \frac{1}{c}\dot{\mathbf{A}}[\mathbf{x}_{fi}(t),t] + \frac{1}{c}\dot{\mathbf{x}}_{fi}(t)\times\nabla\times\mathbf{A}[\mathbf{x}_{fi}(t),t]\right),
+\end{equation}
+which is precisely the Maxwell-Lorentz force with $\mathbf{E}(\mathbf{r},t) = -\nabla\Phi(\mathbf{r},t) - (1/c)\dot{\mathbf{A}}(\mathbf{r},t)$ and $\mathbf{B}(\mathbf{r},t) = \nabla\times\mathbf{A}(\mathbf{r},t)$.
+
+The equations of motion for the mobile and reservoir charge coordinate fields are derived from $\mathcal{L}$ directly, with
+\begin{equation}
+\frac{\mathrm{d}}{\mathrm{d}t}\left\{\frac{\partial \mathcal{L}}{\partial \dot{F}_j(\mathbf{r},t)}\right\} = \frac{\partial \mathcal{L}}{\partial F_j(\mathbf{r},t)} - \sum_{k = 1}^3\frac{\partial}{\partial r_k}\frac{\partial \mathcal{L}}{\partial\!\left(\frac{\partial F_j(\mathbf{r},t)}{\partial r_k}\right)}
+\end{equation}
+the Euler-Lagrange equation for the $j^\mathrm{th}$-component of the dummy vector field $\mathbf{F}(\mathbf{r},t)$. Beginning with the mobile charges,
+\begin{equation}
+\begin{split}
+\sum_j\hat{\mathbf{e}}_j\frac{\mathrm{d}}{\mathrm{d}t}\left\{\frac{\partial \mathcal{L}}{\partial \dot{Q}_{mj}(\mathbf{r},t)}\right\} &= \mu_m(\mathbf{r})\ddot{\mathbf{Q}}_m(\mathbf{r},t) + \frac{e}{c}\bar{n}_m(\mathbf{r})\dot{\mathbf{A}}(\mathbf{r},t),\\
+\sum_j\hat{\mathbf{e}}_j\frac{\partial \mathcal{L}}{\partial Q_{mj}(\mathbf{r},t)} &= -\mu_m(\mathbf{r})\omega_0^2\mathbf{Q}_m(\mathbf{r},t) + e\nabla\bar{n}_m(\mathbf{r}\notin\partial\mathbb{V})\Phi(\mathbf{r},t) - \int_0^\infty\tilde{v}(\nu)\dot{\tilde{\mathbf{Q}}}_\nu(\mathbf{r},t)\;\mathrm{d}\nu\\
+&\qquad - \sigma_0\mu_m(\mathbf{r})\mathbf{Q}_m^2(\mathbf{r},t),\\
+-\sum_j\hat{\mathbf{e}}_j\sum_{k = 1}^3\frac{\partial}{\partial r_k}\frac{\partial \mathcal{L}}{\partial\!\left(\frac{\partial Q_{mj}(\mathbf{r},t)}{\partial r_k}\right)} &= -e\bar{n}_m(\mathbf{r})\nabla\Phi(\mathbf{r},t),\\
+\end{split}
+\end{equation}
+such that
+\begin{equation}\label{eq:eqOfMotionQm}
+\begin{split}
+\mu_m(\mathbf{r})\ddot{\mathbf{Q}}_m(\mathbf{r},t) + \int_0^\infty\tilde{v}(\nu)\dot{\tilde{\mathbf{Q}}}_\nu(\mathbf{r},t)\;\mathrm{d}\nu &+ \mu_m(\mathbf{r})\omega_0^2\mathbf{Q}_m(\mathbf{r},t) + \mu_m(\mathbf{r})\sigma_0\mathbf{Q}_m^2(\mathbf{r},t)\\
+&= e\nabla\bar{n}_m(\mathbf{r}\notin\partial\mathbb{V})\Phi(\mathbf{r},t) + e\bar{n}_m(\mathbf{r})\left[-\nabla\Phi(\mathbf{r},t) - \frac{1}{c}\dot{\mathbf{A}}(\mathbf{r},t)\right].
+\end{split}
+\end{equation}
+The reservoir charges have a similarly simple results, with
+\begin{equation}
+\begin{split}
+\sum_j\hat{\mathbf{e}}_j\frac{\mathrm{d}}{\mathrm{d}t}\left\{\frac{\partial \mathcal{L}}{\partial \dot{\tilde{Q}}_{\nu j}(\mathbf{r},t)}\right\} &= \mu_\nu(\mathbf{r})\ddot{\tilde{\mathbf{Q}}}_\nu(\mathbf{r},t) - \tilde{v}(\nu)\dot{\mathbf{Q}}_m(\mathbf{r},t),\\
+\sum_j\hat{\mathbf{e}}_j\frac{\partial \mathcal{L}}{\partial \tilde{Q}_{\nu j}(\mathbf{r},t)} &= -\mu_\nu(\mathbf{r})\nu^2\tilde{\mathbf{Q}}_\nu(\mathbf{r},t),\\
+-\sum_j\hat{\mathbf{e}}_j\sum_{k = 1}^3\frac{\partial}{\partial r_k}\frac{\partial \mathcal{L}}{\partial\!\left(\frac{\partial Q_{\nu j}(\mathbf{r},t)}{\partial r_k}\right)} &= 0,\\
+\end{split}
+\end{equation}
+such that
+\begin{equation}\label{eq:eqOfMotionQnu}
+\mu_\nu(\mathbf{r})\ddot{\tilde{\mathbf{Q}}}_\nu(\mathbf{r},t) + \mu_\nu(\mathbf{r})\nu^2\tilde{\mathbf{Q}}_\nu(\mathbf{r},t) = \tilde{v}(\nu)\dot{\mathbf{Q}}_m(\mathbf{r},t).
+\end{equation}
+Together, Eqs. \eqref{eq:eqOfMotionQm} and \eqref{eq:eqOfMotionQnu} can be combined to produce a simple anharmonic oscillator dielectric picture with internal losses determined by the details of the coupling function $\tilde{v}(\nu)$. For details, see Appendix \ref{app:dependentMatter}.
+
+Finally, we can use $\mathcal{L}$ to define the equations of motion for the potentials $\Phi(\mathbf{r},t)$ and $\mathbf{A}(\mathbf{r},t)$. First, we can see that 
+\begin{equation}
+\begin{split}
+\frac{\partial\mathcal{L}}{\partial\dot{\Phi}(\mathbf{r},t)} &= 0,\\
+\frac{\partial \mathcal{L}}{\partial \Phi(\mathbf{r},t)} &= e\nabla\cdot\left\{\bar{n}_m(\mathbf{r})\mathbf{Q}_m(\mathbf{r},t)\right\} - \rho_f(\mathbf{r},t) = -e\delta n_m(\mathbf{r},t) - \rho_f(\mathbf{r},t),\\
+\sum_{k = 1}^3\frac{\partial}{\partial r_k}\frac{\partial \mathcal{L}}{\partial\left(\frac{\partial\Phi(\mathbf{r},t)}{\partial r_k}\right)} &= \frac{1}{4\pi}\nabla\cdot\nabla\Phi(\mathbf{r},t),\\
+\end{split}
+\end{equation}
+such that
+\begin{equation}\label{eq:poisson1}
+-\nabla\cdot\nabla\Phi(\mathbf{r},t) = 4\pi\left[e\,\delta n_m(\mathbf{r},t) + \rho_f(\mathbf{r},t)\right].
+\end{equation}
+In the limit where the equilibrium charge densities $\bar{n}_m(\mathbf{r})$ and $n_b(\mathbf{r})$ generate equal and opposite scalar potentials, our Euler-Lagrange equation for the scalar potential therefore correctly reproduces the potential formulation of Gauss' law, which can quickly be rewritten as
+\begin{equation}
+\nabla\cdot\mathbf{E}(\mathbf{r},t) = 4\pi\left[e\,\delta n_m(\mathbf{r},t) + \rho_f(\mathbf{r},t)\right].
+\end{equation}
+Further, using the identity
+\begin{equation}
+\begin{split}
+\sum_{jk}\frac{\partial}{\partial r_k}\frac{\partial}{\partial\!\left(\frac{\partial F_j(\mathbf{r},t)}{\partial r_k}\right)}\left\{\left[\nabla\times\mathbf{F}(\mathbf{r},t)\right]^2\right\}\hat{\mathbf{e}}_j &= -2\nabla\times\nabla\times\mathbf{F}(\mathbf{r},t),
+\end{split}
+\end{equation}
+we can see that
+\begin{equation}
+\begin{split}
+\sum_j\hat{\mathbf{e}}_j\frac{\mathrm{d}}{\mathrm{d}t}\left\{\frac{\partial\mathcal{L}}{\partial \dot{A}_j(\mathbf{r},t)}\right\} &= \frac{1}{4\pi c^2}\ddot{\mathbf{A}}(\mathbf{r},t) + \frac{1}{4\pi c}\nabla\dot{\Phi}(\mathbf{r},t),\\
+\sum_j\hat{\mathbf{e}}_j\frac{\partial\mathcal{L}}{\partial A_j(\mathbf{r},t)} &= \frac{1}{c}\left[\mathbf{J}_m(\mathbf{r},t) + \mathbf{J}_f(\mathbf{r},t)\right],\\
+-\sum_j\hat{\mathbf{e}}_j\sum_{k = 1}^3\frac{\partial}{\partial r_k}\frac{\partial \mathcal{L}}{\partial\!\left(\frac{\partial A_{j}(\mathbf{r},t)}{\partial r_k}\right)} &= -\frac{1}{4\pi}\nabla\times\nabla\times\mathbf{A}(\mathbf{r},t),
+\end{split}
+\end{equation}
+such that
+\begin{equation}
+\nabla\times\nabla\times\mathbf{A}(\mathbf{r},t) + \frac{1}{c^2}\ddot{\mathbf{A}}(\mathbf{r},t) = \frac{4\pi}{c}\left[\mathbf{J}_m(\mathbf{r},t) + \mathbf{J}_f(\mathbf{r},t)\right] - \frac{1}{c}\nabla\dot{\Phi}(\mathbf{r},t).
+\end{equation}
+From our analysis of the scalar potential we know that $-\nabla\cdot\nabla\dot{\Phi}(\mathbf{r},t) = 4\pi\left[e\,\delta\dot{n}(\mathbf{r},t) + \dot{\rho}_f(\mathbf{r},t)\right] = 4\pi\nabla\cdot\{-\mathbf{J}_m^\parallel(\mathbf{r},t) - \mathbf{J}_f^\parallel(\mathbf{r},t)\}$, where the superscipt $\parallel$ denotes the longitudinal component of a vector field. Therefore,
+\begin{equation}
+-\frac{1}{c}\nabla\dot{\Phi}(\mathbf{r},t) = -\frac{4\pi}{c}\left[\mathbf{J}_m^\parallel(\mathbf{r},t) + \mathbf{J}_f^\parallel(\mathbf{r},t)\right]
+\end{equation}
+and, noting that $\mathbf{J}_\phi(\mathbf{r},t) = \mathbf{J}_\phi^\parallel(\mathbf{r},t) + \mathbf{J}_\phi^\perp(\mathbf{r},t)$, the correct wave equation for the vector potential in the Coulomb gauge,
+\begin{equation}\label{eq:vectorPotentialWaveEq}
+\nabla\times\nabla\times\mathbf{A}(\mathbf{r},t) + \frac{1}{c^2}\ddot{\mathbf{A}}(\mathbf{r},t) = \frac{4\pi}{c}\left[\mathbf{J}^\perp_{m}(\mathbf{r},t) + \mathbf{J}^\perp_{f}(\mathbf{r},t)\right],
+\end{equation}
+is reproduced.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Construction of a Mechanical Picture for MQED}
+
+From this point, our goal is to map our existing system onto a set of coupled oscillators such that the standard tricks of quantization function normally. We can do this via the expansions of the vector potential, matter field, and reservoir field into sets of normal modes and analyzing the time-dependence of those modes' amplitudes. These expansions are given by
+\begin{equation}\label{eq:fieldExpansions}
+\begin{split}
+\mathbf{A}(\mathbf{r},t) &= \sum_{\bm{\alpha}}\int_{-\infty}^\infty \mathcal{A}_{\bm{\alpha}}(k,t)\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)\;\mathrm{d}k,\\
+% \mathbf{Q}_m(\mathbf{r},t) &= \sum_{\bm{\beta}}\int_0^\infty\left[\mathcal{B}_{\bm{\beta}}^\perp(k,t)\mathbf{X}_{\bm{\beta}}(\mathbf{r},k) + \mathcal{B}_{\bm{\beta}}^\parallel(k,t)\mathbf{L}_{\bm{\beta}}(\mathbf{r},k)\right]\mathrm{d}k,\\
+% \tilde{\mathbf{Q}}_\nu(\mathbf{r},t) &= \sum_{\bm{\gamma}}\int_0^\infty\left[\mathcal{\tilde{C}}_{\bm{\gamma}}^\perp(k,\nu;t)\mathbf{X}_{\bm{\gamma}}(\mathbf{r},k) + \mathcal{\tilde{C}}_{\bm{\gamma}}^\parallel(k,\nu;t)\mathbf{L}_{\bm{\gamma}}(\mathbf{r},k)\right]\mathrm{d}k.
+\mathbf{Q}_m(\mathbf{r},t) &= \Theta(a - r)\sum_{\bm{\beta}}\sum_n\left[\mathcal{B}_{\bm{\beta}}^\perp(k_{\ell n},t)\mathbf{X}_{\bm{\beta}}(\mathbf{r},k_{\ell n}) + \mathcal{B}_{\bm{\beta}}^\parallel(k_{\ell n},t)\mathbf{L}_{\bm{\beta}}(\mathbf{r},k_{\ell n})\right],\\
+\tilde{\mathbf{Q}}_\nu(\mathbf{r},t) &= \Theta(a - r)\sum_{\bm{\gamma}}\sum_n\left[\tilde{\mathcal{C}}_{\bm{\gamma}}^\perp(k_{\ell n},\nu;t)\mathbf{X}_{\bm{\gamma}}(\mathbf{r},k_{\ell n}) + \tilde{\mathcal{C}}_{\bm{\gamma}}^\parallel(k_{\ell n},\nu;t)\mathbf{L}_{\bm{\gamma}}(\mathbf{r},k_{\ell n})\right].
+\end{split}
+\end{equation}
+The mode functions $\mathbf{X}_{\bm{\beta}}$ and $\mathbf{L}_{\bm{\beta}}$ are chosen to match the symmetry of our problem (details in Appendix \ref{app:harmonicAlgebra}) such that the definition of the vector potential can be extrapolated from any introductory quantum optics text (also: Appendix \ref{app:noMatter}). Specifically, the vector potential is, in the Coulomb gauge, comprised of the excitation of a series of photon modes\cite{cohen-tannoudji2004photons}, each of which has angular indices $\bm{\alpha}$ and a radial index $k$ that determine its wave pattern in space. In free space without sources, the radial index is linked to the time evolution through the relation $k = \omega/c$ with $\omega$ the Fourier conjugate to $t$. However, with both free and bound charges present, this relationship will not hold in general such that each mode's time-variations will need to be accounted for separately.
+
+% The expansions for the matter and bath fields follow from the same logic, but include the harmonics $\mathbf{L}_{\bm{\beta}}(\mathbf{r},k)$ to describe longitudinal excitations generated by the free charges $\rho_f(\mathbf{r},t)$. Importantly, we have not yet made any firm statements about the functional forms of these fields beyond the requirements of the mode expansion process that the fields be smooth, well-defined everywhere, and zero at $r\to\infty$ The values of the expansion coefficients $\mathcal{B}_{\bm{\beta}}^{\perp,\parallel}(k,t)$ and $\tilde{\mathcal{C}}_{\bm{\gamma}}^{\perp,\parallel}(k,t)$ have therefore been left general and serve an independent degrees of freedom.
+
+The expansions for the matter and bath fields are not so obvious. However, it is useful to remember that the displacement field is simply related to the electric polarization field via $\mathbf{Q}_m(\mathbf{r},t) = \Delta\mathbf{P}(\mathbf{r},t)/e$. Thus, since the polarization field is always a solution to the wave equation in any region containing a homogeneous medium (or vacuum) with sharp boundaries, we can conclude that a spherical particle with sharp boundaries will contain a polarization field $\mathbf{P}(\mathbf{r},t)$ and a corresponding displacement field $\mathbf{Q}_m(\mathbf{r},t)$ that are solutions to the wave equation. A proof is given in Section \ref{app:polarizationWaveEquation}.
+
+The displacement field can therefore be completely described by a linear combination of the basis functions of the wave equation in spherical coordinates. Knowing exactly which basis functions should be included, however, requires intimate knowledge of the physical picture our mathematics is attempting to approximate. In particular, as shown in \citet{liebsch1987dynamical} and later in \citet{ishida2002static}, the mobile charge density inside a metal surface under the influence of an electric potential tends to ``bunch'' near the surface, creating a sharp feature within the charge density (averaged appropriately) with a peak within Angstroms of the boundary of the material. 
+
+This bunching agrees qualitatively with the definition of the bound charge density, $\rho_d(\mathbf{r},t) = -(e/\Delta)\nabla\cdot\mathbf{Q}_m(\mathbf{r},t)$, wherein the divergence of the matter displacement field is given by
+\begin{equation}
+\nabla\cdot\mathbf{Q}_m(\mathbf{r},t) = -\frac{\Delta}{e}\left[\bar{\rho}_d(\mathbf{r},t) + \sigma_d(\theta,\phi;t)\delta(r - a)\right].
+\end{equation}
+The first term on the right-hand side contains the bulk bound charge density $\bar{\rho}_d(\mathbf{r},t)$ caused by discontinuities in the polarization field inside the sphere (see Appendix \ref{app:polarizationDivergence} for details). The second contains the surface bound charge density $\sigma_d(\theta,\phi;t)$ caused by discontinuities of the polarization field at the sphere's sharp boundary. Importantly, this second term also contains the radial profile $\delta(r - a)$ that represents the infinitely-narrow limit of the sharp features discovered by \citet{ishida2002static}. 
+
+Direct evidence of such charge bunching in materials other than metals can be seen in\textbf{[cites]}. In conjunction with the broad agreement between dielectric models of materials and optics experiments\textbf{[cites]}, this evidence suggests we can propose bound charge density model
+\begin{equation}
+\rho_d(\mathbf{r},t) = \bar{\rho}_d(\mathbf{r},t) + \sigma_d(\theta,\phi;t)\lim_{w\ll a}\frac{1}{w\sqrt{2\pi}}\mathrm{e}^{-\frac{(r - a)^2}{2w^2}}
+\end{equation}
+for a general class of materials, where the bulk charge density $\bar{\rho}_d(\mathbf{r},t)$ can be used to model bound charge fluctuations throughout the material and the surface charge density $\sigma_d(\theta,\phi;t)\lim_{w\ll a}\exp(-(r - a)^2/2w^2)/w\sqrt{2\pi}$ can be used to capture sharply-peaked surface features. We have replaced the Dirac delta with a very narrow Gaussian function to allow the surface peak width $w$ to be used as a tuning parameter. Further, this model highlights the fact that 
+\begin{equation}
+\frac{\partial}{\partial r}\left\{\sigma_d(\theta,\phi;t)\lim_{w\ll a}\frac{1}{w\sqrt{2\pi}}\mathrm{e}^{-\frac{(r - a)^2}{2w^2}}\right\}_{r = a} = 0,
+\end{equation}
+which is in good agreement with \citet{liebsch1987dynamical} and \citet{ishida2002static}.
+
+This last property is especially useful when we examine the transport of charge density across the sphere's surface. In particular, we can appeal to quantum mechanics to describe our bound charge density via Schr\"{o}dinger-picture wavefunctions $\psi_i(\mathbf{r},t)$ such that $\rho_d(\mathbf{r},t) = \rho_b(\mathbf{r},t) + \sum_{i = 1}^{N_m}e_{mi}|\psi_i(\mathbf{r},t)|^2$. These wavefunctions are used only to model the mobile charges, as the background charges
+
+ not necesarily single-particle wavefunctions and are assumed to be the eigenstates of 
+
+ we can define an associated probability current density
+\begin{equation}
+\bm{\mathcal{J}}(\mathbf{r},t) = 
+\end{equation}
+
+
+
+
+
+
+\noindent\rule{\textwidth}{0.5pt}
+
+However, the behavior of $\mathbf{Q}_m(\mathbf{r},t)$ at the boundary must be considered carefully. In particular, because the surface charges of the sphere are $\sigma_b(\theta,\phi) = \hat{\mathbf{r}}\cdot\mathbf{P}(r=a,\theta,\phi;t) = (e/\Delta)\hat{\mathbf{r}}\cdot\mathbf{Q}_m(r=a,\theta,\phi;t)$, we know that the radial components of the vector harmonics that comprise $\mathbf{Q}_m(\mathbf{r},t)$ must be nonzero at the boundary. The surface-parallel components of $\mathbf{Q}_m(\mathbf{r},t)$ have no such restriction, however, such that we can let them go to zero at $r = a$.
+
+% The vector harmonics that showcase these boundary behaviors are $\mathbf{X}_{\bm{\beta}}(\mathbf{r},k_{\ell n})$ and $\mathbf{L}_{\bm{\beta}}(\mathbf{r},k_{\ell n})$, in which the set of possible wavenumbers $k$ has been truncated to a discrete set $\{k_{\ell n}\}$, with $k_{\ell n}a$ the $n^\mathrm{th}$ nonzero root of the $\ell^\mathrm{th}$ spherical Bessel function. As discussed in Appendix \ref{app:helmholtzDelta}, these vector spherical harmonics provide a complete set of functions within the boundary such that any form of $\mathbf{Q}_m(\mathbf{r},t)$ can be constructed within the boundary by tuning the expansion coefficients $\mathcal{B}_{\bm{\beta}}^{\perp,\parallel}$, which represent the excitation magnitudes of the transverse and longitudinal matter mode displacements. Finally, we let the bath displacement field be expanded similarly to that of the matter field with excitation magnitudes $\tilde{\mathcal{C}}_{\bm{\gamma}}^{\perp,\parallel}(k,\nu;t)$.
+
+% Due to the bilinear nature of most of the terms of $H$, the most convenient way to simplify the calculations further is by exploiting Helmholtz orthogonality. The vector potential is transverse by the definition of the Coulomb gauge, and is sensibly expanded only in terms of the transverse harmonics $\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)$. The 
+
+% To do this, we need to break each of our fields into transverse (divergence-free) and longitudinal (curl-free) components. This can be done via the decomposition of the dyadic Dirac delta into components as is shown in Appendix \ref{sec:diracDyadExpansion}, and gives
+% \begin{equation}
+% \mathbf{Q}^{\perp,\parallel}(\mathbf{r}) = \int\mathbf{Q}(\mathbf{r}')\cdot\left[\bm{1}_2\delta(\mathbf{r} - \mathbf{r}')\right]_{\perp,\parallel}\;\mathrm{d}^3\mathbf{r}',
+% \end{equation}
+% where
+% \begin{equation}
+% \begin{split}
+% \left[\bm{1}_2\delta(\mathbf{r} - \mathbf{r}')\right]_\perp &= \frac{1}{2\pi^2}\sum_{\bm{\alpha}}\int_0^\infty k^2\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)\mathbf{X}_{\bm{\alpha}}(\mathbf{r}',k)\;\mathrm{d}k,\\
+% \left[\bm{1}_2\delta(\mathbf{r} - \mathbf{r}')\right]_\parallel &= \frac{1}{2\pi^2}\sum_{\bm{\alpha}}\int_0^\infty k^2\mathbf{L}_{\bm{\alpha}}(\mathbf{r},k)\mathbf{L}_{\bm{\alpha}}(\mathbf{r}',k)\;\mathrm{d}k,
+% \end{split}
+% \end{equation}
+% as is shown in Eq. \eqref{eq:dyadicDiracDeltaSeparated}. By construction, and as can be seen from the transverse nature of the harmonics $\mathbf{X}_{\bm{\beta}}(\mathbf{r},k)$, the vector potential $\mathbf{A}(\mathbf{r},t)$ is purely transverse, i.e. $\mathbf{A}(\mathbf{r},t) = \mathbf{A}^\perp(\mathbf{r},t)$. Therefore, we can begin the difficult calculations by starting with the matter field $\mathbf{Q}_m(\mathbf{r},t)$. Using the finite integral identities of Eq. \eqref{eq:vectorSphericalHarmonicOrthogonalityConditionFinite}, we find that the matter field's transverse part is
+% \begin{equation}
+% \begin{split}
+% \mathbf{Q}_m^\perp(\mathbf{r},t) &= \int\mathbf{Q}_m(\mathbf{r}',t)\cdot\left[\bm{1}_2\delta(\mathbf{r} - \mathbf{r}')\right]_\perp\mathrm{d}^3\mathbf{r}'\\
+% % &= \int\Theta(a - r')\left(\sum_{\bm{\beta}}\int_{0}^\infty\left[\mathcal{B}_{\bm{\beta}}^\perp(k,t)\mathbf{X}_{\bm{\beta}}(\mathbf{r}',k) + \mathcal{B}_{\bm{\beta}}^\parallel(k,t)\mathbf{L}_{\bm{\beta}}(\mathbf{r}',k)\right]\mathrm{d}k\right)\\
+% % &\qquad\cdot\left(\frac{1}{2\pi^2}\sum_{\bm{\alpha}}\int_0^\infty\mathbf{X}_{\bm{\alpha}}(\mathbf{r}',\kappa)\mathbf{X}_{\bm{\alpha}}(\mathbf{r},\kappa)\kappa^2\;\mathrm{d}\kappa\right)\mathrm{d}^3\mathbf{r}'\\
+% % &=  \sum_{\bm{\alpha}\bm{\beta}}\int_{0}^\infty\int_0^\infty \mathcal{B}_{\bm{\beta}}^\perp(k,t)\frac{\kappa^2}{2\pi^2}\mathbf{X}_{\bm{\alpha}}(\mathbf{r},\kappa)\int\mathbf{X}_{\bm{\beta}}(\mathbf{r}',k)\cdot\mathbf{X}_{\bm{\alpha}}(\mathbf{r}',\kappa)\Theta(a - r')\;\mathrm{d}^3\mathbf{r}'\,\mathrm{d}\kappa\,\mathrm{d}k\\
+% % &\qquad+ \sum_{\bm{\alpha}\bm{\beta}}\int_{0}^\infty\int_0^\infty \mathcal{B}_{\bm{\beta}}^\parallel(k,t)\frac{\kappa^2}{2\pi^2}\mathbf{X}_{\bm{\alpha}}(\mathbf{r},\kappa)\int\mathbf{L}_{\bm{\alpha}}(\mathbf{r}',\kappa)\cdot\mathbf{X}_{\bm{\beta}}(\mathbf{r}',k)\Theta(a - r')\;\mathrm{d}^3\mathbf{r}'\,\mathrm{d}\kappa\,\mathrm{d}k\\
+% % &= \sum_{\bm{\beta}}\int_{0}^\infty\int_0^\infty \frac{\kappa^2}{2\pi^2}4\pi R_{T\ell}^{\ll}(k,\kappa;0,a)\mathcal{B}_{\bm{\beta}}^\perp(k,t)\mathbf{X}_{\bm{\beta}}(\mathbf{r},\kappa)\;\mathrm{d}\kappa\,\mathrm{d}k\\
+% % &\qquad+ \sum_{\bm{\beta}}\int_0^\infty\int_{0}^\infty \frac{\kappa^2}{2\pi^2}4\pi\sqrt{\ell(\ell + 1)}\delta_{TE}\frac{1}{k\kappa}aj_\ell(ka)j_\ell(\kappa a)\mathcal{B}_{\bm{\beta}}^\parallel(k,t)\mathbf{X}_{\bm{\beta}}(\mathbf{r},\kappa)\;\mathrm{d}\kappa\,\mathrm{d}k\\
+% &= \sum_{\bm{\beta}}\int_{0}^\infty\int_0^\infty \frac{2\kappa^2}{\pi} R_{T\ell}^{\ll}(k,\kappa;0,a)\mathcal{B}_{\bm{\beta}}^\perp(k,t)\mathbf{X}_{\bm{\beta}}(\mathbf{r},\kappa)\;\mathrm{d}\kappa\,\mathrm{d}k\\
+% &\qquad+ \sum_{\bm{\beta}}\int_0^\infty\int_{0}^\infty\frac{2\kappa^2}{\pi}\frac{a}{k\kappa}\sqrt{\ell(\ell + 1)}j_\ell(ka)j_\ell(\kappa a)\mathcal{B}_{\bm{\beta}}^\parallel(k,t)\mathbf{X}_{\bm{\beta}}(\mathbf{r},\kappa)\;\mathrm{d}\kappa\,\mathrm{d}k.
+% \end{split}
+% \end{equation}
+% Similarly, the longitudinal part is
+% \begin{equation}
+% \begin{split}
+% \mathbf{Q}_m^\parallel(\mathbf{r},t) &= \int\mathbf{Q}_m(\mathbf{r}',t)\cdot\left[\bm{1}_2\delta(\mathbf{r} - \mathbf{r}')\right]_\parallel\mathrm{d}^3\mathbf{r}'\\
+% % &= \int\Theta(a - r')\left(\sum_{\bm{\beta}}\int_{0}^\infty\left[\mathcal{B}_{\bm{\beta}}^\perp(k,t)\mathbf{X}_{\bm{\beta}}(\mathbf{r}',k) + \mathcal{B}_{\bm{\beta}}^\parallel(k,t)\mathbf{L}_{\bm{\beta}}(\mathbf{r}',k)\right]\mathrm{d}k\right)\\
+% % &\qquad\cdot\left(\frac{1}{2\pi^2}\sum_{\bm{\alpha}}\int_0^\infty\mathbf{L}_{\bm{\alpha}}(\mathbf{r}',\kappa)\mathbf{L}_{\bm{\alpha}}(\mathbf{r},\kappa)\kappa^2\;\mathrm{d}\kappa\right)\mathrm{d}^3\mathbf{r}'\\
+% % &= \sum_{\bm{\alpha}\bm{\beta}}\int_{0}^\infty\int_0^\infty\mathcal{B}_{\bm{\beta}}^\perp(k,t)\frac{\kappa^2}{2\pi^2}\mathbf{L}_{\bm{\alpha}}(\mathbf{r},\kappa)\int\mathbf{X}_{\bm{\beta}}(\mathbf{r}',k)\cdot\mathbf{L}_{\bm{\alpha}}(\mathbf{r}',\kappa)\Theta(a - r')\;\mathrm{d}^3\mathbf{r}'\,\mathrm{d}\kappa\,\mathrm{d}k\\
+% % &\qquad + \sum_{\bm{\alpha}\bm{\beta}}\int_{0}^\infty\int_0^\infty\mathcal{B}_{\bm{\beta}}^\parallel(k,t)\frac{\kappa^2}{2\pi^2}\mathbf{L}_{\bm{\alpha}}(\mathbf{r},\kappa)\int\mathbf{L}_{\bm{\alpha}}(\mathbf{r}',\kappa)\cdot\mathbf{L}_{\bm{\beta}}(\mathbf{r}',k)\Theta(a - r')\;\mathrm{d}^3\mathbf{r}'\,\mathrm{d}\kappa\,\mathrm{d}k\\
+% % &= \sum_{\bm{\beta}}\int_{0}^\infty\int_0^\infty\frac{\kappa^2}{2\pi^2}4\pi\sqrt{\ell(\ell + 1)}\delta_{TE}\frac{1}{k\kappa}aj_\ell(ka)j_\ell(\kappa a)\mathcal{B}_{\bm{\beta}}^\perp(k,t)\mathbf{L}_{\bm{\beta}}(\mathbf{r},\kappa)\;\mathrm{d}\kappa\,\mathrm{d}k\\
+% % &\qquad + \sum_{\bm{\beta}}\int_{0}^\infty\int_0^\infty\frac{\kappa^2}{2\pi^2}4\pi R_{L\ell}^\ll(k,\kappa;0,a)\mathcal{B}_{\bm{\beta}}^\parallel(k,t)\mathbf{L}_{\bm{\beta}}(\mathbf{r},\kappa)\;\mathrm{d}\kappa\,\mathrm{d}k\\
+% &= \sum_{\bm{\beta}}\int_{0}^\infty\int_0^\infty\frac{2\kappa^2}{\pi}\frac{a}{k\kappa}\sqrt{\ell(\ell + 1)}j_\ell(ka)j_\ell(\kappa a)\mathcal{B}_{\bm{\beta}}^\perp(k,t)\mathbf{L}_{\bm{\beta}}(\mathbf{r},\kappa)\;\mathrm{d}\kappa\,\mathrm{d}k\\
+% &\qquad + \sum_{\bm{\beta}}\int_{0}^\infty\int_0^\infty\frac{2\kappa^2}{\pi}R_{L\ell}^\ll(k,\kappa;0,a)\mathcal{B}_{\bm{\beta}}^\parallel(k,t)\mathbf{L}_{\bm{\beta}}(\mathbf{r},\kappa)\;\mathrm{d}\kappa\,\mathrm{d}k.
+% \end{split}
+% \end{equation}
+
+% With these results, we can define the Helmholtz components of the displacement field as
+% \begin{equation}\label{eq:matterFieldHelmholtzExpansion}
+% \begin{split}
+% \mathbf{Q}_m^\perp(\mathbf{r},t) &= \sum_{\bm{\beta}}\int_0^\infty \mathcal{Q}_{\bm{\beta}}^\perp(\kappa,t)\mathbf{X}_{\bm{\beta}}(\mathbf{r},\kappa)\;\mathrm{d}\kappa,\\
+% \mathbf{Q}_m^\parallel(\mathbf{r},t) &= \sum_{\bm{\beta}}\int_0^\infty \mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\mathbf{L}_{\bm{\beta}}(\mathbf{r},\kappa)\;\mathrm{d}\kappa,
+% \end{split}
+% \end{equation}
+% where the expansion coefficients
+% \begin{equation}
+% \begin{split}
+% \mathcal{Q}_{\bm{\beta}}^\perp(\kappa,t) &= \frac{2\kappa^2}{\pi}\int_{0}^\infty\left[ R_{T\ell}^\ll(k,\kappa;0,a)\mathcal{B}_{\bm{\beta}}^\perp(k,t) + \frac{a}{k\kappa}\sqrt{\ell(\ell + 1)}j_\ell(ka)j_\ell(\kappa a)\mathcal{B}_{\bm{\beta}}^\parallel(k,t)\right]\mathrm{d}k,\\
+% \mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t) &= \frac{2\kappa^2}{\pi}\int_{0}^\infty\left[\frac{a}{k\kappa}\sqrt{\ell(\ell + 1)}j_\ell(ka)j_\ell(\kappa a)\mathcal{B}_{\bm{\beta}}^\perp(k,t) + R_{L\ell}^\ll(k,\kappa;0,a)\mathcal{B}_{\bm{\beta}}^\parallel(k,t)\right]\mathrm{d}k
+% \end{split}
+% \end{equation}
+% describe the relative excitations of the constituent parts of the two independent Helmholtz field components at each index set $(\bm{\beta},k)$. Moreover, the expansion of the bath field follows immediately using the same expansion techniques, such that
+% \begin{equation}\label{eq:bathFieldHelmholtzExpansion}
+% \begin{split}
+% \tilde{\mathbf{Q}}_\nu^\perp(\mathbf{r},t) &= \sum_{\bm{\gamma}}\int_0^\infty \tilde{\mathcal{Q}}_{\bm{\gamma}}^\perp(\kappa,\nu;t)\mathbf{X}_{\bm{\gamma}}(\mathbf{r},\kappa)\;\mathrm{d}\kappa,\\
+% \tilde{\mathbf{Q}}_\nu^\parallel(\mathbf{r},t) &= \sum_{\bm{\gamma}}\int_0^\infty\tilde{\mathcal{Q}}_{\bm{\gamma}}^\parallel(\kappa,\nu; t)\mathbf{L}_{\bm{\gamma}}(\mathbf{r},\kappa)\;\mathrm{d}\kappa,
+% \end{split}
+% \end{equation}
+% with
+% \begin{equation}
+% \begin{split}
+% \tilde{\mathcal{Q}}_{\bm{\gamma}}^\perp(\kappa,\nu;t) &= \frac{2\kappa^2}{\pi}\int_{0}^\infty\left[ R_{T\ell}^\ll(k,\kappa;0,a)\tilde{\mathcal{C}}_{\bm{\gamma}}^\perp(k,\nu;t) + \frac{a}{k\kappa}\sqrt{\ell(\ell + 1)}j_\ell(ka)j_\ell(\kappa a)\tilde{\mathcal{C}}_{\bm{\gamma}}^\parallel(k,\nu;t)\right]\mathrm{d}k,\\
+% \tilde{\mathcal{Q}}_{\bm{\gamma}}^\parallel(\kappa,\nu;t) &= \frac{2\kappa^2}{\pi}\int_{0}^\infty\left[\frac{a}{k\kappa}\sqrt{\ell(\ell + 1)}j_\ell(ka)j_\ell(\kappa a)\tilde{\mathcal{C}}_{\bm{\gamma}}^\perp(k,\nu;t) + R_{L\ell}^\ll(k,\kappa;0,a)\tilde{\mathcal{C}}_{\bm{\gamma}}^\parallel(k,\nu;t)\right]\mathrm{d}k.
+% \end{split}
+% \end{equation}
+
+Before inserting these new definitions of our photon and matter field into the Hamiltonian, it is convenient to rewrite any terms of our system Lagrangian/Hamiltonian involving the photon coordinates or velocities as integrals only over nonnegative wavenumbers. We can use the symmetry properties $\mathcal{A}_{\bm{\alpha}}(-k,t) = (-1)^{\ell + \delta_{TE}}\mathcal{A}_{\bm{\alpha}}(k,t)$ and $\mathbf{X}_{\bm{\alpha}}(\mathbf{r},-k) = (-1)^{\ell + \delta_{TE}}\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)$ to do so, such that
+\begin{equation}
+\begin{split}
+\mathbf{A}(\mathbf{r},t) &= \sum_{\bm{\alpha}}\int_{-\infty}^\infty\mathcal{A}_{\bm{\alpha}}(k,t)\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)\;\mathrm{d}k\\
+&= \sum_{\bm{\alpha}}\int_{0}^\infty2\mathcal{A}_{\bm{\alpha}}(k,t)\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)\;\mathrm{d}k.
+\end{split}
+\end{equation}
+Further, it will be convenient to define the matter field Helmholtz components
+\begin{equation}
+\begin{split}
+\mathbf{Q}_m^\perp(\mathbf{r},t) &= \Theta(a - r)\sum_{\bm{\beta}}\sum_n\mathcal{B}_{\bm{\beta}}^\perp(k_{\ell n},t)\mathbf{X}_{\bm{\beta}}(\mathbf{r},k_{\ell n}),\\
+\mathbf{Q}_m^\parallel(\mathbf{r},t) &= \Theta(a - r)\sum_{\bm{\beta}}\sum_n\mathcal{B}_{\bm{\beta}}^\parallel(k_{\ell n},t)\mathbf{L}_{\bm{\beta}}(\mathbf{r},k_{\ell n}),\\
+\tilde{\mathbf{Q}}_\nu^\perp(\mathbf{r},t) &= \Theta(a - r)\sum_{\bm{\beta}}\sum_n\tilde{\mathcal{C}}_{\bm{\beta}}^\perp(k_{\ell n},\nu;t)\mathbf{X}_{\bm{\beta}}(\mathbf{r},k_{\ell n}),\\
+\tilde{\mathbf{Q}}_\nu^\parallel(\mathbf{r},t) &= \Theta(a - r)\sum_{\bm{\beta}}\sum_n\tilde{\mathcal{C}}_{\bm{\beta}}^\parallel(k_{\ell n},\nu;t)\mathbf{L}_{\bm{\beta}}(\mathbf{r},k_{\ell n}).\\
+\end{split}
+\end{equation}
+These components are not quite the transverse and longitudinal components of each field in the traditional sense, as they aren't smooth over the entire universe. However, any terms in the Hamiltonian proportional to $\mathbf{Q}_m^2(\mathbf{r},t)$ or similar will only involve integrals over the inside of the sphere, such that the above component definitions provide a notion of Helmholtz orthogonality between the matter and bath fields that will provide some useful simplifications.
+
+To see this, we can repeat the process of deriving the system Hamiltonian from the Lagrangian using our new matter and photon field expansions. The expansion coefficients both for the matter field and for the reservoir field can be treated as their own degrees of freedom with corresponding conjugate momenta. Taking care to note that our coordinates, as our harmonics, are zero in the case $p=1$, $m=0$, we can see that
+\begin{equation}
+\begin{split}
+L_m &= \frac{\eta_m}{2}\int\left(\dot{\mathbf{Q}}_m^2(\mathbf{r},t) - \omega_0^2\mathbf{Q}_m^2(\mathbf{r},t)\right)\mathrm{d}^3\mathbf{r}\\
+% &= \frac{\eta_m}{2}\left(\;\int_{r<a}\sum_{\bm{\beta}n}\dot{\mathcal{B}}_{\bm{\beta}}^\perp(k_{\ell n},t)\mathbf{X}_{\bm{\beta}}(\mathbf{r},k_{\ell n})\cdot\sum_{\bm{\beta}'n'}\dot{\mathcal{B}}_{\bm{\beta}'}^\perp(k_{\ell'n'},t)\mathbf{X}_{\bm{\beta}'}(\mathbf{r},k_{\ell'n'})\;\mathrm{d}^3\mathbf{r}\right.\\
+% &\qquad + \int_{r<a}\sum_{\bm{\beta}n}\dot{\mathcal{B}}_{\bm{\beta}}^\parallel(k_{\ell n},t)\mathbf{L}_{\bm{\beta}}(\mathbf{r},k_{\ell n})\cdot\sum_{\bm{\beta}'n'}\dot{\mathcal{B}}_{\bm{\beta}'}^\parallel(k_{\ell'n'},t)\mathbf{L}_{\bm{\beta}'}(\mathbf{r},k_{\ell'n'})\;\mathrm{d}^3\mathbf{r}\\
+% &\qquad - \omega_0^2\int_{r<a}\sum_{\bm{\beta}n}\mathcal{B}_{\bm{\beta}}^\perp(k_{\ell n},t)\mathbf{X}_{\bm{\beta}}(\mathbf{r},k_{\ell n})\cdot\sum_{\bm{\beta}'n'}\mathcal{B}_{\bm{\beta}'}^\perp(k_{\ell'n'},t)\mathbf{X}_{\bm{\beta}'}(\mathbf{r},k_{\ell'n'})\;\mathrm{d}^3\mathbf{r}\\
+% &\qquad\left. - \omega_0^2\int_{r<a}\sum_{\bm{\beta}n}\mathcal{B}_{\bm{\beta}}^\parallel(k_{\ell n},t)\mathbf{L}_{\bm{\beta}}(\mathbf{r},k_{\ell n})\cdot\sum_{\bm{\beta}'n'}\mathcal{B}_{\bm{\beta}'}^\parallel(k_{\ell'n'},t)\mathbf{L}_{\bm{\beta}'}(\mathbf{r},k_{\ell'n'})\;\mathrm{d}^3\mathbf{r}\right)\\
+% &= \frac{\eta_m}{2}\sum_{\bm{\beta}\bm{\beta}'}\sum_{nn'}2\pi a^3(1 - \delta_{p1}\delta_{m0})\delta_{\bm{\beta}\bm{\beta}'}\delta_{nn'}j_{\ell + 1}^2(k_{\ell n}a)\left[\dot{\mathcal{B}}_{\bm{\beta}}^\perp(k_{\ell n},t)\dot{\mathcal{B}}_{\bm{\beta}'}^\perp(k_{\ell' n'},t)\right.\\
+% &\qquad\left. + \dot{\mathcal{B}}_{\bm{\beta}}^\parallel(k_{\ell n},t)\dot{\mathcal{B}}_{\bm{\beta}'}^\parallel(k_{\ell' n'},t) - \omega_0^2\mathcal{B}_{\bm{\beta}}^\perp(k_{\ell n},t)\mathcal{B}_{\bm{\beta}'}^\perp(k_{\ell' n'},t) - \omega_0^2\mathcal{B}_{\bm{\beta}}^\parallel(k_{\ell n},t)\mathcal{B}_{\bm{\beta}'}^\parallel(k_{\ell' n'},t)\right]\\
+&= \sum_{\bm{\beta}n}\eta_m\pi a^3j_{\ell + 1}^2(k_{\ell n}a)\left[\left(\left[\dot{\mathcal{B}}_{\bm{\beta}}^\perp(k_{\ell n},t)\right]^2 - \omega_0^2\left[\mathcal{B}_{\bm{\beta}}^\perp(k_{\ell n},t)\right]^2\right) + \left(\left[\dot{\mathcal{B}}_{\bm{\beta}}^\parallel(k_{\ell n},t)\right]^2 - \omega_0^2\left[\mathcal{B}_{\bm{\beta}}^\parallel(k_{\ell n},t)\right]^2\right)\right]
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+L_r &= \int_{r<a}\int_0^\infty\frac{\eta_\nu}{2}\left(\dot{\tilde{\mathbf{Q}}}_\nu^2(\mathbf{r},t) - \nu^2\tilde{\mathbf{Q}}_\nu^2(\mathbf{r},t)\right)\mathrm{d}\nu\,\mathrm{d}^3\mathbf{r}\\
+% &= \frac{\eta_m}{2}\left(\;\int_{r<a}\int_0^\infty\sum_{\bm{\beta}n}\dot{\tilde{\mathcal{C}}}_{\bm{\beta}}^\perp(k_{\ell n},\nu;t)\mathbf{X}_{\bm{\beta}}(\mathbf{r},k_{\ell n})\cdot\sum_{\bm{\beta}'n'}\dot{\tilde{\mathcal{C}}}_{\bm{\beta}'}^\perp(k_{\ell'n'},\nu;t)\mathbf{X}_{\bm{\beta}'}(\mathbf{r},k_{\ell'n'})\;\mathrm{d}\nu\,\mathrm{d}^3\mathbf{r}\right.\\
+% &\qquad + \int_{r<a}\int_0^\infty\sum_{\bm{\beta}n}\dot{\tilde{\mathcal{C}}}_{\bm{\beta}}^\parallel(k_{\ell n},\nu;t)\mathbf{L}_{\bm{\beta}}(\mathbf{r},k_{\ell n})\cdot\sum_{\bm{\beta}'n'}\dot{\tilde{\mathcal{C}}}_{\bm{\beta}'}^\parallel(k_{\ell'n'},\nu;t)\mathbf{L}_{\bm{\beta}'}(\mathbf{r},k_{\ell'n'})\;\mathrm{d}\nu\,\mathrm{d}^3\mathbf{r}\\
+% &\qquad - \nu^2\int_{r<a}\int_0^\infty\sum_{\bm{\beta}n}\tilde{\mathcal{C}}_{\bm{\beta}}^\perp(k_{\ell n},\nu;t)\mathbf{X}_{\bm{\beta}}(\mathbf{r},k_{\ell n})\cdot\sum_{\bm{\beta}'n'}\tilde{\mathcal{C}}_{\bm{\beta}'}^\perp(k_{\ell'n'},\nu;t)\mathbf{X}_{\bm{\beta}'}(\mathbf{r},k_{\ell'n'})\;\mathrm{d}\nu\,\mathrm{d}^3\mathbf{r}\\
+% &\qquad\left. - \nu^2\int_{r<a}\int_0^\infty\sum_{\bm{\beta}n}\tilde{\mathcal{C}}_{\bm{\beta}}^\parallel(k_{\ell n},\nu;t)\mathbf{L}_{\bm{\beta}}(\mathbf{r},k_{\ell n})\cdot\sum_{\bm{\beta}'n'}\tilde{\mathcal{C}}_{\bm{\beta}'}^\parallel(k_{\ell'n'},\nu;t)\mathbf{L}_{\bm{\beta}'}(\mathbf{r},k_{\ell'n'})\;\mathrm{d}\nu\,\mathrm{d}^3\mathbf{r}\right)\\
+% &= \sum_{\bm{\beta}\bm{\beta}'}\sum_{nn'}\int_0^\infty \frac{\eta_m}{2}2\pi a^3(1 - \delta_{p1}\delta_{m0})\delta_{\bm{\beta}\bm{\beta}'}\delta_{nn'}j_{\ell + 1}^2(k_{\ell n}a)\left[\dot{\tilde{\mathcal{C}}}_{\bm{\beta}}^\perp(k_{\ell n},\nu;t)\dot{\tilde{\mathcal{C}}}_{\bm{\beta}'}^\perp(k_{\ell' n'},\nu;t)\right.\\
+% &\qquad\left. + \dot{\tilde{\mathcal{C}}}_{\bm{\beta}}^\parallel(k_{\ell n},\nu;t)\dot{\tilde{\mathcal{C}}}_{\bm{\beta}'}^\parallel(k_{\ell' n'},\nu;t) - \nu^2\tilde{\mathcal{C}}_{\bm{\beta}}^\perp(k_{\ell n},\nu;t)\tilde{\mathcal{C}}_{\bm{\beta}'}^\perp(k_{\ell' n'},\nu;t) - \nu^2\tilde{\mathcal{C}}_{\bm{\beta}}^\parallel(k_{\ell n},\nu;t)\tilde{\mathcal{C}}_{\bm{\beta}'}^\parallel(k_{\ell' n'},\nu;t)\right]\mathrm{d}\nu\\
+&= \sum_{\bm{\beta}n}\int_0^\infty\eta_\nu\pi a^3j_{\ell + 1}^2(k_{\ell n}a)\left[\left(\left[\dot{\tilde{\mathcal{C}}}_{\bm{\beta}}^\perp(k_{\ell n},\nu;t)\right]^2 - \nu^2\left[\tilde{\mathcal{C}}_{\bm{\beta}}^\perp(k_{\ell n},\nu;t)\right]^2\right)\right.\\
+&\qquad\left. + \left(\left[\dot{\tilde{\mathcal{C}}}_{\bm{\beta}}^\parallel(k_{\ell n},\nu;t)\right]^2 - \nu^2\left[\tilde{\mathcal{C}}_{\bm{\beta}}^\parallel(k_{\ell n},\nu;t)\right]^2\right)\right]\mathrm{d}\nu.
+\end{split}
+\end{equation}
+Further, noting that $\Phi(\mathbf{r},t) = \Phi_f(\mathbf{r},t) + \Phi_m(\mathbf{r},t)$ where
+\begin{equation}
+\begin{split}
+\Phi_m(\mathbf{r},t) &= \int\frac{\rho_m(\mathbf{r}',t)}{|\mathbf{r} - \mathbf{r}'|}\;\mathrm{d}^3\mathbf{r}'\\
+&= -\frac{e}{\Delta}\int\frac{\nabla'\cdot\mathbf{Q}_m^\parallel(\mathbf{r}',t)}{|\mathbf{r} - \mathbf{r}'|}\;\mathrm{d}^3\mathbf{r}'\\
+&= -\frac{e}{\Delta}\int\left(\int_0^\infty\sum_{\bm{\beta}}\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\nabla'\cdot\mathbf{L}_{\bm{\beta}}(\mathbf{r}',\kappa)\right)\sum_{\bm{\alpha}}\left[f_{\bm{\alpha}}^>(\mathbf{r})f_{\bm{\alpha}}^<(\mathbf{r}')\Theta(r - r') + f_{\bm{\alpha}}^<(\mathbf{r})f_{\bm{\alpha}}^>(\mathbf{r}')\Theta(r' - r)\right]\mathrm{d}^3\mathbf{r}'\\
+&= \frac{e}{\Delta}\int_0^\infty\sum_{\bm{\alpha}\bm{\beta}}\delta_{TE}\kappa\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\sqrt{K_{\ell m}}\sqrt{\ell(\ell + 1)}\left[f_{\bm{\alpha}}^>(\mathbf{r})\int f_{\bm{\alpha}}^<(\mathbf{r}')j_\ell(\kappa r')P_{\ell m}(\cos\theta')S_p(m\phi')\;\mathrm{d}^3\mathbf{r}'\right.\\
+&\qquad + \left.f_{\bm{\alpha}}^<(\mathbf{r})\int f_{\bm{\alpha}}^>(\mathbf{r}')j_\ell(\kappa r')P_{\ell m}(\cos\theta')S_p(m\phi')\;\mathrm{d}^3\mathbf{r}'\right]\mathrm{d}\kappa\\
+&= \frac{e}{\Delta}\int_0^\infty\sum_{\bm{\alpha}\bm{\beta}}\delta_{TE}\kappa\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\frac{4\pi}{\kappa}(1 - \delta_{p1}\delta_{m0})\delta_{T'E}\delta_{pp'}\delta_{\ell\ell'}\delta_{mm'}\frac{1}{\sqrt{2\ell + 1}}\\
+&\qquad\times\left[f_{\bm{\alpha}}^>(\mathbf{r})r^{\ell + 2}j_{\ell + 1}(\kappa t) + f_{\bm{\alpha}}^<(\mathbf{r})r^{-\ell + 1}j_{\ell - 1}(\kappa r)\right]\mathrm{d}\kappa\\
+&= \frac{4\pi e}{\Delta}\int_0^\infty\sum_{\bm{\beta}}\delta_{TE}(1 - \delta_{p1}\delta_{m0})\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\frac{1}{\sqrt{2\ell + 1}}\\
+&\qquad\times \sqrt{(2 - \delta_{m0})\frac{(\ell - m)!}{(\ell + m)!}}P_{\ell m}(\cos\theta)S_p(m\phi)\left[\frac{r^{\ell + 2}}{r^{\ell + 1}}j_{\ell + 1}(\kappa r) + \frac{r^\ell}{r^{\ell - 1}}j_{\ell - 1}(\kappa r)\right]\mathrm{d}\kappa\\
+&= \frac{4\pi e}{\Delta}\int_0^\infty\sum_{\bm{\beta}}\delta_{TE}(1 - \delta_{p1}\delta_{m0})\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\frac{1}{\sqrt{2\ell + 1}}\\
+&\qquad\times \sqrt{(2 - \delta_{m0})\frac{(\ell - m)!}{(\ell + m)!}}P_{\ell m}(\cos\theta)S_p(m\phi)(2\ell + 1)j_\ell(\kappa r)\;\mathrm{d}\kappa\\
+&= \frac{4\pi e}{\Delta}\sum_{\bm{\beta}}\int_0^\infty\delta_{TE}(1 - \delta_{p1}\delta_{m0})\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\sqrt{K_{\ell m}}\sqrt{\ell(\ell + 1)}j_\ell(\kappa r)P_{\ell m}(\cos\theta)S_p(m\phi)\;\mathrm{d}\kappa
+\end{split}
+\end{equation}
+is the electrostatic potential set up by the matter field,
+
+
+\begin{equation}
+\begin{split}
+L_\mathrm{EM} &= \frac{1}{8\pi}\int\left(\left[\nabla\Phi(\mathbf{r},t)\right]^2 + \frac{1}{c^2}\dot{\mathbf{A}}^2(\mathbf{r},t) - \left[\nabla\times\mathbf{A}(\mathbf{r},t)\right]^2\right)\mathrm{d}^3\mathbf{r}\\
+% &= \frac{1}{8\pi}\int\left[\nabla\Phi(\mathbf{r},t)\right]^2\;\mathrm{d}^3\mathbf{r} + \frac{1}{8\pi}\int\left(\frac{1}{c^2}\sum_{\bm{\alpha}}\int_0^\infty2\dot{\mathcal{A}}_{\bm{\alpha}}(k,t)\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)\;\mathrm{d}k\cdot\sum_{\bm{\alpha}'}\int_0^\infty2\dot{\mathcal{A}}_{\bm{\alpha}'}(k',t)\mathbf{X}_{\bm{\alpha}'}(\mathbf{r},k')\;\mathrm{d}k'\right.\\
+% &\qquad\left. - \sum_{\bm{\alpha}}\int_0^\infty 2k\mathcal{A}_{\bm{\alpha}}(k,t)\mathbf{Y}_{\bm{\alpha}}(\mathbf{r},k)\;\mathrm{d}k\cdot\sum_{\bm{\alpha}'}\int_0^\infty 2k'\mathcal{A}_{\bm{\alpha}'}(k',t)\mathbf{Y}_{\bm{\alpha}'}(\mathbf{r},k')\;\mathrm{d}k'\right)\mathrm{d}^3\mathbf{r}\\
+% &= \frac{1}{8\pi}\int\left[\nabla\Phi(\mathbf{r},t)\right]^2\;\mathrm{d}^3\mathbf{r} + \frac{1}{8\pi}\sum_{\bm{\alpha}\bm{\alpha}'}\int_0^\infty\int_0^\infty\frac{2\pi^2}{k^2}\delta(k - k')(1 - \delta_{p1}\delta_{m0})\delta_{\bm{\alpha}\bm{\alpha}'}\delta(k - k')\\
+% &\qquad\times\left(\frac{4}{c^2}\dot{\mathcal{A}}_{\bm{\alpha}}(k,t)\dot{\mathcal{A}}_{\bm{\alpha}'}(k',t) - 4kk'\mathcal{A}_{\bm{\alpha}}(k,t)\mathcal{A}_{\bm{\alpha}'}(k',t)\right)\mathrm{d}k\,\mathrm{d}k'\\
+&= \frac{1}{8\pi}\int\left[\nabla\Phi(\mathbf{r},t)\right]^2\;\mathrm{d}^3\mathbf{r} + \sum_{\bm{\alpha}}\int_0^\infty\left(\frac{\pi}{k^2c^2}\dot{\mathcal{A}}^2_{\bm{\alpha}}(k,t) - \pi\mathcal{A}_{\bm{\alpha}}^2(k,t)\right)\mathrm{d}k,
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+L_\mathrm{int} &= \int\left(\left[\frac{e}{\Delta}\nabla\cdot\mathbf{Q}_m(\mathbf{r},t) - \rho_f(\mathbf{r},t)\right]\Phi(\mathbf{r},t) + \frac{1}{c}\left[\frac{e}{\Delta}\dot{\mathbf{Q}}_m(\mathbf{r},t) + \mathbf{J}_f(\mathbf{r},t)\right]\cdot\mathbf{A}(\mathbf{r},t)\right.\\
+&\qquad\left. - \int_0^\infty\tilde{v}(\nu)\mathbf{Q}_m(\mathbf{r},t)\cdot\dot{\tilde{\mathbf{Q}}}_\nu(\mathbf{r},t)\;\mathrm{d}\nu\right)\mathrm{d}^3\mathbf{r}\\
+&= 
+\end{split}
+\end{equation}
+
+\noindent\rule{\textwidth}{0.5pt}
+
+\begin{equation}
+\begin{split}
+L &= \frac{\eta_m}{2}\int\left(\left[\dot{\mathbf{Q}}_m^\perp(\mathbf{r},t)\right]^2 + \left[\dot{\mathbf{Q}}_m^\parallel(\mathbf{r},t)\right]^2\right)\mathrm{d}^3\mathbf{r} + \int_0^\infty\frac{\eta_\nu}{2}\int\left(\left[\dot{\tilde{\mathbf{Q}}}_\nu^\perp(\mathbf{r},t)\right]^2 + \left[\dot{\tilde{\mathbf{Q}}}_\nu^\parallel(\mathbf{r},t)\right]^2\right)\mathrm{d}^3\mathbf{r}\,\mathrm{d}\nu\\
+&\qquad + \frac{1}{8\pi}\int_0^\infty\frac{1}{c^2}\dot{\mathbf{A}}^2(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r} - \int_0^\infty\tilde{v}(\nu)\int\left[\mathbf{Q}_m^\perp(\mathbf{r},t)\cdot\dot{\tilde{\mathbf{Q}}}_\nu^\perp(\mathbf{r},t) + \mathbf{Q}_m^\parallel(\mathbf{r},t)\cdot\dot{\tilde{\mathbf{Q}}}_\nu^\parallel(\mathbf{r},t)\right]\mathrm{d}^3\mathbf{r}\,\mathrm{d}\nu\\
+&\qquad + \frac{e}{c\Delta}\int\dot{\mathbf{Q}}_m^\perp(\mathbf{r},t)\cdot\mathbf{A}(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r} + \ldots\\
+&= \frac{\eta_m}{2}\sum_{\bm{\beta}}\int_0^\infty\frac{2\pi^2}{\kappa^2}\left(\left[\dot{\mathcal{Q}}_{\bm{\beta}}^\perp(\kappa,t)\right]^2 + \delta_{TE}\left[\dot{\mathcal{Q}}_{\bm{\beta}}^\parallel(\kappa,t)\right]^2\right)\mathrm{d}\kappa\\
+&+ \int_0^\infty\frac{\eta_\nu}{2}\sum_{\bm{\gamma}}\int_0^\infty\frac{2\pi^2}{\kappa^2}\left(\left[\dot{\tilde{\mathcal{Q}}}_{\bm{\gamma}}^\perp(\kappa,\nu;t)\right]^2 + \delta_{TE}\left[\dot{\tilde{\mathcal{Q}}}_{\bm{\gamma}}^\parallel(\kappa,\nu;t)\right]^2\right)\mathrm{d}\kappa\,\mathrm{d}\nu + \sum_{\bm{\alpha}}\int_{0}^\infty\frac{\pi}{k^2c^2}\dot{\mathcal{A}}_{\bm{\alpha}}^2(k,t)\;\mathrm{d}k\\
+&- \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty\frac{2\pi^2}{\kappa^2}\tilde{v}(\nu)\left[\mathcal{Q}_{\bm{\beta}}^\perp(\kappa,t)\dot{\tilde{\mathcal{Q}}}_{\bm{\beta}}^\perp(\kappa,\nu;t) + \delta_{TE}\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\dot{\tilde{\mathcal{Q}}}_{\bm{\beta}}^\parallel(\kappa,\nu;t)\right]\mathrm{d}\kappa\,\mathrm{d}\nu\\
+&+ \frac{e}{c\Delta}\sum_{\bm{\beta}}\int_0^\infty\frac{4\pi^2}{\kappa^2}\dot{\mathcal{Q}}_{\bm{\beta}}^\perp(\kappa,t)\mathcal{A}_{\bm{\beta}}(\kappa,t)\;\mathrm{d}\kappa + \ldots,
+\end{split}
+\end{equation}
+where the terms in the ellipsis do not contain factors of any of the system's velocities. We have let $\eta_m(\mathbf{r})\to\eta_m$ and $\eta_\nu(\mathbf{r})\to\eta_\nu$, as either of the mass densities' spatial profiles is simply a Heaviside function $\Theta(a - r)$ and therefore redundant when multiplied by the Heaviside functions within the matter and reservoir field coordinates $\mathbf{Q}_m(\mathbf{r},t)$ and $\tilde{\mathbf{Q}}_\nu(\mathbf{r},t)$ or the corresponding velocities $\dot{\mathbf{Q}}_m(\mathbf{r},t)$ and $\dot{\tilde{\mathbf{Q}}}_\nu(\mathbf{r},t)$.
+
+The conjugate momenta then become
+\begin{equation}
+\begin{split}
+\mathit{\Pi}_{\bm{\alpha}}(k,t) &= \frac{\partial L}{\partial \dot{\mathcal{A}}_{\bm{\alpha}}(k,t)} = \frac{2\pi}{k^2c^2}\dot{\mathcal{A}}_{\bm{\alpha}}(k,t),\\
+\mathcal{P}_{\bm{\beta}}^\perp(k,t) &= \frac{\partial L}{\partial \dot{\mathcal{Q}}_{\bm{\beta}}^\perp(k,t)} = \eta_m\frac{2\pi^2}{k^2}\dot{\mathcal{Q}}_{\bm{\beta}}^\perp(k,t) + \frac{e}{c\Delta}\frac{4\pi^2}{k^2}\mathcal{A}_{\bm{\beta}}(k,t),\\
+\mathcal{P}_{\bm{\beta}}^\parallel(k,t) &= \frac{\partial L}{\partial \dot{\mathcal{Q}}_{\bm{\beta}}^\parallel(t)} = \eta_m\frac{2\pi^2}{k^2}\dot{\mathcal{Q}}_{\bm{\beta}}^\parallel(k,t),\\
+\tilde{\mathcal{P}}_{\bm{\gamma}}^\perp(k,\nu;t) &= \frac{\partial L}{\partial \dot{\tilde{\mathcal{Q}}}_{\bm{\gamma}}^\perp(k,\nu;t)} = \eta_\nu\frac{2\pi^2}{k^2}\dot{\tilde{\mathcal{Q}}}_{\bm{\gamma}}^\perp(k,\nu;t) - \frac{2\pi^2}{k^2}\tilde{v}(\nu)\mathcal{Q}_{\bm{\gamma}}^\perp(k,t),\\
+\tilde{\mathcal{P}}_{\bm{\gamma}}^\parallel(k,\nu;t) &= \frac{\partial L}{\partial \dot{\tilde{\mathcal{Q}}}_{\bm{\gamma}}^\parallel(k,\nu;t)} = \eta_\nu \frac{2\pi^2}{k^2}\dot{\tilde{\mathcal{Q}}}_{\bm{\gamma}}^\parallel(k,\nu;t) - \frac{2\pi^2}{k^2}\tilde{v}(\nu)\mathcal{Q}_{\bm{\gamma}}^\parallel(t),
+\end{split}
+\end{equation}
+such that
+\begin{equation}
+\begin{split}
+\bm{\Pi}(\mathbf{r},t) &= \sum_{\bm{\alpha}}\int_0^\infty \frac{k^2}{4\pi^2}\mathit{\Pi}_{\bm{\alpha}}(k,t)\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)\;\mathrm{d}k + \frac{1}{4\pi c}\nabla\Phi(\mathbf{r},t),\\
+\mathbf{P}_m^\perp(\mathbf{r},t) &= \sum_{\bm{\beta}}\int_0^\infty\frac{\kappa^2}{2\pi^2}\mathcal{P}_{\bm{\beta}}^\perp(\kappa,t)\mathbf{X}_{\bm{\beta}}(\mathbf{r},\kappa)\;\mathrm{d}\kappa,\\
+\mathbf{P}_m^\parallel(\mathbf{r},t) &= \sum_{\bm{\beta}}\int_0^\infty\frac{\kappa^2}{2\pi^2}\mathcal{P}_{\bm{\beta}}^\parallel(\kappa,t)\mathbf{L}_{\bm{\beta}}(\mathbf{r},\kappa)\;\mathrm{d}\kappa,\\
+\tilde{\mathbf{P}}_\nu^\perp(\mathbf{r},t) &= \sum_{\bm{\gamma}}\int_0^\infty\frac{\kappa^2}{2\pi^2}\tilde{\mathcal{P}}_{\bm{\gamma}}^\perp(\kappa,\nu;t)\mathbf{X}_{\bm{\gamma}}(\mathbf{r},\kappa)\;\mathrm{d}\kappa,\\
+\tilde{\mathbf{P}}_\nu^\parallel(\mathbf{r},t) &= \sum_{\bm{\gamma}}\int_0^\infty\frac{\kappa^2}{2\pi^2}\tilde{\mathcal{P}}_{\bm{\gamma}}^\parallel(\kappa,\nu;t)\mathbf{L}_{\bm{\gamma}}(\mathbf{r},\kappa)\;\mathrm{d}\kappa.
+\end{split}
+\end{equation}
+These definitions, along with Eqs. \eqref{eq:fieldExpansions}, \eqref{eq:matterFieldHelmholtzExpansion}, and \eqref{eq:bathFieldHelmholtzExpansion} allow us to rewrite $H$ in terms of the scalar coordinates and momenta. We first note that, with 
+\begin{equation}
+1/|\mathbf{r} - \mathbf{r}'| = \sum_{\bm{\alpha}}[f_{\bm{\alpha}}^>(\mathbf{r})f_{\bm{\alpha}}^<(\mathbf{r}')\Theta(r - r') + f_{\bm{\alpha}}^<(\mathbf{r})f_{\bm{\alpha}}^>(\mathbf{r}')\Theta(r' - r)]
+\end{equation}
+and
+\begin{equation}
+\nabla\cdot\mathbf{L}_{\bm{\alpha}}(\mathbf{r},k) = -k\delta_{TE}\sqrt{K_{\ell m}}\sqrt{\ell(\ell + 1)}j_\ell(kr)P_{\ell m}(\cos\theta)S_p(m\phi),
+\end{equation}
+the scalar potential set up by the matter field is
+\begin{equation}
+\begin{split}
+\Phi_m(\mathbf{r},t) &= \int\frac{\rho_m(\mathbf{r}',t)}{|\mathbf{r} - \mathbf{r}'|}\;\mathrm{d}^3\mathbf{r}'\\
+&= -\frac{e}{\Delta}\int\frac{\nabla'\cdot\mathbf{Q}_m^\parallel(\mathbf{r}',t)}{|\mathbf{r} - \mathbf{r}'|}\;\mathrm{d}^3\mathbf{r}'\\
+% &= -\frac{e}{\Delta}\int\left(\int_0^\infty\sum_{\bm{\beta}}\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\nabla'\cdot\mathbf{L}_{\bm{\beta}}(\mathbf{r}',\kappa)\right)\sum_{\bm{\alpha}}\left[f_{\bm{\alpha}}^>(\mathbf{r})f_{\bm{\alpha}}^<(\mathbf{r}')\Theta(r - r') + f_{\bm{\alpha}}^<(\mathbf{r})f_{\bm{\alpha}}^>(\mathbf{r}')\Theta(r' - r)\right]\mathrm{d}^3\mathbf{r}'\\
+% &= \frac{e}{\Delta}\int_0^\infty\sum_{\bm{\alpha}\bm{\beta}}\delta_{TE}\kappa\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\sqrt{K_{\ell m}}\sqrt{\ell(\ell + 1)}\left[f_{\bm{\alpha}}^>(\mathbf{r})\int f_{\bm{\alpha}}^<(\mathbf{r}')j_\ell(\kappa r')P_{\ell m}(\cos\theta')S_p(m\phi')\;\mathrm{d}^3\mathbf{r}'\right.\\
+% &\qquad + \left.f_{\bm{\alpha}}^<(\mathbf{r})\int f_{\bm{\alpha}}^>(\mathbf{r}')j_\ell(\kappa r')P_{\ell m}(\cos\theta')S_p(m\phi')\;\mathrm{d}^3\mathbf{r}'\right]\mathrm{d}\kappa\\
+% &= \frac{e}{\Delta}\int_0^\infty\sum_{\bm{\alpha}\bm{\beta}}\delta_{TE}\kappa\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\frac{4\pi}{\kappa}(1 - \delta_{p1}\delta_{m0})\delta_{T'E}\delta_{pp'}\delta_{\ell\ell'}\delta_{mm'}\frac{1}{\sqrt{2\ell + 1}}\\
+% &\qquad\times\left[f_{\bm{\alpha}}^>(\mathbf{r})r^{\ell + 2}j_{\ell + 1}(\kappa t) + f_{\bm{\alpha}}^<(\mathbf{r})r^{-\ell + 1}j_{\ell - 1}(\kappa r)\right]\mathrm{d}\kappa\\
+% &= \frac{4\pi e}{\Delta}\int_0^\infty\sum_{\bm{\beta}}\delta_{TE}(1 - \delta_{p1}\delta_{m0})\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\frac{1}{\sqrt{2\ell + 1}}\\
+% &\qquad\times \sqrt{(2 - \delta_{m0})\frac{(\ell - m)!}{(\ell + m)!}}P_{\ell m}(\cos\theta)S_p(m\phi)\left[\frac{r^{\ell + 2}}{r^{\ell + 1}}j_{\ell + 1}(\kappa r) + \frac{r^\ell}{r^{\ell - 1}}j_{\ell - 1}(\kappa r)\right]\mathrm{d}\kappa\\
+% &= \frac{4\pi e}{\Delta}\int_0^\infty\sum_{\bm{\beta}}\delta_{TE}(1 - \delta_{p1}\delta_{m0})\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\frac{1}{\sqrt{2\ell + 1}}\\
+% &\qquad\times \sqrt{(2 - \delta_{m0})\frac{(\ell - m)!}{(\ell + m)!}}P_{\ell m}(\cos\theta)S_p(m\phi)(2\ell + 1)j_\ell(\kappa r)\;\mathrm{d}\kappa\\
+&= \frac{4\pi e}{\Delta}\sum_{\bm{\beta}}\int_0^\infty\delta_{TE}(1 - \delta_{p1}\delta_{m0})\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\sqrt{K_{\ell m}}\sqrt{\ell(\ell + 1)}j_\ell(\kappa r)P_{\ell m}(\cos\theta)S_p(m\phi)\;\mathrm{d}\kappa
+\end{split}
+\end{equation}
+such that
+\begin{equation}
+\nabla\Phi_m(\mathbf{r},t) = \frac{4\pi e}{\Delta}\sum_{\bm{\beta}}\int_0^\infty\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\mathbf{L}_{\bm{\beta}}(\mathbf{r},\kappa)\;\mathrm{d}\kappa.
+\end{equation}
+This allows us to say
+\begin{equation}\label{eq:Hm2}
+\begin{split}
+H_m &= \sum_{s = \perp,\parallel}\int\left(\frac{\left[\mathbf{P}_m^s(\mathbf{r},t)\right]^2}{2\eta_m} + \frac{1}{2}\eta_m\omega_0^2\left[\mathbf{Q}_m^s(\mathbf{r},t)\right]^2\right)\mathrm{d}^3\mathbf{r} + \sum_{s = \perp,\parallel}\int\int_0^\infty\frac{\tilde{v}^2(\nu)}{2\eta_\nu}\left[\mathbf{Q}_m^s(\mathbf{r},t)\right]^2\;\mathrm{d}\nu\,\mathrm{d}^3\mathbf{r}\\
+&\qquad+ \frac{e}{\Delta}\int\mathbf{Q}_m^\parallel(\mathbf{r},t)\cdot\nabla\Phi_m(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r}\\
+% &= \sum_{\bm{\beta}\bm{\beta}'}\int_0^\infty\int_0^\infty\left(\frac{\kappa^4}{4\pi^4}\frac{\mathcal{P}_{\bm{\beta}}^\perp(\kappa,t)\mathcal{P}_{\bm{\beta}'}^\perp(\kappa',t)}{2\eta_m} + \frac{\eta_m}{2}\omega_0^2\mathcal{Q}_{\bm{\beta}}^\perp(\kappa,t)\mathcal{Q}_{\bm{\beta}'}^\perp(\kappa',t)\right)\int\mathbf{X}_{\bm{\beta}}(\mathbf{r},\kappa)\cdot\mathbf{X}_{\bm{\beta}'}(\mathbf{r},\kappa')\;\mathrm{d}^3\mathbf{r}\,\mathrm{d}\kappa\,\mathrm{d}\kappa'\\
+% &\qquad + \sum_{\bm{\beta}\bm{\beta}'}\int_0^\infty\int_0^\infty\left(\frac{\kappa^4}{4\pi^4}\frac{\mathcal{P}_{\bm{\beta}}^\parallel(\kappa,t)\mathcal{P}_{\bm{\beta}'}^\parallel(\kappa',t)}{2\eta_m} + \frac{\eta_m}{2}\omega_0^2\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\mathcal{Q}_{\bm{\beta}'}^\parallel(\kappa',t)\right)\int\mathbf{L}_{\bm{\beta}}(\mathbf{r},\kappa)\cdot\mathbf{L}_{\bm{\beta}'}(\mathbf{r},\kappa')\;\mathrm{d}^3\mathbf{r}\,\mathrm{d}\kappa\,\mathrm{d}\kappa'\\
+% &\qquad + \sum_{\bm{\beta}\bm{\beta}'}\int_0^\infty\frac{\tilde{v}^2(\nu)}{2\eta_\nu}\int_0^\infty\int_0^\infty\mathcal{Q}_{\bm{\beta}}^\perp(\kappa,t)\mathcal{Q}_{\bm{\beta}'}^\perp(\kappa',t)\int\mathbf{X}_{\bm{\beta}}(\mathbf{r},\kappa)\cdot\mathbf{X}_{\bm{\beta}'}(\mathbf{r},\kappa')\;\mathrm{d}^3\mathbf{r}\,\mathrm{d}\kappa\,\mathrm{d}\kappa'\,\mathrm{d}\nu\\
+% &\qquad + \sum_{\bm{\beta}\bm{\beta}'}\int_0^\infty\frac{\tilde{v}^2(\nu)}{2\eta_\nu}\int_0^\infty\int_0^\infty\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\mathcal{Q}_{\bm{\beta}'}^\parallel(\kappa',t)\int\mathbf{L}_{\bm{\beta}}(\mathbf{r},\kappa)\cdot\mathbf{L}_{\bm{\beta}'}(\mathbf{r},\kappa')\;\mathrm{d}^3\mathbf{r}\,\mathrm{d}\kappa\,\mathrm{d}\kappa'\,\mathrm{d}\nu\\
+% &\qquad + \frac{e}{\Delta}\sum_{\bm{\beta}\bm{\beta}'}\int_0^\infty\int_0^\infty\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\frac{4\pi e}{\Delta}\mathcal{Q}_{\bm{\beta}'}^\parallel(\kappa',t)\int\mathbf{L}_{\bm{\beta}}(\mathbf{r},\kappa)\cdot\mathbf{L}_{\bm{\beta}'}(\mathbf{r},\kappa')\;\mathrm{d}^3\mathbf{r}\,\mathrm{d}\kappa\,\mathrm{d}\kappa'\\
+% &= \sum_{\bm{\beta}\bm{\beta}'}\int_0^\infty\int_0^\infty\left(\frac{\kappa^4}{4\pi^4}\frac{\mathcal{P}_{\bm{\beta}}^\perp(\kappa,t)\mathcal{P}_{\bm{\beta}'}^\perp(\kappa',t)}{2\eta_m} + \frac{\eta_m}{2}\omega_0^2\mathcal{Q}_{\bm{\beta}}^\perp(\kappa,t)\mathcal{Q}_{\bm{\beta}'}^\perp(\kappa',t)\right)\frac{2\pi^2}{\kappa^2}\delta(\kappa - \kappa')(1 - \delta_{p1}\delta_{m0})\delta_{\bm{\beta}\bm{\beta}'}\;\mathrm{d}\kappa\,\mathrm{d}\kappa'\\
+% &\qquad + \sum_{\bm{\beta}\bm{\beta}'}\int_0^\infty\int_0^\infty\left(\frac{\kappa^4}{4\pi^4}\frac{\mathcal{P}_{\bm{\beta}}^\parallel(\kappa,t)\mathcal{P}_{\bm{\beta}'}^\parallel(\kappa',t)}{2\eta_m} + \frac{\eta_m}{2}\omega_0^2\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\mathcal{Q}_{\bm{\beta}'}^\parallel(\kappa',t)\right)\\
+% &\qquad\qquad \times \frac{2\pi^2}{\kappa^2}\delta(\kappa - \kappa')(1 - \delta_{p1}\delta_{m0})\delta_{TE}\delta_{\bm{\beta}\bm{\beta}'}\;\mathrm{d}\kappa\,\mathrm{d}\kappa'\\
+% &\qquad + \sum_{\bm{\beta}\bm{\beta}'}\int_0^\infty\frac{\tilde{v}^2(\nu)}{2\eta_\nu}\int_0^\infty\int_0^\infty\mathcal{Q}_{\bm{\beta}}^\perp(\kappa,t)\mathcal{Q}_{\bm{\beta}'}^\perp(\kappa',t)\frac{2\pi^2}{\kappa^2}\delta(\kappa - \kappa')(1 - \delta_{p1}\delta_{m0})\delta_{\bm{\beta}\bm{\beta}'}\;\mathrm{d}\kappa\,\mathrm{d}\kappa'\,\mathrm{d}\nu\\
+% &\qquad + \sum_{\bm{\beta}\bm{\beta}'}\int_0^\infty\frac{\tilde{v}^2(\nu)}{2\eta_\nu}\int_0^\infty\int_0^\infty\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\mathcal{Q}_{\bm{\beta}'}^\parallel(\kappa',t)\frac{2\pi^2}{\kappa^2}\delta(\kappa - \kappa')(1 - \delta_{p1}\delta_{m0})\delta_{TE}\delta_{\bm{\beta}\bm{\beta}'}\;\mathrm{d}\kappa\,\mathrm{d}\kappa'\,\mathrm{d}\nu\\
+% &\qquad + \frac{e}{\Delta}\sum_{\bm{\beta}\bm{\beta}'}\int_0^\infty\int_0^\infty\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\frac{4\pi e}{\Delta}\mathcal{Q}_{\bm{\beta}'}^\parallel(\kappa',t)\frac{2\pi^2}{\kappa^2}\delta(\kappa - \kappa')(1 - \delta_{p1}\delta_{m0})\delta_{TE}\delta_{\bm{\beta}\bm{\beta}'}\;\mathrm{d}\kappa\,\mathrm{d}\kappa'\\
+% &= \sum_{\bm{\beta}}\int_0^\infty\left(\frac{\kappa^2}{2\pi^2}\frac{\left[\mathcal{P}_{\bm{\beta}}^\perp(\kappa,t)\right]^2}{2\eta_m} + \frac{2\pi^2}{\kappa^2}\frac{\eta_m}{2}\left[\omega_0^2 + \int_0^\infty\frac{\tilde{v}^2(\nu)}{\eta_\nu\eta_m}\;\mathrm{d}\nu\right]\left[\mathcal{Q}_{\bm{\beta}}^\perp(\kappa,t)\right]^2\right)\mathrm{d}\kappa\\
+% &\qquad + \sum_{\bm{\beta}}\int_0^\infty\left(\frac{\kappa^2}{2\pi^2}\frac{\left[\mathcal{P}_{\bm{\beta}}^\parallel(\kappa,t)\right]^2}{2\eta_m} + \frac{2\pi^2}{\kappa^2}\frac{\eta_m}{2}\left[\omega_0^2 + \int_0^\infty\frac{\tilde{v}^2(\nu)}{\eta_\nu\eta_m}\;\mathrm{d}\nu + \frac{8\pi e^2}{\eta_m\Delta^2}\right]\left[\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\right]^2\right)\mathrm{d}\kappa\\
+&= \sum_{\bm{\beta}}\int_0^\infty\left(\frac{\kappa^2}{2\pi^2}\frac{\left[\mathcal{P}_{\bm{\beta}}^\perp(\kappa,t)\right]^2}{2\eta_m} + \frac{2\pi^2}{\kappa^2}\frac{\eta_m}{2}\left[\omega_0^2 + \Gamma^2\right]\left[\mathcal{Q}_{\bm{\beta}}^\perp(\kappa,t)\right]^2\right)\mathrm{d}\kappa\\
+&\qquad + \sum_{\bm{\beta}}\int_0^\infty\left(\frac{\kappa^2}{2\pi^2}\frac{\left[\mathcal{P}_{\bm{\beta}}^\parallel(\kappa,t)\right]^2}{2\eta_m} + \frac{2\pi^2}{\kappa^2}\frac{\eta_m}{2}\left[\omega_0^2 + \Gamma^2 + \frac{8\pi e^2}{\eta_m\Delta^2}\right]\left[\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\right]^2\right)\mathrm{d}\kappa
+\end{split}
+\end{equation}
+where
+\begin{equation}
+\Gamma^2 = \int_0^\infty\frac{\tilde{v}^2(\nu)}{\eta_\nu\eta_m}\;\mathrm{d}\nu
+\end{equation}
+and we have assumed that $\mathcal{Q}_{\bm{\beta}}^s(\kappa,t)$ and $\mathcal{P}_{\bm{\beta}}^s(\kappa,t)$ are zero for $(p,m) = (1,0)$ and that the longitudinal matter coordinates and momenta are zero when $T = M$. Additionally,
+\begin{equation}
+\begin{split}
+H_r &= \sum_{s = \perp,\parallel}\int_0^\infty\int\left(\frac{\left[\tilde{\mathbf{P}}_\nu^s(\mathbf{r},t)\right]^2}{2\eta_\nu} + \frac{1}{2}\eta_\nu\nu^2\left[\tilde{\mathbf{Q}}_\nu^s(\mathbf{r},t)\right]^2\right)\mathrm{d}^3\mathbf{r}\,\mathrm{d}\nu\\
+% &= \sum_{\bm{\gamma}\bm{\gamma}'}\int_0^\infty\int_0^\infty\int_0^\infty\left(\frac{\kappa^4}{4\pi^4}\frac{\tilde{\mathcal{P}}^\perp_{\bm{\gamma}}(\kappa,\nu;t)\tilde{\mathcal{P}}^\perp_{\nu\bm{\gamma}'}(\kappa',t)}{2\eta_\nu} + \frac{\eta_\nu}{2}\nu^2\tilde{\mathcal{Q}}_{\bm{\gamma}}^\perp(\kappa,\nu;t)\tilde{\mathcal{Q}}_{\nu\bm{\gamma}'}^\perp(\kappa',t)\right)\\
+% &\qquad\qquad \times \int\mathbf{X}_{\bm{\gamma}}(\mathbf{r},\kappa)\cdot\mathbf{X}_{\bm{\gamma}'}(\mathbf{r},\kappa')\;\mathrm{d}^3\mathbf{r}\,\mathrm{d}\kappa\,\mathrm{d}\kappa'\,\mathrm{d}\nu\\
+% &\qquad + \sum_{\bm{\gamma}\bm{\gamma}'}\int_0^\infty\int_0^\infty\int_0^\infty\left(\frac{\kappa^4}{4\pi^4}\frac{\tilde{\mathcal{P}}_{\bm{\gamma}}^\perp(\kappa,\nu;t)\tilde{\mathcal{P}}_{\nu\bm{\gamma}'}^\perp(\kappa',t)}{2\eta_\nu} + \frac{\eta_\nu}{2}\nu^2\tilde{\mathcal{Q}}_{\bm{\gamma}}^\perp(\kappa,\nu;t)\tilde{\mathcal{Q}}_{\nu\bm{\gamma}'}^\perp(\kappa',t)\right)\\
+% &\qquad\qquad \times \int\mathbf{L}_{\bm{\gamma}}(\mathbf{r},\kappa)\cdot\mathbf{L}_{\bm{\gamma}'}(\mathbf{r},\kappa')\;\mathrm{d}^3\mathbf{r}\,\mathrm{d}\kappa\,\mathrm{d}\kappa'\,\mathrm{d}\nu\\
+% &= \sum_{\bm{\gamma}\bm{\gamma}'}\int_0^\infty\int_0^\infty\int_0^\infty\left(\frac{\kappa^4}{4\pi^4}\frac{\tilde{\mathcal{P}}^\perp_{\bm{\gamma}}(\kappa,\nu;t)\tilde{\mathcal{P}}^\perp_{\nu\bm{\gamma}'}(\kappa',t)}{2\eta_\nu} + \frac{\eta_\nu}{2}\nu^2\tilde{\mathcal{Q}}_{\bm{\gamma}}^\perp(\kappa,\nu;t)\tilde{\mathcal{Q}}_{\nu\bm{\gamma}'}^\perp(\kappa',t)\right)\\
+% &\qquad\qquad \times \frac{2\pi^2}{\kappa^2}\delta(\kappa - \kappa')(1 - \delta_{p1}\delta_{m0})\delta_{\bm{\gamma}\bm{\gamma}'}\;\mathrm{d}\kappa\,\mathrm{d}\kappa'\,\mathrm{d}\nu\\
+% &\qquad + \sum_{\bm{\gamma}\bm{\gamma}'}\int_0^\infty\int_0^\infty\int_0^\infty\left(\frac{\kappa^4}{4\pi^4}\frac{\tilde{\mathcal{P}}_{\bm{\gamma}}^\perp(\kappa,\nu;t)\tilde{\mathcal{P}}_{\nu\bm{\gamma}'}^\perp(\kappa',t)}{2\eta_\nu} + \frac{\eta_\nu}{2}\nu^2\tilde{\mathcal{Q}}_{\bm{\gamma}}^\perp(\kappa,\nu;t)\tilde{\mathcal{Q}}_{\nu\bm{\gamma}'}^\perp(\kappa',t)\right)\\
+% &\qquad\qquad \times \frac{2\pi^2}{\kappa^2}\delta(\kappa - \kappa')(1 - \delta_{p1}\delta_{m0})\delta_{TE}\delta_{\bm{\gamma}\bm{\gamma}'}\;\mathrm{d}\kappa\,\mathrm{d}\kappa'\,\mathrm{d}\nu\\
+&= \sum_{\bm{\gamma}}\int_0^\infty\int_0^\infty\left(\frac{\kappa^2}{2\pi^2}\frac{\left[\tilde{\mathcal{P}}_{\bm{\gamma}}^\perp(\kappa,\nu;t)\right]^2}{2\eta_\nu} + \frac{2\pi^2}{\kappa^2}\frac{\eta_\nu}{2}\nu^2\left[\tilde{\mathcal{Q}}_{\bm{\gamma}}^\perp(\kappa,\nu;t)\right]^2\right)\mathrm{d}\kappa\,\mathrm{d}\nu\\
+&\qquad + \sum_{\bm{\gamma}}\int_0^\infty\int_0^\infty\left(\frac{\kappa^2}{2\pi^2}\frac{\left[\tilde{\mathcal{P}}_{\bm{\gamma}}^\parallel(\kappa,\nu;t)\right]^2}{2\eta_\nu} + \frac{2\pi^2}{\kappa^2}\frac{\eta_\nu}{2}\nu^2\left[\tilde{\mathcal{Q}}_{\bm{\gamma}}^\parallel(\kappa,\nu;t)\right]^2\right)\mathrm{d}\kappa\,\mathrm{d}\nu
+\end{split}
+\end{equation}
+and, letting $\nabla\Phi(\mathbf{r},t) = \nabla\Phi_f(\mathbf{r},t) + (4\pi e/\Delta)\sum_{\bm{\beta}}\int_0^\infty\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\mathbf{L}_{\bm{\beta}}(\mathbf{r},\kappa)\;\mathrm{d}\kappa$,
+\begin{equation}
+\begin{split}
+H_\mathrm{EM} &= \int\left(2\pi c^2\left[\bm{\Pi}^\perp(\mathbf{r},t)\right]^2 + 2\pi c^2\left[\bm{\Pi}^\parallel(\mathbf{r},t)\right]^2 +  \frac{1}{8\pi}\left[\nabla\times\mathbf{A}(\mathbf{r},t)\right]^2 + \frac{e^2}{2\eta_m c^2\Delta^2}\mathbf{A}^2(\mathbf{r},t)\right)\mathrm{d}^3\mathbf{r}\\
+&\qquad+ \sum_i\frac{e_i^2}{2\mu_{fi}c^2}\mathbf{A}^2[\mathbf{x}_{fi}(t),t]\\
+% &= \sum_{\bm{\alpha}\bm{\alpha}'}\int_0^\infty\int_0^\infty2\pi c^2\frac{k^2k'^2}{16\pi^4}\mathit{\Pi}_{\bm{\alpha}}(k,t)\mathit{\Pi}_{\bm{\alpha}'}(k',t)\int\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)\cdot\mathbf{X}_{\bm{\alpha}'}(\mathbf{r},k')\;\mathrm{d}^3\mathbf{r}\,\mathrm{d}k\,\mathrm{d}k'\\
+% &\qquad + \sum_{\bm{\beta}\bm{\beta}'}\int_0^\infty\int_0^\infty2\pi c^2\frac{1}{16\pi^2c^2}\frac{e^2}{\Delta^2}16\pi^2\mathcal{Q}_{\bm{\beta}}^\parallel(t)\mathcal{Q}_{\bm{\beta}'}^\parallel(t)\int\mathbf{L}_{\bm{\beta}}(\mathbf{r},k)\cdot\mathbf{L}_{\bm{\beta}'}(\mathbf{r},k')\;\mathrm{d}^3\mathbf{r}\,\mathrm{d}k\,\mathrm{d}k'\\
+% &\qquad + 2\pi c^2\frac{2}{16\pi^2c^2}\frac{e}{\Delta}4\pi\sum_{\bm{\beta}}\int_0^\infty\mathcal{Q}_{\bm{\beta}}^\parallel(k,t)\int\nabla\Phi_f(\mathbf{r},t)\cdot\mathbf{L}_{\bm{\beta}}(\mathbf{r},k)\;\mathrm{d}^3\mathbf{r}\,\mathrm{d}k + \frac{2\pi c^2}{16\pi^2c^2}\int\left[\nabla\Phi_f(\mathbf{r},t)\right]^2\mathrm{d}^3\mathbf{r}\\
+% &\qquad + \frac{1}{8\pi}\sum_{\bm{\alpha}\bm{\alpha}'}\int_0^\infty\int_0^\infty4kk'\mathcal{A}_{\bm{\alpha}}(k,t)\mathcal{A}_{\bm{\alpha}'}(k',t)\int\mathbf{Y}_{\bm{\alpha}}(\mathbf{r},k)\cdot\mathbf{Y}_{\bm{\alpha}'}(\mathbf{r},k')\;\mathrm{d}^3\mathbf{r}\,\mathrm{d}k\,\mathrm{d}k'\\
+% &\qquad + \frac{e^2}{2\eta_mc^2\Delta^2}\sum_{\bm{\alpha}\bm{\alpha}'}\int_0^\infty\int_0^\infty4\mathcal{A}_{\bm{\alpha}}(k,t)\mathcal{A}_{\bm{\alpha}'}(k',t)\int\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)\cdot\mathbf{X}_{\bm{\alpha}'}(\mathbf{r},k')\;\mathrm{d}^3\mathbf{r}\,\mathrm{d}k\,\mathrm{d}k'\\
+% &\qquad + \sum_{\bm{\alpha}\bm{\alpha}'}\int_0^\infty\int_0^\infty4\mathcal{A}_{\bm{\alpha}}(k,t)\mathcal{A}_{\bm{\alpha}'}(k',t)\sum_i\frac{e_i^2}{2\mu_{fi}c^2}\mathbf{X}_{\bm{\alpha}}[\mathbf{x}_{fi}(t),k]\cdot\mathbf{X}_{\bm{\alpha}'}[\mathbf{x}_{fi}(t),k']\;\mathrm{d}k\,\mathrm{d}k'\\
+% &= \sum_{\bm{\alpha}\bm{\alpha}'}\int_0^\infty\int_0^\infty\frac{c^2k^2k'^2}{8\pi^3}\mathit{\Pi}_{\bm{\alpha}}(k,t)\mathit{\Pi}_{\bm{\alpha}'}(k',t)\frac{2\pi^2}{k^2}\delta(k - k')(1 - \delta_{p1}\delta_{m0})\delta_{\bm{\alpha}\bm{\alpha}'}\;\mathrm{d}k\,\mathrm{d}k'\\
+% &\qquad + \sum_{\bm{\beta}\bm{\beta}'}\int_0^\infty\int_0^\infty\frac{2\pi e^2}{\Delta^2}\mathcal{Q}_{\bm{\beta}}^\parallel(k,t)\mathcal{Q}_{\bm{\beta}'}^\parallel(k',t)\frac{2\pi^2}{k^2}\delta(k - k')(1 - \delta_{p1}\delta_{m0})\delta_{TE}\delta_{\bm{\beta}\bm{\beta}'}\;\mathrm{d}k\,\mathrm{d}k'\\
+% &\qquad + \frac{e}{\Delta}\sum_{\bm{\beta}}\int_0^\infty\mathcal{Q}_{\bm{\beta}}^\parallel(k,t)\int\nabla\Phi_f(\mathbf{r},t)\cdot\mathbf{L}_{\bm{\beta}}(\mathbf{r},k)\;\mathrm{d}^3\mathbf{r}\,\mathrm{d}k + \frac{1}{8\pi}\int\left[\nabla\Phi_f(\mathbf{r},t)\right]^2\;\mathrm{d}^3\mathbf{r}\\
+% &\qquad + \frac{1}{2\pi}\sum_{\bm{\alpha}\bm{\alpha}'}\int_0^\infty\int_0^\infty kk'\mathcal{A}_{\bm{\alpha}}(k,t)\mathcal{A}_{\bm{\alpha}'}(k',t)\frac{2\pi^2}{k^2}\delta(k - k')(1 - \delta_{p1}\delta_{m0})\delta_{\bm{\alpha}\bm{\alpha}'}\;\mathrm{d}k\,\mathrm{d}k'\\
+% &\qquad +  \frac{2e^2}{\eta_m c^2\Delta^2}\sum_{\bm{\alpha}\bm{\alpha}'}\int_0^\infty\int_0^\infty\mathcal{A}_{\bm{\alpha}}(k,t)\mathcal{A}_{\bm{\alpha}'}(k',t)\frac{2\pi^2}{k^2}\delta(k - k')(1 - \delta_{p1}\delta_{m0})\delta_{\bm{\alpha}\bm{\alpha}'}\;\mathrm{d}k\,\mathrm{d}k'\\
+% &\qquad + \sum_{\bm{\alpha}\bm{\alpha}'}\int_0^\infty\int_0^\infty\mathcal{A}_{\bm{\alpha}}(k,t)\mathcal{A}_{\bm{\alpha}'}(k',t)\sum_i\frac{2e_i^2}{\mu_{fi}c^2}\mathbf{X}_{\bm{\alpha}}[\mathbf{x}_{fi}(t),k]\cdot\mathbf{X}_{\bm{\alpha}'}[\mathbf{x}_{fi}(t),k']\;\mathrm{d}k\,\mathrm{d}k'\\
+% &= \sum_{\bm{\alpha}}\int_0^\infty\frac{c^2k^2}{4\pi}\mathit{\Pi}_{\bm{\alpha}}^2(k,t)\;\mathrm{d}k + \sum_{\bm{\beta}}\int_0^\infty\frac{4\pi^3e^2}{k^2\Delta^2}\left[\mathcal{Q}_{\bm{\beta}}^\parallel(k,t)\right]^2\;\mathrm{d}k + \frac{1}{8\pi}\int\left[\nabla\Phi_f(\mathbf{r},t)\right]^2\;\mathrm{d}^3\mathbf{r}\\
+% &\qquad + \frac{e}{\Delta}\sum_{\bm{\beta}}\int_0^\infty\mathcal{Q}_{\bm{\beta}}^\parallel(k,t)\int\nabla\Phi_f(\mathbf{r},t)\cdot\mathbf{L}_{\bm{\beta}}(\mathbf{r},k)\;\mathrm{d}^3\mathbf{r}\,\mathrm{d}k + \sum_{\bm{\alpha}}\int_0^\infty\pi\mathcal{A}_{\bm{\alpha}}^2(k,t)\;\mathrm{d}k\\
+% &\qquad + \sum_{\bm{\alpha}}\int_0^\infty\frac{4\pi^2e^2}{\eta_mc^2k^2\Delta^2}\mathcal{A}_{\bm{\alpha}}^2(k,t)\;\mathrm{d}k\\
+% &\qquad + \sum_{\bm{\alpha}\bm{\alpha}'}\int_0^\infty\int_0^\infty\mathcal{A}_{\bm{\alpha}}(k,t)\mathcal{A}_{\bm{\alpha}'}(k',t)\sum_i\frac{2e_i^2}{\mu_{fi}c^2}\mathbf{X}_{\bm{\alpha}}[\mathbf{x}_{fi}(t),k]\cdot\mathbf{X}_{\bm{\alpha}'}[\mathbf{x}_{fi}(t),k']\;\mathrm{d}k\,\mathrm{d}k'\\
+&= \sum_{\bm{\alpha}}\int_0^\infty\left(\frac{c^2k^2}{4\pi}\mathit{\Pi}_{\bm{\alpha}}^2(k,t) + \left[\pi + \frac{4\pi^2e^2}{\eta_mc^2k^2\Delta^2}\right]\mathcal{A}_{\bm{\alpha}}^2(k,t)\right)\mathrm{d}k + \sum_{\bm{\beta}}\int_0^\infty\frac{4\pi^3e^2}{k^2\Delta^2}\left[\mathcal{Q}_{\bm{\beta}}^\parallel(k,t)\right]^2\;\mathrm{d}k\\
+&\qquad + \frac{e}{\Delta}\sum_{\bm{\beta}}\int_0^\infty\mathcal{Q}_{\bm{\beta}}^\parallel(k,t)\int\nabla\Phi_f(\mathbf{r},t)\cdot\mathbf{L}_{\bm{\beta}}(\mathbf{r},k)\;\mathrm{d}^3\mathbf{r}\,\mathrm{d}k + \frac{1}{8\pi}\int\left[\nabla\Phi_f(\mathbf{r},t)\right]^2\;\mathrm{d}^3\mathbf{r}\\
+&\qquad + \sum_{\bm{\alpha}\bm{\alpha}'}\int_0^\infty\int_0^\infty\mathcal{A}_{\bm{\alpha}}(k,t)\mathcal{A}_{\bm{\alpha}'}(k',t)\sum_i\frac{2e_i^2}{\mu_{fi}c^2}\mathbf{X}_{\bm{\alpha}}[\mathbf{x}_{fi}(t),k]\cdot\mathbf{X}_{\bm{\alpha}'}[\mathbf{x}_{fi}(t),k']\;\mathrm{d}k\,\mathrm{d}k'.
+\end{split}
+\end{equation}
+
+The interaction and driving Hamiltonian terms follow suit, such that
+\begin{equation}
+\begin{split}
+H_\mathrm{int} &= -\int\frac{e}{\eta_mc\Delta}\mathbf{P}_m^\perp(\mathbf{r},t)\cdot\mathbf{A}(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r} + \int_0^\infty\frac{\tilde{v}(\nu)}{\eta_\nu}\int\left(\tilde{\mathbf{P}}_\nu^\perp(\mathbf{r},t)\cdot\mathbf{Q}_m^\perp(\mathbf{r},t) + \tilde{\mathbf{P}}_\nu^\parallel(\mathbf{r},t)\cdot\mathbf{Q}_m^\parallel(\mathbf{r},t)\right)\mathrm{d}^3\mathbf{r}\\
+&\qquad - c\int\bm{\Pi}^\parallel(\mathbf{r},t)\cdot\nabla\Phi_m(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r}\\
+% &= -\frac{e}{\eta_m c\Delta}\sum_{\bm{\alpha}\bm{\beta}}\int_0^\infty\int_0^\infty\frac{\kappa^2}{2\pi^2}\mathcal{P}_{\bm{\beta}}^\perp(\kappa,t)2\mathcal{A}_{\bm{\alpha}}(k,t)\int\mathbf{X}_{\bm{\alpha}}(k,t)\cdot\mathbf{X}_{\bm{\beta}}(\mathbf{r},\kappa)\;\mathrm{d}^3\mathbf{r}\,\mathrm{d}k\,\mathrm{d}\kappa\\
+% &\qquad + \sum_{\bm{\beta}\bm{\gamma}}\int_0^\infty\int_0^\infty\int_0^\infty\frac{\tilde{v}(\nu)}{\eta_\nu}\frac{\kappa'^2}{2\pi^2}\tilde{\mathcal{P}}_{\bm{\gamma}}^\perp(\kappa',\nu;t)\mathcal{Q}_{\bm{\beta}}^\perp(\kappa,t)\int\mathbf{X}_{\bm{\beta}}(\mathbf{r},\kappa)\cdot\mathbf{X}_{\bm{\gamma}}(\mathbf{r},\kappa')\;\mathrm{d}^3\mathbf{r}\,\mathrm{d}\kappa\,\mathrm{d}\kappa'\,\mathrm{d}\nu\\
+% &\qquad + \sum_{\bm{\beta}\bm{\gamma}}\int_0^\infty\int_0^\infty\int_0^\infty\frac{\tilde{v}(\nu)}{\eta_\nu}\frac{\kappa'^2}{2\pi^2}\tilde{\mathcal{P}}_{\bm{\gamma}}^\parallel(\kappa',\nu;t)\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\int\mathbf{L}_{\bm{\beta}}(\mathbf{r},\kappa)\cdot\mathbf{L}_{\bm{\gamma}}(\mathbf{r},\kappa')\;\mathrm{d}^3\mathbf{r}\,\mathrm{d}\kappa\,\mathrm{d}\kappa'\,\mathrm{d}\nu\\
+% &\qquad - c\sum_{\bm{\beta}\bm{\beta}'}\int_0^\infty\int_0^\infty\frac{1}{4\pi c}\frac{4\pi e}{\Delta}\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\frac{4\pi e}{\Delta}\mathcal{Q}_{\bm{\beta}'}^\parallel(\kappa',t)\int\mathbf{L}_{\bm{\beta}}(\mathbf{r},\kappa)\cdot\mathbf{L}_{\bm{\beta}'}(\mathbf{r},\kappa')\;\mathrm{d}^3\mathbf{r}\,\mathrm{d}\kappa\,\mathrm{d}\kappa'\\
+% &\qquad - c\frac{1}{4\pi c}\sum_{\bm{\beta}}\int_0^\infty\frac{4\pi e}{\Delta}\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\int\mathbf{L}_{\bm{\beta}}(\mathbf{r},\kappa)\cdot\nabla\Phi_f(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r}\,\mathrm{d}\kappa\\
+% &= -\frac{2e}{\eta_mc\Delta}\sum_{\bm{\alpha}\bm{\beta}}\int_0^\infty\int_0^\infty\frac{\kappa^2}{2\pi^2}\mathcal{P}_{\bm{\beta}}^\perp(\kappa,t)\mathcal{A}_{\bm{\alpha}}(k,t)\frac{2\pi^2}{\kappa^2}\delta(\kappa - k)(1 - \delta_{p1}\delta_{m0})\delta_{\bm{\alpha}\bm{\beta}}\;\mathrm{d}\kappa\,\mathrm{d}k\\
+% &\qquad + \sum_{\bm{\beta}\bm{\gamma}}\int_0^\infty\int_0^\infty\int_0^\infty\frac{\tilde{v}(\nu)}{\eta_\nu}\frac{\kappa'^2}{2\pi^2}\tilde{\mathcal{P}}_{\bm{\gamma}}^\perp(\kappa',\nu;t)\mathcal{Q}_{\bm{\beta}}^\perp(\kappa,t)\frac{2\pi^2}{\kappa^2}\delta(\kappa - \kappa')(1 - \delta_{p1}\delta_{m0})\delta_{\bm{\beta}\bm{\gamma}}\;\mathrm{d}\kappa\,\mathrm{d}\kappa'\,\mathrm{d}\nu\\
+% &\qquad + \sum_{\bm{\beta}\bm{\gamma}}\int_0^\infty\int_0^\infty\int_0^\infty\frac{\tilde{v}(\nu)}{\eta_\nu}\frac{\kappa'^2}{2\pi^2}\tilde{\mathcal{P}}_{\bm{\gamma}}^\parallel(\kappa',\nu;t)\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\frac{2\pi^2}{\kappa^2}\delta(\kappa - \kappa')\delta_{TE}(1 - \delta_{p1}\delta_{m0})\delta_{\bm{\beta}\bm{\gamma}}\;\mathrm{d}\kappa\,\mathrm{d}\kappa'\,\mathrm{d}\nu\\
+% &\qquad - \frac{4\pi e^2}{\Delta^2}\sum_{\bm{\beta}\bm{\beta}'}\int_0^\infty\int_0^\infty\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\mathcal{Q}_{\bm{\beta}'}^\parallel(\kappa',t)\frac{2\pi^2}{\kappa^2}\delta(\kappa - \kappa')\delta_{TE}(1 - \delta_{p1}\delta_{m0})\delta_{\bm{\beta}\bm{\beta}'}\;\mathrm{d}\kappa\,\mathrm{d}\kappa'\\
+% &\qquad - \frac{e}{\Delta}\sum_{\bm{\beta}}\int_0^\infty\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\int\mathbf{L}_{\bm{\beta}}(\mathbf{r},\kappa)\cdot\nabla\Phi_f(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r}\,\mathrm{d}\kappa\\
+&= -\frac{2e}{\eta_mc\Delta}\sum_{\bm{\alpha}}\int_0^\infty\mathcal{A}_{\bm{\alpha}}(k,t)\mathcal{P}_{\bm{\alpha}}(k,t)\;\mathrm{d}k + \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty\frac{\tilde{v}(\nu)}{\eta_\nu}\mathcal{Q}_{\bm{\beta}}^\perp(\kappa,t)\tilde{\mathcal{P}}_{\bm{\beta}}^\perp(\kappa,\nu;t)\;\mathrm{d}\kappa\,\mathrm{d}\nu\\
+&\qquad + \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty\frac{\tilde{v}(\nu)}{\eta_\nu}\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\tilde{\mathcal{P}}_{\bm{\beta}}^\parallel(\kappa,\nu;t)\;\mathrm{d}\kappa\,\mathrm{d}\nu - \frac{4\pi e^2}{\Delta^2}\sum_{\bm{\beta}}\int_0^\infty\frac{2\pi^2}{\kappa^2}\left[\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\right]^2\mathrm{d}\kappa\\
+&\qquad - \frac{e}{\Delta}\sum_{\bm{\beta}}\int_0^\infty\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\int\mathbf{L}_{\bm{\beta}}(\mathbf{r},\kappa)\cdot\nabla\Phi_f(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r}\,\mathrm{d}\kappa
+\end{split}
+\end{equation}
+and, letting $\sum_ie_i\Phi_m[\mathbf{x}_{fi},t] = \int\rho_f(\mathbf{r},t)\Phi_m(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r}$ and $\rho_f(\mathbf{r},t) = -\nabla\cdot\nabla\Phi_f(\mathbf{r},t)/4\pi$ and using integration by parts, one finds
+\begin{equation}
+\begin{split}
+H_\mathrm{drive} &= -\sum_i\frac{e_i}{\mu_{fi}c}\mathbf{p}_{fi}(t)\cdot\mathbf{A}[\mathbf{x}_{fi}(t),t] - c\int\bm{\Pi}^\parallel(\mathbf{r},t)\cdot\nabla\Phi_f(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r}\\
+&\qquad - \int\frac{e}{\Delta}\nabla\cdot\mathbf{Q}_m^\parallel(\mathbf{r},t)\Phi_f(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r} + \int\rho_f(\mathbf{r},t)\Phi_m(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r}\\
+&= -\sum_i\frac{e_i}{\mu_{fi}c}\mathbf{p}_{fi}(t)\cdot\mathbf{A}[\mathbf{x}_{fi}(t),t] - c\int\frac{1}{4\pi c}\left[\nabla\Phi_f(\mathbf{r},t) + \nabla\Phi_m(\mathbf{r},t)\right]\cdot\nabla\Phi_f(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r}\\
+&\qquad + \int\frac{e}{\Delta}\mathbf{Q}_m^\parallel(\mathbf{r},t)\cdot\nabla\Phi_f(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r} + \frac{1}{4\pi}\int\nabla\Phi_f(\mathbf{r},t)\cdot\nabla\Phi_m(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r}\\
+&= -\sum_i\frac{e_i}{\mu_{fi}c}\mathbf{p}_{fi}(t)\cdot\sum_{\bm{\alpha}}\int_0^\infty 2\mathcal{A}_{\bm{\alpha}}(k,t)\mathbf{X}_{\bm{\alpha}}[\mathbf{x}_{fi}(t),k]\;\mathrm{d}k - \frac{1}{4\pi}\int\left[\nabla\Phi_f(\mathbf{r},t)\right]^2\mathrm{d}^3\mathbf{r}\\
+&\qquad + \frac{e}{\Delta}\sum_{\bm{\beta}}\int_0^\infty\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\int\mathbf{L}_{\bm{\beta}}(\mathbf{r},\kappa)\cdot\nabla\Phi_f(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r}\,\mathrm{d}\kappa
+\end{split}
+\end{equation}
+Finally, the nonlinear Hamiltonian is
+\begin{equation}\label{eq:HNL2}
+\begin{split}
+H_\mathrm{NL} &= \frac{1}{3}\sigma_0\eta_m\int\sum_{\bm{\beta}}\int_0^\infty\left[\mathcal{Q}_{\bm{\beta}}^\perp(\kappa,t)\mathbf{X}_{\bm{\beta}}(\mathbf{r},\kappa) + \mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\mathbf{L}_{\bm{\beta}}(\mathbf{r},\kappa)\right]\mathrm{d}\kappa\\
+&\qquad\cdot\left(\sum_{\bm{\beta}'}\int_0^\infty\left[\mathcal{Q}_{\bm{\beta}'}^\perp(\kappa',t)\mathbf{X}_{\bm{\beta}'}(\mathbf{r},\kappa') + \mathcal{Q}_{\bm{\beta}'}^\parallel(\kappa',t)\mathbf{L}_{\bm{\beta}'}(\mathbf{r},\kappa')\right]\mathrm{d}\kappa'\cdot\bm{1}_3\right.\\
+&\qquad\cdot\left.\sum_{\bm{\beta}''}\int_0^\infty\left[\mathcal{Q}_{\bm{\beta}''}^\perp(\kappa'',t)\mathbf{X}_{\bm{\beta}''}(\mathbf{r},\kappa'') + \mathcal{Q}_{\bm{\beta}''}^\parallel(\kappa'',t)\mathbf{L}_{\bm{\beta}''}(\mathbf{r},\kappa'')\right]\mathrm{d}\kappa''\right)\mathrm{d}^3\mathbf{r}\\
+&= \frac{1}{3}\sigma_0\eta_m\sum_{\bm{\beta}\bm{\beta}'\bm{\beta}'''}\left[\int_0^\infty\int_0^\infty\int_0^\infty\mathcal{Q}_{\bm{\beta}}^\perp(\kappa,t)\mathcal{Q}_{\bm{\beta}'}^\perp(\kappa',t)\mathcal{Q}_{\bm{\beta}''}^\perp(\kappa'',t)I_{\bm{\beta}\bm{\beta}'\bm{\beta}''}^{(1)}(\kappa,\kappa',\kappa'')\;\mathrm{d}\kappa\,\mathrm{d}\kappa'\,\mathrm{d}\kappa''\right.\\
+&\qquad + 3\int_0^\infty\int_0^\infty\int_0^\infty\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\mathcal{Q}_{\bm{\beta}'}^\perp(\kappa',t)\mathcal{Q}_{\bm{\beta}''}^\perp(\kappa'',t)I_{\bm{\beta}\bm{\beta}'\bm{\beta}''}^{(2)}(\kappa,\kappa',\kappa'')\;\mathrm{d}\kappa\,\mathrm{d}\kappa'\,\mathrm{d}\kappa''\\
+&\qquad + 3\int_0^\infty\int_0^\infty\int_0^\infty\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\mathcal{Q}_{\bm{\beta}'}^\parallel(\kappa',t)\mathcal{Q}_{\bm{\beta}''}^\perp(\kappa'',t)I_{\bm{\beta}\bm{\beta}'\bm{\beta}''}^{(3)}(\kappa,\kappa',\kappa'')\;\mathrm{d}\kappa\,\mathrm{d}\kappa'\,\mathrm{d}\kappa''\\
+&\qquad\left. + \int_0^\infty\int_0^\infty\int_0^\infty\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\mathcal{Q}_{\bm{\beta}'}^\parallel(\kappa',t)\mathcal{Q}_{\bm{\beta}''}^\parallel(\kappa'',t)I_{\bm{\beta}\bm{\beta}'\bm{\beta}''}^{(4)}(\kappa,\kappa',\kappa'')\;\mathrm{d}\kappa\,\mathrm{d}\kappa'\,\mathrm{d}\kappa'' \vphantom{\int_0^\infty} \right]
+\end{split}
+\end{equation}
+where
+\begin{equation}
+\begin{split}
+I_{\bm{\beta}\bm{\beta}'\bm{\beta}''}^{(1)}(\kappa,\kappa',\kappa'') &= \int\mathbf{X}_{\bm{\beta}}(\mathbf{r},\kappa)\cdot\left[\mathbf{X}_{\bm{\beta}'}(\mathbf{r},\kappa')\cdot\bm{1}_3\cdot\mathbf{X}_{\bm{\beta}''}(\mathbf{r},\kappa'')\right]\mathrm{d}^3\mathbf{r},\\
+I_{\bm{\beta}\bm{\beta}'\bm{\beta}''}^{(2)}(\kappa,\kappa',\kappa'') &= \int\mathbf{L}_{\bm{\beta}}(\mathbf{r},\kappa)\cdot\left[\mathbf{X}_{\bm{\beta}'}(\mathbf{r},\kappa')\cdot\bm{1}_3\cdot\mathbf{X}_{\bm{\beta}''}(\mathbf{r},\kappa'')\right]\mathrm{d}^3\mathbf{r},\\
+I_{\bm{\beta}\bm{\beta}'\bm{\beta}''}^{(3)}(\kappa,\kappa',\kappa'') &= \int\mathbf{L}_{\bm{\beta}}(\mathbf{r},\kappa)\cdot\left[\mathbf{L}_{\bm{\beta}'}(\mathbf{r},\kappa')\cdot\bm{1}_3\cdot\mathbf{X}_{\bm{\beta}''}(\mathbf{r},\kappa'')\right]\mathrm{d}^3\mathbf{r},\\
+I_{\bm{\beta}\bm{\beta}'\bm{\beta}''}^{(4)}(\kappa,\kappa',\kappa'') &= \int\mathbf{L}_{\bm{\beta}}(\mathbf{r},\kappa)\cdot\left[\mathbf{L}_{\bm{\beta}'}(\mathbf{r},\kappa')\cdot\bm{1}_3\cdot\mathbf{L}_{\bm{\beta}''}(\mathbf{r},\kappa'')\right]\mathrm{d}^3\mathbf{r},
+\end{split}
+\end{equation}
+and the last three terms of our Hamiltonian are unchanged:
+\begin{equation}
+\begin{split}
+H_f &= \sum_i\frac{\mathbf{p}_{fi}^2(t)}{2\mu_{fi}} + \sum_ie_i\Phi_f[\mathbf{x}_{fi}(t),t],\\
+H_\mathrm{bind} &= \sum_{\alpha,\beta = m,b,r}\left[u_{\alpha\beta}^\infty(\mathbf{r}) + u_{\beta\alpha}^\infty(\mathbf{r})\right],\\
+H_\mathrm{self} &= \sum_{\alpha = m,b,r,f}u_\alpha^\mathrm{self}.
+\end{split}
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\section{Quantization with Classical Free Charges}\label{sec:quantization}
+
+To make the process of quantization easier, we can begin by demoting the free charges from dynamical objects with trajectories dependent on the system motion to ``pump'' sources with predestined positions and velocities. In doing so, we can remove dependence on the free charge momenta $\mathbf{p}_{fi}(t)$ from the Hamiltonian $H$ and, in doing so, produce some dramatic simplification of the mathematics. Explicitly, one can see that, before $\mathbf{A}[\mathbf{x}_{fi}(t),t]$ is expanded in terms of its mode amplitudes and mode functions, three terms of the Hamiltonian depend on either or both of $\mathbf{p}_{fi}(t)$ or $\mathbf{A}[\mathbf{x}_{fi}(t),t]$:
+\begin{equation}
+\begin{split}
+H_f &= \sum_i\frac{\mathbf{p}_{fi}^2(t)}{2\mu_{fi}} + \ldots\\
+&= \sum_{i}\frac{1}{2}\mu_{fi}\dot{\mathbf{x}}_{fi}^2(t) + \sum_i\frac{e_i}{c}\dot{\mathbf{x}}_{fi}(t)\cdot\mathbf{A}[\mathbf{x}_{fi}(t),t] + \sum_i\frac{e_i^2}{2\mu_{fi}c^2}\mathbf{A}^2[\mathbf{x}_{fi}(t),t] + \ldots\\[0.5em]
+H_\mathrm{drive} &= -\sum_i\frac{e_i}{\mu_{fi}c}\mathbf{p}_{fi}(t)\cdot\mathbf{A}[\mathbf{x}_{fi}(t),t] + \ldots\\
+&= -\sum_i\frac{e_i}{c}\dot{\mathbf{x}}_{fi}(t)\cdot\mathbf{A}[\mathbf{x}_{fi}(t),t] - \sum_i\frac{e_i^2}{\mu_{fi}c^2}\mathbf{A}^2[\mathbf{x}_{fi}(t),t] + \ldots\\[0.5em]
+H_\mathrm{EM} &= \sum_i\frac{e_i^2}{2\mu_{fi}c^2}\mathbf{A}^2[\mathbf{x}_{fi}(t),t] + \ldots.
+\end{split}
+\end{equation}
+Here, the ellipses contain all of the terms within the three Hamiltonian terms that don't depend on $\mathbf{p}_{fi}(t)$ or $\mathbf{A}[\mathbf{x}_{fi}(t),t]$. Conveniently, $H_f + H_\mathrm{drive} + H_\mathrm{EM} = \sum_i\mu_{fi}\dot{\mathbf{x}}_{fi}^2(t)/2 + \ldots$, such that we can ignore all of the complicated free-charge-related terms of $H$ in the case where $\mathbf{p}_{fi}(t)$ does not need to be explicitly represented within the formalism.
+
+In addition, it turns out that the most convenient way to rearrange the terms within $H$ is to define $H = H_f' + H_m' + H_r + H_\mathrm{EM}' + H_\mathrm{int}' + H_\mathrm{drive}' + H_\mathrm{NL} + H_\mathrm{bind} + H_\mathrm{self}$ due to some convenient cancellations between the terms of Eqs. \eqref{eq:Hm2}--\eqref{eq:HNL2}. The new Hamiltonian terms are given by
+\begin{equation}
+\begin{split}
+H_f' &= H_f - \sum_i\frac{e_i}{\mu_{fi}c}\mathbf{p}_{fi}(t)\cdot\mathbf{A}[\mathbf{x}_{fi}(t),t] + \sum_i\frac{e_i^2}{2\mu_{fi}c^2}\mathbf{A}^2[\mathbf{x}_{fi}(t),t] + \frac{1}{8\pi}\int\left[\nabla\Phi_f(\mathbf{r},t)\right]^2\mathrm{d}^3\mathbf{r}\\
+&\qquad - \frac{1}{4\pi}\int\left[\nabla\Phi_f(\mathbf{r},t)\right]^2\;\mathrm{d}^3\mathbf{r}\\
+% &= \sum_i\frac{\mathbf{p}_{fi}^2(t)}{2\mu_{fi}} - \sum_i\frac{e_i}{\mu_{fi}c}\mathbf{p}_{fi}(t)\cdot\mathbf{A}[\mathbf{x}_{fi}(t),t] + \sum_i\frac{e_i^2}{2\mu_{fi}c^2}\mathbf{A}^2[\mathbf{x}_{fi}(t),t] + \sum_ie_i\Phi_f[\mathbf{x}_{fi}(t),t]\\
+% &\qquad - \frac{1}{8\pi}\int\left[\nabla\Phi_f(\mathbf{r},t)\right]^2\mathrm{d}^3\mathbf{r}\\
+% &= \sum_{i}\frac{1}{2}\mu_{fi}\dot{\mathbf{x}}_{fi}^2(t) + \sum_i\frac{e_i}{c}\dot{\mathbf{x}}_{fi}(t)\cdot\mathbf{A}[\mathbf{x}_{fi}(t),t] + \sum_i\frac{e_i^2}{2\mu_{fi}c^2}\mathbf{A}^2[\mathbf{x}_{fi}(t),t]\\
+% &\qquad - \sum_i\frac{e_i}{c}\dot{\mathbf{x}}_{fi}(t)\cdot\mathbf{A}[\mathbf{x}_{fi}(t),t] - \sum_i\frac{e_i^2}{\mu_{fi}c^2}\mathbf{A}^2[\mathbf{x}_{fi}(t),t] + \sum_i\frac{e_i^2}{2\mu_{fi}c^2}\mathbf{A}^2[\mathbf{x}_{fi}(t),t]\\
+% &\qquad + \int\rho_f(\mathbf{r},t)\Phi_f(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r} - \frac{1}{8\pi}\int\left[\nabla\Phi_f(\mathbf{r},t)\right]^2\mathrm{d}^3\mathbf{r}\\
+% &= \sum_{i}\frac{1}{2}\mu_{fi}\dot{\mathbf{x}}_{fi}^2(t) - \frac{1}{4\pi}\int\nabla\cdot\nabla\Phi_f(\mathbf{r},t)\Phi_f(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r} - \frac{1}{8\pi}\int\left[\nabla\Phi_f(\mathbf{r},t)\right]^2\mathrm{d}^3\mathbf{r}\\
+% &= \sum_{i}\frac{1}{2}\mu_{fi}\dot{\mathbf{x}}_{fi}^2(t) + \frac{1}{4\pi}\int\nabla\Phi_f(\mathbf{r},t)\cdot \nabla\Phi_f(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r} - \frac{1}{8\pi}\int\left[\nabla\Phi_f(\mathbf{r},t)\right]^2\mathrm{d}^3\mathbf{r}\\ 
+&= \sum_i\frac{1}{2}\mu_{fi}\dot{\mathbf{x}}^2_{fi}(t) + \frac{1}{8\pi}\int\left[\nabla\Phi_f(\mathbf{r},t)\right]^2\mathrm{d}^3\mathbf{r}
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+H_m' &= H_m + \sum_{\bm{\beta}}\int_0^\infty\frac{4\pi^3e^2}{k^2\Delta^2}\left[\mathcal{Q}_{\bm{\beta}}^\parallel(k,t)\right]^2\mathrm{d}k - \frac{4\pi e^2}{\Delta^2}\sum_{\bm{\beta}}\int_0^\infty\frac{2\pi^2}{\kappa^2}\left[\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\right]^2\mathrm{d}\kappa\\
+% &= \sum_{\bm{\beta}}\int_0^\infty\left(\frac{\kappa^2}{2\pi^2}\frac{\left[\mathcal{P}_{\bm{\beta}}^\perp(\kappa,t)\right]^2}{2\eta_m} + \frac{2\pi^2}{\kappa^2}\frac{\eta_m}{2}\left[\omega_0^2 + \Gamma^2\right]\left[\mathcal{Q}_{\bm{\beta}}^\perp(\kappa,t)\right]^2\right)\mathrm{d}\kappa\\
+% &\qquad + \sum_{\bm{\beta}}\int_0^\infty\left(\frac{\kappa^2}{2\pi^2}\frac{\left[\mathcal{P}_{\bm{\beta}}^\parallel(\kappa,t)\right]^2}{2\eta_m} + \frac{2\pi^2}{\kappa^2}\frac{\eta_m}{2}\left[\omega_0^2 + \Gamma^2 + \frac{8\pi e^2}{\eta_m\Delta^2}\right]\left[\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\right]^2\right)\mathrm{d}\kappa\\
+% &\qquad - \sum_{\bm{\beta}}\int_0^\infty\frac{4\pi e^2}{\Delta^2}\frac{\pi^2}{\kappa^2}\left[\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\right]^2\mathrm{d}\kappa\\
+% &= \sum_{\bm{\beta}}\int_0^\infty\left(\frac{\kappa^2}{2\pi^2}\frac{\left[\mathcal{P}_{\bm{\beta}}^\perp(\kappa,t)\right]^2}{2\eta_m} + \frac{2\pi^2}{\kappa^2}\frac{\eta_m}{2}\left[\omega_0^2 + \Gamma^2\right]\left[\mathcal{Q}_{\bm{\beta}}^\perp(\kappa,t)\right]^2\right)\mathrm{d}\kappa\\
+% &\qquad + \sum_{\bm{\beta}}\int_0^\infty\left(\frac{\kappa^2}{2\pi^2}\frac{\left[\mathcal{P}_{\bm{\beta}}^\parallel(\kappa,t)\right]^2}{2\eta_m} + \frac{2\pi^2}{\kappa^2}\frac{\eta_m}{2}\left[\omega_0^2 + \Gamma^2 + \frac{8\pi e^2}{\eta_m\Delta^2} - \frac{4\pi e^2}{\eta_m\Delta^2}\right]\left[\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\right]^2\right)\mathrm{d}\kappa\\
+&= \sum_{\bm{\beta}}\int_0^\infty\left(\frac{\kappa^2}{2\pi^2}\frac{\left[\mathcal{P}_{\bm{\beta}}^\perp(\kappa,t)\right]^2}{2\eta_m} + \frac{2\pi^2}{\kappa^2}\frac{\eta_m}{2}\left[\omega_0^2 + \Gamma^2\right]\left[\mathcal{Q}_{\bm{\beta}}^\perp(\kappa,t)\right]^2\right)\mathrm{d}\kappa\\
+&\qquad + \sum_{\bm{\beta}}\int_0^\infty\left(\frac{\kappa^2}{2\pi^2}\frac{\left[\mathcal{P}_{\bm{\beta}}^\parallel(\kappa,t)\right]^2}{2\eta_m} + \frac{2\pi^2}{\kappa^2}\frac{\eta_m}{2}\left[\omega_0^2 + \Gamma^2 + \frac{4\pi e^2}{\eta_m\Delta^2}\right]\left[\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\right]^2\right)\mathrm{d}\kappa
+\end{split}
+\end{equation}
+and 
+\begin{equation}
+\begin{split}\label{eq:HEM2}
+H_\mathrm{EM}' &= H_\mathrm{EM} - \sum_i\frac{e_i^2}{2\mu_{fi}c^2}\mathbf{A}^2[\mathbf{x}_{fi}(t),t] - \frac{1}{8\pi}\int\left[\nabla\Phi_f(\mathbf{r},t)\right]^2\mathrm{d}^3\mathbf{r}\\
+&\qquad - \frac{e}{\Delta}\sum_{\bm{\beta}}\int_0^\infty\mathcal{Q}_{\bm{\beta}}^\parallel(k,t)\int\nabla\Phi_f(\mathbf{r},t)\cdot\mathbf{L}_{\bm{\beta}}(\mathbf{r},k)\;\mathrm{d}^3\mathbf{r}\,\mathrm{d}k - \sum_{\bm{\beta}}\int_0^\infty\frac{4\pi^3e^2}{k^2\Delta^2}\left[\mathcal{Q}_{\bm{\beta}}^\parallel(k,t)\right]^2\mathrm{d}k\\
+&= \sum_{\bm{\alpha}}\int_0^\infty\left(\frac{c^2k^2}{4\pi}\mathit{\Pi}_{\bm{\alpha}}^2(k,t) + \left[\pi + \frac{4\pi^2e^2}{\eta_mc^2k^2\Delta^2}\right]\mathcal{A}_{\bm{\alpha}}^2(k,t)\right)\mathrm{d}k
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+H_\mathrm{int}' &= H_\mathrm{int} + \frac{4\pi e^2}{\Delta^2}\sum_{\bm{\beta}}\int_0^\infty\frac{2\pi^2}{\kappa^2}\left[\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\right]^2\mathrm{d}\kappa + \frac{e}{\Delta}\sum_{\bm{\beta}}\int_0^\infty\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\int\mathbf{L}_{\bm{\beta}}(\mathbf{r},\kappa)\cdot\nabla\Phi_f(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r}\,\mathrm{d}\kappa\\
+&= -\frac{2e}{\eta_mc\Delta}\sum_{\bm{\alpha}}\int_0^\infty\mathcal{A}_{\bm{\alpha}}(k,t)\mathcal{P}_{\bm{\alpha}}^\perp(k,t)\;\mathrm{d}k + \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty\frac{\tilde{v}(\nu)}{\eta_\nu}\mathcal{Q}_{\bm{\beta}}^\perp(\kappa,t)\tilde{\mathcal{P}}_{\bm{\beta}}^\perp(\kappa,\nu;t)\;\mathrm{d}\kappa\,\mathrm{d}\nu\\
+&\qquad + \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty\frac{\tilde{v}(\nu)}{\eta_\nu}\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\tilde{\mathcal{P}}_{\bm{\beta}}^\parallel(\kappa,\nu;t)\;\mathrm{d}\kappa\,\mathrm{d}\nu
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+H_\mathrm{drive}' &= H_\mathrm{drive} + \sum_i\frac{e_i}{\mu_{fi}c}\mathbf{p}_{fi}(t)\cdot\mathbf{A}[\mathbf{x}_{fi}(t),t] + \frac{1}{4\pi}\int\left[\nabla\Phi_f(\mathbf{r},t)\right]^2\mathrm{d}^3\mathbf{r}\\
+&\qquad + \frac{e}{\Delta}\sum_{\bm{\beta}}\int_0^\infty\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\int\mathbf{L}_{\bm{\beta}}(\mathbf{r},\kappa)\cdot\nabla\Phi_f(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r}\,\mathrm{d}\kappa\\
+&\qquad - \frac{e}{\Delta}\sum_{\bm{\beta}}\int_0^\infty\mathcal{Q}_{\bm{\beta}}^\parallel(k,t)\int\mathbf{L}_{\bm{\beta}}(\mathbf{r},k)\cdot\nabla\Phi_f(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r}\,\mathrm{d}k\\
+&= \frac{e}{\Delta}\sum_{\bm{\beta}}\int_0^\infty\mathcal{Q}_{\bm{\beta}}^\parallel(\kappa,t)\int\mathbf{L}_{\bm{\beta}}(\mathbf{r},\kappa)\cdot\nabla\Phi_f(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r}\,\mathrm{d}\kappa.
+\end{split}
+\end{equation}
+
+We are now ready to begin the quantization process. This can be formally conducted with the transformation
+\begin{equation}
+H\to\hat{H}
+\end{equation}
+alongside
+\begin{equation}
+\begin{split}
+\mathcal{Q}_{\bm{\beta}}^{\perp,\parallel}&\to\hat{\mathcal{Q}}_{\bm{\beta}}^{\perp,\parallel},\\
+\mathcal{P}_{\bm{\beta}}^{\perp,\parallel}&\to\hat{\mathcal{P}}_{\bm{\beta}}^{\perp,\parallel},\\
+\tilde{\mathcal{Q}}_{\bm{\gamma}}^{\perp,\parallel}&\to\hat{\tilde{\mathcal{Q}}}_{\bm{\gamma}}^{\perp,\parallel},\\
+\tilde{\mathcal{P}}_{\bm{\gamma}}^{\perp,\parallel}&\to\hat{\tilde{\mathcal{P}}}_{\bm{\gamma}}^{\perp,\parallel},\\
+\mathcal{A}_{\bm{\alpha}}&\to\hat{\mathcal{A}}_{\bm{\alpha}},\\
+\mathit{\Pi}_{\bm{\alpha}}&\to\hat{\mathit{\Pi}}_{\bm{\alpha}}.
+\end{split}
+\end{equation}
+Each of our new coordinate and momentum operators obeys an equal-time commutation relation with its conjugate operator, such that
+\begin{equation}
+\begin{split}
+\left[\hat{\mathcal{A}}_{\bm{\alpha}}(k,t),\hat{\mathit{\Pi}}_{\bm{\alpha}'}(k',t)\right] &= \mathrm{i}\hbar\delta_{\bm{\alpha}\bm{\alpha}'}\delta(k - k'),\\
+\left[\hat{\mathcal{Q}}_{\bm{\beta}}^{\perp,\parallel}(\kappa,t),\hat{\mathcal{P}}_{\bm{\beta}'}^{\perp,\parallel}(\kappa',t)\right] &= \mathrm{i}\hbar\delta_{\bm{\beta}\bm{\beta}'}\delta(\kappa - \kappa'),\\
+\left[\hat{\tilde{\mathcal{Q}}}_{\bm{\gamma}}^{\perp,\parallel}(\kappa,\nu;t),\hat{\tilde{\mathcal{P}}}_{\nu'\bm{\gamma}'}^{\perp,\parallel}(\kappa',\nu';t)\right] &= \mathrm{i}\hbar\delta_{\bm{\gamma}\bm{\gamma}'}\delta(\kappa - \kappa')\delta(\nu - \nu').
+\end{split}
+\end{equation}
+Further, we can define boson ladder operators for each of the coordinate-momentum pairs. Beginning with the operators corresponding to the field variables, we can define
+\begin{equation}
+\hat{a}_{\bm{\alpha}}(k,t) = P(k)\left[u(k)\hat{\mathcal{A}}_{\bm{\alpha}}(k,t) + \mathrm{i}v(k)\hat{\mathcal{P}}_{\bm{\alpha}}(k,t)\right],
+\end{equation}
+where the prefactors $P(k)$, $u(k)$, and $v(k)$ must be determined from the constraints of the system. In particular, we want the ladder operators to provide an EM Hamiltonian
+\begin{equation}\label{eq:HEM3}
+\hat{H}_{\mathrm{EM}}' = \sum_{\bm{\alpha}}\int_0^\infty\frac{1}{2}\hbar\tilde{k}c\left[\hat{a}_{\bm{\alpha}}(k,t)\hat{a}_{\bm{\alpha}}^\dagger(k,t) + \hat{a}_{\bm{\alpha}}^\dagger(k,t)\hat{a}_{\bm{\alpha}}(k,t)\right]\mathrm{d}k
+\end{equation}
+and to have commutators
+\begin{equation}\label{eq:aComm}
+\begin{split}
+[\hat{a}_{\bm{\alpha}}(k,t),\hat{a}_{\bm{\alpha}'}^\dagger(k',t)], &= \delta_{\bm{\alpha}\bm{\alpha}'}\delta(k - k')\\
+[\hat{a}_{\bm{\alpha}}(k,t),\hat{a}_{\bm{\alpha}'}(k',t)] &= [\hat{a}_{\bm{\alpha}}^\dagger(k,t),\hat{a}_{\bm{\alpha}'}^\dagger(k',t)] = 0,
+\end{split}
+\end{equation}
+wherein $\hbar\tilde{k}c$ is a characteristic eigenenergy of the photon mode of wavenumber $k$. The form of $\tilde{k}$ can be found by plugging the explicit form of $\hat{a}_{\bm{\alpha}}(k,t)$ into Eqs. \eqref{eq:HEM3} and \eqref{eq:aComm} such that
+\begin{equation}\label{eq:HEMunknownCoeff}
+\hat{H}_\mathrm{EM}' = \sum_{\bm{\alpha}}\int_0^\infty\hbar\tilde{k}c\left[P^2(k)u^2(k)\hat{\mathcal{A}}^2_{\bm{\alpha}}(k,t) + P^2(k)v^2(k)\hat{\mathit{\Pi}}_{\bm{\alpha}}^2(k,t)\right]\mathrm{d}k
+\end{equation}
+and
+\begin{equation}\label{eq:aComm2}
+[\hat{a}_{\bm{\alpha}}(k,t),\hat{a}_{\bm{\alpha}'}^\dagger(k',t)] = 2\hbar P^2(k)u(k)v(k)\delta_{\bm{\alpha}\bm{\alpha}'}\delta(k - k').
+\end{equation}
+Comparing Eq. \eqref{eq:HEMunknownCoeff} with Eq. \eqref{eq:HEM2} and Eq. \eqref{eq:aComm2} with Eq. \eqref{eq:aComm}, we can see that the definitions $A(k) = \pi + 4\pi^2e^2/\eta_mc^2k^2\Delta^2$ and $B(k) = c^2k^2/4\pi$ result in the system of equations
+\begin{equation}\label{eq:prefactorSystem}
+\begin{split}
+\hbar\tilde{k}cP^2(k)u^2(k) &= A(k),\\
+\hbar\tilde{k}cP^2(k)v^2(k) &= B(k),\\
+2\hbar P^2(k)u(k)v(k) &= 1.
+\end{split}
+\end{equation}
+This system of equations contains three equalities and four unknowns [$u(k)$, $v(k)$, $P(k)$, and $\tilde{k}$], such that we have some freedom in defining each quantity. However, we can pin down $\tilde{k}$ immediately. We find from the first and second lines above that $u(k) = [1/P(k)]\sqrt{A(k)/\hbar\tilde{k}c}$ and $v(k) = [1/P(k)]\sqrt{B(k)/\hbar\tilde{k}c}$. Plugging these results into the third line we find that $2\sqrt{A(k)B(k)}/\tilde{k}c = 1$. Therefore, substituting the full forms of $A(k)$ and $B(k)$, we find
+\begin{equation}
+\tilde{k} = k\sqrt{1 + \frac{4\pi e^2}{\eta_mc^2k^2\Delta^2}}.
+\end{equation}
+Finally, we can see that Eq. \eqref{eq:prefactorSystem} has no solutions except in the case $P(k) = \sqrt{1/2\hbar u(k)v(k)}$, which quickly leads us to the final constraint
+\begin{equation}
+\frac{u(k)}{v(k)} = 2\pi\frac{\tilde{k}c}{k^2c^2}.
+\end{equation}
+We are free to choose $u(k) = \tilde{k}c$ such that $v(k) = k^2c^2/2\pi$ and $P(k) = \sqrt{\pi/\hbar\tilde{k}ck^2c^2}$, giving us
+\begin{equation}
+\hat{a}_{\bm{\alpha}}(k,t) = \sqrt{\frac{\pi}{\hbar\tilde{k}ck^2c^2}}\left[\tilde{k}c\hat{\mathcal{A}}_{\bm{\alpha}}(k,t) + \mathrm{i}\frac{k^2c^2}{2\pi}\hat{\mathit{\Pi}}_{\bm{\alpha}}(k,t)\right].
+\end{equation}
+
+We can repeat this process for $H_m'$ and $H_r$, the ladder-operator forms of which we take to be
+\begin{equation}
+\begin{split}
+\hat{H}_m' &= \sum_{\bm{\beta}}\int_0^\infty\frac{1}{2}\hbar\Omega_\perp\left[\hat{b}_{\bm{\beta}}^\perp(\kappa,t)\hat{b}_{\bm{\beta}}^{\perp\dagger}(\kappa,t) + \hat{b}_{\bm{\beta}}^{\perp\dagger}(\kappa,t)\hat{b}_{\bm{\beta}}^\perp(\kappa,t)\right]\mathrm{d}\kappa\\
+&\qquad + \sum_{\bm{\beta}}\int_0^\infty\frac{1}{2}\hbar\Omega_\parallel\left[\hat{b}_{\bm{\beta}}^\parallel(\kappa,t)\hat{b}_{\bm{\beta}}^{\parallel\dagger}(\kappa,t) + \hat{b}_{\bm{\beta}}^{\parallel\dagger}(\kappa,t)\hat{b}_{\bm{\beta}}^\parallel(\kappa,t)\right]\mathrm{d}\kappa,\\[0.5em]
+\hat{H}_r &= \sum_{\bm{\gamma}}\int_0^\infty\int_0^\infty\frac{1}{2}\hbar\nu\left[\hat{c}_{\bm{\gamma}}^\perp(\kappa,\nu;t)\hat{c}_{\bm{\gamma}}^{\perp\dagger}(\kappa,\nu;t) + \hat{c}_{\bm{\gamma}}^{\perp\dagger}(\kappa,\nu;t)\hat{c}_{\bm{\gamma}}^\perp(\kappa,\nu;t)\right]\mathrm{d}\kappa\,\mathrm{d}\nu\\
+&\qquad + \sum_{\bm{\gamma}}\int_0^\infty\int_0^\infty\frac{1}{2}\hbar\nu\left[\hat{c}_{\bm{\gamma}}^\parallel(\kappa,\nu;t)\hat{c}_{\bm{\gamma}}^{\parallel\dagger}(\kappa,\nu;t) + \hat{c}_{\bm{\gamma}}^{\parallel\dagger}(\kappa,\nu;t)\hat{c}_{\bm{\gamma}}^\parallel(\kappa,\nu;t)\right]\mathrm{d}\kappa\,\mathrm{d}\nu
+\end{split}
+\end{equation}
+with
+\begin{equation}
+\begin{split}
+\Omega_\perp^2 &= \omega_0^2 + \Gamma^2,\\
+\Omega_\parallel^2 &= \omega_0^2 + \Gamma^2 + \frac{4\pi e^2}{\Delta^2\eta_m}.\\
+\end{split}    
+\end{equation}
+The resulting definitions of the ladder operators are
+\begin{equation}
+\begin{split}
+\hat{b}_{\bm{\beta}}^\perp(\kappa,t) &= \sqrt{\frac{\pi^2\eta_m}{\kappa^2\hbar\Omega_\perp}}\left[\Omega_\perp\hat{\mathcal{Q}}_{\bm{\beta}}^\perp(\kappa,t) + \mathrm{i}\frac{\kappa^2}{2\pi^2\eta_m}\hat{\mathcal{P}}_{\bm{\beta}}^\perp(\kappa,t)\right],\\
+\hat{b}_{\bm{\beta}}^\parallel(\kappa,t) &= \sqrt{\frac{\pi^2 \eta_m}{\kappa^2\hbar\Omega_\parallel}}\left[\Omega_\parallel\hat{\mathcal{Q}}_{\bm{\beta}}^\parallel(\kappa,t) + \mathrm{i}\frac{\kappa^2}{2\pi^2\eta_m}\hat{\mathcal{P}}_{\bm{\beta}}^\parallel(\kappa,t)\right],\\
+\hat{c}_{\bm{\gamma}}^\perp(\kappa,\nu;t) &= \sqrt{\frac{\pi^2\eta_\nu}{\kappa^2\hbar\nu}}\left[-\mathrm{i}\nu\hat{\tilde{\mathcal{Q}}}_{\bm{\gamma}}^\perp(\kappa,\nu;t) + \frac{\kappa^2}{2\pi^2\eta_\nu}\hat{\tilde{\mathcal{P}}}_{\bm{\gamma}}^\perp(\kappa,\nu;t)\right],\\
+\hat{c}_{\bm{\gamma}}^\parallel(\kappa,\nu;t) &= \sqrt{\frac{\pi^2\eta_\nu}{\kappa^2\hbar\nu}}\left[-\mathrm{i}\nu\hat{\tilde{\mathcal{Q}}}_{\bm{\gamma}}^\parallel(\kappa,\nu;t) + \frac{\kappa^2}{2\pi^2 \eta_\nu}\hat{\tilde{\mathcal{P}}}_{\bm{\gamma}}^\parallel(\kappa,\nu;t)\right],
+\end{split}
+\end{equation}
+which can be straightforwardly be seen through the last line of Eq. \eqref{eq:prefactorSystem} to obey the commutation relations
+\begin{equation}
+\begin{split}
+\left[\hat{b}_{\bm{\beta}}^\perp(\kappa,t),\hat{b}_{\bm{\beta}}^{\perp\dagger}(\kappa,t)\right] &= \delta_{\bm{\beta}\bm{\beta}'}\delta(\kappa - \kappa'),\\
+\left[\hat{b}_{\bm{\beta}}^\parallel(\kappa,t),\hat{b}_{\bm{\beta}}^{\parallel\dagger}(\kappa,t)\right] &= \delta_{\bm{\beta}\bm{\beta}'}\delta(\kappa - \kappa'),\\
+\left[\hat{c}_{\bm{\gamma}}^\perp(\kappa,\nu;t),\hat{c}_{\bm{\gamma}}^{\perp\dagger}(\kappa,\nu;t)\right] &= \delta_{\bm{\gamma}\bm{\gamma}'}\delta(\kappa - \kappa')\delta(\nu - \nu'),\\
+\left[\hat{c}_{\bm{\gamma}}^\parallel(\kappa,\nu;t),\hat{c}_{\bm{\gamma}}^{\parallel\dagger}(\kappa,\nu;t)\right] &= \delta_{\bm{\gamma}\bm{\gamma}'}\delta(\kappa - \kappa')\delta(\nu - \nu').
+\end{split}
+\end{equation}
+In total, the alternate forms of our generalized coordinates and momenta are
+\begin{equation}
+\begin{split}
+\hat{\mathcal{A}}_{\bm{\alpha}}(k,t) &= \sqrt{\frac{\hbar k^2c^2}{4\pi\tilde{k}c}}\left[\hat{a}_{\bm{\alpha}}(k,t) + \hat{a}^\dagger_{\bm{\alpha}}(k,t)\right],\\
+\hat{\mathit{\Pi}}_{\bm{\alpha}}(k,t) &= -\mathrm{i}\sqrt{\frac{\pi\hbar\tilde{k}c}{k^2c^2}}\left[\hat{a}_{\bm{\alpha}}(k,t) - \hat{a}_{\bm{\alpha}}^\dagger(k,t)\right],
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+\hat{\mathcal{Q}}_{\bm{\beta}}^\perp(\kappa,t) &= \sqrt{\frac{\hbar\kappa^2}{4\pi^2\eta_m\Omega_\perp}}\left[\hat{b}_{\bm{\beta}}^\perp(\kappa,t) + \hat{b}_{\bm{\beta}}^{\perp\dagger}(\kappa,t)\right],\\
+\hat{\mathcal{P}}_{\bm{\beta}}^\perp(\kappa,t) &= -\mathrm{i}\sqrt{\frac{\pi^2\eta_m\hbar\Omega_\perp}{\kappa^2}}\left[\hat{b}_{\bm{\beta}}^\perp(\kappa,t) - \hat{b}_{\bm{\beta}}^{\perp\dagger}(\kappa,t)\right],\\[0.5em]
+\hat{\mathcal{Q}}_{\bm{\beta}}^\parallel(\kappa,t) &= \sqrt{\frac{\hbar\kappa^2}{4\pi^2\eta_m\Omega_\parallel}}\left[\hat{b}_{\bm{\beta}}^\parallel(\kappa,t) + \hat{b}_{\bm{\beta}}^{\parallel\dagger}(\kappa,t)\right],\\
+\hat{\mathcal{P}}_{\bm{\beta}}^\parallel(\kappa,t) &= -\mathrm{i}\sqrt{\frac{\pi^2\eta_m\hbar\Omega_\parallel}{\kappa^2}}\left[\hat{b}_{\bm{\beta}}^\parallel(\kappa,t) - \hat{b}_{\bm{\beta}}^{\parallel\dagger}(\kappa,t)\right],
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+\hat{\tilde{\mathcal{Q}}}_{\bm{\gamma}}^\perp(\kappa,\nu;t) &= \mathrm{i}\sqrt{\frac{\hbar\kappa^2}{4\pi^2\eta_\nu\nu}}\left[\hat{c}_{\bm{\gamma}}^{\perp}(\kappa,\nu;t) - \hat{c}_{\bm{\gamma}}^{\perp\dagger}(\kappa,\nu;t)\right],\\
+\hat{\tilde{\mathcal{P}}}_{\bm{\gamma}}^\perp(\kappa,\nu;t) &= \sqrt{\frac{\pi^2\eta_\nu\hbar\nu}{\kappa^2}}\left[\hat{c}_{\bm{\gamma}}^\perp(\kappa,\nu;t) + \hat{c}_{\bm{\gamma}}^{\perp\dagger}(\kappa,\nu;t)\right],\\[0.5em]
+\hat{\tilde{\mathcal{Q}}}_{\bm{\gamma}}^\parallel(\kappa,\nu;t) &= \mathrm{i}\sqrt{\frac{\hbar\kappa^2}{4\pi^2\eta_\nu\nu}}\left[\hat{c}_{\bm{\gamma}}^{\parallel}(\kappa,\nu;t) - \hat{c}_{\bm{\gamma}}^{\parallel\dagger}(\kappa,\nu;t)\right],\\
+\hat{\tilde{\mathcal{P}}}_{\bm{\gamma}}^\parallel(\kappa,\nu;t) &= \sqrt{\frac{\pi^2\eta_\nu\hbar\nu}{\kappa^2}}\left[\hat{c}_{\bm{\gamma}}^\parallel(\kappa,\nu;t) + \hat{c}_{\bm{\gamma}}^{\parallel\dagger}(\kappa,\nu;t)\right].
+\end{split}
+\end{equation}
+
+The last interesting linear parts of our Hamiltonian to be quantized are the interaction and driving Hamiltonians $H_\mathrm{int}'$ and $H_\mathrm{drive}'$. The former is given by
+\begin{equation}
+\begin{split}
+\hat{H}_\mathrm{int}' &= -\frac{2e}{\eta_mc\Delta}\sum_{\bm{\alpha}}\int_0^\infty\hat{\mathcal{A}}_{\bm{\alpha}}(k,t)\hat{\mathcal{P}}_{\bm{\alpha}}^\perp(k,t)\;\mathrm{d}k + \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty\frac{\tilde{v}(\nu)}{\eta_\nu}\hat{\mathcal{Q}}_{\bm{\beta}}^\perp(\kappa,t)\hat{\tilde{\mathcal{P}}}_{\bm{\beta}}^\perp(\kappa,\nu;t)\;\mathrm{d}\kappa\,\mathrm{d}\nu\\
+&\qquad + \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty\frac{\tilde{v}(\nu)}{\eta_\nu}\hat{\mathcal{Q}}_{\bm{\beta}}^\parallel(\kappa,t)\hat{\tilde{\mathcal{P}}}_{\bm{\beta}}^\parallel(\kappa,\nu;t)\;\mathrm{d}\kappa\,\mathrm{d}\nu\\
+% &= -\frac{2e}{\eta_mc\Delta}\sum_{\bm{\alpha}}\int_0^\infty\sqrt{\frac{\hbar k^2c^2}{4\pi\tilde{k}c}}\left[\hat{a}_{\bm{\alpha}}(k,t) + \hat{a}_{\bm{\alpha}}^\dagger(k,t)\right](-\mathrm{i})\sqrt{\frac{\pi^2\eta_m\hbar\Omega_\perp}{k^2}}\left[\hat{b}_{\bm{\alpha}}^\perp(k,t) - \hat{b}_{\bm{\alpha}}^{\perp\dagger}(k,t)\right]\mathrm{d}k\\
+% &\qquad + \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty\frac{\tilde{v}(\nu)}{\eta_\nu}\sqrt{\frac{\hbar \kappa^2}{4\pi^2\eta_m\Omega_\perp}}\left[\hat{b}_{\bm{\beta}}^\perp(\kappa,t) + \hat{b}_{\bm{\beta}}^{\perp,\dagger}(\kappa,t)\right]\sqrt{\frac{\pi^2\eta_\nu\hbar\nu}{\kappa^2}}\left[\hat{c}_{\bm{\beta}}^\perp(\kappa,\nu;t) + \hat{c}_{\bm{\beta}}^{\perp\dagger}(\kappa,\nu;t)\right]\mathrm{d}\kappa\,\mathrm{d}\nu\\
+% &\qquad + \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty\frac{\tilde{v}(\nu)}{\eta_\nu}\sqrt{\frac{\hbar \kappa^2}{4\pi^2\eta_m\Omega_\parallel}}\left[\hat{b}_{\bm{\beta}}^\parallel(\kappa,t) + \hat{b}_{\bm{\beta}}^{\parallel\dagger}(\kappa,t)\right]\sqrt{\frac{\pi^2\eta_\nu\hbar\nu}{\kappa^2}}\left[\hat{c}_{\bm{\beta}}^\parallel(\kappa,\nu;t) + \hat{c}_{\bm{\beta}}^{\parallel\dagger}(\kappa,\nu;t)\right]\mathrm{d}\kappa\,\mathrm{d}\nu\\
+% &= \sum_{\bm{\alpha}}\int_0^\infty\mathrm{i}\frac{\hbar e}{\Delta}\sqrt{\frac{\pi\Omega_\perp}{\eta_m \tilde{k}c}}\left[\hat{a}_{\bm{\alpha}}(k,t) + \hat{a}_{\bm{\alpha}}^\dagger(k,t)\right]\left[\hat{b}_{\bm{\alpha}}^\perp(k,t) - \hat{b}_{\bm{\alpha}}^{\perp\dagger}(k,t)\right]\mathrm{d}k\\
+% &\qquad + \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty\frac{\hbar\tilde{v}(\nu)}{2}\sqrt{\frac{\nu}{\eta_\nu\eta_m\Omega_\perp}}\left[\hat{b}_{\bm{\beta}}^\perp(\kappa,t) + \hat{b}_{\bm{\beta}}^{\perp,\dagger}(\kappa,t)\right]\left[\hat{c}_{\bm{\beta}}^\perp(\kappa,\nu;t) + \hat{c}_{\bm{\beta}}^{\perp\dagger}(\kappa,\nu;t)\right]\mathrm{d}\kappa\,\mathrm{d}\nu\\
+% &\qquad + \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty\frac{\hbar\tilde{v}(\nu)}{2}\sqrt{\frac{\nu}{\eta_\nu\eta_m\Omega_\parallel}}\left[\hat{b}_{\bm{\beta}}^\parallel(\kappa,t) + \hat{b}_{\bm{\beta}}^{\parallel\dagger}(\kappa,t)\right]\left[\hat{c}_{\bm{\beta}}^\parallel(\kappa,\nu;t) + \hat{c}_{\bm{\beta}}^{\parallel\dagger}(\kappa,\nu;t)\right]\mathrm{d}\kappa\,\mathrm{d}\nu\\
+&= \mathrm{i}\frac{\hbar}{2}\sum_{\bm{\alpha}}\int_0^\infty\Lambda(k)\left[\hat{a}_{\bm{\alpha}}(k,t) + \hat{a}_{\bm{\alpha}}^\dagger(k,t)\right]\left[\hat{b}_{\bm{\alpha}}^\perp(k,t) - \hat{b}_{\bm{\alpha}}^{\perp\dagger}(k,t)\right]\mathrm{d}k\\
+&\qquad + \frac{\hbar}{2}\sum_{\bm{\beta}}\int_0^\infty V_\perp(\nu)\left[\hat{b}_{\bm{\beta}}^\perp(\kappa,t) + \hat{b}_{\bm{\beta}}^{\perp,\dagger}(\kappa,t)\right]\left[\hat{c}_{\bm{\beta}}^\perp(\kappa,\nu;t) + \hat{c}_{\bm{\beta}}^{\perp\dagger}(\kappa,\nu;t)\right]\mathrm{d}\kappa\,\mathrm{d}\nu\\
+&\qquad + \frac{\hbar}{2}\sum_{\bm{\beta}}\int_0^\infty V_\parallel(\nu)\left[\hat{b}_{\bm{\beta}}^\parallel(\kappa,t) + \hat{b}_{\bm{\beta}}^{\parallel\dagger}(\kappa,t)\right]\left[\hat{c}_{\bm{\beta}}^\parallel(\kappa,\nu;t) + \hat{c}_{\bm{\beta}}^{\parallel\dagger}(\kappa,\nu;t)\right]\mathrm{d}\kappa\,\mathrm{d}\nu
+\end{split}
+\end{equation}
+wherein the coupling functions are
+\begin{equation}\label{eq:couplingFunctions}
+\begin{split}
+\Lambda(\kappa) &= \frac{2e}{\Delta}\sqrt{\frac{\pi\Omega_\perp}{\eta_m\tilde{\kappa}c}},\\
+V_\perp(\nu) &= \tilde{v}(\nu)\sqrt{\frac{\nu}{\eta_m\eta_\nu\Omega_\perp}},\\
+V_\parallel(\nu) &= \tilde{v}(\nu)\sqrt{\frac{\nu}{\eta_m\eta_\nu\Omega_\parallel}},
+\end{split}
+\end{equation}
+and $\tilde{\kappa} = \kappa\sqrt{1 + 4\pi e^2/\eta_mc^2\kappa^2\Delta^2}$. The latter is 
+\begin{equation}
+\begin{split}
+\hat{H}_\mathrm{drive}' &= \frac{e}{\Delta}\sum_{\bm{\beta}}\int_0^\infty\hat{\mathcal{Q}}_{\bm{\beta}}^\parallel(\kappa,t)\int\mathbf{L}_{\bm{\beta}}(\mathbf{r},\kappa)\cdot\nabla\Phi_f(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r}\,\mathrm{d}\kappa\\
+&= \frac{e}{\Delta}\sum_{\bm{\beta}}\int_0^\infty\sqrt{\frac{\hbar\kappa^2}{4\pi^2\eta_m\Omega_\parallel}}\left[\hat{b}_{\bm{\beta}}^\parallel(\kappa,t) + \hat{b}_{\bm{\beta}}^\parallel(\kappa,t)\right]\int\mathbf{L}_{\bm{\beta}}(\mathbf{r},\kappa)\cdot\nabla\Phi_f(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r}\,\mathrm{d}\kappa\\
+&= \sum_{\bm{\beta}}\int_0^\infty F_{\bm{\beta}}(\kappa,t)\left[\hat{b}_{\bm{\beta}}^\parallel(\kappa,t) + \hat{b}_{\bm{\beta}}^\parallel(\kappa,t)\right]\mathrm{d}\kappa
+\end{split}
+\end{equation}
+where
+\begin{equation}
+F_{\bm{\beta}}(\kappa,t) = \sqrt{\frac{e^2}{\Delta^2}\frac{\hbar\kappa^2}{4\pi^2\eta_m\Omega_\parallel}}\int\mathbf{L}_{\bm{\beta}}(\mathbf{r},\kappa)\cdot\nabla\Phi_f(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r}
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Diagonalization of the Linear Hamiltonian}
+
+We will ignore the exact forms of $\hat{H}_\mathrm{bind}$ and $\hat{H}_\mathrm{self}$, as they will not contribute meaningfully to the dynamics of our system. Further, to describe the nonlinear dynamics stemming from $\hat{H}_\mathrm{NL}$ in a useful and convenient fashion, it is best to first focus on the linear Hamiltonian,
+\begin{equation}
+\hat{H}_0 = \hat{H}_\mathrm{EM}' + \hat{H}_m' + \hat{H}_r + \hat{H}_\mathrm{int}' + \hat{H}_\mathrm{drive}',
+\end{equation}
+where we have implicitly defined $\hat{H} = \hat{H}_0 + \hat{H}_\mathrm{NL} + \hat{H}_\mathrm{bind} + \hat{H}_\mathrm{self}$. This linear Hamiltonian can be diagonalized using the Fano diagonalization method as shown in \citet{huttner1992quantization}. This diagonalization is most simply done by breaking the linear Hamiltonian into its transverse and longitudinal pieces, which are uncoupled. In other words,
+\begin{equation}
+\hat{H}_0 = \hat{H}_0^\perp + \hat{H}_0^\parallel,
+\end{equation}
+wherein
+\begin{equation}
+\hat{H}_0^i = \hat{H}_\mathrm{EM}'^i + \hat{H}_m'^i + \hat{H}_r^i + \hat{H}_\mathrm{int}'^i + \hat{H}_\mathrm{drive}'^i
+\end{equation}
+with $i\in\{\perp,\parallel\}$. In detail, we find that
+\begin{equation}
+\begin{split}
+\hat{H}_\mathrm{EM}'^\perp &= \hat{H}_{\mathrm{EM}}' = \sum_{\bm{\alpha}}\int_0^\infty\frac{1}{2}\hbar\tilde{k}c\left[\hat{a}_{\bm{\alpha}}(k,t)\hat{a}_{\bm{\alpha}}^\dagger(k,t) + \hat{a}_{\bm{\alpha}}^\dagger(k,t)\hat{a}_{\bm{\alpha}}(k,t)\right]\mathrm{d}k\\
+\hat{H}_\mathrm{EM}'^\parallel &= 0,
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+\hat{H}_m'^\perp &= \sum_{\bm{\beta}}\int_0^\infty\frac{1}{2}\hbar\Omega_\perp\left[\hat{b}_{\bm{\beta}}^\perp(\kappa,t)\hat{b}_{\bm{\beta}}^{\perp\dagger}(\kappa,t) + \hat{b}_{\bm{\beta}}^{\perp\dagger}(\kappa,t)\hat{b}_{\bm{\beta}}^\perp(\kappa,t)\right]\mathrm{d}\kappa\\
+\hat{H}_m'^\parallel &= \sum_{\bm{\beta}}\int_0^\infty\frac{1}{2}\hbar\Omega_\parallel\left[\hat{b}_{\bm{\beta}}^\parallel(\kappa,t)\hat{b}_{\bm{\beta}}^{\parallel\dagger}(\kappa,t) + \hat{b}_{\bm{\beta}}^{\parallel\dagger}(\kappa,t)\hat{b}_{\bm{\beta}}^\parallel(\kappa,t)\right]\mathrm{d}\kappa,
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+\hat{H}_r'^\perp &= \sum_{\bm{\gamma}}\int_0^\infty\int_0^\infty\frac{1}{2}\hbar\nu\left[\hat{c}_{\bm{\gamma}}^\perp(\kappa,\nu;t)\hat{c}_{\bm{\gamma}}^{\perp\dagger}(\kappa,\nu;t) + \hat{c}_{\bm{\gamma}}^{\perp\dagger}(\kappa,\nu;t)\hat{c}_{\bm{\gamma}}^\perp(\kappa,\nu;t)\right]\mathrm{d}\kappa\,\mathrm{d}\nu\\
+\hat{H}_r'^\parallel &= \sum_{\bm{\gamma}}\int_0^\infty\int_0^\infty\frac{1}{2}\hbar\nu\left[\hat{c}_{\bm{\gamma}}^\parallel(\kappa,\nu;t)\hat{c}_{\bm{\gamma}}^{\parallel\dagger}(\kappa,\nu;t) + \hat{c}_{\bm{\gamma}}^{\parallel\dagger}(\kappa,\nu;t)\hat{c}_{\bm{\gamma}}^\parallel(\kappa,\nu;t)\right]\mathrm{d}\kappa\,\mathrm{d}\nu,
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+\hat{H}_\mathrm{int}'^\perp &=  \sum_{\bm{\beta}}\int_0^\infty\mathrm{i}\frac{\hbar}{2}\Lambda(\kappa)\left[\hat{a}_{\bm{\beta}}(\kappa,t) + \hat{a}_{\bm{\beta}}^\dagger(\kappa,t)\right]\left[\hat{b}_{\bm{\beta}}^\perp(\kappa,t) - \hat{b}_{\bm{\beta}}^{\perp\dagger}(\kappa,t)\right]\mathrm{d}\kappa\\
+&\qquad + \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty\frac{\hbar}{2}V_\perp(\nu)\left[\hat{b}_{\bm{\beta}}^\perp(\kappa,t) + \hat{b}_{\bm{\beta}}^{\perp\dagger}(\kappa,t)\right]\left[\hat{c}_{\bm{\beta}}^\perp(\kappa,\nu;t) + \hat{c}_{\bm{\beta}}^{\perp\dagger}(\kappa,\nu;t)\right]\mathrm{d}\kappa\,\mathrm{d}\nu,\\[1.0em]
+\hat{H}_\mathrm{int}'^\parallel &=  \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty\frac{\hbar}{2}V_\parallel(\nu)\left[\hat{b}_{\bm{\beta}}^\parallel(\kappa,t) + \hat{b}_{\bm{\beta}}^{\parallel\dagger}(\kappa,t)\right]\left[\hat{c}_{\bm{\beta}}^\parallel(\kappa,\nu;t) + \hat{c}_{\bm{\beta}}^{\parallel\dagger}(\kappa,\nu;t)\right]\mathrm{d}\kappa\,\mathrm{d}\nu,\\
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+\hat{H}_\mathrm{drive}'^\perp &= 0,\\
+\hat{H}_\mathrm{drive}'^\parallel &= \sum_{\bm{\beta}}\int_0^\infty F_{\bm{\beta}}(\kappa,t)\left[\hat{b}_{\bm{\beta}}^\parallel(\kappa,t) + \hat{b}_{\bm{\beta}}^{\parallel\dagger}(\kappa,t)\right]\mathrm{d}\kappa.
+\end{split}
+\end{equation}
+
+We can further separate the transverse interaction Hamiltonian as $\hat{H}_\mathrm{int}'^\perp = \hat{H}_{mr}^\perp + \hat{H}_{mp}$, where
+\begin{equation}
+\begin{split}
+\hat{H}_{mr}^\perp &= \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty\frac{\hbar}{2}V_\perp(\nu)\left[\hat{b}_{\bm{\beta}}^\perp(\kappa,t) + \hat{b}_{\bm{\beta}}^{\perp\dagger}(\kappa,t)\right]\left[\hat{c}_{\bm{\beta}}^\perp(\kappa,\nu;t) + \hat{c}_{\bm{\beta}}^{\perp\dagger}(\kappa,\nu;t)\right]\mathrm{d}\kappa\,\mathrm{d}\nu,\\
+\hat{H}_{mp} &= \sum_{\bm{\beta}}\int_0^\infty\mathrm{i}\frac{\hbar}{2}\Lambda(\kappa)\left[\hat{a}_{\bm{\beta}}(\kappa,t) + \hat{a}_{\bm{\beta}}^\dagger(\kappa,t)\right]\left[\hat{b}_{\bm{\beta}}^\perp(\kappa,t) - \hat{b}_{\bm{\beta}}^{\perp\dagger}(\kappa,t)\right]\mathrm{d}\kappa.
+\end{split}
+\end{equation}
+This allows us to diagonalize the matter-reservoir part of the linear Hamiltonian such that
+\begin{equation}
+\begin{split}
+\hat{H}_\mathrm{mat}^\perp &= \hat{H}_m'^\perp + \hat{H}_r'^\perp + \hat{H}_{mr}^\perp\\
+&= \sum_{\bm{\beta}}\int_0^\infty\frac{1}{2}\hbar\Omega_\perp\left[\hat{b}_{\bm{\beta}}^\perp(\kappa,t)\hat{b}_{\bm{\beta}}^{\perp\dagger}(\kappa,t) + \hat{b}_{\bm{\beta}}^{\perp\dagger}(\kappa,t)\hat{b}_{\bm{\beta}}^\perp(\kappa,t)\right]\mathrm{d}\kappa\\
+&\qquad + \sum_{\bm{\gamma}}\int_0^\infty\int_0^\infty\frac{1}{2}\hbar\nu\left[\hat{c}_{\bm{\gamma}}^\perp(\kappa,\nu;t)\hat{c}_{\bm{\gamma}}^{\perp\dagger}(\kappa,\nu;t) + \hat{c}_{\bm{\gamma}}^{\perp\dagger}(\kappa,\nu;t)\hat{c}_{\bm{\gamma}}^\perp(\kappa,\nu;t)\right]\mathrm{d}\kappa\,\mathrm{d}\nu\\
+&\qquad + \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty\frac{\hbar}{2}V_\perp(\nu)\left[\hat{b}_{\bm{\beta}}^\perp(\kappa,t) + \hat{b}_{\bm{\beta}}^{\perp\dagger}(\kappa,t)\right]\left[\hat{c}_{\bm{\beta}}^\perp(\kappa,\nu;t) + \hat{c}_{\bm{\beta}}^{\perp\dagger}(\kappa,\nu;t)\right]\mathrm{d}\kappa\,\mathrm{d}\nu\\
+&= \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty\hbar\nu\hat{B}_{\bm{\beta}}^{\perp\dagger}(\kappa,\nu;t)\hat{B}_{\bm{\beta}}^{\perp}(\kappa,\nu;t)\;\mathrm{d}\kappa\,\mathrm{d}\nu
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+\hat{H}_\mathrm{mat}^\parallel &= \hat{H}_m'^\parallel + \hat{H}_r'^\parallel + \hat{H}_{mr}^\parallel\\
+&= \sum_{\bm{\beta}}\int_0^\infty\frac{1}{2}\hbar\Omega_\parallel\left[\hat{b}_{\bm{\beta}}^\parallel(\kappa,t)\hat{b}_{\bm{\beta}}^{\parallel\dagger}(\kappa,t) + \hat{b}_{\bm{\beta}}^{\parallel\dagger}(\kappa,t)\hat{b}_{\bm{\beta}}^\parallel(\kappa,t)\right]\mathrm{d}\kappa\\
+&\qquad + \sum_{\bm{\gamma}}\int_0^\infty\int_0^\infty\frac{1}{2}\hbar\nu\left[\hat{c}_{\bm{\gamma}}^\parallel(\kappa,\nu;t)\hat{c}_{\bm{\gamma}}^{\parallel\dagger}(\kappa,\nu;t) + \hat{c}_{\bm{\gamma}}^{\parallel\dagger}(\kappa,\nu;t)\hat{c}_{\bm{\gamma}}^\parallel(\kappa,\nu;t)\right]\mathrm{d}\kappa\,\mathrm{d}\nu\\
+&\qquad + \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty\frac{\hbar}{2}V_\parallel(\nu)\left[\hat{b}_{\bm{\beta}}^\parallel(\kappa,t) + \hat{b}_{\bm{\beta}}^{\parallel\dagger}(\kappa,t)\right]\left[\hat{c}_{\bm{\beta}}^\parallel(\kappa,\nu;t) + \hat{c}_{\bm{\beta}}^{\parallel\dagger}(\kappa,\nu;t)\right]\mathrm{d}\kappa\,\mathrm{d}\nu\\
+&= \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty\hbar\nu\hat{B}_{\bm{\beta}}^{\parallel\dagger}(\kappa,\nu;t)\hat{B}_{\bm{\beta}}^{\parallel}(\kappa,\nu;t)\;\mathrm{d}\kappa\,\mathrm{d}\nu,
+\end{split}
+\end{equation}
+where we have let $\hat{H}_{mr}^\parallel = \hat{H}_\mathrm{int}'^\parallel$ for consistency. The explicit forms of the hybrid operators $\hat{B}_{\bm{\beta}}^\perp(\kappa,\nu;t)$ and $\hat{B}_{\bm{\beta}}^\parallel(\kappa,\nu;t)$ are
+\begin{equation}\label{eq:hybridOperatorsGeneralForm}
+\begin{split}
+\hat{B}_{\bm{\beta}}^\perp(\kappa,\nu;t) &= q_\perp(\nu)\hat{b}_{\bm{\beta}}^\perp(\kappa,t) + s_\perp(\nu)\hat{b}_{\bm{\beta}}^{\perp\dagger}(\kappa,t) + \int_0^\infty\left[u_\perp(\nu,\nu')\hat{c}_{\bm{\beta}}^\perp(\kappa,\nu';t) + v_\perp(\nu,\nu')\hat{c}_{\bm{\beta}}^{\perp\dagger}(\kappa,\nu';t)\right]\mathrm{d}\nu',\\
+\hat{B}_{\bm{\beta}}^\parallel(\kappa,\nu;t) &= q_\parallel(\nu)\hat{b}_{\bm{\beta}}^\parallel(\kappa,t) + s_\parallel(\nu)\hat{b}_{\bm{\beta}}^{\parallel\dagger}(\kappa,t) + \int_0^\infty\left[u_\parallel(\nu,\nu')\hat{c}_{\bm{\beta}}^\parallel(\kappa,\nu';t) + v_\parallel(\nu,\nu')\hat{c}_{\bm{\beta}}^{\parallel\dagger}(\kappa,\nu';t)\right]\mathrm{d}\nu',
+\end{split}
+\end{equation}
+where the coefficients $q_{\perp,\parallel}(\nu)$, $s_{\perp,\parallel}(\nu)$, $u_{\perp,\parallel}(\nu,\nu')$, and $v_{\perp,\parallel}(\nu,\nu')$ can be found via the Fano diagonalization process shown in Appendix \ref{app:fanoDiagonalization} by making the substitutions $g(\nu)\to V_{\perp,\parallel}(\nu)/2$, $\Omega\to\{\Omega_\perp,\Omega_\parallel\}$, $\hat{a}_{\bm{\beta}}(k,t)\to\hat{b}_{\bm{\beta}}^{\perp,\parallel}(\kappa,t)$, $\hat{b}_{\bm{\beta}}(k,\nu;t)\to\hat{c}_{\bm{\beta}}^{\perp,\parallel}(\kappa,\nu;t)$, and $\hat{B}_{\bm{\beta}}(k,\nu;t)\to\hat{B}_{\bm{\beta}}^{\perp,\parallel}(\kappa,\nu;t)$, respectively. The coefficients are too cumbersome to write here, but guarantee the inverse transformations
+\begin{equation}
+\begin{split}
+\hat{b}_{\bm{\beta}}^{\perp,\parallel}(\kappa,t) &= \int_0^\infty\left[q_{\perp,\parallel}^*(\nu)\hat{B}_{\bm{\beta}}^{\perp,\parallel}(\kappa,\nu;t) - s_{\perp,\parallel}(\nu)\hat{B}_{\bm{\beta}}^{\{\perp,\parallel\}\dagger}(\kappa,\nu;t)\right]\mathrm{d}\nu,\\
+\hat{c}_{\bm{\beta}}^{\perp,\parallel}(\kappa,\nu;t) &= \int_0^\infty\left[u_{\perp,\parallel}^*(\omega,\nu)\hat{B}_{\bm{\beta}}^{\perp,\parallel}(\kappa,\omega;t) - v_{\perp,\parallel}(\omega,\nu)\hat{B}_{\bm{\beta}}^{\{\perp,\parallel\}\dagger}(\kappa,\omega;t)\right]\mathrm{d}\omega.
+\end{split}
+\end{equation}
+
+We can then rewrite our linear Hamiltonians as
+\begin{equation}
+\begin{split}
+\hat{H}_0^\perp &= \hat{H}_\mathrm{EM}'^\perp + \hat{H}_\mathrm{mat}^\perp + \hat{H}_{mp}^\perp\\
+&= \sum_{\bm{\alpha}}\int_0^\infty\frac{\hbar\tilde{k}c}{2}\left[\hat{a}_{\bm{\alpha}}(k,t)\hat{a}_{\bm{\alpha}}^\dagger(k,t) + \hat{a}_{\bm{\alpha}}^\dagger(k,t)\hat{a}_{\bm{\alpha}}(k,t)\right]\mathrm{d}k + \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty\hbar\nu\hat{B}_{\bm{\beta}}^{\perp\dagger}(\kappa,\nu;t)\hat{B}_{\bm{\beta}}^\perp(\kappa,\nu;t)\;\mathrm{d}\kappa\,\mathrm{d}\nu\\
+&\qquad + \sum_{\bm{\beta}}\int_0^\infty\mathrm{i}\frac{\hbar}{2}\Lambda(\kappa)\left[\hat{a}_{\bm{\beta}}(\kappa,t) + \hat{a}_{\bm{\beta}}^\dagger(\kappa,t)\right]\left[\hat{b}_{\bm{\beta}}^\perp(\kappa,t) - \hat{b}_{\bm{\beta}}^{\perp\dagger}(\kappa,t)\right]\mathrm{d}\kappa,\\
+&= \sum_{\bm{\alpha}}\int_0^\infty\frac{\hbar\tilde{k}c}{2}\left[\hat{a}_{\bm{\alpha}}(k,t)\hat{a}_{\bm{\alpha}}^\dagger(k,t) + \hat{a}_{\bm{\alpha}}^\dagger(k,t)\hat{a}_{\bm{\alpha}}(k,t)\right]\mathrm{d}k + \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty\hbar\nu\hat{B}_{\bm{\beta}}^{\perp\dagger}(\kappa,\nu;t)\hat{B}_{\bm{\beta}}^\perp(\kappa,\nu;t)\;\mathrm{d}\kappa\,\mathrm{d}\nu\\
+&\qquad + \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty\mathrm{i}\frac{\hbar}{2}\Lambda(\kappa)\left[q_\perp(\nu) + s_\perp(\nu)\right]\left[\hat{a}_{\bm{\beta}}(\kappa,t) + \hat{a}_{\bm{\beta}}^\dagger(\kappa,t)\right]\left[\hat{B}_{\bm{\beta}}^\perp(\kappa,\nu;t) - \hat{B}_{\bm{\beta}}^{\perp\dagger}(\kappa,\nu;t)\right]\mathrm{d}\kappa\,\mathrm{d}\nu
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+\hat{H}_0^\parallel &= \hat{H}_\mathrm{mat}^\parallel + \hat{H}_\mathrm{drive}^\parallel\\
+&= \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty\hbar\nu\hat{B}_{\bm{\beta}}^{\parallel\dagger}(\kappa,\nu;t)\hat{B}_{\bm{\beta}}^\parallel(\kappa,\nu;t)\;\mathrm{d}\kappa\;\mathrm{d}\nu + \sum_{\bm{\beta}}\int_0^\infty F_{\bm{\beta}}(\kappa,t)\left[\hat{b}_{\bm{\beta}}^\parallel(\kappa,t) + \hat{b}_{\bm{\beta}}^{\parallel\dagger}(\kappa,t)\right]\mathrm{d}\kappa\\
+&= \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty\hbar\nu\hat{B}_{\bm{\beta}}^{\parallel\dagger}(\kappa,\nu;t)\hat{B}_{\bm{\beta}}^\parallel(\kappa,\nu;t)\;\mathrm{d}\kappa\;\mathrm{d}\nu\\
+&\qquad + \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty F_{\bm{\beta}}(\kappa,t)\left[q_\parallel(\nu) - s_\parallel(\nu)\right]\left[\hat{B}_{\bm{\beta}}^\parallel(\kappa,\nu;t) + \hat{B}_{\bm{\beta}}^{\parallel\dagger}(\kappa,\nu;t)\right]\mathrm{d}\kappa\,\mathrm{d}\nu.
+\end{split}
+\end{equation}
+The longitudinal Hamiltonian is, at this point, fully hybridized, but not yet diagonal. An exact diagonalization procedure exists\cite{husimi1953miscellanea}, but is only useful in the case where the driving amplitude $F_{\bm{\beta}}(\kappa,t)[q_\parallel(\nu) - s_\parallel(\nu)]$ is large with respect to $\hbar\nu$ at any time $t$. For weaker driving, the nondiagonal term in $\hat{H}_0^\parallel$ can be sufficiently handled via perturbation theory such that it does not need to be addressed at the moment.
+
+The transverse Hamiltonian, however, requires one more hybridization step. Its structure is entirely parallel to that of the transverse matter Hamiltonian, such that the same hybridization scheme can be devised. First defining polariton operators $\hat{C}_{\bm{\beta}}(\kappa,\omega;t)$ as
+\begin{equation}
+\hat{C}_{\bm{\beta}}(\kappa,\omega;t) = \tilde{q}(\kappa,\omega)\hat{a}_{\bm{\beta}}(\kappa,t) + \tilde{s}(\kappa,\omega)\hat{a}_{\bm{\beta}}^\dagger(\kappa,t) + \int_0^\infty\left[\tilde{u}(\kappa;\omega,\nu)\hat{B}_{\bm{\beta}}^\perp(\kappa,\nu;t) + \tilde{v}(\kappa;\omega,\nu)\hat{B}_{\bm{\beta}}^{\perp\dagger}(\kappa,\nu;t)\right]\mathrm{d}\nu,
+\end{equation}
+we can use the procedure of Appendix \ref{app:fanoDiagonalization} with the substitutions $g(\nu)\to\mathrm{i}\Lambda(\kappa)[q_\perp(\nu) + s_\perp(\nu)]/2$, $\Omega\to\tilde{k}c$, $\hat{b}_{\bm{\beta}}(k,\nu;t)\to\hat{B}_{\bm{\beta}}^\perp(\kappa,\nu;t)$, and $\hat{B}_{\bm{\beta}}(k,\nu;t)\to\hat{C}_{\bm{\beta}}(\kappa,\nu;t)$ to show that
+\begin{equation}
+\begin{split}
+\hat{a}_{\bm{\beta}}(\kappa,t) &= \int_0^\infty\left[\tilde{q}^*(\kappa,\omega)\hat{C}_{\bm{\beta}}(\kappa,\omega;t) - \tilde{s}(\kappa,\omega)\hat{C}_{\bm{\beta}}^\dagger(\kappa,\omega;t)\right]\mathrm{d}\omega,\\
+\hat{B}_{\bm{\beta}}^\perp(\kappa,\nu;t) &= \int_0^\infty\left[\tilde{u}^*(\kappa;\omega,\nu)\hat{C}_{\bm{\beta}}(\kappa,\omega;t) - \tilde{v}(\kappa;\omega,\nu)\hat{C}_{\bm{\beta}}^\dagger(\kappa,\omega;t)\right]\mathrm{d}\omega,
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\hat{H}_0^\perp = \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty\hbar\omega\hat{C}_{\bm{\beta}}^\dagger(\kappa,\omega;t)\hat{C}_{\bm{\beta}}(\kappa,\omega;t)\;\mathrm{d}\kappa\,\mathrm{d}\omega.
+\end{equation}
+Therefore, we can write a fully hybridized linear Hamiltonian as
+\begin{equation}
+\begin{split}
+\hat{H}_0 &= \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty\hbar\omega\hat{C}_{\bm{\beta}}^\dagger(\kappa,\omega;t)\hat{C}_{\bm{\beta}}(\kappa,\omega;t)\;\mathrm{d}\kappa\,\mathrm{d}\omega + \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty\hbar\nu\hat{B}_{\bm{\beta}}^{\parallel\dagger}(\kappa,\nu;t)\hat{B}_{\bm{\beta}}^\parallel(\kappa,\nu;t)\;\mathrm{d}\kappa\;\mathrm{d}\nu\\
+&\qquad + \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty F_{\bm{\beta}}(\kappa,t)\left[q_\parallel(\nu) - s_\parallel(\nu)\right]\left[\hat{B}_{\bm{\beta}}^\parallel(\kappa,\nu;t) + \hat{B}_{\bm{\beta}}^{\parallel\dagger}(\kappa,\nu;t)\right]\mathrm{d}\kappa\,\mathrm{d}\nu.
+\end{split}
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Finishing the Rest of it}
+
+We also have the tools to expand the nonlinear Hamiltonian in the basis of polaritons we have just defined. Quantizing in the usual way, we have
+\begin{equation}
+\begin{split}
+\hat{H}_\mathrm{NL} &= \frac{1}{3}\sigma_0\eta_m\sum_{\bm{\beta}\bm{\beta}'\bm{\beta}'''}\left[\int_0^\infty\int_0^\infty\int_0^\infty\hat{\mathcal{Q}}_{\bm{\beta}}^\perp(\kappa,t)\hat{\mathcal{Q}}_{\bm{\beta}'}^\perp(\kappa',t)\hat{\mathcal{Q}}_{\bm{\beta}''}^\perp(\kappa'',t)I_{\bm{\beta}\bm{\beta}'\bm{\beta}''}^{(1)}(\kappa,\kappa',\kappa'')\;\mathrm{d}\kappa\,\mathrm{d}\kappa'\,\mathrm{d}\kappa''\right.\\
+&\qquad + 3\int_0^\infty\int_0^\infty\int_0^\infty\hat{\mathcal{Q}}_{\bm{\beta}}^\parallel(\kappa,t)\hat{\mathcal{Q}}_{\bm{\beta}'}^\perp(\kappa',t)\hat{\mathcal{Q}}_{\bm{\beta}''}^\perp(\kappa'',t)I_{\bm{\beta}\bm{\beta}'\bm{\beta}''}^{(2)}(\kappa,\kappa',\kappa'')\;\mathrm{d}\kappa\,\mathrm{d}\kappa'\,\mathrm{d}\kappa''\\
+&\qquad + 3\int_0^\infty\int_0^\infty\int_0^\infty\hat{\mathcal{Q}}_{\bm{\beta}}^\parallel(\kappa,t)\hat{\mathcal{Q}}_{\bm{\beta}'}^\parallel(\kappa',t)\hat{\mathcal{Q}}_{\bm{\beta}''}^\perp(\kappa'',t)I_{\bm{\beta}\bm{\beta}'\bm{\beta}''}^{(3)}(\kappa,\kappa',\kappa'')\;\mathrm{d}\kappa\,\mathrm{d}\kappa'\,\mathrm{d}\kappa''\\
+&\qquad\left. + \int_0^\infty\int_0^\infty\int_0^\infty\hat{\mathcal{Q}}_{\bm{\beta}}^\parallel(\kappa,t)\hat{\mathcal{Q}}_{\bm{\beta}'}^\parallel(\kappa',t)\hat{\mathcal{Q}}_{\bm{\beta}''}^\parallel(\kappa'',t)I_{\bm{\beta}\bm{\beta}'\bm{\beta}''}^{(4)}(\kappa,\kappa',\kappa'')\;\mathrm{d}\kappa\,\mathrm{d}\kappa'\,\mathrm{d}\kappa'' \vphantom{\int_0^\infty} \right]
+\end{split}
+\end{equation}
+From here, we can rewrite the coordinate operators in terms of the dressed raising and lowering operators such that
+\begin{equation}
+\begin{split}
+\hat{\mathcal{Q}}_{\bm{\beta}}^\parallel(\kappa,t) &= \int_0^\infty\sqrt{\frac{\hbar\kappa^2}{4\pi^2\eta_m\Omega_\parallel}}[q_\parallel(\nu) - s_\parallel(\nu)]\left[\hat{B}_{\bm{\beta}}^\parallel(\kappa,\nu;t) + \hat{B}_{\bm{\beta}}^{\parallel\dagger}(\kappa,\nu;t)\right]\mathrm{d}\nu,\\
+\hat{\mathcal{Q}}_{\bm{\beta}}^\perp(\kappa,t) &= \int_0^\infty\int_0^\infty\sqrt{\frac{\hbar\kappa^2}{4\pi^2\eta_m\Omega_\perp}}[q_\perp(\nu) - s_\perp(\nu)][\tilde{u}(\kappa;\omega,\nu) - \tilde{v}(\kappa;\omega,\nu)]\left[\hat{C}_{\bm{\beta}}(\kappa,\omega;t) + \hat{C}_{\bm{\beta}}^{\dagger}(\kappa,\omega;t)\right]\mathrm{d}\nu\,\mathrm{d}\omega\\
+&= \int_0^\infty\sqrt{\frac{\hbar\kappa^2}{4\pi^2\eta_m\Omega_\perp}}K(\kappa,\omega)\left[\hat{C}_{\bm{\beta}}(\kappa,\omega;t) + \hat{C}_{\bm{\beta}}^{\dagger}(\kappa,\omega;t)\right]\mathrm{d}\omega,
+\end{split}
+\end{equation}
+where
+\begin{equation}
+\begin{split}
+K(\kappa,\omega) &= \int_0^\infty[q_\perp(\nu) - s_\perp(\nu)][\tilde{u}(\kappa;\omega,\nu) - \tilde{v}(\kappa;\omega,\nu)]\mathrm{d}\nu\\
+&= -\frac{2\mathrm{i}}{\pi V_\perp(\omega)} - \frac{2V_\perp(\omega)}{\pi^2\omega}\int_0^\infty\frac{\nu}{V_\perp^2(\nu)}\left(PV\left\{\frac{1}{\omega - \nu}\right\} - PV\left\{\frac{1}{\omega + \nu}\right\}\right)\mathrm{d}\nu.
+\end{split}
+\end{equation}
+With these definitions, we can see that
+\begin{equation}
+\begin{split}
+&\sum_{\bm{\beta}\bm{\beta}'\bm{\beta}''}\int_0^\infty\int_0^\infty\int_0^\infty\hat{\mathcal{Q}}_{\bm{\beta}}^\perp(\kappa,t)\hat{\mathcal{Q}}_{\bm{\beta}'}^\perp(\kappa',t)\hat{\mathcal{Q}}_{\bm{\beta}''}^\perp(\kappa'',t)I_{\bm{\beta}\bm{\beta}'\bm{\beta}''}^{(1)}(\kappa,\kappa',\kappa'')\;\mathrm{d}\kappa\,\mathrm{d}\kappa'\,\mathrm{d}\kappa''\\
+&= \sum_{\bm{\beta}\bm{\beta}'\bm{\beta}''}\int_0^\infty\int_0^\infty\int_0^\infty I_{\bm{\beta}\bm{\beta}'\bm{\beta}''}^{(1)}(\kappa,\kappa',\kappa'')\frac{\kappa\kappa'\kappa''}{8\pi^3}\sqrt{\frac{\hbar^3}{\eta_m^3\Omega_\perp^3}}\int_0^\infty\int_0^\infty\int_0^\infty K(\omega)K(\omega')K(\omega'')\\
+&\qquad\times\left[\hat{C}_{\bm{\beta}}(\kappa,\omega;t) + \hat{C}_{\bm{\beta}}^\dagger(\kappa,\omega;t)\right]\left[\hat{C}_{\bm{\beta}'}(\kappa',\omega';t) + \hat{C}_{\bm{\beta}'}^\dagger(\kappa',\omega';t)\right]\left[\hat{C}_{\bm{\beta}''}(\kappa'',\omega'';t) + \hat{C}_{\bm{\beta}''}^\dagger(\kappa'',\omega'';t)\right]\\
+&\qquad\times\mathrm{d}\omega\,\mathrm{d}\omega'\,\mathrm{d}\omega''\,\mathrm{d}\kappa\,\mathrm{d}\kappa'\,\mathrm{d}\kappa''.
+\end{split}
+\end{equation}
+Distribution of the binomials produces a cumbersome expression, so we'll leave this here for now. We can now immediately see that
+\begin{equation}
+\begin{split}
+&\sum_{\bm{\beta}\bm{\beta}'\bm{\beta}''}\int_0^\infty\int_0^\infty\int_0^\infty\hat{\mathcal{Q}}_{\bm{\beta}}^\parallel(\kappa,t)\hat{\mathcal{Q}}_{\bm{\beta}'}^\parallel(\kappa',t)\hat{\mathcal{Q}}_{\bm{\beta}''}^\parallel(\kappa'',t)I^{(4)}_{\bm{\beta}\bm{\beta}'\bm{\beta}''}(\kappa,\kappa',\kappa'')\;\mathrm{d}\kappa\,\mathrm{d}\kappa'\,\mathrm{d}\kappa''\\
+&= \sum_{\bm{\beta}\bm{\beta}'\bm{\beta}''}\int_0^\infty\int_0^\infty\int_0^\infty I^{(4)}_{\bm{\beta}\bm{\beta}'\bm{\beta}''}(\kappa,\kappa',\kappa'')\frac{\kappa\kappa'\kappa''}{8\pi^3}\sqrt{\frac{\hbar^3}{\eta_m^3\Omega_\parallel^3}}\int_0^\infty\int_0^\infty\int_0^\infty\left[q_\parallel(\nu) - s_\parallel(\nu)\right]\left[q_\parallel(\nu') - s_\parallel(\nu')\right]\\
+&\qquad\times\left[q_\parallel(\nu'') - s_\parallel(\nu'')\right]\left[\hat{B}_{\bm{\beta}}^\parallel(\kappa,\nu;t) + \hat{B}_{\bm{\beta}}^{\parallel\dagger}(\kappa,\nu;t)\right]\left[\hat{B}_{\bm{\beta}'}^\parallel(\kappa',\nu';t) + \hat{B}_{\bm{\beta}'}^{\parallel\dagger}(\kappa',\nu';t)\right]\\
+&\qquad\times\left[\hat{B}_{\bm{\beta}''}^\parallel(\kappa'',\nu'';t) + \hat{B}_{\bm{\beta}''}^{\parallel\dagger}(\kappa'',\nu'';t)\right]\mathrm{d}\nu\,\mathrm{d}\nu'\,\mathrm{d}\nu''\,\mathrm{d}\kappa\,\mathrm{d}\kappa'\,\mathrm{d}\kappa'',
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+&\sum_{\bm{\beta}\bm{\beta}'\bm{\beta}''}\int_0^\infty\int_0^\infty\int_0^\infty\hat{\mathcal{Q}}_{\bm{\beta}}^\parallel(\kappa,t)\hat{\mathcal{Q}}_{\bm{\beta}'}^\perp(\kappa',t)\hat{\mathcal{Q}}_{\bm{\beta}''}^\perp(\kappa'',t)I^{(2)}_{\bm{\beta}\bm{\beta}'\bm{\beta}''}(\kappa,\kappa',\kappa'')\;\mathrm{d}\kappa\,\mathrm{d}\kappa'\,\mathrm{d}\kappa''\\
+&= \sum_{\bm{\beta}\bm{\beta}'\bm{\beta}''}\int_0^\infty\int_0^\infty\int_0^\infty\int_0^\infty\int_0^\infty\int_0^\infty\frac{\kappa\kappa'\kappa''}{8\pi^3}\sqrt{\frac{\hbar^3}{\eta_m^3\Omega_\parallel\Omega_\perp^2}}\left[q_\parallel(\nu) - s_\parallel(\nu)\right]K(\omega')K(\omega'')I^{(2)}_{\bm{\beta}\bm{\beta}'\bm{\beta}''}(\kappa,\kappa',\kappa'')\\
+&\qquad\times\left[\hat{B}_{\bm{\beta}}^\parallel(\kappa,\nu;t) + \hat{B}_{\bm{\beta}}^{\parallel\dagger}(\kappa,\nu;t)\right]\left[\hat{C}_{\bm{\beta}'}(\kappa',\omega';t) + \hat{C}_{\bm{\beta}'}^\dagger(\kappa',\omega';t)\right]\left[\hat{C}_{\bm{\beta}''}(\kappa'',\omega'';t) + \hat{C}_{\bm{\beta}''}^\dagger(\kappa'',\omega'';t)\right]\\
+&\qquad\times\mathrm{d}\nu\,\mathrm{d}\omega'\,\mathrm{d}\omega''\,\mathrm{d}\kappa\,\mathrm{d}\kappa'\,\mathrm{d}\kappa'',
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+&\sum_{\bm{\beta}\bm{\beta}'\bm{\beta}''}\int_0^\infty\int_0^\infty\int_0^\infty\hat{\mathcal{Q}}_{\bm{\beta}}^\parallel(\kappa,t)\hat{\mathcal{Q}}_{\bm{\beta}'}^\parallel(\kappa',t)\hat{\mathcal{Q}}_{\bm{\beta}''}^\perp(\kappa'',t)I^{(3)}_{\bm{\beta}\bm{\beta}'\bm{\beta}''}(\kappa,\kappa',\kappa'')\;\mathrm{d}\kappa\,\mathrm{d}\kappa'\,\mathrm{d}\kappa''\\
+&= \sum_{\bm{\beta}\bm{\beta}'\bm{\beta}''}\int_0^\infty\int_0^\infty\int_0^\infty\int_0^\infty\int_0^\infty\int_0^\infty\frac{\kappa\kappa'\kappa''}{8\pi^3}\sqrt{\frac{\hbar^3}{\eta_m^3\Omega_\parallel^2\Omega_\perp}}\left[q_\parallel(\nu) - s_\parallel(\nu)\right]\left[q_\parallel(\nu') - s_\parallel(\nu')\right]K(\omega'')I^{(3)}_{\bm{\beta}\bm{\beta}'\bm{\beta}''}(\kappa,\kappa',\kappa'')\\
+&\qquad\times\left[\hat{B}_{\bm{\beta}}^\parallel(\kappa,\nu;t) + \hat{B}_{\bm{\beta}}^{\parallel\dagger}(\kappa,\nu;t)\right]\left[\hat{B}_{\bm{\beta}'}^\parallel(\kappa',\nu';t) + \hat{B}_{\bm{\beta}'}^{\parallel\dagger}(\kappa',\nu';t)\right]\left[\hat{C}_{\bm{\beta}''}(\kappa'',\omega'';t) + \hat{C}_{\bm{\beta}''}^\dagger(\kappa'',\omega'';t)\right]\\
+&\qquad\times\mathrm{d}\nu\,\mathrm{d}\nu'\,\mathrm{d}\omega''\,\mathrm{d}\kappa\,\mathrm{d}\kappa'\,\mathrm{d}\kappa''.
+\end{split}
+\end{equation}
+
+Finally, since the free-charge, binding, and self-energy terms of the Hamiltonian do not contain any canonical coordinates or momenta, we can say
+\begin{equation}
+\begin{split}
+\hat{H}_f' &= H_f',\\
+\hat{H}_\mathrm{bind} &= H_\mathrm{bind},\\
+\hat{H}_\mathrm{self} &= H_\mathrm{self}.\\
+\end{split}
+\end{equation}
+Therefore, if we introduce for brevity the coupling functions
+\begin{equation}
+\begin{split}
+J_{\bm{\beta}\bm{\beta}'\bm{\beta}''}^{(1)}(\omega,\omega',\omega'';\kappa,\kappa',\kappa'') &= \frac{\kappa\kappa'\kappa''}{8\pi^3}\sqrt{\frac{\hbar^3}{\eta_m^3\Omega_\perp^3}}K(\omega)K(\omega')K(\omega'')I_{\bm{\beta}\bm{\beta}'\bm{\beta}''}^{(1)}(\omega,\omega',\omega'';\kappa,\kappa',\kappa''),\\[0.5em]
+J_{\bm{\beta}\bm{\beta}'\bm{\beta}''}^{(2)}(\omega,\omega',\omega'';\kappa,\kappa',\kappa'') &= \frac{\kappa\kappa'\kappa''}{8\pi^3}\sqrt{\frac{\hbar^3}{\eta_m^3\Omega_\perp^2\Omega_\parallel}}\left[q_\parallel(\omega) - s_\parallel(\omega)\right]K(\omega')K(\omega'')\\
+&\qquad\times I_{\bm{\beta}\bm{\beta}'\bm{\beta}''}^{(2)}(\omega,\omega',\omega'';\kappa,\kappa',\kappa''),\\[0.5em]
+J_{\bm{\beta}\bm{\beta}'\bm{\beta}''}^{(3)}(\omega,\omega',\omega'';\kappa,\kappa',\kappa'') &= \frac{\kappa\kappa'\kappa''}{8\pi^3}\sqrt{\frac{\hbar^3}{\eta_m^3\Omega_\perp\Omega_\parallel^2}}\left[q_\parallel(\omega) - s_\parallel(\omega)\right]\left[q_\parallel(\omega') - s_\parallel(\omega')\right]K(\omega'')\\
+&\qquad\times I_{\bm{\beta}\bm{\beta}'\bm{\beta}''}^{(3)}(\omega,\omega',\omega'';\kappa,\kappa',\kappa''),\\[0.5em]
+J_{\bm{\beta}\bm{\beta}'\bm{\beta}''}^{(4)}(\omega,\omega',\omega'';\kappa,\kappa',\kappa'') &= \frac{\kappa\kappa'\kappa''}{8\pi^3}\sqrt{\frac{\hbar^3}{\eta_m^3\Omega_\parallel^3}}\left[q_\parallel(\omega) - s_\parallel(\omega)\right]\left[q_\parallel(\omega') - s_\parallel(\omega')\right]\left[q_\parallel(\omega'') - s_\parallel(\omega'')\right]\\
+&\qquad\times I_{\bm{\beta}\bm{\beta}'\bm{\beta}''}^{(4)}(\omega,\omega',\omega'';\kappa,\kappa',\kappa''),
+\end{split}
+\end{equation}
+we can write the complete Hamiltonian as
+\begin{equation}
+\begin{split}
+\hat{H} &= \hat{H}_0 + \hat{H}_\mathrm{NL} + \hat{H}_f' + \hat{H}_\mathrm{bind} + \hat{H}_\mathrm{self}\\
+&= \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty\hbar\omega\hat{C}_{\bm{\beta}}^\dagger(\kappa,\omega;t)\hat{C}_{\bm{\beta}}(\kappa,\omega;t)\;\mathrm{d}\kappa\,\mathrm{d}\omega + \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty\hbar\nu\hat{B}_{\bm{\beta}}^{\parallel\dagger}(\kappa,\nu;t)\hat{B}_{\bm{\beta}}^\parallel(\kappa,\nu;t)\;\mathrm{d}\kappa\;\mathrm{d}\nu\\
+&\qquad + \sum_{\bm{\beta}}\int_0^\infty\int_0^\infty F_{\bm{\beta}}(\kappa,t)\left[q_\parallel(\nu) - s_\parallel(\nu)\right]\left[\hat{B}_{\bm{\beta}}^\parallel(\kappa,\nu;t) + \hat{B}_{\bm{\beta}}^{\parallel\dagger}(\kappa,\nu;t)\right]\mathrm{d}\kappa\,\mathrm{d}\nu\\
+&\qquad + \sum_{\bm{\beta}\bm{\beta}'\bm{\beta}''}\int_0^\infty\int_0^\infty\int_0^\infty\int_0^\infty\int_0^\infty\int_0^\infty J_{\bm{\beta}\bm{\beta}'\bm{\beta}''}^{(1)}(\omega,\omega',\omega'';\kappa,\kappa',\kappa'')\left[\hat{C}_{\bm{\beta}}(\kappa,\omega;t) + \hat{C}_{\bm{\beta}}^\dagger(\kappa,\omega;t)\right]\\
+&\qquad\qquad\times\left[\hat{C}_{\bm{\beta}'}(\kappa',\omega';t) + \hat{C}_{\bm{\beta}'}^\dagger(\kappa',\omega';t)\right]\left[\hat{C}_{\bm{\beta}''}(\kappa'',\omega'';t) + \hat{C}_{\bm{\beta}''}^\dagger(\kappa'',\omega'';t)\right]\mathrm{d}\omega\,\mathrm{d}\omega'\,\mathrm{d}\omega''\,\mathrm{d}\kappa\,\mathrm{d}\kappa'\,\mathrm{d}\kappa''\\[0.5em]
+&\qquad + \sum_{\bm{\beta}\bm{\beta}'\bm{\beta}''}\int_0^\infty\int_0^\infty\int_0^\infty\int_0^\infty\int_0^\infty\int_0^\infty J_{\bm{\beta}\bm{\beta}'\bm{\beta}''}^{(2)}(\nu,\omega',\omega'';\kappa,\kappa',\kappa'')\left[\hat{B}_{\bm{\beta}}^\parallel(\kappa,\nu;t) + \hat{B}_{\bm{\beta}}^{\parallel\dagger}(\kappa,\nu;t)\right]\\
+&\qquad\qquad\times\left[\hat{C}_{\bm{\beta}'}(\kappa',\omega';t) + \hat{C}_{\bm{\beta}'}^\dagger(\kappa',\omega';t)\right]\left[\hat{C}_{\bm{\beta}''}(\kappa'',\omega'';t) + \hat{C}_{\bm{\beta}''}^\dagger(\kappa'',\omega'';t)\right]\mathrm{d}\nu\,\mathrm{d}\omega'\,\mathrm{d}\omega''\,\mathrm{d}\kappa\,\mathrm{d}\kappa'\,\mathrm{d}\kappa''\\[0.5em]
+&\qquad + \sum_{\bm{\beta}\bm{\beta}'\bm{\beta}''}\int_0^\infty\int_0^\infty\int_0^\infty\int_0^\infty\int_0^\infty\int_0^\infty J_{\bm{\beta}\bm{\beta}'\bm{\beta}''}^{(3)}(\nu,\nu',\omega'';\kappa,\kappa',\kappa'')\left[\hat{B}_{\bm{\beta}}^\parallel(\kappa,\nu;t) + \hat{B}_{\bm{\beta}}^{\parallel\dagger}(\kappa,\nu;t)\right]\\
+&\qquad\qquad\times\left[\hat{B}_{\bm{\beta}'}^\parallel(\kappa',\nu';t) + \hat{B}_{\bm{\beta}'}^{\parallel\dagger}(\kappa',\nu';t)\right]\left[\hat{C}_{\bm{\beta}''}(\kappa'',\omega'';t) + \hat{C}_{\bm{\beta}''}^\dagger(\kappa'',\omega'';t)\right]\mathrm{d}\nu\,\mathrm{d}\nu'\,\mathrm{d}\omega''\,\mathrm{d}\kappa\,\mathrm{d}\kappa'\,\mathrm{d}\kappa''\\
+&\qquad + \sum_{\bm{\beta}\bm{\beta}'\bm{\beta}''}\int_0^\infty\int_0^\infty\int_0^\infty\int_0^\infty\int_0^\infty\int_0^\infty J_{\bm{\beta}\bm{\beta}'\bm{\beta}''}^{(4)}(\nu,\nu',\nu'';\kappa,\kappa',\kappa'')\left[\hat{B}_{\bm{\beta}}^\parallel(\kappa,\nu;t) + \hat{B}_{\bm{\beta}}^{\parallel\dagger}(\kappa,\nu;t)\right]\\
+&\qquad\qquad\times\left[\hat{B}_{\bm{\beta}'}^\parallel(\kappa',\nu';t) + \hat{B}_{\bm{\beta}'}^{\parallel\dagger}(\kappa',\nu';t)\right]\left[\hat{B}_{\bm{\beta}''}^\parallel(\kappa'',\nu'';t) + \hat{B}_{\bm{\beta}''}^{\parallel\dagger}(\kappa'',\nu'';t)\right]\mathrm{d}\nu\,\mathrm{d}\nu'\,\mathrm{d}\nu''\,\mathrm{d}\kappa\,\mathrm{d}\kappa'\,\mathrm{d}\kappa''\\[0.5em]
+&\qquad + \sum_i\frac{1}{2}\mu_{fi}\dot{\mathbf{x}}_{fi}^2(t) + \frac{1}{8\pi}\int\left[\nabla\Phi_f(\mathbf{r},t)\right]^2\;\mathrm{d}^3\mathbf{r} + \sum_{\alpha,\beta = m,b,r}\left[u_{\alpha\beta}^\infty(\mathbf{r}) + u_{\beta\alpha}^\infty(\mathbf{r})\right] + \sum_{\alpha = m,b,r,f}u_\alpha^\mathrm{self}.
+\end{split}
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Appendix %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\appendix
+\numberwithin{equation}{section}
+
+\section{Unit Conventions}\label{app:unitConventions}
+
+The chosen dimensions and units for each important quantity are shown below.
+
+\begin{center}
+\def\arraystretch{1.5}
+\begin{longtable}{c|c|c}
+    Symbol Name & Dimensions & Units (cgs Gaussian) \\
+    \hline
+    $\mathcal{L}$ & $\frac{[U]}{[L]^3} = \frac{[M]}{[L][T^2]}$ & $\frac{\mathrm{erg}}{\mathrm{cm}^3}$\\
+    $L$, $H$ & $[U]$ & erg\\
+    $\Delta$ & $[L]^3$ & cm$^3$\\
+    $\mu_{fi}$, $\mu_{mi}$, $\mu_{ri}$ & $[M]$ & g\\
+    $\eta_m$, $\eta_\nu$ & $\frac{[M]}{[L]^3}$ & $\frac{\mathrm{g}}{\mathrm{cm}^3}$\\
+    $\mathbf{Q}_m(\mathbf{r},t)$ & $[L]$ & cm\\
+    $\tilde{\mathbf{Q}}_\nu(\mathbf{r},t)$ & $[L][T]^\frac{1}{2}$ & $\mathrm{cm}\cdot \mathrm{s}^\frac{1}{2}$\\
+    $\mathbf{X}_{\bm{\alpha}}(\mathbf{r},k)$, $\mathbf{Y}_{\bm{\alpha}}(\mathbf{r},k)$, $\mathbf{L}_{\bm{\alpha}}(\mathbf{r};s)$ & 1 & no units\\
+    $f_{\bm{\alpha}}^{>,<}(\mathbf{r})$ & $[L]^{-\ell-1}$ (for $>$) or $[L]^{\ell}$ (for $<$) & $\mathrm{cm}^{-\ell-1}$ or $\mathrm{cm}^\ell$\\
+    $\mathbf{G}_0(\mathbf{r},t)$ & $[L]^{-1}$ & cm$^{-1}$\\
+    $\tilde{v}(\nu)$ & $\frac{[M]}{[L]^3[T]^\frac{1}{2}}$ & $\frac{\mathrm{g}}{\mathrm{cm}^3\mathrm{s}^\frac{1}{2}}$\\
+    $\sigma_0$ & $\frac{1}{[T]^2[L]}$ & $\mathrm{s}^{-2}$$\mathrm{cm}^{-1}$\\
+    $\chi^{(1)}(\mathbf{r},\omega)$ & 1 & no units\\
+    $\chi^{(2)}(\mathbf{r};\omega',\omega - \omega')$ & $\frac{[L]^2}{[C]}$ & $\frac{\mathrm{cm}}{\mathrm{statV}} = \frac{\mathrm{cm}^2}{\mathrm{statC}}$\\
+    $k$, $\kappa$ & $[L]^{-1}$ & cm$^{-1}$\\
+    $\mathbf{A}(\mathbf{r},t)$, $\Phi(\mathbf{r},t)$ & $\frac{[C]}{[L]}$ & $\frac{\mathrm{statC}}{\mathrm{cm}}$\\
+    $\mathbf{p}_{fi}(t)$ & $\frac{[M][L]}{[T]}$ & $\frac{\mathrm{g}\cdot\mathrm{cm}}{\mathrm{s}}$\\
+    $\mathbf{P}_m(\mathbf{r},t)$ & $\frac{[M]}{[L]^2[T]}$ & $\frac{\mathrm{g}}{\mathrm{cm}^2\mathrm{s}}$\\
+    $\tilde{\mathbf{P}}_\nu(\mathbf{r},t)$ & $\frac{[M]}{[L]^2[T]^\frac{1}{2}}$ & $\frac{\mathrm{g}}{\mathrm{cm}^2\cdot\mathrm{s}^\frac{1}{2}}$\\
+    $\bm{\Pi}(\mathbf{r},t)$ & $\frac{[C][T]}{[L]^3}$ & $\frac{\mathrm{statC}\cdot\mathrm{s}}{\mathrm{cm}^3}$\\
+    $\mathcal{A}_{\bm{\alpha}}(k,t)$, $\hat{\mathcal{A}}_{\bm{\alpha}}(k,t)$ & $[C]$ & statC\\
+    $\mathcal{Q}_{\bm{\beta}}^{\perp,\parallel}(\kappa,t)$, $\hat{\mathcal{Q}}_{\bm{\beta}}^{\perp,\parallel}(\kappa,t)$ & $[L]^2$ & cm$^{2}$\\
+    $\tilde{\mathcal{Q}}_{\bm{\gamma}}^{\perp,\parallel}(\kappa,t)$, $\hat{\tilde{\mathcal{Q}}}_{\bm{\gamma}}^{\perp,\parallel}(\kappa,t)$ & $[L]^2[T]^\frac{1}{2}$ & $\mathrm{cm}^2\cdot\mathrm{s}^\frac{1}{2}$\\
+    $\mathit{\Pi}_{\bm{\alpha}}(k,t)$, $\hat{\mathit{\Pi}}_{\bm{\alpha}}(k,t)$ & $[C][T]$ & $\mathrm{statC}\cdot\mathrm{s}$\\
+    $\mathcal{P}_{\bm{\beta}}^{\perp,\parallel}(k,t)$, $\hat{\mathcal{P}}_{\bm{\beta}}^{\perp,\parallel}(k,t)$ & $\frac{[M][L]}{[T]}$ & $\frac{\mathrm{g}\cdot\mathrm{cm}}{\mathrm{s}}$\\
+    $\tilde{\mathcal{P}}_{\bm{\gamma}}^{\perp,\parallel}(k,\nu;t)$, $\hat{\tilde{\mathcal{P}}}_{\bm{\gamma}}^{\perp,\parallel}(k,\nu;t)$ & $\frac{[M][L]}{[T]^\frac{1}{2}}$ & $\frac{\mathrm{g}\cdot\mathrm{cm}}{\mathrm{s}^\frac{1}{2}}$\\
+    $\omega_0$, $\Gamma$, $\Omega_\perp$, $\Omega_\parallel$ & $\frac{1}{[T]}$ & s$^{-1}$\\
+    $\hat{a}_{\bm{\alpha}}(k,t)$ & $[L]^\frac{1}{2}$ & cm$^\frac{1}{2}$ \\
+    $\hat{b}_{\bm{\beta}}^{\perp,\parallel}(\kappa,t)$ & $[L]^\frac{1}{2}$ & cm$^\frac{1}{2}$\\
+    $\hat{c}_{\bm{\gamma}}^{\perp,\parallel}(\kappa,\nu;t)$ & $[L]^\frac{1}{2}[T]^\frac{1}{2}$ & cm$^\frac{1}{2}$s$^\frac{1}{2}$\\
+\end{longtable}
+\end{center}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%% Import Standalone Appendices %%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Vector Spherical Harmonic Algebra
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{harmonicAlgebra}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Derivation of Hybridized Operators
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{operatorFanoDiagonalization}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Helmholtz Expansion of the Dyadic Dirac Delta
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \input{diracDeltaAlgebra}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Derivation of the Dielectric Picture from the EM Lagrangian
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{dielectricPictureDerivation}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Derivation of the Free Charge Picture from the EM Lagrangian
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \input{freeChargePictureDerivation}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PZW Hamiltonian Derivation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{pzwHamiltonian}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Green's Function Helmholtz Expansion
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \input{greenFunctionAlgebra}
+
+
+
+
+
+
+
+
+
+
+
+\section{Miscellaneous Proofs and Derivations}
+
+\subsection{Analysis of the Divergence of the Matter Displacement Field}\label{app:polarizationDivergence}
+
+The divergence of the matter displacement field within the sphere is given by
+\begin{equation}
+\begin{split}
+\nabla&\cdot\mathbf{Q}_m(\mathbf{r},t) = \sum_{\beta = x,y,z}\frac{\partial}{\partial r_\beta}\left\{\hat{\mathbf{e}}_\beta\cdot\Theta(a - r)\sum_i\mathbf{q}_{mi}(t)\Theta[\mathbf{r}\in\mathbb{V}(\mathbf{r}_i)]\right\}\\
+% &= \Theta(a - r)\sum_{\beta i}\hat{\mathbf{e}}_\beta\cdot\mathbf{q}_{mi}(t)\frac{\partial}{\partial r_\beta}\prod_\gamma\Theta\!\left(r_\gamma - \left[r_{i\gamma} - \frac{\Delta^\frac{1}{3}}{2}\right]\right)\Theta\!\left(\left[r_{i\gamma} + \frac{\Delta^\frac{1}{3}}{2}\right] - r_\gamma\right)\\
+% &\qquad + \sum_\beta\frac{\partial}{\partial r_\beta}\left\{\Theta(a - r)\right\}\hat{\mathbf{e}}_\beta\cdot\sum_i\mathbf{q}_{mi}(t)\Theta[\mathbf{r}\in\mathbb{V}(\mathbf{r}_i)]\\
+&= \Theta(a - r)\sum_{\beta i}\hat{\mathbf{e}}_\beta\cdot\mathbf{q}_{mi}(t)\left[\delta(r_\beta - [r_{i\beta} - \Delta^{1/3}/2]) - \delta(r_\beta - [r_{i\beta} + \Delta^{1/3}/2])\right]\\
+&\times\prod_{\gamma\neq\beta}\Theta(r_\gamma - [r_{i\gamma} - \Delta^{1/3}/2])\Theta([r_{i\gamma} + \Delta^{1/3}/2] - r_\gamma) - \hat{\mathbf{r}}\delta(r - a)\cdot\sum_{i = 1}^{N_m}\mathbf{q}_{mi}(t)\Theta[\mathbf{r}\in\mathbb{V}(\mathbf{r}_i)].
+\end{split}
+\end{equation}
+The first term on the right-hand side highlights that unit cells within the sphere's bulk that have relative charge displacements $\mathbf{q}_{mi}(t)$ unequal to those of their neighbors will give rise to coordinate field divergences. To see that, one can analyze two neighboring terms $j$ and $k$ in the sums over $i$ above. These terms will have opposite signs attached to the Dirac deltas $\delta(r_\beta - [r_{j\beta} \mp \Delta^{1/3}/2])$ and $\delta(r_\beta - [r_{k\beta} \pm \Delta^{1/3}/2])$ that are otherwise equal along the boundary shared by the corresponding volumes $\mathbb{V}(\mathbf{r}_j)$ and $\mathbb{V}(\mathbf{r}_k)$. Therefore, if they have identical displacement projections $\hat{\mathbf{e}}_\beta\cdot\mathbf{q}_{mj}(t) = \hat{\mathbf{e}}_\beta\cdot\mathbf{q}_{mk}(t)$, they will cancel, such that the divergence of the matter field is only nonzero where the ``head-to-tail'' cancellation of neighboring displacement vectors is broken.
+
+This logic seems to suggest that only a uniform matter displacement field will be free of divergences. Since the polarization field inside the sphere is not uniform in general, such a limitation would present real difficulties. However, one can see that smooth variations in $\mathbf{Q}_m(\mathbf{r},t)$ will not produce divergences and that our model for $\mathbf{Q}_m(\mathbf{r},t)$ is more flexible. To see this, we can recognize that, as the side-length $\Delta^{1/3}$ of each unit-cell goes to zero, infinitesimal differences between the displacement vectors of each cell proportional to this length will also go to zero. For example, if $\hat{\mathbf{e}}_\beta\cdot\mathbf{q}_{mj}(t) = \hat{\mathbf{e}}_\beta\cdot\mathbf{q}_{mk}(t) + a\Delta^{1/3}$ with $a$ some constant, the cancellation condition described above will still be satisfied as $\Delta\to0$ and $\mathbf{Q}_m(\mathbf{r},t)$ will remain divergence-free.
+
+The second term on the right-hand side describes a similar broken-cancellation effect that occurs at the particle's surface. In particular, projections of the displacement vectors $\mathbf{q}_{mi}(t)$ along a given axis represent the infinitesimal flow of charge along that axis. When this projection occurs across the surface, as is represented by $\hat{\mathbf{r}}\cdot\mathbf{q}_{mi}(t)\delta(r - a)$, this flow produces infinitesimally thin layers of unbalanced positive or negative charge along the particle's surface. Therefore, as divergences of the matter displacement field within the sphere's bulk represent regions of nonzero bulk bound charge density, the surface-divergences represent regions of nonzero surface bound charge density.
+
+
+
+
+
+
+
+
+
+
+\section{Miscellaneous Work In-Progress}
+
+Generally, it is easiest to construct this picture in a Hamiltonian formalism, especially if we are to quantize it later. We must therefore begin by identifying the momenta and momentum densities associated with our particle coordinates and fields, respectively. Following the usual procedure, we find
+\begin{equation}
+\begin{split}
+\mathbf{p}_{fi}(t) &= \sum_k\frac{\partial L}{\partial\left(\dot{\mathbf{x}}_{fi}(t)\cdot\hat{\mathbf{e}}_k\right)}\hat{\mathbf{e}}_k = \mu_{fi}\dot{\mathbf{x}}_{fi}(t) + \frac{e_i}{c}\mathbf{A}[\mathbf{x}_{fi}(t),t],\\
+\mathbf{P}_m(\mathbf{r},t) &= \sum_k\frac{\partial\mathcal{L}}{\partial\left(\dot{\mathbf{Q}}_m(\mathbf{r},t)\cdot\hat{\mathbf{e}}_k\right)}\hat{\mathbf{e}}_k = \eta_m(\mathbf{r})\dot{\mathbf{Q}}_m(\mathbf{r},t) + \frac{e}{c\Delta}\mathbf{A}(\mathbf{r},t),\\
+\tilde{\mathbf{P}}_\nu(\mathbf{r},t) &= \sum_k\frac{\partial\mathcal{L}}{\partial\left(\dot{\tilde{\mathbf{Q}}}_\nu(\mathbf{r},t)\cdot\hat{\mathbf{e}}_k\right)}\hat{\mathbf{e}}_k = \eta_\nu(\mathbf{r})\dot{\tilde{\mathbf{Q}}}_\nu(\mathbf{r},t) - \tilde{v}(\nu)\mathbf{Q}_m(\mathbf{r},t),\\
+\mathbf{\Pi}(\mathbf{r},t) &= \sum_k\frac{\partial\mathcal{L}}{\partial\left(\dot{\mathbf{A}}(\mathbf{r},t)\cdot\hat{\mathbf{e}}_k\right)}\hat{\mathbf{e}}_k = \frac{1}{4\pi c}\left[\frac{1}{c}\dot{\mathbf{A}}(\mathbf{r},t) + \nabla\Phi(\mathbf{r},t)\right],
+\end{split}
+\end{equation}
+such that
+\begin{equation}
+\begin{split}
+H &= \sum_i\mathbf{p}_{fi}(t)\cdot\dot{\mathbf{x}}_{fi}(t) + \int\left[\mathbf{P}_m(\mathbf{r},t)\cdot\dot{\mathbf{Q}}_m(\mathbf{r},t) + \int_0^\infty\tilde{\mathbf{P}}_\nu(\mathbf{r},t)\cdot\dot{\tilde{\mathbf{Q}}}_\nu(\mathbf{r},t)\;\mathrm{d}\nu + \bm{\Pi}(\mathbf{r},t)\cdot\dot{\mathbf{A}}(\mathbf{r},t)\right]\mathrm{d}^3\mathbf{r} - L\\
+&= \sum_i\left(\mu_{fi}\dot{\mathbf{x}}_{fi}^2(t) + \frac{e_i}{c}\dot{\mathbf{x}}_{fi}(t)\cdot\mathbf{A}\left[\mathbf{x}_{fi}(t),t\right]\right) + \int\left[\eta_m(\mathbf{r})\dot{\mathbf{Q}}_m^2(\mathbf{r},t) + \frac{e}{c\Delta}\dot{\mathbf{Q}}_m(\mathbf{r},t)\cdot\mathbf{A}(\mathbf{r},t)\right]\mathrm{d}^3\mathbf{r}\\
+&+ \int\int_0^\infty\left[\eta_\nu(\mathbf{r})\dot{\tilde{\mathbf{Q}}}^2_\nu(\mathbf{r},t) - \tilde{v}(\nu)\mathbf{Q}_m(\mathbf{r},t)\cdot\dot{\tilde{\mathbf{Q}}}_\nu(\mathbf{r},t)\right]\mathrm{d}\nu\,\mathrm{d}^3\mathbf{r} + \frac{1}{4\pi c}\int\left[\frac{1}{c}\dot{\mathbf{A}}^2(\mathbf{r},t) + \nabla\Phi(\mathbf{r},t)\cdot\dot{\mathbf{A}}(\mathbf{r},t)\right]\;\mathrm{d}^3\mathbf{r}\\
+&- \sum_i\frac{1}{2}\mu_{fi}\dot{\mathbf{x}}_{fi}^2(t) + \int\frac{1}{2}\eta_m(\mathbf{r})\left(-\dot{\mathbf{Q}}_m^2(\mathbf{r},t) + \omega_0^2\mathbf{Q}_m^2(\mathbf{r},t) + \frac{2}{3}\sigma_0\mathbf{Q}_m(\mathbf{r},t)\cdot\left[\mathbf{Q}_m(\mathbf{r},t)\cdot\bm{1}_3\cdot\mathbf{Q}_m(\mathbf{r},t)\right]\right)\mathrm{d}^3\mathbf{r}\\
+&+ \int\int_0^\infty\left(-\frac{1}{2}\eta_\nu(\mathbf{r})\dot{\tilde{\mathbf{Q}}}_\nu^2(\mathbf{r},t) + \frac{1}{2}\eta_\nu(\mathbf{r})\nu^2\tilde{\mathbf{Q}}_\nu^2(\mathbf{r},t)\right)\mathrm{d}\nu\,\mathrm{d}^3\mathbf{r} + \int\int_0^\infty\tilde{v}(\nu)\mathbf{Q}_m(\mathbf{r},t)\cdot\dot{\tilde{\mathbf{Q}}}_\nu(\mathbf{r},t)\;\mathrm{d}\nu\,\mathrm{d}^3\mathbf{r}\\
+&+ \int\left(-\frac{e}{\Delta}\nabla\cdot\mathbf{Q}_m(\mathbf{r},t) + \sum_ie_i\delta[\mathbf{x}_{fi}(t) - \mathbf{r}]\right)\Phi(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r}\\
+&- \int\left(\frac{e}{c\Delta}\dot{\mathbf{Q}}_m(\mathbf{r},t) + \sum_i\frac{e_i}{c}\dot{\mathbf{x}}_{fi}(t)\delta[\mathbf{x}_{fi}(t) - \mathbf{r}]\right)\cdot\mathbf{A}(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r} + \sum_{\alpha,\beta = m,b,r}\left[u_{\alpha\beta}^\infty(\mathbf{r}) + u_{\beta\alpha}^\infty(\mathbf{r})\right]\\
+&+ \sum_{\alpha = m,b,r,f}u_\alpha^\mathrm{self} - \frac{1}{8\pi}\int\left(\left[\nabla\Phi(\mathbf{r},t)\right]^2 + \frac{1}{c^2}\dot{\mathbf{A}}^2(\mathbf{r},t) - \left[\nabla\times\mathbf{A}(\mathbf{r},t)\right]^2 + \frac{2}{c}\nabla\Phi(\mathbf{r},t)\cdot\dot{\mathbf{A}}(\mathbf{r},t)\right)\mathrm{d}^3\mathbf{r}.
+\end{split}
+\end{equation}
+After eliminating any terms that include integration of Helmholtz-orthogonal fields and cancelling any reverse duplicates, the Hamiltonian simplifies to
+\begin{equation}
+\begin{split}
+H &= \sum_i\frac{1}{2}\mu_{fi}\dot{\mathbf{x}}_{fi}^2(t) + \int\frac{1}{2}\eta_m(\mathbf{r})\left[\dot{\mathbf{Q}}_m^2(\mathbf{r},t) + \omega_0^2\mathbf{Q}_m^2(\mathbf{r},t)\right]\mathrm{d}^3\mathbf{r}\\
+&+ \int\frac{1}{3}\eta_m(\mathbf{r})\sigma_0 \mathbf{Q}_m(\mathbf{r},t)\cdot\left[\mathbf{Q}_m(\mathbf{r},t)\cdot\bm{1}_3\cdot\mathbf{Q}_m(\mathbf{r},t)\right]\mathrm{d}^3\mathbf{r} + \int\int_0^\infty\frac{1}{2}\eta_\nu(\mathbf{r})\left[\dot{\tilde{\mathbf{Q}}}_\nu^2(\mathbf{r},t) + \nu^2\tilde{\mathbf{Q}}_\nu^2(\mathbf{r},t)\right]\mathrm{d}\nu\,\mathrm{d}^3\mathbf{r}\\
+&+ \frac{1}{8\pi}\int\left(\frac{1}{c^2}\dot{\mathbf{A}}^2(\mathbf{r},t) + \left[\nabla\times\mathbf{A}(\mathbf{r},t)\right]^2\right)\mathrm{d}^3\mathbf{r} - \frac{1}{8\pi}\int\left[\nabla\Phi(\mathbf{r},t)\right]^2\mathrm{d}^3\mathbf{r} - \int\frac{e}{\Delta}\nabla\cdot\mathbf{Q}_m(\mathbf{r},t)\Phi(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r}\\
+&+ \sum_ie_i\Phi[\mathbf{x}_{fi}(t),t] + \sum_{\alpha,\beta = m,b,r}\left[u_{\alpha\beta}^\infty(\mathbf{r}) + u_{\beta\alpha}^\infty(\mathbf{r})\right] + \sum_{\alpha = m,b,r,f}u_\alpha^\mathrm{self}.
+\end{split}
+\end{equation}
+Eliminating the velocities and velocity densities in favor of momenta and momentum densities, one finds
+\begin{equation}
+\begin{split}
+H &= \sum_i\frac{1}{2}\mu_{fi}\left(\frac{\mathbf{p}_{fi}(t)}{\mu_{fi}} - \frac{e_i}{\mu_{fi}c}\mathbf{A}\left[\mathbf{x}_{fi}(t),t\right]\right)^2\\
+&+ \int\frac{1}{2}\eta_m(\mathbf{r})\left[\left(\frac{\mathbf{P}_m(\mathbf{r},t)}{\eta_m(\mathbf{r})} - \frac{e\mathbf{A}(\mathbf{r},t)}{\eta_m(\mathbf{r})c\Delta}\right)^2 + \omega_0^2\mathbf{Q}_m^2(\mathbf{r},t)\right]\mathrm{d}^3\mathbf{r}\\
+&+ \int\frac{1}{3}\eta_m(\mathbf{r})\sigma_0 \mathbf{Q}_m(\mathbf{r},t)\cdot\left[\mathbf{Q}_m(\mathbf{r},t)\cdot\bm{1}_3\cdot\mathbf{Q}_m(\mathbf{r},t)\right]\mathrm{d}^3\mathbf{r}\\
+&+ \int\int_0^\infty\frac{1}{2}\eta_\nu(\mathbf{r})\left[\left(\frac{\tilde{\mathbf{P}}_\nu(\mathbf{r},t)}{\eta_\nu(\mathbf{r})} + \frac{\tilde{v}(\nu)}{\eta_\nu(\mathbf{r})}\mathbf{Q}_m(\mathbf{r},t)\right)^2 + \nu^2\tilde{\mathbf{Q}}_\nu^2(\mathbf{r},t)\right]\mathrm{d}\nu\,\mathrm{d}^3\mathbf{r}\\
+&+ \frac{1}{8\pi}\int\left(\frac{1}{c^2}\left[4\pi c^2\bm{\Pi}(\mathbf{r},t) - c\nabla\Phi(\mathbf{r},t)\right]^2 + \left[\nabla\times\mathbf{A}(\mathbf{r},t)\right]^2\right)\mathrm{d}^3\mathbf{r} - \frac{1}{8\pi}\int\left[\nabla\Phi(\mathbf{r},t)\right]^2\mathrm{d}^3\mathbf{r}\\
+&- \int\frac{e}{\Delta}\nabla\cdot\mathbf{Q}_m(\mathbf{r},t)\Phi(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r} + \sum_ie_i\Phi[\mathbf{x}_{fi}(t),t] + \sum_{\alpha,\beta = m,b,r}\left[u_{\alpha\beta}^\infty(\mathbf{r}) + u_{\beta\alpha}^\infty(\mathbf{r})\right] + \sum_{\alpha = m,b,r,f}u_\alpha^\mathrm{self}.
+\end{split}
+\end{equation}
+From here, we can simplify by separating the scalar potentials of the free and bound charges. Since $\partial\mathcal{L}/\partial\dot{\Phi}(\mathbf{r},t) = 0$, the scalar potentials are not dynamical variables and do not carry their own degrees of freedom. Therefore, the scalar potentials can be considered to instantaneously track the motion of the free and bound charges such that
+\begin{equation}
+\Phi(\mathbf{r},t) = \Phi_f(\mathbf{r},t) + \Phi_m(\mathbf{r},t)
+\end{equation}
+where $\Phi_\alpha(\mathbf{r},t) = \int\rho_\alpha(\mathbf{r}',t)/|\mathbf{r} - \mathbf{r}'|\;\mathrm{d}^3\mathbf{r}'$. The 
+% first two terms in the last line of $H$ above can then be expanded as
+% \begin{equation}
+% \begin{split}
+% - \int\frac{e}{\Delta}&\nabla\cdot\mathbf{Q}_m(\mathbf{r},t)\Phi(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r} + \sum_ie_i\Phi[\mathbf{x}_{fi}(t),t] = - \int\frac{e}{\Delta}\nabla\cdot\mathbf{Q}_m(\mathbf{r},t)\Phi_m(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r}\\
+% &+ \sum_ie_i\Phi_m[\mathbf{x}_{fi}(t),t] - \int\frac{e}{\Delta}\nabla\cdot\mathbf{Q}_m(\mathbf{r},t)\Phi_f(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r} + \sum_ie_i\Phi_f[\mathbf{x}_{fi}(t),t]
+% \end{split}
+% \end{equation}
+% and the 
+total Hamiltonian can then be expanded as
+\begin{equation}
+H = H_f + H_m + H_r + H_\mathrm{EM} + H_\mathrm{int} + H_\mathrm{drive} + H_\mathrm{bind} + H_\mathrm{self} + H_\mathrm{NL}.
+\end{equation}
+The first term is the Hamiltonian of the free particles,
+\begin{equation}
+H_f = \sum_i\frac{\mathbf{p}_{fi}^2(t)}{2\mu_{fi}} + \sum_ie_i\Phi_f[\mathbf{x}_{fi}(t),t].
+\end{equation}
+The second is the Hamiltonian of the matter resonance,
+\begin{equation}
+\begin{split}
+H_m &= \int\left[\frac{\mathbf{P}_m^2(\mathbf{r},t)}{2\eta_m(\mathbf{r})} + \frac{1}{2}\eta_m(\mathbf{r})\omega_0^2\mathbf{Q}_m^2(\mathbf{r},t)\right]\mathrm{d}^3\mathbf{r} + \int\int_0^\infty\frac{\tilde{v}^2(\nu)}{2\eta_\nu(\mathbf{r})}\mathbf{Q}_m^2(\mathbf{r},t)\;\mathrm{d}\nu\,\mathrm{d}^3\mathbf{r}\\
+&- \int\frac{e}{\Delta}\nabla\cdot\mathbf{Q}_m(\mathbf{r},t)\Phi_m(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r},
+\end{split}
+\end{equation}
+the third is the Hamiltonian of the bath,
+\begin{equation}
+H_r = \int\int_0^\infty\left[\frac{\tilde{\mathbf{P}}_\nu^2(\mathbf{r},t)}{2\eta_\nu(\mathbf{r})} + \frac{1}{2}\eta_\nu(\mathbf{r})\nu^2\tilde{\mathbf{Q}}_\nu^2(\mathbf{r},t)\right]\mathrm{d}\nu\,\mathrm{d}^3\mathbf{r},
+\end{equation}
+and the fourth is the Hamiltonian of the transverse electromagnetic field,
+\begin{equation}
+\begin{split}
+H_\mathrm{EM} &= \int\left(2\pi c^2\bm{\Pi}^2(\mathbf{r},t) + \frac{1}{8\pi}\left[\nabla\times\mathbf{A}(\mathbf{r},t)\right]^2\right)\mathrm{d}^3\mathbf{r} + \int\frac{e^2}{2\eta_m(\mathbf{r})c^2\Delta^2}\mathbf{A}^2(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r}\\&+ \sum_i\frac{e_i^2}{2\mu_{fi}c^2}\mathbf{A}^2[\mathbf{x}_{fi}(t),t].
+\end{split}
+\end{equation}
+The fifth is the interaction Hamiltonian that couples the matter, bath, and EM field together,
+\begin{equation}
+\begin{split}
+H_\mathrm{int} &= -\int\frac{e}{\eta_m(\mathbf{r})c\Delta}\mathbf{P}_m(\mathbf{r},t)\cdot\mathbf{A}(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r} + \int\int_0^\infty\frac{\tilde{v}(\nu)}{\eta_\nu(\mathbf{r})}\tilde{\mathbf{P}}_\nu(\mathbf{r},t)\cdot\mathbf{Q}_m(\mathbf{r},t)\;\mathrm{d}\nu\,\mathrm{d}^3\mathbf{r}\\
+& - c\int\bm{\Pi}(\mathbf{r},t)\cdot\nabla\Phi_m(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r},
+\end{split}
+\end{equation}
+and the sixth is the driving Hamiltonian that details the interactions of the free charges with the other resonances of the system,
+\begin{equation}
+\begin{split}
+H_\mathrm{drive} &= -\sum_i\frac{e_i}{\mu_{fi}c}\mathbf{p}_{fi}(t)\cdot\mathbf{A}[\mathbf{x}_{fi}(t),t] - c\int\bm{\Pi}(\mathbf{r},t)\cdot\nabla\Phi_f(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r}\\&- \int\frac{e}{\Delta}\nabla\cdot\mathbf{Q}_m(\mathbf{r},t)\Phi_f(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r} + \sum_ie_i\Phi_m[\mathbf{x}_{fi}(t),t].
+\end{split}
+\end{equation}
+The seventh and eighth terms are the binding and self-energy Hamiltonians
+\begin{equation}
+\begin{split}
+H_\mathrm{bind} &= \sum_{\alpha,\beta = m,b,r}\left[u_{\alpha\beta}^\infty(\mathbf{r}) + u_{\beta\alpha}^\infty(\mathbf{r})\right],\\
+H_\mathrm{self} &= \sum_{\alpha = m,b,r,f}u_\alpha^\mathrm{self},
+\end{split}
+\end{equation}
+while the ninth is the nonlinear term in the potential energy of the matter resonance,
+\begin{equation}
+H_\mathrm{NL} = \int\frac{1}{3}\eta_m(\mathbf{r})\sigma_0 \mathbf{Q}_m(\mathbf{r},t)\cdot\left[\mathbf{Q}_m(\mathbf{r},t)\cdot\bm{1}_3\cdot\mathbf{Q}_m(\mathbf{r},t)\right]\mathrm{d}^3\mathbf{r}.
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliography %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\bibliography{../fieldAlgebraRefs}
+\bibliographystyle{unsrtnat}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% End document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

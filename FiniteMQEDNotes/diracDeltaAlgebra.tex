@@ -1,0 +1,119 @@
+%!TEX root = finiteMQED.tex
+
+\section{Details of the Helmholtz Expansion of the Dyadic Dirac Delta in Spherical Coordinates}
+
+\subsection{Orthogonality of Transverse and Longitudinal Vector Fields}\label{sec:helmholtzOrthogonality}
+
+A vector field $\mathbf{F}(\mathbf{r})$ can be broken into a transverse part $\mathbf{F}_\perp(\mathbf{r})$ and a longitudinal part $\mathbf{F}_\parallel(\mathbf{r})$ through Helmholtz decomposition. The divergence-free transverse part can be written as the curl of another vector field, such that $\mathbf{F}_\perp(\mathbf{r}) = \nabla\times\mathbf{A}(\mathbf{r})$. The curl-free longitudinal part can be written as the gradient of a scalar field, such that $\mathbf{F}_\parallel(\mathbf{r}) = \nabla\Phi(\mathbf{r})$. Therefore, using the identities $\nabla\cdot\{\mathbf{A}(\mathbf{r})\Phi(\mathbf{r})\} = \mathbf{A}(\mathbf{r})\cdot\nabla\Phi(\mathbf{r}) + \Phi(\mathbf{r})\nabla\cdot\mathbf{A}(\mathbf{r})$ and $\nabla\cdot\nabla\times\mathbf{A}(\mathbf{r}) = 0$, one can use integration by parts and Gauss' law to see that
+\begin{equation}
+\begin{split}
+\int\mathbf{F}_\perp(\mathbf{r})\cdot\mathbf{F}_\parallel(\mathbf{r})\;\mathrm{d}^3\mathbf{r} &= \int\nabla\times\mathbf{A}(\mathbf{r})\cdot\nabla\Phi(\mathbf{r})\;\mathrm{d}^3\mathbf{r}\\
+&=\int\left(\nabla\cdot\left\{\Phi(\mathbf{r})\nabla\times\mathbf{A}(\mathbf{r})\right\} - \Phi(\mathbf{r})\nabla\cdot\{\nabla\times\mathbf{A}(\mathbf{r})\}\right)\;\mathrm{d}^3\mathbf{r}\\
+&= \oint\Phi(\mathbf{r})\nabla\times\mathbf{A}(\mathbf{r})\cdot\mathrm{d}^2\mathbf{s} + 0.
+\end{split}
+\end{equation}
+Here, $\int\mathrm{d}^3\mathbf{r}$ represents integration over all space and $\oint\mathrm{d}^2\mathbf{s}$ represents integration across the surface at infinity wherein the surface elements $\mathrm{d}^2\mathbf{s}$ have outward-facing normal vectors. The surface integral vanishes for all $\mathbf{A}(\mathbf{r})$ and $\Phi(\mathbf{r})$ that go to zero at infinity, such that any physical vector field $\mathbf{F}(\mathbf{r})$ obeys
+\begin{equation}\label{eq:helmholtzOrthogonality}
+\int\mathbf{F}_\perp(\mathbf{r})\cdot\mathbf{F}_\parallel(\mathbf{r})\;\mathrm{d}^3\mathbf{r} = 0.
+\end{equation}
+
+
+
+
+
+
+
+\subsection{Helmholtz Decomposition of $\bm{1}_2\delta(\mathbf{r} - \mathbf{r}')$ into Spherical Mode Functions}\label{app:helmholtzDelta}
+
+Consider the Laplace equation
+\begin{equation}
+\nabla^2\psi_{p\ell m}(\mathbf{r},k) = -k^2\psi_{p\ell m}(\mathbf{r},k)
+\end{equation}
+with the corresponding boundary condition $\lim_{r\to\infty}\psi_{p\ell m}(\mathbf{r},k)\to0$. The solutions, which take the form
+\begin{equation}
+\psi_{p\ell m}(\mathbf{r},k) = \sqrt{K_{\ell m}}j_\ell(kr)P_{\ell m}(\cos\theta)S_p(m\phi),
+\end{equation}
+are therefore defined here as eigenfunctions of the Laplacian operator in spherical coordinates with eigenvalues $-k^2$. The individual factors of the eigenfunctions are defined in Appendix \ref{app:harmonicAlgebra}. 
+
+These eigenfunctions possess a special completeness property that is crucial to our ability to reconstruct complicated three-dimensional functions as linear combinations of simpler harmonic functions. To see how this completeness property arises, one can expand the Laplacian in spherical coordinates to find
+\begin{equation}
+\nabla^2\{\cdot\} = \frac{1}{r^2}\frac{\partial}{\partial r}\left\{r^2\frac{\partial}{\partial r}\left\{\cdot\right\}\right\} + \frac{1}{r^2\sin\theta}\frac{\partial}{\partial \theta}\left\{\sin\theta\frac{\partial}{\partial \theta}\{\cdot\}\right\} + \frac{1}{r^2\sin^2\theta}\frac{\partial^2}{\partial\phi^2}\{\cdot\}.
+\end{equation}
+Therefore, dropping the indices $(p,\ell,m)$ for a moment, the action of $\nabla^2 + k^2$ on any separable eigenfunction $\psi(\mathbf{r}) = R(r)\Theta(\theta)\Phi(\phi)$ can be seen to produce zero such that
+\begin{equation}\label{eq:diffEqExpansion}
+\begin{split}
+&\left(\nabla^2 + k^2\right)\{\psi(\mathbf{r})\} = \frac{r^2}{\psi(\mathbf{r})}\left(\nabla^2 + k^2\right)\{\psi(\mathbf{r})\},\\
+&= \frac{r}{R(r)}\left(k^2rR(r) + 2\frac{\partial R(r)}{\partial r} + r\frac{\partial^2 R(r)}{\partial r^2}\right) + \frac{1}{\tan(\theta)\Theta(\theta)}\left(\frac{\partial\Theta(\theta)}{\partial\theta} + \frac{\partial^2\Theta(\theta)}{\partial\theta^2}\right) + \frac{1}{\sin^2(\theta)\Phi(\phi)}\frac{\partial^2\Phi(\phi)}{\partial\phi^2}\\
+&= 0.
+\end{split}
+\end{equation}
+For any fixed values of $\theta$ and $\phi$, the above differential equation in $r$ is a particular form of Sturm-Liouville equation known as the spherical Bessel equation. As is discussed for the one-dimensional case in Titchmarsh,\cite{titchmarsh1946eigenfunction} solutions to Sturm-Liouville equations with specified boundary conditions form complete sets of orthogonal eigenfunctions from which any twice-differentiable function can be exactly reconstructed within the boundaries. Therefore, the set of functions $\{R(r)\}$ that are solutions to the above equation can completely describe any one-dimensional function of $r$ on the interval $(-\infty,\infty)$.
+
+The other two terms of Eq. \eqref{eq:diffEqExpansion} also form Sturm-Liouville equations, the associated Legendre and harmonic differential equations, when only $\theta$ or $\phi$ is allowed to vary, respectively. Therefore, $\{\Theta(\theta)\}$ and $\{\Phi(\phi)\}$ are complete sets on $\theta\in[0,\pi)$ and $\phi\in[0,2\pi)$, respectively, and the eigenfunctions $\{\psi(\mathbf{r})\}$ are guaranteed to be able to reproduce any twice-differentiable scalar field in $\mathbb{R}^3$.
+
+To extend our logic to the reconstruction of vector fields, we can note that three sets of vector eigenfunctions $\hat{\mathbf{e}}_i\psi_{p\ell m}(\mathbf{r},k)$ with $i = \{x,y,z\}$ can be defined that clearly are able to reproduce any vector field on $\mathbb{R}^3$. More precisely, these three sets of vector eigenfunctions are non-collinear\cite{stratton1941electromagnetic} and contain independent eigenfunctions of (the Sturm-Liouville operator) $\nabla^2$. The first property can be deduced from the nonzero cross-products between any two eigenfunctions from two different sets, and the second property can be deduced from the fact that $\nabla^2$ and $\hat{\mathbf{e}}_i$ commute. In other words, $\nabla^2\{\hat{\mathbf{e}}_i\psi_{p\ell m}(\mathbf{r},k)\} = \hat{\mathbf{e}}_i\nabla^2\{\psi_{p\ell m}(\mathbf{r},k)\} = -k^2\hat{\mathbf{e}}_i\psi_{p\ell m}(\mathbf{r},k)$.
+
+Because Cartesian vector functions are inconvenient to use for problems with spherical symmetry, Hansen\cite{hansen1935new} invented, as an alternative, the three functions $\mathbf{L}_{p\ell m}(\mathbf{r},k)$, $\mathbf{M}_{p\ell m}(\mathbf{r},k)$, and $\mathbf{N}_{p\ell m}(\mathbf{r},k)$ as an alternate basis. These three functions satisfy the two criteria above, the latter of which can be directly confirmed via $\nabla^2\{\nabla\psi_{p\ell m}(\mathbf{r},k)\} = \nabla\{\nabla^2\psi_{p\ell m}(\mathbf{r},k)\}$, $\nabla^2\{\nabla\times\{\mathbf{r}\psi_{p\ell m}(\mathbf{r},k)\}\} = \nabla\times\{\mathbf{r}\nabla^2\psi_{p\ell m}(\mathbf{r},k)\}$, and $\nabla^2\{\nabla\times\nabla\times\{\mathbf{r}\psi_{p\ell m}(\mathbf{r},k)\}\} = \nabla\times\nabla\times\{\mathbf{r}\nabla^2\psi_{p\ell m}(\mathbf{r},k)\}$. The non-collinearity of the three sets of functions can be seen by taking the cross-product of any two basis functions and noting that it is nonzero. 
+
+We are thus free to expand in terms of $\mathbf{L}_{p\ell m}(\mathbf{r},k)$, $\mathbf{M}_{p\ell m}(\mathbf{r},k)$, and/or $\mathbf{N}_{p\ell m}(\mathbf{r},k)$ any of the vector fields of our system that are smooth throughout the universe. As a matter of clarity, it is useful to show that we can expand the dyadic Dirac delta in terms of these basis functions as well. Assuming the Dirac delta to be the sharp limit of a smooth bump function, we can let 
+\begin{equation}
+\bm{1}_2\delta(\mathbf{r} - \mathbf{r}') = \sum_{p\ell m}\int_0^\infty\left[\mathbf{A}_{p\ell m}(\mathbf{r}',k)\mathbf{L}_{p\ell m}(\mathbf{r},k) + \mathbf{B}_{p\ell m}(\mathbf{r}',k)\mathbf{M}_{p\ell m}(\mathbf{r},k) + \mathbf{C}_{p\ell m}(\mathbf{r}',k)\mathbf{N}_{p\ell m}(\mathbf{r},k)\right]\mathrm{d}k,
+\end{equation}
+wherein $\mathbf{A}_{p\ell m}(\mathbf{r}',k)$, $\mathbf{B}_{p\ell m}(\mathbf{r}',k)$, and $\mathbf{C}_{p\ell m}(\mathbf{r}',k)$ are unknown vector fields. Using the orthogonality condition of Eq. \eqref{eq:longitudinalHarmonicOrthogonality}, we can see that
+\begin{equation}
+\begin{split}
+\int\bm{1}_2\delta(\mathbf{r} - \mathbf{r}')\cdot\mathbf{L}_{p'\ell'm'}(\mathbf{r},k')\;\mathrm{d}^3\mathbf{r} &= \mathbf{L}_{p'\ell'm'}(\mathbf{r}',k')\\
+&= \sum_{p\ell m}\int_0^\infty\int\mathbf{A}_{p\ell m}(\mathbf{r}',k)\mathbf{L}_{p\ell m}(\mathbf{r},k)\cdot\mathbf{L}_{p'\ell'm'}(\mathbf{r},k')\;\mathrm{d}^3\mathbf{r}\,\mathrm{d}k\\
+&= \sum_{p\ell m}\int_0^\infty\mathbf{A}_{p\ell m}(\mathbf{r}',k)\frac{2\pi^2}{k^2}\delta(k - k')(1 - \delta_{p0}\delta_{m0})\delta_{pp'}\delta_{\ell\ell'}\delta_{mm'}\\
+&= \frac{2\pi^2}{k'^2}(1 - \delta_{p'1}\delta_{m'0})\mathbf{A}_{p'\ell'm'}(\mathbf{r}',k').
+\end{split}
+\end{equation}
+Further, with $\mathbf{L}_{p'\ell'm'}(\mathbf{r}',k') = \mathbf{L}_{p'\ell'm'}(\mathbf{r}',k')(1 - \delta_{p'1}\delta_{m'0})$, we can see that
+\begin{equation}
+\mathbf{A}_{p\ell m}(\mathbf{r}',k) = \frac{k^2}{2\pi^2}\mathbf{L}_{p\ell m}(\mathbf{r}',k).
+\end{equation}
+Repeating this process for the transverse vector spherical harmonics using \eqref{eq:vectorSphericalHarmonicOrthogonality}, we can see that
+\begin{equation}
+\begin{split}
+\mathbf{B}_{p\ell m}(\mathbf{r}',k) &= \frac{k^2}{2\pi^2}\mathbf{M}_{p\ell m}(\mathbf{r}',k),\\
+\mathbf{C}_{p\ell m}(\mathbf{r}',k) &= \frac{k^2}{2\pi^2}\mathbf{N}_{p\ell m}(\mathbf{r}',k),
+\end{split}
+\end{equation}
+such that
+\begin{equation}\label{eq:dyadicDiracDelta}
+\bm{1}_2\delta(\mathbf{r} - \mathbf{r}') = \sum_{p\ell m}\int_0^\infty\frac{k^2}{2\pi^2}\left[\mathbf{L}_{p\ell m}(\mathbf{r}',k)\mathbf{L}_{p\ell m}(\mathbf{r},k) + \mathbf{M}_{p\ell m}(\mathbf{r}',k)\mathbf{M}_{p\ell m}(\mathbf{r},k) + \mathbf{N}_{p\ell m}(\mathbf{r}',k)\mathbf{N}_{p\ell m}(\mathbf{r},k)\right]\mathrm{d}k.
+\end{equation}
+This in turn can be separated into its transverse and longitudinal parts as
+\begin{equation}\label{eq:dyadicDiracDeltaSeparated}
+\begin{split}
+\left[\bm{1}_2\delta(\mathbf{r} - \mathbf{r}')\right]_\perp &=  \sum_{p\ell m}\int_0^\infty\frac{k^2}{2\pi^2}\left[\mathbf{M}_{p\ell m}(\mathbf{r}',k)\mathbf{M}_{p\ell m}(\mathbf{r},k) + \mathbf{N}_{p\ell m}(\mathbf{r}',k)\mathbf{N}_{p\ell m}(\mathbf{r},k)\right]\mathrm{d}k,\\
+\left[\bm{1}_2\delta(\mathbf{r} - \mathbf{r}')\right]_\parallel &= \sum_{p\ell m}\int_0^\infty\frac{k^2}{2\pi^2}\mathbf{L}_{p\ell m}(\mathbf{r}',k)\mathbf{L}_{p\ell m}(\mathbf{r},k)\;\mathrm{d}k.\\
+\end{split}
+\end{equation}
+
+Finally, we also deal in this manuscript with vector fields that are smooth within a finite radial boundary $a$ but are discontinuous across the boundary. This problem can be attacked in two ways, both of which will produce the same outcome. The more direct but mathematically complicated route is to represent the sharp boundary as the steep limit of a sigmoid function. This route has nice symmetry with our previous discussion as it involves the expansion of the vector field in the full eigenfunction basis of $\mathbb{R}^3$. However, it will require numerical evaluation of complicated overlap integrals involving spherical Bessel functions and will not, in general, produce expressions with advantageous explanatory power.
+
+The second route begins by setting our Sturm-Liouville boundary conditions such that we only use a subset of the total number vector spherical harmonics. More specifically, we will only use vector spherical harmonics in our expansion that have one or more components that go to zero at $r = a$, with the precise boundary requirements set by physical arguments. Because our boundary condition is a function of $r$, it is the radial index $k$ that will be restricted to certain values, and the completeness of the harmonic expansion of the sphere will depend on whether a set of vector harmonics with the ``allowed'' values of $k$ can be generated from a restricted set of scalar eigenfunctions $\psi_{p\ell m}(\mathbf{r},k)$ that is nonetheless complete within $r < a$.
+
+Conveniently, this set of scalar eigenfunctions is simple to define. The physical boundary conditions on the vector harmonics, as described in the main text, require their boundary-parallel components to go to zero at $r = a$ and their radial components to be nonzero. This behavior can be reproduced from scalar eigenfunctions $\psi_{p\ell m}(\mathbf{r},k_{\ell n})$, where $k_{\ell n}a$ is the $n^\mathrm{th}$ nonzero root of the $\ell^\mathrm{th}$ spherical Bessel function. These scalar eigenfunctions therefore all go to zero at the boundary. This is a valid Sturm-Liouville boundary condition, such that they form a complete set within the sphere. Therefore, we can rebuild our Dirac delta from the discrete set of vector harmonics that have the permitted wavenumbers $k_{\ell n}$. Explicitly,
+\begin{equation}
+\begin{split}
+\bm{1}_2\Theta(a - r)\delta(\mathbf{r} - \mathbf{r}') &= \Theta(a - r)\sum_{p\ell m n}\left[\mathbf{A}_{p\ell mn}(\mathbf{r}')\mathbf{L}_{p\ell m}(\mathbf{r},k_{\ell n})\right.\\
+&\qquad\left. + \mathbf{B}_{p\ell mn}(\mathbf{r}')\mathbf{M}_{p\ell m}(\mathbf{r},k_{\ell n}) + \mathbf{C}_{p\ell mn}(\mathbf{r}')\mathbf{N}_{p\ell m}(\mathbf{r},k_{\ell n})\right].
+\end{split}
+\end{equation}
+Projecting as before, we can see that, by the orthonormality conditions of Appendix \ref{app:harmonicAlgebra},
+\begin{equation}
+\begin{split}
+\mathbf{A}_{p\ell mn}(\mathbf{r}') &= \frac{1}{2\pi a^3j_{\ell + 1}^2(k_{\ell n}a)}\mathbf{L}_{p\ell m}(\mathbf{r},k_{\ell n}),\\
+\mathbf{B}_{p\ell mn}(\mathbf{r}') &= \frac{1}{2\pi a^3j_{\ell + 1}^2(k_{\ell n}a)}\mathbf{M}_{p\ell m}(\mathbf{r},k_{\ell n}),\\
+\mathbf{C}_{p\ell mn}(\mathbf{r}') &= \frac{1}{2\pi a^3j_{\ell + 1}^2(k_{\ell n}a)}\mathbf{N}_{p\ell m}(\mathbf{r},k_{\ell n}).
+\end{split}
+\end{equation}
+Therefore,
+\begin{equation}
+\begin{split}
+&\bm{1}_2\Theta(a - r)\delta(\mathbf{r} - \mathbf{r}') = \Theta(a - r)\sum_{p\ell m n}\frac{1}{2\pi a^3j_{\ell + 1}^2(k_{\ell n}a)}\\
+&\qquad\times\left[\mathbf{L}_{p\ell m}(\mathbf{r}',k_{\ell n})\mathbf{L}_{p\ell m}(\mathbf{r},k_{\ell n}) + \mathbf{M}_{p\ell m}(\mathbf{r}',k_{\ell n})\mathbf{M}_{p\ell m}(\mathbf{r},k_{\ell n}) + \mathbf{N}_{p\ell m}(\mathbf{r}',k_{\ell n})\mathbf{N}_{p\ell m}(\mathbf{r},k_{\ell n})\right].
+\end{split}
+\end{equation}
