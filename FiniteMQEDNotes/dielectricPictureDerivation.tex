@@ -1,31 +1,41 @@
 %!TEX root = finiteMQED.tex
 
-\section{Dependent matter: the dielectric picture}\label{app:dependentMatter}
+\section{Dependent Matter Degrees of Freedom: the Dielectric Picture}\label{app:dependentMatter}
 
 We have touched on this picture already in the preceding sections, but it is useful to reiterate that the Euler-Lorentz equations derivable from the system Lagrangian $L$ state clearly that the degrees of freedom of the matter and electromagnetic field are coupled. More explicitly, there are four Euler-Lorentz equations of the form
 \begin{equation}
-\frac{\mathrm{d}}{\mathrm{d}t}\left\{\frac{\partial\mathcal{L}'}{\partial\dot{F}(\mathbf{r},t)}\right\} = \frac{\partial\mathcal{L}'}{\partial F(\mathbf{r},t)} - \sum_{i = 1}^3\frac{\partial}{\partial r_i}\frac{\partial\mathcal{L}'}{\partial\left(\frac{\partial F(\mathbf{r},t)}{\partial r_i}\right)},
+\frac{\mathrm{d}}{\mathrm{d}t}\left\{\frac{\partial\mathcal{L}}{\partial\dot{F}(\mathbf{r},t)}\right\} = \frac{\partial\mathcal{L}}{\partial F(\mathbf{r},t)} - \sum_{i = 1}^3\frac{\partial}{\partial r_i}\frac{\partial\mathcal{L}}{\partial\left(\frac{\partial F(\mathbf{r},t)}{\partial r_i}\right)},
 \end{equation}
-where $F(\mathbf{r},t)$ takes the place of the scalar potential or a component of the vector potential, matter displacement field, or reservoir displacement field. The modified Lagrangian density $\mathcal{L}' = \mathcal{L} - (1/4\pi c)\nabla\Phi(\mathbf{r},t)\cdot\dot{\mathbf{A}}(\mathbf{r},t)$ provides the same Lagrangian, i.e. $\int\mathcal{L}\;\mathrm{d}^3\mathbf{r} = \int\mathcal{L}'\;\mathrm{d}^3\mathbf{r} = L$, due to the orthogonality under integration (see Eq. [\ref{eq:helmholtzOrthogonality}]) of the longitudinal gradient of the scalar potential and transverse (Coulomb gauge) vector potential. Here, the use of $\mathcal{L}'$ provides mathematical simplicity.
+where $F(\mathbf{r},t)$ takes the place of the scalar potential or a component of the vector potential, matter displacement field, or reservoir displacement field. 
+
+In the following derivations, we will analyze the Euler-Lorentz equations of the modified Lagrangian density
+\begin{equation}
+\bar{\mathcal{L}} = \mathcal{L} - \frac{1}{4\pi c}\nabla\Phi(\mathbf{r},t)\cdot\dot{\mathbf{A}}(\mathbf{r},t) + \mathcal{L}_{NL}.
+\end{equation}
+The second term on the right-hand side simplifies our mathematics without changing the motion of any observables. Its integral over all space is zero due to the Helmholtz orthogonality of its longitudinal first factor and transverse second factor such that it cannot contribute to the Lagrangian. The third term on the right-hand side builds in nonlinear material motion via
+\begin{equation}
+\mathcal{L}_\mathrm{NL} = - \frac{\sigma_0}{3}\mu\Theta(\mathbf{r}\in\mathbb{V})\mathbf{Q}(\mathbf{r},t)\cdot\left[\mathbf{Q}(\mathbf{r},t)\cdot\bm{1}_3\cdot\mathbf{Q}(\mathbf{r},t)\right],
+\end{equation}
+and is useful for providing a slight generalization of the dielectric picture.
 
 The equations of motion the four Euler-Lagrange equations lead to are
 \begin{equation}\label{eq:fourEOMs}
 \begin{split}
-\eta_m(\mathbf{r})\ddot{\mathbf{Q}}_m(\mathbf{r},t) + \int_0^\infty\tilde{v}(\nu)\dot{\tilde{\mathbf{Q}}}_\nu(\mathbf{r},t)\;&\mathrm{d}\nu + \eta_m(\mathbf{r})\omega_0^2\mathbf{Q}_m(\mathbf{r},t)\\
-+ \eta_m(\mathbf{r})\sigma_0\mathbf{Q}_m(\mathbf{r},t)\cdot\bm{1}_3&\cdot\mathbf{Q}_m(\mathbf{r},t) = \frac{e}{\Delta}\left(-\nabla\Phi(\mathbf{r},t) - \frac{1}{c}\dot{\mathbf{A}}(\mathbf{r})\right),\\[1.0em]
-\eta_\nu(\mathbf{r})\ddot{\tilde{\mathbf{Q}}}_\nu(\mathbf{r},t) + \eta_\nu(\mathbf{r})\nu^2\tilde{\mathbf{Q}}_\nu(\mathbf{r},t) &= \tilde{v}(\nu)\dot{\mathbf{Q}}_m(\mathbf{r},t),\\[0.5em]
--\nabla\cdot\nabla\Phi(\mathbf{r},t) &= 4\pi\rho_f(\mathbf{r},t) - \frac{4\pi e}{\Delta}\nabla\cdot\mathbf{Q}_m(\mathbf{r},t),\\
-\nabla\times\nabla\times\mathbf{A}(\mathbf{r},t) - \frac{1}{c^2}\ddot{\mathbf{A}}(\mathbf{r},t) &= \frac{4\pi}{c}\left[\frac{e}{\Delta}\dot{\mathbf{Q}}_m(\mathbf{r},t) + \mathbf{J}_f(\mathbf{r},t)\right] - \frac{\nabla\dot{\Phi}(\mathbf{r},t)}{c}\\
-&= \frac{4\pi}{c}\left[\frac{e}{\Delta}\dot{\mathbf{Q}}_m^\perp(\mathbf{r},t) + \mathbf{J}_f^\perp(\mathbf{r},t)\right].
+\mu\ddot{\mathbf{Q}}(\mathbf{r},t) + \eta\int_0^\infty v(\nu)\dot{\mathbf{Q}}_\nu(\mathbf{r},t)\;\mathrm{d}\nu + \mu\omega_0^2\mathbf{Q}(\mathbf{r},t) &+ \mu\sigma_0\mathbf{Q}(\mathbf{r},t)\cdot\bm{1}_3\cdot\mathbf{Q}(\mathbf{r},t)\\
+&= \Theta(\mathbf{r}\in\mathbb{V})e\eta\left(-\nabla\Phi(\mathbf{r},t) - \frac{1}{c}\dot{\mathbf{A}}(\mathbf{r})\right),\\[1.0em]
+\mu\ddot{\mathbf{Q}}_\nu(\mathbf{r},t) + \mu\nu^2\mathbf{Q}_\nu(\mathbf{r},t) &=  \eta v(\nu)\dot{\mathbf{Q}}(\mathbf{r},t),\\[1.0em]
+-\nabla\cdot\nabla\Phi(\mathbf{r},t) &= 4\pi\rho_f(\mathbf{r},t) - 4\pi e\eta\nabla\cdot\left\{\Theta(\mathbf{r}\in\mathbb{V})\mathbf{Q}(\mathbf{r},t)\right\},\\[0.5em]
+\nabla\times\nabla\times\mathbf{A}(\mathbf{r},t) - \frac{1}{c^2}\ddot{\mathbf{A}}(\mathbf{r},t) &= \frac{4\pi}{c}\left[\Theta(\mathbf{r}\in\mathbb{V})e\eta\dot{\mathbf{Q}}(\mathbf{r},t) + \mathbf{J}_f(\mathbf{r},t)\right] - \frac{\nabla\dot{\Phi}(\mathbf{r},t)}{c}\\
+&= \frac{4\pi}{c}\left[\Theta(\mathbf{r}\in\mathbb{V})e\eta\dot{\mathbf{Q}}^\perp(\mathbf{r},t) + \mathbf{J}_f^\perp(\mathbf{r},t)\right].
 \end{split}
 \end{equation}
 The most pertient equation to analyze here is the second. Using the Green's function (valid for $r < a$)
 \begin{equation}
-G(t - t') = \frac{\Theta(t - t')}{\eta_\nu(\mathbf{r})\nu}\sin(\nu[t - t'])
+G(t - t') = \frac{\Theta(t - t')}{\mu\nu}\sin(\nu[t - t'])
 \end{equation}
 of the oscillator differential equation
 \begin{equation}
-\eta_\nu(\mathbf{r})\ddot{G}(t - t') + \eta_\nu(\mathbf{r})\nu^2G(t - t') = 
+\mu\ddot{G}(t - t') + \mu\nu^2G(t - t') = 
 \begin{cases}
 \delta(t - t'), & t > t';\\
 0, & t < t';
@@ -34,68 +44,93 @@ of the oscillator differential equation
 we can see that
 \begin{equation}
 \begin{split}
-\dot{\tilde{\mathbf{Q}}}_\nu(\mathbf{r},t) &= \dot{\tilde{\mathbf{Q}}}_\nu^{(0)}(\mathbf{r},t) + \frac{\mathrm{d}}{\mathrm{d}t}\int_{-\infty}^\infty G(t - t')\tilde{v}(\nu)\dot{\mathbf{Q}}_m(\mathbf{r},t')\;\mathrm{d}t'\\
-&= \dot{\tilde{\mathbf{Q}}}_\nu^{(0)}(\mathbf{r},t) + \int_{-\infty}^\infty\frac{\Theta(t - t')}{\eta_\nu(\mathbf{r})}\cos(\nu[t - t'])\tilde{v}(\nu)\dot{\mathbf{Q}}_m(\mathbf{r},t')\;\mathrm{d}t'.
+\dot{\mathbf{Q}}_\nu(\mathbf{r},t) &= \dot{\mathbf{Q}}_\nu^{(0)}(\mathbf{r},t) + \frac{\mathrm{d}}{\mathrm{d}t}\int_{-\infty}^\infty G(t - t')\eta v(\nu)\dot{\mathbf{Q}}(\mathbf{r},t')\;\mathrm{d}t'\\
+&= \dot{\mathbf{Q}}_\nu^{(0)}(\mathbf{r},t) + \int_{-\infty}^\infty\frac{\Theta(t - t')}{\mu}\cos(\nu[t - t'])\eta v(\nu)\dot{\mathbf{Q}}(\mathbf{r},t')\;\mathrm{d}t'.
 \end{split}
 \end{equation}
-where $\dot{\tilde{\mathbf{Q}}}^{(0)}_\nu(\mathbf{r},t)$ is the $\nu^\mathrm{th}$ velocity field at $t$ generated by stimuli far in the past (formally, at the initial time $-\infty$). The inverse of the reservoir mass-density, $1/\eta_\nu(\mathbf{r}) = \eta_\nu^{-1}(\mathbf{r})$, is taken to imply use of the function $\eta_\nu^{-1}(\mathbf{r}) = \Theta(a - r)\Delta/\sum_{i = 1}^{N_r}\mu_{ri}\Theta[\mathbf{r}\in\mathbb{V}(\mathbf{r}_i)]$, i.e. is assumed to be equal to $\Delta/\mu_{ri}$ within each small region $\mathbb{V}(\mathbf{r}_i)$ inside the sphere and zero for all $r > a$. We can then define a loss function
+where $\dot{\mathbf{Q}}^{(0)}_\nu(\mathbf{r},t)$ is the $\nu^\mathrm{th}$ velocity field at $t$ generated by stimuli far in the past (formally, at the initial time $-\infty$). We can then define a loss function
 \begin{equation}
-\gamma_0(t - t') = \frac{1}{\eta_m(\mathbf{r})}\int_0^\infty\frac{\tilde{v}^2(\nu)}{\eta_\nu(\mathbf{r})}\cos(\nu[t - t'])\;\mathrm{d}\nu
+\gamma_0(t - t') = \int_0^\infty\frac{ \eta^2 v^2(\nu)}{\mu^2}\cos(\nu[t - t'])\;\mathrm{d}\nu
 \end{equation}
 and a thermal noise field (dimensions of force per unit volume)
 \begin{equation}
-\mathbf{N}_\mathrm{therm}(\mathbf{r},t) = -\int_0^\infty\tilde{v}(\nu)\dot{\tilde{\mathbf{Q}}}^{(0)}_\nu(\mathbf{r},t)\;\mathrm{d}\nu
+\mathbf{N}_\mathrm{therm}(\mathbf{r},t) = -\int_0^\infty \eta v(\nu)\dot{\mathbf{Q}}^{(0)}_\nu(\mathbf{r},t)\;\mathrm{d}\nu
 \end{equation}
-using an identical assumption for the inverse of the mass-density of the matter field (simply let $\mu_{ri}\to\mu_{mi}$, etc.) such that the first equation of Eq. \eqref{eq:fourEOMs} becomes
+such that the first equation of Eq. \eqref{eq:fourEOMs} becomes
 \begin{equation}\label{eq:matterEOM}
 \begin{split}
-\eta_m(\mathbf{r})\ddot{\mathbf{Q}}_m(\mathbf{r},t) &+ \eta_m(\mathbf{r})\int_{-\infty}^t\gamma_0(t - t')\dot{\mathbf{Q}}_m(\mathbf{r},t')\;\mathrm{d}t' + \eta_m(\mathbf{r})\omega_0^2\mathbf{Q}_m(\mathbf{r},t)\\
-&+ \eta_m(\mathbf{r})\sigma_0\mathbf{Q}_m(\mathbf{r},t)\cdot\bm{1}_3\cdot\mathbf{Q}_m(\mathbf{r},t) = \frac{e}{\Delta}\left(-\nabla\Phi(\mathbf{r},t) - \frac{1}{c}\dot{\mathbf{A}}(\mathbf{r})\right) + \mathbf{N}_\mathrm{therm}(\mathbf{r},t).
+\mu\ddot{\mathbf{Q}}(\mathbf{r},t) &+ \mu\int_{-\infty}^t\gamma_0(t - t')\dot{\mathbf{Q}}(\mathbf{r},t')\;\mathrm{d}t' + \mu\omega_0^2\mathbf{Q}(\mathbf{r},t)\\
+&+ \mu\sigma_0\mathbf{Q}(\mathbf{r},t)\cdot\bm{1}_3\cdot\mathbf{Q}(\mathbf{r},t) = \Theta(\mathbf{r}\in\mathbb{V})e\eta\left(-\nabla\Phi(\mathbf{r},t) - \frac{1}{c}\dot{\mathbf{A}}(\mathbf{r})\right) + \mathbf{N}_\mathrm{therm}(\mathbf{r},t).
 \end{split}
 \end{equation}
 
 Solutions to Eq. \eqref{eq:matterEOM} are simplest in the case where $\sigma_0$ is a ``small'' quantity. We will not belabor the exact definition of ``small'' here, other than to say that we will assume $\sigma_0$ to be linearly proportional to a characteristically small number $\lambda$ that can be used to expand the matter displacement field as a perturbation series:
 \begin{equation}
 \begin{split}
-\mathbf{Q}_m(\mathbf{r},t) &= \mathbf{Q}_m^{(1)}(\mathbf{r},t) + \mathbf{Q}_m^{(2)}(\mathbf{r},t) + \ldots\\
-&= \sum_{n = 1}^\infty\lambda^{n-1}\bm{\mathcal{Q}}_m^{(n)}(\mathbf{r},t).
+\mathbf{Q}(\mathbf{r},t) &= \mathbf{Q}^{(1)}(\mathbf{r},t) + \mathbf{Q}^{(2)}(\mathbf{r},t) + \ldots\\
+&= \sum_{n = 1}^\infty\lambda^{n-1}\bm{\mathcal{Q}}^{(n)}(\mathbf{r},t).
 \end{split}
 \end{equation}
-Here, the functions $\bm{\mathcal{Q}}_m^{(n)}(\mathbf{r},t)$ are of roughly the same order of magnitude at each order $n$ such that it is the different powers of $\lambda$ that separate the terms in the series. Using this expansion, we find that
+Here, the functions $\bm{\mathcal{Q}}^{(n)}(\mathbf{r},t)$ are of roughly the same order of magnitude at each order $n$ such that it is the different powers of $\lambda$ that separate the terms in the series. Using this expansion, we find that
 \begin{equation}\label{eq:matterEOM2}
 \begin{split}
-\eta_m(\mathbf{r})\ddot{\mathbf{Q}}_m^{(1)}(\mathbf{r},t) + \eta_m(\mathbf{r})\int_{-\infty}^t\gamma_0(t - t')\dot{\mathbf{Q}}_m^{(1)}(\mathbf{r},t')\;\mathrm{d}t' &+ \eta_m(\mathbf{r})\omega_0^2\mathbf{Q}_m^{(1)}(\mathbf{r},t) = \frac{e}{\Delta}\mathbf{E}(\mathbf{r},t) + \mathbf{N}_\mathrm{therm}(\mathbf{r},t),\\
-\eta_m(\mathbf{r})\ddot{\mathbf{Q}}_m^{(2)}(\mathbf{r},t) + \eta_m(\mathbf{r})\int_{-\infty}^t\gamma_0(t - t')\dot{\mathbf{Q}}_m^{(2)}(\mathbf{r},t')\;\mathrm{d}t'
-&+ \eta_m(\mathbf{r})\omega_0^2\mathbf{Q}_m^{(2)}(\mathbf{r},t)\\
-&= -\eta_m(\mathbf{r})\sigma_0\mathbf{Q}_m^{(1)}(\mathbf{r},t)\cdot\bm{1}_3\cdot\mathbf{Q}_m^{(1)}(\mathbf{r},t)
+\mu\ddot{\mathbf{Q}}^{(1)}(\mathbf{r},t) + \mu\int_{-\infty}^t\gamma_0(t - t')\dot{\mathbf{Q}}^{(1)}(\mathbf{r},t')\;\mathrm{d}t' &+ \mu\omega_0^2\mathbf{Q}^{(1)}(\mathbf{r},t) = \Theta(\mathbf{r}\in\mathbb{V})e\eta\mathbf{E}(\mathbf{r},t) + \mathbf{N}_\mathrm{therm}(\mathbf{r},t),\\
+\mu\ddot{\mathbf{Q}}^{(2)}(\mathbf{r},t) + \mu\int_{-\infty}^t\gamma_0(t - t')\dot{\mathbf{Q}}^{(2)}(\mathbf{r},t')\;\mathrm{d}t'
+&+ \mu\omega_0^2\mathbf{Q}^{(2)}(\mathbf{r},t)\\
+&= -\mu\sigma_0\mathbf{Q}^{(1)}(\mathbf{r},t)\cdot\bm{1}_3\cdot\mathbf{Q}^{(1)}(\mathbf{r},t)
 \end{split}
 \end{equation}
 where we have let $\mathbf{E}(\mathbf{r},t) = -\nabla\Phi(\mathbf{r},t) - \dot{\mathbf{A}}(\mathbf{r},t)/c$.
 
 Further, we can simplify our analysis by choosing the simple loss function $\gamma_0(t - t') = \gamma_0\delta(t - t')$. We can see that this is achievable with the choice of coupling function
 \begin{equation}
-\tilde{v}(\nu) = \sqrt{\frac{\gamma_0}{\pi}\eta_m(\mathbf{r})\eta_\nu(\mathbf{r})},
+v(\nu) = \frac{\mu}{\eta}\sqrt{\frac{\gamma_0}{\pi}},
 \end{equation}
 as can be seen through the application of the identity $\delta(t - t') = \int_0^\infty 2\cos(\nu[t - t'])\;\mathrm{d}\nu/2\pi$. Using this simplification, we can take the Fourier transform of both lines of Eq. \eqref{eq:matterEOM2} to see
 \begin{equation}\label{eq:matterEOM3}
 \begin{split}
-\mathbf{Q}_m^{(1)}(\mathbf{r},\omega)\eta_m(\mathbf{r})\left[-\omega^2 - \mathrm{i}\omega\gamma_0 + \omega_0^2\right] &= \frac{e}{\Delta}\mathbf{E}(\mathbf{r},\omega) + \mathbf{N}_\mathrm{therm}(\omega),\\
-\mathbf{Q}_m^{(2)}(\mathbf{r},\omega)\eta_m(\mathbf{r})\left[-\omega^2 - \mathrm{i}\omega\gamma_0 + \omega_0^2\right] &= -\eta_m(\mathbf{r})\sigma_0\int_{-\infty}^\infty\mathbf{Q}_m^{(1)}(\mathbf{r},\omega')\cdot\bm{1}_3\cdot\mathbf{Q}_m^{(1)}(\mathbf{r},\omega - \omega')\;\mathrm{d}\omega'.
+\mathbf{Q}^{(1)}(\mathbf{r},\omega)\mu\left[-\omega^2 - \mathrm{i}\omega\gamma_0 + \omega_0^2\right] &= \Theta(\mathbf{r}\in\mathbb{V})e\eta\mathbf{E}(\mathbf{r},\omega) + \mathbf{N}_\mathrm{therm}(\omega),\\
+\mathbf{Q}^{(2)}(\mathbf{r},\omega)\mu\left[-\omega^2 - \mathrm{i}\omega\gamma_0 + \omega_0^2\right] &= -\mu\sigma_0\int_{-\infty}^\infty\mathbf{Q}^{(1)}(\mathbf{r},\omega')\cdot\bm{1}_3\cdot\mathbf{Q}^{(1)}(\mathbf{r},\omega - \omega')\;\mathrm{d}\omega'.
 \end{split}
 \end{equation}
-This form of the equations of motion of the matter displacement fields is simple to connect back to a dielectric picture through the definition of the polarization field $\mathbf{P}(\mathbf{r},\omega) = (e/\Delta)\mathbf{Q}_m(\mathbf{r},\omega)$. Generally, this is done without thermal fluctuations, so we'll let $\mathbf{N}_\mathrm{therm}(\mathbf{r},\omega)\to0$ for now. The polarization field can be expanded as a perturbation series analogous to that of the displacement field, such that $\mathbf{P}(\mathbf{r},\omega) = \sum_n\mathbf{P}^{(n)}(\mathbf{r},\omega)$. This expansion can further be connected to a dielectric model through the definitions $\mathbf{P}^{(1)}(\mathbf{r},\omega) = \chi^{(1)}(\mathbf{r},\omega)\mathbf{E}(\mathbf{r},\omega)$ and $\mathbf{P}^{(2)}(\mathbf{r},\omega) = \int_{-\infty}^\infty\mathbf{E}(\mathbf{r},\omega')\cdot\bm{\chi}^{(2)}(\mathbf{r};\omega',\omega - \omega')\cdot\mathbf{E}(\mathbf{r},\omega - \omega')\;\mathrm{d}\omega'$. Explicitly, we can use these definitions along with a substitution within Eq. \eqref{eq:matterEOM3} to see that
+This form of the equations of motion of the matter displacement fields is simple to connect back to a dielectric picture through the definition of the polarization field $\mathbf{P}(\mathbf{r},\omega) = e\eta\Theta(\mathbf{r}\in\mathbb{V})\mathbf{Q}(\mathbf{r},\omega)$. Generally, this is done without thermal fluctuations, so we'll let $\mathbf{N}_\mathrm{therm}(\mathbf{r},\omega)\to0$ for now. The polarization field can be expanded as a perturbation series analogous to that of the displacement field, such that $\mathbf{P}(\mathbf{r},\omega) = \sum_n\mathbf{P}^{(n)}(\mathbf{r},\omega)$. This expansion can further be connected to a dielectric model through the definitions $\mathbf{P}^{(1)}(\mathbf{r},\omega) = \chi^{(1)}(\mathbf{r},\omega)\mathbf{E}(\mathbf{r},\omega)$ and $\mathbf{P}^{(2)}(\mathbf{r},\omega) = \int_{-\infty}^\infty\mathbf{E}(\mathbf{r},\omega')\cdot\bm{\chi}^{(2)}(\mathbf{r};\omega',\omega - \omega')\cdot\mathbf{E}(\mathbf{r},\omega - \omega')\;\mathrm{d}\omega'$. Explicitly, we can use these definitions along with a substitution within Eq. \eqref{eq:matterEOM3} to see that
 \begin{equation}
 \begin{split}
-\chi^{(1)}(\mathbf{r},\omega) &= \frac{e^2}{\Delta^2\eta_m(\mathbf{r})}\frac{1}{\omega_0^2 - \omega^2 - \mathrm{i}\omega\gamma_0},\\
-\bm{\chi}^{(2)}(\mathbf{r};\omega',\omega - \omega') &= -\frac{3e^3\sigma_0}{\Delta^3\eta_m^2(\mathbf{r})}\frac{\bm{1}_3}{(\omega_0^2 - \omega^2 - \mathrm{i}\omega\gamma_0)(\omega_0^2 - \omega'^2 - \mathrm{i}\omega'\gamma_0)(\omega_0^2 - [\omega - \omega']^2 - \mathrm{i}[\omega - \omega']\gamma_0)}.
+\chi^{(1)}(\mathbf{r},\omega) &= \Theta(\mathbf{r}\in\mathbb{V})\frac{e^2\eta^2}{\mu}\frac{1}{\omega_0^2 - \omega^2 - \mathrm{i}\omega\gamma_0},\\
+\bm{\chi}^{(2)}(\mathbf{r};\omega',\omega - \omega') &= -\frac{3e^3\eta^3\sigma_0}{\mu^2}\frac{\Theta(\mathbf{r}\in\mathbb{V})\bm{1}_3}{(\omega_0^2 - \omega^2 - \mathrm{i}\omega\gamma_0)(\omega_0^2 - \omega'^2 - \mathrm{i}\omega'\gamma_0)(\omega_0^2 - [\omega - \omega']^2 - \mathrm{i}[\omega - \omega']\gamma_0)}.
 \end{split}
 \end{equation}
 
-We are now in a position to connect our microscopic model back to a Green's-function solution to the system. Explicitly, all we need to do is redefine the last two lines of Eq. \eqref{eq:fourEOMs} in Fourier space,
+We are now in a position to connect our microscopic model back to a Green's-function solution to the system. Explicitly, all we need to do is redefine the last two lines of Eq. \eqref{eq:fourEOMs} in terms of the polarization field $\mathbf{P}(\mathbf{r},\omega) = e\eta\Theta(\mathbf{r}\in\mathbb{V})\mathbf{Q}(\mathbf{r},t)$. As is suggested by the susceptibility definitions above, this turns out to be most convenient to do in Fourier space, such that
 \begin{equation}
 \begin{split}
 -\nabla\cdot\nabla\Phi(\mathbf{r},\omega) &= 4\pi\rho_f(\mathbf{r},\omega) - 4\pi\nabla\cdot\mathbf{P}(\mathbf{r},\omega),\\
-\nabla\times\nabla\times\mathbf{A}(\mathbf{r},\omega) - \frac{\omega^2}{c^2}\mathbf{A}(\mathbf{r},\omega) &= -\frac{4\pi\omega^2}{c}\mathbf{P}^\perp(\mathbf{r},t) - \frac{4\pi\mathrm{i}\omega}{c}\mathbf{J}_f^\perp(\mathbf{r},\omega),
+\nabla\times\nabla\times\mathbf{A}(\mathbf{r},\omega) - \frac{\omega^2}{c^2}\mathbf{A}(\mathbf{r},\omega) &= -\frac{4\pi\mathrm{i}\omega}{c}\mathbf{P}^\perp(\mathbf{r},\omega) + \frac{4\pi}{c}\mathbf{J}_f^\perp(\mathbf{r},\omega).
 \end{split}
 \end{equation}
-then use our definitions for the susceptibilities to build the canonical wave Helmholtz equations for inhomogeneous dielectrics. 
+We can then use our definitions for the susceptibilities to build the canonical Helmholtz equations for inhomogeneous dielectrics. In particular, the first equation above, in combination with the charge continuity equation, provides us with
+\begin{equation}
+\nabla\Phi(\mathbf{r},\omega) = \frac{4\pi\mathrm{i}}{\omega}\mathbf{J}^\parallel(\mathbf{r},\omega) + 4\pi\mathbf{P}^\parallel(\mathbf{r},\omega)
+\end{equation}
+such that
+\begin{equation}
+\begin{split}
+&\nabla\times\nabla\times\mathbf{A}(\mathbf{r},\omega) - \frac{\omega^2}{c^2}\mathbf{A}(\mathbf{r},\omega) - \frac{\mathrm{i}\omega}{c}\nabla\Phi(\mathbf{r},\omega)\\
+&= \nabla\times\nabla\times\mathbf{A}(\mathbf{r},\omega) - \frac{\omega^2}{c^2}\left[\mathbf{A}(\mathbf{r},\omega) + \frac{\mathrm{i}c}{\omega}\nabla\Phi(\mathbf{r},\omega)\right]\\
+&= \nabla\times\nabla\times\left[\mathbf{A}(\mathbf{r},\omega) + \frac{\mathrm{i}c}{\omega}\nabla\Phi(\mathbf{r},\omega)\right] - \frac{\omega^2}{c^2}\left[\mathbf{A}(\mathbf{r},\omega) + \frac{\mathrm{i}c}{\omega}\nabla\Phi(\mathbf{r},\omega)\right]\\
+&= -\frac{\mathrm{i}c}{\omega}\left[\nabla\times\nabla\times\mathbf{E}(\mathbf{r},t) - \frac{\omega^2}{c^2}\mathbf{E}(\mathbf{r},\omega)\right]\\
+&= -\frac{4\pi\mathrm{i}\omega}{c}\mathbf{P}^\perp(\mathbf{r},\omega) - \frac{4\pi\mathrm{i}\omega}{c}\mathbf{P}^\parallel(\mathbf{r},\omega) + \frac{4\pi}{c}\mathbf{J}_f^\perp(\mathbf{r},\omega) + \frac{4\pi}{c}\mathbf{J}_f^\parallel(\mathbf{r},\omega)
+\end{split}
+\end{equation}
+and, after recombination of the Helmholtz components of the source terms,
+\begin{equation}
+\nabla\times\nabla\times\mathbf{E}(\mathbf{r},\omega) - \frac{\omega^2}{c^2}\mathbf{E}(\mathbf{r},\omega) = \frac{4\pi\omega^2}{c^2}\mathbf{P}(\mathbf{r},\omega) + \frac{4\pi\mathrm{i}\omega}{c}\mathbf{J}_f(\mathbf{r},\omega).
+\end{equation}
+Expanding $\mathbf{P}(\mathbf{r},\omega)$ up to second order and rearranging gives
+\begin{equation}
+\begin{split}
+\nabla\times\nabla\times\mathbf{E}(\mathbf{r},\omega) - \frac{\omega^2}{c^2}\left[1 + 4\pi\chi^{(1)}(\mathbf{r},\omega)\right]\mathbf{E}(\mathbf{r},\omega) &= \frac{4\pi\omega^2}{c^2}\int_{-\infty}^\infty\mathbf{E}(\mathbf{r},\omega')\cdot\bm{\chi}^{(2)}(\mathbf{r};\omega - \omega')\cdot\mathbf{E}(\mathbf{r},\omega - \omega')\;\mathrm{d}\omega'\\
+&\qquad + \frac{4\pi\mathrm{i}\omega}{c}\mathbf{J}_f(\mathbf{r},\omega),
+\end{split}
+\end{equation}
+which, with the definition $\epsilon(\mathbf{r},\omega) = 1 + 4\pi\chi^{(1)}(\mathbf{r},\omega)$, is the usual Helmholtz equation for the electric field and thus is solved through the usual Green's function methods.

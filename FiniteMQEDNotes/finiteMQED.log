@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2021.4.7)  9 NOV 2023 11:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2021.4.7)  17 JAN 2024 20:25
 entering extended mode
 **./finiteMQED.tex
 (finiteMQED.tex
@@ -508,91 +508,63 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {C:/Users/jakeb/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] [2] [3] [4] [5]
- [6] [7] [8]
-
-LaTeX Warning: Reference `app:noMatter' on page 9 undefined on input line 454.
-
-[9]
-Underfull \hbox (badness 5832) in paragraph at lines 471--473
-\OT1/cmr/m/n/10 for a gen-eral class of ma-te-ri-als, where the bulk charge den
--sity $[](\OT1/cmr/bx/n/10 r\OML/cmm/m/it/10 ; t\OT1/cmr/m/n/10 )$ can be used 
-to
+ [6] [7] [8] [9]
+[10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21]
+(harmonicAlgebra.tex [22] [23] [24]
+Overfull \hbox (15.04051pt too wide) in paragraph at lines 116--118
+\OT1/cmr/m/n/10 which can be seen to pro-duce zero in the lim-its $\OML/cmm/m/i
+t/10 a \OMS/cmsy/m/n/10 ! \OT1/cmr/m/n/10 0$, $\OML/cmm/m/it/10 b \OMS/cmsy/m/n
+/10 ! 1$ \OT1/cmr/m/n/10 as $[][] \OML/cmm/m/it/10 rj[]\OT1/cmr/m/n/10 (\OML/cm
+m/m/it/10 kr\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 j[]\OT1/cmr/m/n/10 (\OML/cmm/m/it
+/10 k[]r\OT1/cmr/m/n/10 ) = [][] \OML/cmm/m/it/10 rj[]\OT1/cmr/m/n/10 (\OML/cmm
+/m/it/10 kr\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 j[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/
+10 k[]r\OT1/cmr/m/n/10 ) =
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 471--473
-\OT1/cmr/m/n/10 model bound charge fluc-tu-a-tions through-out the ma-te-rial a
-nd the sur-face charge den-sity
+[25] [26] [27]) (operatorFanoDiagonalization.tex [28] [29] [30] [31] [32]
+[33] [34] [35] [36] [37] [38]) (operatorFanoDiagonalizationManyModes.tex
+[39] [40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51])
+(diracDeltaAlgebra.tex [52]
+Overfull \hbox (0.34296pt too wide) in paragraph at lines 56--57
+[]\OT1/cmr/m/n/10 Because Carte-sian vec-tor func-tions are in-con-ve-nient to 
+use for prob-lems with spher-i-cal sym-me-try, Hansen$[]$
  []
 
-[10] [11] [12] [13]
-
-LaTeX Warning: Reference `eq:matterFieldHelmholtzExpansion' on page 14 undefine
-d on input line 688.
-
-
-LaTeX Warning: Reference `eq:bathFieldHelmholtzExpansion' on page 14 undefined 
-on input line 688.
-
-[14] [15] [16] [17] [18] [19] [20] [21] [22] [23] [24] [25] [26] [27] [28]
-[29] (harmonicAlgebra.tex [30] [31] [32] [33]
-Underfull \hbox (badness 10000) in paragraph at lines 160--161
-
- []
-
-[34] [35]
-
-LaTeX Warning: Reference `app:helmholtzDelta' on page 36 undefined on input lin
-e 272.
-
-[36] [37]) (operatorFanoDiagonalization.tex [38] [39] [40] [41] [42] [43]
-[44] [45] [46]) (dielectricPictureDerivation.tex
-
-LaTeX Warning: Reference `eq:helmholtzOrthogonality' on page 47 undefined on in
-put line 9.
-
-[47] [48]) (pzwHamiltonian.tex [49] [50]
-Overfull \hbox (6.84726pt too wide) detected at line 104
-[]
- []
-
-[51] [52]) [53] [54] [55] [56] [57] (finiteMQED.bbl) [58] (finiteMQED.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+[53]) (dielectricPictureDerivation.tex [54] [55] [56]) [57] (finiteMQED.bbl)
+[58] (finiteMQED.aux) ) 
 Here is how much of TeX's memory you used:
- 7181 strings out of 479697
- 102651 string characters out of 2877010
- 574375 words of memory out of 3000000
- 24118 multiletter control sequences out of 15000+200000
+ 7153 strings out of 479697
+ 102218 string characters out of 2877010
+ 576375 words of memory out of 3000000
+ 24087 multiletter control sequences out of 15000+200000
  419611 words of font info for 86 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 70i,26n,75p,1301b,312s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<C:/Progra
-m Files/MiKTeX/fonts/type1/public/dutchcal/DutchCalBold.pfb><C:/Program Files/M
-iKTeX/fonts/type1/public/dutchcal/DutchCalReg.pfb><C:/Program Files/MiKTeX/font
-s/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/publ
-ic/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/
-cm/cmbx7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb
-><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program
- Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Program Files/MiKTeX
-/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX/fonts/type1/
-public/amsfonts/cm/cmmib10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsf
-onts/cmextra/cmmib7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm
-/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C
-:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Fil
-es/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Program Files/MiKTeX/font
-s/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX/fonts/type1/public
-/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm
-/cmsy5.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C
-:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Fi
-les/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Program Files/MiK
-TeX/fonts/type1/public/amsfonts/symbols/msbm7.pfb><C:/Program Files/MiKTeX/font
-s/type1/public/cm-super/sfrm1000.pfb>
-Output written on finiteMQED.pdf (58 pages, 507900 bytes).
+ 70i,26n,75p,1301b,303s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX/fonts/enc/dvips/cm-super/cm-sup
+er-ts1.enc}<C:/Program Files/MiKTeX/fonts/type1/public/dutchcal/DutchCalBold.pf
+b><C:/Program Files/MiKTeX/fonts/type1/public/dutchcal/DutchCalReg.pfb><C:/Prog
+ram Files/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmbsy5.pfb><C:/Program Fil
+es/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX/fo
+nts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/pu
+blic/amsfonts/cm/cmbx7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts
+/cm/cmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.p
+fb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Progra
+m Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTe
+X/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Program Files/MiKTeX/fonts/typ
+e1/public/amsfonts/cmextra/cmmib7.pfb><C:/Program Files/MiKTeX/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/c
+m/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><
+C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Program Fil
+es/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX/font
+s/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/publ
+ic/amsfonts/cm/cmsy5.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/c
+m/cmsy7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+<C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Pro
+gram Files/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm7.pfb><C:/Program Fil
+es/MiKTeX/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on finiteMQED.pdf (58 pages, 503170 bytes).
 PDF statistics:
- 282 PDF objects out of 1000 (max. 8388607)
+ 286 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

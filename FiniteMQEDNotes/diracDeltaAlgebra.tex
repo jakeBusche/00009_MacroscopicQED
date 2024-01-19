@@ -1,29 +1,29 @@
 %!TEX root = finiteMQED.tex
 
-\section{Details of the Helmholtz Expansion of the Dyadic Dirac Delta in Spherical Coordinates}
+\section{Details of the Helmholtz Expansion of the Dyadic Dirac Delta in Spherical Coordinates}\label{app:helmholtzDelta}
 
-\subsection{Orthogonality of Transverse and Longitudinal Vector Fields}\label{sec:helmholtzOrthogonality}
+% \subsection{Orthogonality of Transverse and Longitudinal Vector Fields}\label{sec:helmholtzOrthogonality}
 
-A vector field $\mathbf{F}(\mathbf{r})$ can be broken into a transverse part $\mathbf{F}_\perp(\mathbf{r})$ and a longitudinal part $\mathbf{F}_\parallel(\mathbf{r})$ through Helmholtz decomposition. The divergence-free transverse part can be written as the curl of another vector field, such that $\mathbf{F}_\perp(\mathbf{r}) = \nabla\times\mathbf{A}(\mathbf{r})$. The curl-free longitudinal part can be written as the gradient of a scalar field, such that $\mathbf{F}_\parallel(\mathbf{r}) = \nabla\Phi(\mathbf{r})$. Therefore, using the identities $\nabla\cdot\{\mathbf{A}(\mathbf{r})\Phi(\mathbf{r})\} = \mathbf{A}(\mathbf{r})\cdot\nabla\Phi(\mathbf{r}) + \Phi(\mathbf{r})\nabla\cdot\mathbf{A}(\mathbf{r})$ and $\nabla\cdot\nabla\times\mathbf{A}(\mathbf{r}) = 0$, one can use integration by parts and Gauss' law to see that
-\begin{equation}
-\begin{split}
-\int\mathbf{F}_\perp(\mathbf{r})\cdot\mathbf{F}_\parallel(\mathbf{r})\;\mathrm{d}^3\mathbf{r} &= \int\nabla\times\mathbf{A}(\mathbf{r})\cdot\nabla\Phi(\mathbf{r})\;\mathrm{d}^3\mathbf{r}\\
-&=\int\left(\nabla\cdot\left\{\Phi(\mathbf{r})\nabla\times\mathbf{A}(\mathbf{r})\right\} - \Phi(\mathbf{r})\nabla\cdot\{\nabla\times\mathbf{A}(\mathbf{r})\}\right)\;\mathrm{d}^3\mathbf{r}\\
-&= \oint\Phi(\mathbf{r})\nabla\times\mathbf{A}(\mathbf{r})\cdot\mathrm{d}^2\mathbf{s} + 0.
-\end{split}
-\end{equation}
-Here, $\int\mathrm{d}^3\mathbf{r}$ represents integration over all space and $\oint\mathrm{d}^2\mathbf{s}$ represents integration across the surface at infinity wherein the surface elements $\mathrm{d}^2\mathbf{s}$ have outward-facing normal vectors. The surface integral vanishes for all $\mathbf{A}(\mathbf{r})$ and $\Phi(\mathbf{r})$ that go to zero at infinity, such that any physical vector field $\mathbf{F}(\mathbf{r})$ obeys
-\begin{equation}\label{eq:helmholtzOrthogonality}
-\int\mathbf{F}_\perp(\mathbf{r})\cdot\mathbf{F}_\parallel(\mathbf{r})\;\mathrm{d}^3\mathbf{r} = 0.
-\end{equation}
-
-
+% A vector field $\mathbf{F}(\mathbf{r})$ can be broken into a transverse part $\mathbf{F}_\perp(\mathbf{r})$ and a longitudinal part $\mathbf{F}_\parallel(\mathbf{r})$ through Helmholtz decomposition. The divergence-free transverse part can be written as the curl of another vector field, such that $\mathbf{F}_\perp(\mathbf{r}) = \nabla\times\mathbf{A}(\mathbf{r})$. The curl-free longitudinal part can be written as the gradient of a scalar field, such that $\mathbf{F}_\parallel(\mathbf{r}) = \nabla\Phi(\mathbf{r})$. Therefore, using the identities $\nabla\cdot\{\mathbf{A}(\mathbf{r})\Phi(\mathbf{r})\} = \mathbf{A}(\mathbf{r})\cdot\nabla\Phi(\mathbf{r}) + \Phi(\mathbf{r})\nabla\cdot\mathbf{A}(\mathbf{r})$ and $\nabla\cdot\nabla\times\mathbf{A}(\mathbf{r}) = 0$, one can use integration by parts and Gauss' law to see that
+% \begin{equation}
+% \begin{split}
+% \int\mathbf{F}_\perp(\mathbf{r})\cdot\mathbf{F}_\parallel(\mathbf{r})\;\mathrm{d}^3\mathbf{r} &= \int\nabla\times\mathbf{A}(\mathbf{r})\cdot\nabla\Phi(\mathbf{r})\;\mathrm{d}^3\mathbf{r}\\
+% &=\int\left(\nabla\cdot\left\{\Phi(\mathbf{r})\nabla\times\mathbf{A}(\mathbf{r})\right\} - \Phi(\mathbf{r})\nabla\cdot\{\nabla\times\mathbf{A}(\mathbf{r})\}\right)\;\mathrm{d}^3\mathbf{r}\\
+% &= \oint\Phi(\mathbf{r})\nabla\times\mathbf{A}(\mathbf{r})\cdot\mathrm{d}^2\mathbf{s} + 0.
+% \end{split}
+% \end{equation}
+% Here, $\int\mathrm{d}^3\mathbf{r}$ represents integration over all space and $\oint\mathrm{d}^2\mathbf{s}$ represents integration across the surface at infinity wherein the surface elements $\mathrm{d}^2\mathbf{s}$ have outward-facing normal vectors. The surface integral vanishes for all $\mathbf{A}(\mathbf{r})$ and $\Phi(\mathbf{r})$ that go to zero at infinity, such that any physical vector field $\mathbf{F}(\mathbf{r})$ obeys
+% \begin{equation}\label{eq:helmholtzOrthogonality}
+% \int\mathbf{F}_\perp(\mathbf{r})\cdot\mathbf{F}_\parallel(\mathbf{r})\;\mathrm{d}^3\mathbf{r} = 0.
+% \end{equation}
 
 
 
 
 
-\subsection{Helmholtz Decomposition of $\bm{1}_2\delta(\mathbf{r} - \mathbf{r}')$ into Spherical Mode Functions}\label{app:helmholtzDelta}
+
+
+% \subsection{Helmholtz Decomposition of $\bm{1}_2\delta(\mathbf{r} - \mathbf{r}')$ into Spherical Mode Functions}
 
 Consider the Laplace equation
 \begin{equation}
@@ -59,7 +59,7 @@ We are thus free to expand in terms of $\mathbf{L}_{p\ell m}(\mathbf{r},k)$, $\m
 \begin{equation}
 \bm{1}_2\delta(\mathbf{r} - \mathbf{r}') = \sum_{p\ell m}\int_0^\infty\left[\mathbf{A}_{p\ell m}(\mathbf{r}',k)\mathbf{L}_{p\ell m}(\mathbf{r},k) + \mathbf{B}_{p\ell m}(\mathbf{r}',k)\mathbf{M}_{p\ell m}(\mathbf{r},k) + \mathbf{C}_{p\ell m}(\mathbf{r}',k)\mathbf{N}_{p\ell m}(\mathbf{r},k)\right]\mathrm{d}k,
 \end{equation}
-wherein $\mathbf{A}_{p\ell m}(\mathbf{r}',k)$, $\mathbf{B}_{p\ell m}(\mathbf{r}',k)$, and $\mathbf{C}_{p\ell m}(\mathbf{r}',k)$ are unknown vector fields. Using the orthogonality condition of Eq. \eqref{eq:longitudinalHarmonicOrthogonality}, we can see that
+wherein $\mathbf{A}_{p\ell m}(\mathbf{r}',k)$, $\mathbf{B}_{p\ell m}(\mathbf{r}',k)$, and $\mathbf{C}_{p\ell m}(\mathbf{r}',k)$ are unknown vector fields. Using the orthogonality condition of Eq. \eqref{eq:vectorSphericalHarmonicOrthogonality}, we can see that
 \begin{equation}
 \begin{split}
 \int\bm{1}_2\delta(\mathbf{r} - \mathbf{r}')\cdot\mathbf{L}_{p'\ell'm'}(\mathbf{r},k')\;\mathrm{d}^3\mathbf{r} &= \mathbf{L}_{p'\ell'm'}(\mathbf{r}',k')\\

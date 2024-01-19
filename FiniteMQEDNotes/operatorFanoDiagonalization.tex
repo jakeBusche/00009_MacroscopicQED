@@ -285,14 +285,17 @@ There are two cases to consider here:
     \begin{equation}
     a^2 - \Omega^2 - \epsilon^2 - 2\Omega\int_{-\infty}^\infty\frac{g^2(\omega)}{a - \omega}\;\mathrm{d}\omega = 0.
     \end{equation}
-    For functions $g^2(\omega)$ and frequencies $a$ defined such that $g^2(a)\neq0$, the integral above is divergent and $\nu^2 - \Omega^2z(\nu)$ has no zeros with $b = \epsilon$. Otherwise, there can exist any number of zeros, depending on the functional form of $g^2(\omega)$. An important case considered by Huttner and Barnett\cite{huttner1992quantization} is the case in which $g^2(\omega)$ is only zero at $\omega = 0$. In this case, with $g^2(a) = 0$ only at $a = 0$, and only one zero of $\nu^2 - \Omega^2z(\nu)$ exists at $a + \mathrm{i}b = \mathrm{i}\epsilon$.
+    For functions $g^2(\omega)$ and frequencies $a$ defined such that $g^2(a)\neq0$ for any $a$, the integral above is divergent and $\nu^2 - \Omega^2z(\nu)$ has no zeros with $b = \epsilon$. Otherwise, there can exist any number of zeros, depending on the functional form of $g^2(\omega)$. An important example of the latter case is that where $g^2(\omega)$ is an odd function such that $g^2(0) = 0$. Under this assumption, a candidate zero exists at $a = 0$, such that $a + \mathrm{i}b = \mathrm{i}\epsilon$ is a zero of $\nu^2 - \Omega^2z(\nu)$ if
+    \begin{equation}
+    \frac{\Omega^2 + \epsilon^2}{\Omega} = \int_{-\infty}^\infty\frac{g^2(\omega)}{\omega}\;\mathrm{d}\omega.
+    \end{equation}
     }
     \item{
     Second, in the case that $b\neq\epsilon$, we can see that the imaginary part of the RHS of Eq. \eqref{eq:complexRootCheck} can be zero if the quantity inside the parentheses is zero. We will assume $b\neq\epsilon$ in the following logic. Because $g(\omega)\sim\omega\tilde{v}^2(\omega)$ and $\tilde{v}^2(\omega)$ is a nonnegative even function, the integrand of this term is always positive for positive $\omega$ and negative for negative $\omega$. Moreover, because the area under $1/[(a - \omega)^2 + (b - \epsilon)^2]$ is larger on the same side of the origin as the sign of $a$, the integral is always positive for positive $a$ and negative for negative $a$. The first term in the parentheses, $2a$, has the same signs in the same regions of the real line. Therefore, the imaginary part of $\nu^2 - \Omega^2z(\nu)$ can only be zero when $a = \mathrm{Re}\{\nu\} = 0$, such that $\nu^2 - \Omega^2z(\nu)$ can only have zeros along the imaginary axis. Further noting that $\int_{-\infty}^\infty g^2(\omega)/[\omega^2 + (b - \epsilon)^2]\;\mathrm{d}\omega \to 0$ as $\epsilon\to0$ due to the odd and even parities of the numerator and denominator, respectively, we can see that, in the limit $a\to0$, our function becomes
     \begin{equation}
     (\mathrm{i}b)^2 - \Omega^2z(\mathrm{i}b) = -(b^2 + \Omega^2) + 2\Omega\int_{-\infty}^\infty \frac{\omega g^2(\omega)}{\omega^2 + (b - \epsilon)^2}\;\mathrm{d}\omega.
     \end{equation}
-    Because the first term on the RHS ($-[b^2 + \Omega^2]$) is strictly negative and the second is strictly positive, our function always has zeros at $b = \pm b_0$ except in the case where the two terms on the RHS never have equal magnitudes at any $b$. Because $b^2$ is strictly increasing with $|b|$ and $1/(\omega^2 + [b - \epsilon]^2)$ is strictly decreasing, the second term on the RHS can never be greater than the first for all $b$. Therefore, the only condition that guarantees the nonexistence of zeros is the condition that the sceond term on the RHS is always \textit{less} than the first, i.e.
+    Because the first term on the RHS ($-[b^2 + \Omega^2]$) is strictly negative and the second is strictly positive, our function always has zeros at $b = \pm b_0$ except in the case where the two terms on the RHS never have equal magnitudes at any $b$. Because $b^2$ is strictly increasing with $|b|$ and $1/(\omega^2 + [b - \epsilon]^2)$ is strictly decreasing, the second term on the RHS can never be greater than the first for all $b$. Therefore, the only condition that guarantees the nonexistence of zeros is the condition that the second term on the RHS is always \textit{less} than the first, i.e.
     \begin{equation}
     2\Omega\int_{-\infty}^\infty\frac{\omega g^2(\omega)}{\omega^2 + (b - \epsilon)^2}\;\mathrm{d}\omega < b^2 + \Omega^2
     \end{equation}
@@ -333,7 +336,7 @@ z(\nu) &= 1 + \frac{2}{\Omega}\int_{-\infty}^\infty \frac{g^2(\omega)}{\nu - \om
 \end{split}
 \end{equation}
 we can say
-\begin{equation}
+\begin{equation}\label{eq:qq-minus-ss-integral}
 \begin{split}
 \int_{0}^\infty\frac{4\Omega\nu g^2(\nu)}{|\nu^2 - \Omega^2z(\nu)|^2}\;\mathrm{d}\nu &= -\frac{\mathrm{i}}{\pi}\int_0^\infty\left(\frac{\nu}{\nu^2 - \Omega^2z(\nu)} - \frac{\nu}{\nu^2 - \Omega^2z^*(\nu)}\right)\mathrm{d}\nu\\
 % &= -\frac{\mathrm{i}}{\pi}\int_0^\infty\frac{\nu}{\nu^2 - \Omega^2z(\nu)}\;\mathrm{d}\nu + \frac{\mathrm{i}}{\pi}\int_{-\nu = 0}^{-\nu = \infty}\frac{(-\nu)}{(-\nu)^2 - \Omega^2z^*(-\nu)}\;\mathrm{d}(-\nu)\\
@@ -350,21 +353,42 @@ wherein we have noticed that $|z[R\exp(\mathrm{i}\theta)]|\ll R^2$ for large $R$
 \int_{0}^\infty\left(|q_\perp(\nu)|^2 - |s_\perp(\nu)|^2\right)\mathrm{d}\nu = 1.
 \end{equation}
 
-Next, we can see that
-\begin{equation}
+Using similar logic, we can see that
+\begin{equation}\label{eq:qu-minus-sv-integral}
 \begin{split}
 \int_0^\infty&\left[q^*(\nu)u(\nu,\nu') - s(\nu)v^*(\nu,\nu')\right]\mathrm{d}\nu = \int_0^\infty\left(\left[\delta(\nu - \nu') + \frac{2\Omega g(\nu)}{\nu^2 - \Omega^2z(\nu)}\frac{g(\nu')}{\nu - \nu' - \mathrm{i}\epsilon}\right]\frac{(\nu + \Omega)g(\nu)}{\nu^2 - \Omega^2z^*(\nu)}\right.\\
 &\qquad\left. - \frac{(\nu - \Omega)g(\nu)}{\nu^2 - \Omega^2z(\nu)}\frac{2\Omega g(\nu)}{\nu^2 - \Omega^2z^*(\nu)}PV\left\{\frac{g(\nu')}{\nu + \nu'}\right\}\right)\mathrm{d}\nu\\[0.5em]
-&= \\
+% &= \frac{(\nu' + \Omega)g(\nu')}{\nu'^2 - \Omega^2z^*(\nu')} + \int_0^\infty\frac{2\Omega g^2(\nu)g(\nu')}{|\nu^2 - \Omega^2z(\nu)|^2}\left(\frac{(\nu + \Omega)}{\nu - \nu' - \mathrm{i}\epsilon} - \frac{(\nu - \Omega)}{\nu + \nu'}\right)\mathrm{d}\nu\\
+% &= \frac{(\nu' + \Omega)g(\nu')}{\nu'^2 - \Omega^2z^*(\nu')} + \int_0^\infty\frac{2\Omega g^2(\nu)g(\nu')}{|\nu^2 - \Omega^2z(\nu)|^2}\left(\frac{(\nu + \Omega)}{\nu - \nu' - \mathrm{i}\epsilon} - \frac{(\nu - \Omega)}{\nu + \nu' + \mathrm{i}\epsilon} + \mathrm{i}\pi\delta(\nu + \nu')\right)\mathrm{d}\nu\\
+% &= \frac{(\nu' + \Omega)g(\nu')}{\nu'^2 - \Omega^2z^*(\nu')} + \int_0^\infty\frac{2\Omega g^2(\nu)g(\nu')}{|\nu^2 - \Omega^2z(\nu)|^2}\left(\frac{(\nu + \Omega)}{\nu - \nu' - \mathrm{i}\epsilon} - \frac{(\nu - \Omega)}{\nu + \nu' + \mathrm{i}\epsilon}\right)\mathrm{d}\nu\\
+% &= \frac{(\nu' + \Omega)g(\nu')}{\nu'^2 - \Omega^2z^*(\nu')} + \int_0^\infty\frac{2\Omega g^2(\nu)g(\nu')}{|\nu^2 - \Omega^2z(\nu)|^2}\frac{(\nu + \Omega)}{\nu - \nu' - \mathrm{i}\epsilon}\;\mathrm{d}\nu + \int_{-\infty}^0\frac{2\Omega g^2(\nu)g(\nu')}{|\nu^2 - \Omega^2z(\nu)|^2}\frac{(\nu + \Omega)}{\nu - \nu' - \mathrm{i}\epsilon}\;\mathrm{d}\nu\\
+% &= \frac{(\nu' + \Omega)g(\nu')}{\nu'^2 - \Omega^2z^*(\nu')} + \int_{-\infty}^\infty\frac{2\Omega g^2(\nu)g(\nu')}{|\nu^2 - \Omega^2z(\nu)|^2}\frac{(\nu + \Omega)}{\nu - \nu' - \mathrm{i}\epsilon}\;\mathrm{d}\nu\\
+% &= \frac{(\nu' + \Omega)g(\nu')}{\nu'^2 - \Omega^2z^*(\nu')} + \int_{-\infty}^\infty 2\Omega(\nu + \Omega)g^2(\nu)\left[-\frac{\mathrm{i}}{4\pi\Omega g^2(\nu)}\frac{1}{\nu^2 - \Omega^2z(\nu)}\right.\\
+% &\qquad\left. + \frac{\mathrm{i}}{4\pi\Omega g^2(\nu)}\frac{1}{\nu^2 - \Omega^2z^*(\nu)}\right]\frac{g(\nu')}{\nu - \nu' - \mathrm{i}\epsilon}\;\mathrm{d}\nu\\
+% &= \frac{(\nu' + \Omega)g(\nu')}{\nu'^2 - \Omega^2z^*(\nu')} + \int_{-\infty}^\infty\left(-\mathrm{i}\frac{\nu + \Omega}{2\pi}\right)\left[\frac{1}{\nu^2 - \Omega^2z(\nu)} - \frac{1}{\nu^2 - \Omega^2z^*(\nu)}\right]\frac{g(\nu')}{\nu - \nu' - \mathrm{i}\epsilon}\;\mathrm{d}\nu\\
+% &= \frac{(\nu' + \Omega)g(\nu')}{\nu'^2 - \Omega^2z^*(\nu')} - \frac{\mathrm{i}g(\nu')}{2\pi}\left[-\int_{C_{R_-}^\mathrm{cw}}\frac{\nu + \Omega}{\nu^2 - \Omega^2z(\nu)}\frac{1}{\nu - \nu' - \mathrm{i}\epsilon}\;\mathrm{d}\nu\right.\\
+% &\qquad - 2\pi\mathrm{i}\sum_n\mathrm{Res}\left(\frac{\nu + \Omega}{\nu^2 - \Omega^2z(\nu)}\frac{1}{\nu - \nu' - \mathrm{i}\epsilon},\nu_n\right)\Theta\left(\mathrm{Im}\{\nu_n\}<0\right)\\
+% &\qquad\left. + \int_{C_{R_+}^\mathrm{ccw}}\frac{\nu + \Omega}{\nu^2 - \Omega^2z^*(\nu)}\frac{1}{\nu - \nu' - \mathrm{i}\epsilon}\;\mathrm{d}\nu - 2\pi\mathrm{i}\sum_n\mathrm{Res}\left(\frac{\nu + \Omega}{\nu^2 - \Omega^2z^*(\nu)}\frac{1}{\nu - \nu' - \mathrm{i}\epsilon},\nu_n\right)\Theta\left(\mathrm{Im}\{\nu_n\} > 0\right)\right]\\
+&= \frac{(\nu' + \Omega)g(\nu')}{\nu'^2 - \Omega^2z^*(\nu')} - 0 - 0 + 0 - \frac{(\nu' + \Omega + \mathrm{i}\epsilon)g(\nu')}{(\nu' + \mathrm{i}\epsilon)^2 - \Omega^2z^*(\nu' + \mathrm{i}\epsilon)}\\
 &= 0
 \end{split}
 \end{equation}
 and
-\begin{equation}
+\begin{equation}\label{eq:qv-minus-su-integral}
 \begin{split}
 \int_0^\infty&\left[q^*(\nu)v(\nu,\nu') - s(\nu)u^*(\nu,\nu')\right]\mathrm{d}\nu = \int_0^\infty\left(\frac{(\nu + \Omega)g(\nu)}{\nu^2 - \Omega^2z^*(\nu)}\frac{2\Omega g(\nu)}{\nu^2 - \Omega^2z(\nu)}PV\left\{\frac{g(\nu')}{\nu + \nu'}\right\}\right.\\
 &\qquad\left. - \frac{(\nu - \Omega)g(\nu)}{\nu^2 - \Omega^2z(\nu)}\left[\delta(\nu - \nu') + \frac{2\Omega g(\nu)}{\nu^2 - \Omega^2z^*(\nu)}\frac{g(\nu')}{\nu - \nu' + \mathrm{i}\epsilon}\right]\right)\mathrm{d}\nu\\[0.5em]
-&= \\
+&= -\frac{(\nu' - \Omega)g(\nu')}{\nu'^2 - \Omega^2z^*(\nu')} + \int_0^\infty\frac{2\Omega g^2(\nu)g(\nu')}{|\nu^2 - \Omega^2z(\nu)|^2}\left(\frac{(\nu + \Omega)}{\nu + \nu'} - \frac{(\nu - \Omega)}{\nu - \nu' + \mathrm{i}\epsilon}\right)\mathrm{d}\nu\\
+% &= -\frac{(\nu' - \Omega)g(\nu')}{\nu'^2 - \Omega^2z^*(\nu')} + \int_0^\infty\frac{2\Omega g^2(\nu)g(\nu')}{|\nu^2 - \Omega^2z(\nu)|^2}\left(\frac{(\nu + \Omega)}{\nu + \nu' - \mathrm{i}\epsilon} - \mathrm{i}\pi\delta(\nu + \nu') - \frac{(\nu - \Omega)}{\nu - \nu' + \mathrm{i}\epsilon}\right)\mathrm{d}\nu\\
+% &= -\frac{(\nu' - \Omega)g(\nu')}{\nu'^2 - \Omega^2z^*(\nu')} - \int_{-\infty}^\infty\frac{2\Omega g^2(\nu)g(\nu')}{|\nu^2 - \Omega^2z(\nu)|^2}\frac{(\nu - \Omega)}{\nu - \nu' + \mathrm{i}\epsilon}\mathrm{d}\nu\\
+% &= -\frac{(\nu' - \Omega)g(\nu')}{\nu'^2 - \Omega^2z^*(\nu')} - \int_{-\infty}^\infty\left[-\frac{\mathrm{i}}{4\pi\Omega g^2(\nu)}\frac{1}{\nu^2 - \Omega^2z(\nu)} + \frac{\mathrm{i}}{4\pi\Omega g^2(\nu)}\frac{1}{\nu^2 - \Omega^2z^*(\nu)}\right]\\
+% &\qquad\times2\Omega(\nu - \Omega)g^2(\nu)\frac{g(\nu')}{\nu - \nu' + \mathrm{i}\epsilon}\;\mathrm{d}\nu\\
+% &= -\frac{(\nu' - \Omega)g(\nu')}{\nu'^2 - \Omega^2z^*(\nu')} + \int_{-\infty}^\infty\left(\mathrm{i}\frac{\nu - \Omega}{2\pi}\right)\left[\frac{1}{\nu^2 - \Omega^2z(\nu)} - \frac{1}{\nu^2 - \Omega^2z^*(\nu)}\right]\frac{g(\nu')}{\nu - \nu' + \mathrm{i}\epsilon}\;\mathrm{d}\nu\\
+% &= -\frac{(\nu' - \Omega)g(\nu')}{\nu'^2 - \Omega^2z^*(\nu')} + \mathrm{i}\frac{g(\nu')}{2\pi}\left[-\int_{C_{R_-}^\mathrm{cw}}\frac{\nu - \Omega}{\nu^2 - \Omega^2z(\nu)}\frac{1}{\nu - \nu' + \mathrm{i}\epsilon}\;\mathrm{d}\nu\right.\\
+% &\qquad - 2\pi\mathrm{i}\sum_n\mathrm{Res}\left(\frac{\nu - \Omega}{\nu^2 - \Omega^2z(\nu)}\frac{1}{\nu - \nu' + \mathrm{i}\epsilon},\nu_n\right)\Theta\left(\mathrm{Im}\left\{\nu\right\} < 0\right)\\
+% &\qquad\left. + \int_{C_{R_+}^\mathrm{ccw}}\frac{\nu - \Omega}{\nu^2 - \Omega^2z^*(\nu)}\frac{1}{\nu - \nu' + \mathrm{i}\epsilon}\;\mathrm{d}\nu - 2\pi\mathrm{i}\sum_n\mathrm{Res}\left(\frac{\nu - \Omega}{\nu^2 - \Omega^2z^*(\nu)}\frac{1}{\nu - \nu' + \mathrm{i}\epsilon},\nu_n\right)\Theta\left(\mathrm{Im}\left\{\nu\right\} > 0\right)\right]\\
+% &= -\frac{(\nu' - \Omega)g(\nu')}{\nu'^2 - \Omega^2z^*(\nu')} + \mathrm{i}\frac{g(\nu')}{2\pi}\left(0 - 2\pi\mathrm{i}\frac{\nu' - \mathrm{i}\epsilon - \Omega}{(\nu' - \mathrm{i}\epsilon)^2 - \Omega^2z^*(\nu' - \mathrm{i}\epsilon)} + 0 - 0\right)\\
+% &= -\frac{(\nu' - \Omega)g(\nu')}{\nu'^2 - \Omega^2z^*(\nu')} + \frac{(\nu' - \Omega - \mathrm{i}\epsilon)g(\nu')}{(\nu' - \mathrm{i}\epsilon)^2 - \Omega^2z^*(\nu' - \mathrm{i}\epsilon)}\\
 &= 0
 \end{split}
 \end{equation}
@@ -383,18 +407,85 @@ We can repeat this process to find the representation of the bath operator $\hat
 \end{split}
 \end{equation}
 we can see that the integral prefactors of the first two terms on the RHS above are complex conjugates or reverses of integrals we already know to be zero and are thus themselves zero. The fourth term on the RHS is also zero, as is shown by
-\begin{equation}
+\begin{equation}\label{eq:uv-minus-vu-integral}
 \begin{split}
-\int_0^\infty&\left[u^*(\nu',\nu)v(\nu',\omega) - v(\nu',\nu)u^*(\nu',\omega)\right]\mathrm{d}\nu' = \\
-&= \\
+\int_0^\infty&\left[u^*(\nu',\nu)v(\nu',\omega) - v(\nu',\nu)u^*(\nu',\omega)\right]\mathrm{d}\nu' = \int_0^\infty\left[\left(\delta(\nu' - \nu) + \frac{2\Omega g(\nu')}{\nu'^2 - \Omega^2z^*(\nu')}\frac{g(\nu)}{\nu' - \nu + \mathrm{i}\epsilon}\right)\right.\\
+&\qquad\times\frac{2\Omega g(\nu')}{\nu'^2 - \Omega^2z(\nu')}PV\left\{\frac{g(\omega)}{\nu' + \omega}\right\} - \frac{2\Omega g(\nu')}{\nu'^2 - \Omega^2z(\nu')}PV\left\{\frac{g(\nu)}{\nu' + \nu}\right\}\left( \vphantom{\frac{2\Omega g(\nu')}{\nu'^2 - \Omega^2z^*(\nu')}} \delta(\nu' - \omega)\right.\\
+&\qquad\left.\left. + \frac{2\Omega g(\nu')}{\nu'^2 - \Omega^2z^*(\nu')}\frac{g(\omega)}{\nu' - \omega + \mathrm{i}\epsilon}\right)\right]\mathrm{d}\nu'\\
+&= \frac{2\Omega g(\nu)}{\nu^2 - \Omega^2z(\nu)}PV\left\{\frac{g(\omega)}{\nu + \omega}\right\} + \int_0^\infty\frac{4\Omega^2g^2(\nu')}{|\nu'^2 - \Omega^2z(\nu')|^2}\frac{g(\nu)}{\nu' - \nu + \mathrm{i}\epsilon}PV\left\{\frac{g(\omega)}{\nu' + \omega}\right\}\mathrm{d}\nu'\\
+&\qquad - \frac{2\Omega g(\omega)}{\omega^2 - \Omega^2z(\omega)}PV\left\{\frac{g(\nu)}{\omega + \nu}\right\} - \int_0^\infty\frac{4\Omega^2g^2(\nu')}{|\nu'^2 - \Omega^2z(\nu')|^2}\frac{g(\omega)}{\nu' - \omega + \mathrm{i}\epsilon}PV\left\{\frac{g(\nu)}{\nu' + \nu}\right\}\mathrm{d}\nu'\\
+% &= \frac{2\Omega g(\omega)g(\nu)(\omega+ \nu)}{(\omega + \nu)^2 + \epsilon^2}\left[\frac{1}{\nu^2 - \omega^2z(\nu)} - \frac{1}{\omega^2 - \Omega^2z(\omega)}\right]\\
+% &\qquad + \int_0^\infty\frac{4\Omega^2g^2(\nu')}{|\nu'^2 - \Omega^2z(\nu')|^2}\frac{g(\nu)g(\omega)}{\nu' - \nu + \mathrm{i}\epsilon}\left[\frac{1}{\nu' + \omega - \mathrm{i}\epsilon} - \mathrm{i}\pi\delta(\nu' + \omega)\right]\mathrm{d}\nu'\\
+% &\qquad - \int_0^\infty\frac{4\Omega^2g^2(\nu')}{|\nu'^2 - \Omega^2z(\nu')|^2}\frac{g(\nu)g(\omega)}{\nu' - \omega + \mathrm{i}\epsilon}\left[\frac{1}{\nu' + \nu - \mathrm{i}\epsilon} - \mathrm{i}\pi\delta(\nu' + \nu)\right]\mathrm{d}\nu'\\
+% &= \frac{2\Omega g(\omega)g(\nu)(\omega+ \nu)}{(\omega + \nu)^2 + \epsilon^2}\left[\frac{1}{\nu^2 - \omega^2z(\nu)} - \frac{1}{\omega^2 - \Omega^2z(\omega)}\right]\\
+% &\qquad + \int_0^\infty\frac{4\Omega^2g^2(\nu')}{|\nu'^2 - \Omega^2z(\nu')|^2}\frac{g(\nu)g(\omega)}{\nu' - \nu + \mathrm{i}\epsilon}\frac{1}{\nu' + \omega - \mathrm{i}\epsilon}\mathrm{d}\nu'\\
+% &\qquad - \int_0^\infty\frac{4\Omega^2g^2(\nu')}{|\nu'^2 - \Omega^2z(\nu')|^2}\frac{g(\nu)g(\omega)}{\nu' - \omega + \mathrm{i}\epsilon}\frac{1}{\nu' + \nu - \mathrm{i}\epsilon}\mathrm{d}\nu'\\
+% &= \frac{2\Omega g(\omega)g(\nu)(\omega+ \nu)}{(\omega + \nu)^2 + \epsilon^2}\left[\frac{1}{\nu^2 - \omega^2z(\nu)} - \frac{1}{\omega^2 - \Omega^2z(\omega)}\right]\\
+% &\qquad + \int_0^\infty\frac{4\Omega^2g^2(\nu')}{|\nu'^2 - \Omega^2z(\nu')|^2}\frac{g(\nu)g(\omega)}{\nu' - \nu + \mathrm{i}\epsilon}\frac{1}{\nu' + \omega - \mathrm{i}\epsilon}\mathrm{d}\nu'\\
+% &\qquad + \int_{-\infty}^0\frac{4\Omega^2g^2(\nu')}{|\nu'^2 - \Omega^2z(\nu')|^2}\frac{g(\nu)g(\omega)}{\nu' + \omega - \mathrm{i}\epsilon}\frac{1}{\nu' - \nu + \mathrm{i}\epsilon}\mathrm{d}\nu'\\
+% &= \frac{2\Omega g(\omega)g(\nu)(\omega+ \nu)}{(\omega + \nu)^2 + \epsilon^2}\left[\frac{1}{\nu^2 - \omega^2z(\nu)} - \frac{1}{\omega^2 - \Omega^2z(\omega)}\right]\\
+% &\qquad + \int_{-\infty}^\infty\frac{4\Omega^2g^2(\nu')}{|\nu'^2 - \Omega^2z(\nu')|^2}\frac{g(\nu)g(\omega)}{\nu' - \nu + \mathrm{i}\epsilon}\frac{1}{\nu' + \omega - \mathrm{i}\epsilon}\mathrm{d}\nu'\\
+% &= \frac{2\Omega g(\omega)g(\nu)(\omega+ \nu)}{(\omega + \nu)^2 + \epsilon^2}\left[\frac{1}{\nu^2 - \omega^2z(\nu)} - \frac{1}{\omega^2 - \Omega^2z(\omega)}\right]\\
+% &\qquad + \int_{-\infty}^{\infty}4\Omega^2g^2(\nu')\left[-\frac{\mathrm{i}}{4\pi\Omega g^2(\nu')}\frac{1}{\nu'^2 - \Omega^2z(\nu')} + \frac{\mathrm{i}}{4\pi\Omega g^2(\nu')}\frac{1}{\nu'^2 - \Omega^2z^*(\nu')}\right]\\
+% &\qquad\qquad\times g(\omega)g(\nu)\left[\frac{1}{\nu + \omega - 2\mathrm{i}\epsilon}\frac{1}{\nu' - \nu + \mathrm{i}\epsilon} - \frac{1}{\nu + \omega - 2\mathrm{i}\epsilon}\frac{1}{\nu' + \omega - \mathrm{i}\epsilon}\right]\mathrm{d}\nu'\\
+% &= \frac{2\Omega g(\omega)g(\nu)(\omega+ \nu)}{(\omega + \nu)^2 + \epsilon^2}\left[\frac{1}{\nu^2 - \omega^2z(\nu)} - \frac{1}{\omega^2 - \Omega^2z(\omega)}\right]\\
+% &\qquad - \frac{\mathrm{i}\Omega}{\pi}\frac{g(\omega)g(\nu)}{\omega + \nu - 2\mathrm{i}\epsilon}\int_{-\infty}^\infty\left[\frac{1}{\nu'^2 - \Omega^2z(\nu')} - \frac{1}{\nu'^2 - \Omega^2z^*(\nu')}\right]\left[\frac{1}{\nu' - \nu + \mathrm{i}\epsilon} - \frac{1}{\nu' + \omega - \mathrm{i}\epsilon}\right]\mathrm{d}\nu'\\
+% &= \frac{2\Omega g(\omega)g(\nu)(\omega+ \nu)}{(\omega + \nu)^2 + \epsilon^2}\left[\frac{1}{\nu^2 - \omega^2z(\nu)} - \frac{1}{\omega^2 - \Omega^2z(\omega)}\right]\\
+% &\qquad - \frac{\mathrm{i}\Omega}{\pi}\frac{g(\omega)g(\nu)}{\omega + \nu - 2\mathrm{i}\epsilon}\left( -\int_{R_-^\mathrm{cw}}\frac{1}{\nu'^2 - \Omega^2z(\nu')}\frac{1}{\nu' - \nu + \mathrm{i}\epsilon}\;\mathrm{d}\nu'\right.\\
+% &\qquad\qquad - 2\pi\mathrm{i}\sum_n\mathrm{Res}\left(\frac{1}{\nu'^2 - \Omega^2z(\nu')}\frac{1}{\nu' - \nu + \mathrm{i}\epsilon},\nu_n\right)\Theta(\mathrm{Im}\{\nu_n\} < 0)\\
+% &\qquad\qquad + \int_{R_-^\mathrm{ccw}}\frac{1}{\nu'^2 - \Omega^2z(\nu')}\frac{1}{\nu' + \omega - \mathrm{i}\epsilon}\;\mathrm{d}\nu'\\
+% &\qquad\qquad + 2\pi\mathrm{i}\sum_n\mathrm{Res}\left(\frac{1}{\nu' - \Omega^2z(\nu')}\frac{1}{\nu' + \omega - \mathrm{i}\epsilon},\nu_n\right)\Theta(\mathrm{Im}\{\nu_n\} < 0)\\
+% &\qquad\qquad + \int_{R_+^\mathrm{cw}}\frac{1}{\nu'^2 - \Omega^2z(\nu')}\frac{1}{\nu' - \nu + \mathrm{i}\epsilon}\;\mathrm{d}\nu'\\
+% &\qquad\qquad - 2\pi\mathrm{i}\sum_n\mathrm{Res}\left(\frac{1}{\nu'^2 - \Omega^2z(\nu')}\frac{1}{\nu' - \nu + \mathrm{i}\epsilon},\nu_n\right)\Theta(\mathrm{Im}\{\nu_n\}>0)\\
+% &\qquad\qquad - \int_{R_+^\mathrm{ccw}}\frac{1}{\nu'^2 - \Omega^2z^*(\nu')}\;\mathrm{d}\nu'\\
+% &\qquad\qquad\left. + 2\pi\mathrm{i}\sum_n\mathrm{Res}\left(\frac{1}{\nu'^2 - \Omega^2z^*(\nu')}\frac{1}{\nu' + \Omega - \mathrm{i}\epsilon},\nu_n\right)\Theta(\mathrm{Im}\{\nu_n\}>0) \vphantom{\int_{R_-^\mathrm{cw}}} \right)\\
+% &= \frac{2\Omega g(\omega)g(\nu)(\omega+ \nu)}{(\omega + \nu)^2 + \epsilon^2}\left[\frac{1}{\nu^2 - \omega^2z(\nu)} - \frac{1}{\omega^2 - \Omega^2z(\omega)}\right]\\
+% &\qquad - \frac{\mathrm{i}\Omega}{\pi}\frac{g(\omega)g(\nu)}{\omega + \nu - 2\mathrm{i}\epsilon}\left(0 - 2\pi\mathrm{i}\frac{1}{(\nu - \mathrm{i}\epsilon)^2 - \Omega^2z(\nu - \mathrm{i}\epsilon)} + 0 + 0\right.\\
+% &\qquad\qquad\left. + 0 + 0 + 0 + 2\pi\mathrm{i}\frac{1}{(-\omega + \mathrm{i}\epsilon)^2 - \Omega^2z^*(-\omega + \mathrm{i}\epsilon)} \right)\\
+&= 2\Omega g(\omega)g(\nu)\frac{\omega + \nu}{(\omega + \nu)^2 + \epsilon^2}\left[\frac{1}{\nu^2 - \omega^2z(\nu)} - \frac{1}{\omega^2 - \Omega^2z(\omega)}\right]\\
+&\qquad + 2\Omega g(\omega)g(\nu)\frac{1}{\omega + \nu}\left[\frac{1}{\omega^2 - \Omega^2z(\omega)} - \frac{1}{\nu^2 - \Omega^2z(\nu)}\right]\\
 &= 0.
 \end{split}
 \end{equation}
 Finally, the integral prefactor of the third term gives
-\begin{equation}
+\begin{equation}\label{eq:uu-minus-vv-integral}
 \begin{split}
-\int_0^\infty&\left[u^*(\nu',\omega)u(\nu',\omega) - v(\nu',\nu)v^*(\nu',\omega)\right]\mathrm{d}\nu' = \\
-&= \\
+\int_0^\infty&\left[u^*(\nu',\omega)u(\nu',\omega) - v(\nu',\nu)v^*(\nu',\omega)\right]\mathrm{d}\nu' = \int_0^\infty\left[\left(\delta(\nu' - \nu) + \frac{2\Omega g(\nu')}{\nu'^2 - \Omega^2z^*(\nu')}\frac{g(\nu)}{\nu' - \nu + \mathrm{i}\epsilon}\right)\right.\\
+&\qquad\times\left(\delta(\nu' - \omega) + \frac{2\Omega g(\nu')}{\nu'^2 - \Omega^2z(\nu')}\frac{g(\omega)}{\nu' - \omega - \mathrm{i}\epsilon}\right) - \frac{2\Omega g(\nu')}{\nu'^2 - \Omega^2z(\nu')}PV\left\{\frac{g(\omega)}{\nu' + \omega}\right\}\\
+&\qquad\left.\times\frac{2\Omega g(\nu')}{\nu'^2 - \Omega^2z^*(\nu')}PV\left\{\frac{g(\nu)}{\nu' + \nu}\right\}\right]\mathrm{d}\nu'\\
+% &= \delta(\nu - \omega) + \frac{2\Omega g(\nu)g(\omega)}{\nu^2 - \Omega^2z(\nu)}\frac{1}{\nu - \omega - \mathrm{i}\epsilon} + \frac{2\Omega g(\omega)g(\nu)}{\omega^2 - \Omega^2z^*(\omega)}\frac{1}{\omega - \nu + \mathrm{i}\epsilon}\\
+% &\qquad + \int_0^\infty\frac{4\Omega^2 g^2(\nu')}{|\nu'^2 - \Omega^2z(\nu')|^2}\frac{g(\nu)g(\omega)}{(\nu' - \nu + \mathrm{i}\epsilon)(\nu' - \omega - \mathrm{i}\epsilon)}\;\mathrm{d}\nu'\\
+% &\qquad - \int_0^\infty\frac{4\Omega^2g^2(\nu')}{|\nu'^2 - \Omega^2z(\nu')|^2}PV\left\{\frac{g(\nu)}{\nu + \nu'}\right\}PV\left\{\frac{g(\omega)}{\nu' + \omega}\right\}\mathrm{d}\nu'\\
+% &= \delta(\nu - \omega) + \frac{2\Omega g(\omega)g(\nu)}{\nu - \omega - \mathrm{i}\epsilon}\left[\frac{1}{\nu^2 - \Omega^2z(\nu)} - \frac{1}{\omega^2 - \Omega^2z^*(\omega)}\right]\\
+% &\qquad + \int_0^\infty\frac{4\Omega^2 g^2(\nu')}{|\nu'^2 - \Omega^2z(\nu')|^2}\frac{g(\nu)g(\omega)}{(\nu' - \nu + \mathrm{i}\epsilon)(\nu' - \omega - \mathrm{i}\epsilon)}\;\mathrm{d}\nu'\\
+% &\qquad - \int_0^\infty\frac{4\Omega^2g^2(\nu')}{|\nu'^2 - \Omega^2z(\nu')|^2}g(\nu)g(\omega)\left[\frac{1}{\nu + \nu' - \mathrm{i}\epsilon} - \mathrm{i}\pi\delta(\nu' + \nu)\right]\left[\frac{1}{\nu' + \omega + \mathrm{i}\epsilon} + \mathrm{i}\pi\delta(\nu' + \omega)\right]\mathrm{d}\nu'\\
+% &= \delta(\nu - \omega) + \frac{2\Omega g(\omega)g(\nu)}{\nu - \omega - \mathrm{i}\epsilon}\left[\frac{1}{\nu^2 - \Omega^2z(\nu)} - \frac{1}{\omega^2 - \Omega^2z^*(\omega)}\right]\\
+% &\qquad + \int_0^\infty\frac{4\Omega^2 g^2(\nu')}{|\nu'^2 - \Omega^2z(\nu')|^2}\frac{g(\nu)g(\omega)}{(\nu' - \nu + \mathrm{i}\epsilon)(\nu' - \omega - \mathrm{i}\epsilon)}\;\mathrm{d}\nu'\\
+% &\qquad - \int_0^\infty\frac{4\Omega^2g^2(\nu')}{|\nu'^2 - \Omega^2z(\nu')|^2}\frac{g(\nu)g(\omega)}{(\nu + \nu' - \mathrm{i}\epsilon)(\nu' + \omega + \mathrm{i}\epsilon)}\;\mathrm{d}\nu'\\
+% &= \delta(\nu - \omega) + \frac{2\Omega g(\omega)g(\nu)}{\nu - \omega - \mathrm{i}\epsilon}\left[\frac{1}{\nu^2 - \Omega^2z(\nu)} - \frac{1}{\omega^2 - \Omega^2z^*(\omega)}\right]\\
+% &\qquad + \int_0^\infty\frac{4\Omega^2 g^2(\nu')}{|\nu'^2 - \Omega^2z(\nu')|^2}\frac{g(\nu)g(\omega)}{(\nu' - \nu + \mathrm{i}\epsilon)(\nu' - \omega - \mathrm{i}\epsilon)}\;\mathrm{d}\nu'\\
+% &\qquad + \int_{-\infty}^0\frac{4\Omega^2g^2(\nu')}{|\nu'^2 - \Omega^2z(\nu')|^2}\frac{g(\nu)g(\omega)}{(\nu' - \nu + \mathrm{i}\epsilon)(\nu' - \omega - \mathrm{i}\epsilon)}\;\mathrm{d}\nu'\\
+% &= \delta(\nu - \omega) + \frac{2\Omega g(\omega)g(\nu)}{\nu - \omega - \mathrm{i}\epsilon}\left[\frac{1}{\nu^2 - \Omega^2z(\nu)} - \frac{1}{\omega^2 - \Omega^2z^*(\omega)}\right]\\
+% &\qquad + \int_{-\infty}^\infty\frac{4\Omega^2 g^2(\nu')}{|\nu'^2 - \Omega^2z(\nu')|^2}\frac{g(\nu)g(\omega)}{(\nu' - \nu + \mathrm{i}\epsilon)(\nu' - \omega - \mathrm{i}\epsilon)}\;\mathrm{d}\nu'\\
+% &= \delta(\nu - \omega) + \frac{2\Omega g(\omega)g(\nu)}{\nu - \omega - \mathrm{i}\epsilon}\left[\frac{1}{\nu^2 - \Omega^2z(\nu)} - \frac{1}{\omega^2 - \Omega^2z^*(\omega)}\right]\\
+% &\qquad + \int_{-\infty}^\infty4\Omega^2 g^2(\nu')\left(-\frac{\mathrm{i}}{4\pi\Omega g^2(\nu')}\frac{1}{\nu'^2 - \Omega^2z(\nu')} + \frac{\mathrm{i}}{4\pi\Omega g^2(\nu')}\frac{1}{\nu'^2 - \Omega^2z^*(\nu')}\right)\\
+% &\qquad\qquad\times g(\nu)g(\omega)\left(\frac{1}{\nu - \omega - 2\mathrm{i}\epsilon}\frac{1}{\nu' - \nu + \mathrm{i}\epsilon} - \frac{1}{\nu - \omega - 2\mathrm{i}\epsilon}\frac{1}{\nu' - \omega - \mathrm{i}\epsilon}\right)\mathrm{d}\nu'\\
+% &= \delta(\nu - \omega) + + \frac{2\Omega g(\omega)g(\nu)}{\nu - \omega - \mathrm{i}\epsilon}\left[\frac{1}{\nu^2 - \Omega^2z(\nu)} - \frac{1}{\omega^2 - \Omega^2z^*(\omega)}\right]\\
+% &\qquad - \frac{\mathrm{i}\Omega}{\pi}g(\nu)g(\omega)\frac{1}{\nu - \omega - 2\mathrm{i}\epsilon}\int_{-\infty}^\infty\left(\frac{1}{\nu'^2 - \Omega^2z(\nu')} - \frac{1}{\nu'^2 - \Omega^2z^*(\nu')}\right)\left(\frac{1}{\nu' - \nu + \mathrm{i}\epsilon} - \frac{1}{\nu' - \omega - \mathrm{i}\epsilon}\right)\mathrm{d}\nu'\\
+% &= \delta(\nu - \omega) + \frac{2\Omega g(\omega)g(\nu)}{\nu - \omega - \mathrm{i}\epsilon}\left[\frac{1}{\nu^2 - \Omega^2z(\nu)} - \frac{1}{\omega^2 - \Omega^2z^*(\omega)}\right]\\
+% &\qquad - \frac{\mathrm{i}\Omega}{\pi}g(\nu)g(\omega)\frac{1}{\nu - \omega - 2\mathrm{i}\epsilon}\left(\int_{R_-^\mathrm{cw}}\frac{1}{\nu'^2 - \Omega^2z(\nu')}\frac{1}{\nu' - \nu + \mathrm{i}\epsilon}\;\mathrm{d}\nu'\right.\\
+% &\qquad\qquad - 2\pi\mathrm{i}\sum_n\mathrm{Res}\left(\frac{1}{\nu'^2 - \Omega^2z(\nu')}\frac{1}{\nu' - \nu + \mathrm{i}\epsilon},\nu_n\right)\Theta(\mathrm{Im}\{\nu_n\} < 0)\\
+% &\qquad\qquad + \int_{R_-^\mathrm{cw}}\frac{1}{\nu'^2 - \Omega^2z(\nu')}\frac{1}{\nu' - \omega - \mathrm{i}\epsilon}\;\mathrm{d}\nu'\\
+% &\qquad\qquad + 2\pi\mathrm{i}\sum_n\mathrm{Res}\left(\frac{1}{\nu'^2 - \Omega^2z(\nu')}\frac{1}{\nu' - \omega - \mathrm{i}\epsilon}\right)\Theta(\mathrm{Im}\{\nu_n\} < 0)\\
+% &\qquad\qquad + \int_{R_+^\mathrm{ccw}}\frac{1}{\nu'^2 - \Omega^2z^*(\nu')}\frac{1}{\nu' - \nu + \mathrm{i}\epsilon}\;\mathrm{d}\nu'\\
+% &\qquad\qquad - 2\pi\mathrm{i}\sum_\mathrm{Res}\left(\frac{1}{\nu'^2 - \Omega^2z^*(\nu')}\frac{1}{\nu' - \nu + \mathrm{i}\epsilon}\right)\Theta(\mathrm{Im}\{\nu_n\} > 0)\\
+% &\qquad\qquad - \int_{R_+^\mathrm{ccw}}\frac{1}{\nu'^2 - \Omega^2z(\nu')}\frac{1}{\nu' - \omega - \mathrm{i}\epsilon}\;\mathrm{d}\nu'\\
+% &\qquad\qquad\left. + 2\pi\mathrm{i}\sum_n\mathrm{Res}\left(\frac{1}{\nu'^2 - \Omega^2z^*(\nu')}\frac{1}{\nu'^2 - \omega - \mathrm{i}\epsilon}\right)\Theta(\mathrm{Im}\{\nu_n\} > 0) \vphantom{\int_{R_i^\mathrm{cw}}} \right)\\
+% &= \delta(\nu - \omega) + \frac{2\Omega g(\omega)g(\nu)}{\nu - \omega - \mathrm{i}\epsilon}\left[\frac{1}{\nu^2 - \Omega^2z(\nu)} - \frac{1}{\omega^2 - \Omega^2z^*(\omega)}\right]\\
+% &\qquad - \frac{\mathrm{i}\Omega}{\pi}g(\nu)g(\omega)\frac{1}{\nu - \omega - 2\mathrm{i}\epsilon}\left(0 - 2\pi\mathrm{i}\frac{1}{(\nu - \mathrm{i}\epsilon)^2 - \Omega^2z(\nu - \mathrm{i}\epsilon)} + 0 + 0\right.\\
+% &\qquad\qquad\left. + 0 + 0 + 0 + 2\pi\mathrm{i}\frac{1}{(\omega + \mathrm{i}\epsilon)^2 - \Omega^2z^*(\omega + \mathrm{i}\epsilon)}\right)\\
+&= \delta(\nu - \omega) + \frac{2\Omega g(\omega)g(\nu)}{\nu - \omega - \mathrm{i}\epsilon}\left[\frac{1}{\nu^2 - \Omega^2z(\nu)} - \frac{1}{\omega^2 - \Omega^2z^*(\omega)}\right]\\
+&\qquad - \frac{2\Omega g(\omega)g(\nu)}{\nu - \omega - 2\mathrm{i}\epsilon}\left[\frac{1}{\nu^2 - \Omega^2z(\nu)} - \frac{1}{\omega^2 - \Omega^2z^*(\omega)}\right]\\
 &= \delta(\nu - \omega)
 \end{split}
 \end{equation}

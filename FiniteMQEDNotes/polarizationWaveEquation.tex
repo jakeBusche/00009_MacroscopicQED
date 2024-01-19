@@ -1,0 +1,146 @@
+%!TEX root = finiteMQED.tex
+
+\section{Derivation of the Wave Equation Satisfied by the Polarization Density}\label{app:polarizationWaveEquation}
+
+Before we can quantize a theory of light-matter interactions in a rigorous way, we need to describe the classical behavior of the matter we are working with. to do so, we begin with Maxwell's equations in the Fourier regime,
+\begin{equation}
+\begin{split}
+\nabla\cdot\mathbf{E}(\mathbf{r},\omega) &= 4\pi\rho(\mathbf{r},\omega),\\
+\nabla\cdot\mathbf{D}(\mathbf{r},\omega) &= 4\pi\rho_f(\mathbf{r},\omega),\\
+\nabla\cdot\mathbf{B}(\mathbf{r},\omega) &= 0,\\
+\nabla\times\mathbf{E}(\mathbf{r},\omega) &= \frac{\mathrm{i}\omega}{c}\mathbf{B}(\mathbf{r},\omega),\\
+\nabla\times\mathbf{B}(\mathbf{r},\omega) &= \frac{4\pi}{c}\mathbf{J}(\mathbf{r},\omega) - \frac{\mathrm{i}\omega}{c}\mathbf{E}(\mathbf{r},\omega),\\
+\nabla\times\mathbf{H}(\mathbf{r},\omega) &= \frac{4\pi}{c}\mathbf{J}_f(\mathbf{r},\omega) - \frac{\mathrm{i}\omega}{c}\mathbf{D}(\mathbf{r},\omega),
+\end{split}
+\end{equation}
+where
+\begin{equation}
+\begin{split}
+\mathbf{D}(\mathbf{r},\omega) &= \epsilon(\mathbf{r},\omega)\mathbf{E}(\mathbf{r},\omega),\\
+\mathbf{B}(\mathbf{r},\omega) &= \mu(\mathbf{r},\omega)\mathbf{H}(\mathbf{r},\omega),
+\end{split}
+\end{equation}
+are the electric and magnetic constitutive relations, respectively, and the charge and current distributions have been separated into bound and free contributions such that $\rho(\mathbf{r},\omega) = \rho_b(\mathbf{r},\omega) + \rho_f(\mathbf{r},\omega)$ and $\mathbf{J}(\mathbf{r},\omega) = \mathbf{J}_b(\mathbf{r},\omega) + \mathbf{J}_f(\mathbf{r},\omega)$. Alternatively, the electric and magnetic constitutive relations can be written as
+\begin{equation}
+\begin{split}
+\mathbf{D}(\mathbf{r},\omega) &= \mathbf{E}(\mathbf{r},\omega) + 4\pi\mathbf{P}(\mathbf{r},\omega),\\
+\mathbf{B}(\mathbf{r},\omega) &= \mathbf{H}(\mathbf{r},\omega) + 4\pi\mathbf{M}(\mathbf{r},\omega),
+\end{split}
+\end{equation}
+with $\mathbf{P}(\mathbf{r},\omega)$ the polarization density and $\mathbf{M}(\mathbf{r},\omega)$ the magnetization density of the matter. These lead straightforwardly to the definitions of the bound charge and current:
+\begin{equation}
+\begin{split}
+\rho_b(\mathbf{r},\omega) &= -\nabla\cdot\mathbf{P}(\mathbf{r},\omega),\\
+\mathbf{J}_b(\mathbf{r},\omega) &= -\mathrm{i}\omega\mathbf{P}(\mathbf{r},\omega) + c\nabla\times\mathbf{M}(\mathbf{r},\omega).
+\end{split}
+\end{equation}
+
+The constitutive relations are useful for defining a corollary to Faraday's law for the $\mathbf{D}(\mathbf{r},\omega)$- and $\mathbf{H}(\mathbf{r},\omega)$-fields:
+\begin{equation}
+\begin{split}
+\nabla\times\mathbf{D}(\mathbf{r},\omega) &= \epsilon(\mathbf{r},\omega)\nabla\times\mathbf{E}(\mathbf{r},\omega) + \nabla\epsilon(\mathbf{r},\omega)\times\mathbf{E}(\mathbf{r},\omega)\\
+&= \frac{\mathrm{i}\omega}{c}\epsilon(\mathbf{r},\omega)\mu(\mathbf{r},\omega)\mathbf{H}(\mathbf{r},\omega) + \nabla\epsilon(\mathbf{r},\omega)\times\mathbf{E}(\mathbf{r},\omega),
+\end{split}
+\end{equation}
+wherein we have used the identity $\nabla\times\left\{f(\mathbf{r})\mathbf{F}(\mathbf{r})\right\} = f(\mathbf{r})\nabla\times\mathbf{F}(\mathbf{r}) + \nabla f(\mathbf{r})\times\mathbf{F}(\mathbf{r})$. Application of the curl operator to Faraday's law and its corollary produces
+\begin{equation}\label{eq:waveEquationsEandD}
+\begin{split}
+\nabla\times\nabla\times\mathbf{E}(\mathbf{r},\omega) &= \frac{4\pi\mathrm{i}\omega}{c^2}\mu(\mathbf{r},\omega)\mathbf{J}_f(\mathbf{r},\omega) + \epsilon(\mathbf{r},\omega)\mu(\mathbf{r},\omega)\frac{\omega^2}{c^2}\mathbf{E}(\mathbf{r},\omega) + \frac{\mathrm{i}\omega}{c}\nabla\mu(\mathbf{r},\omega)\times\mathbf{H}(\mathbf{r},\omega),\\
+\nabla\times\nabla\times\mathbf{D}(\mathbf{r},\omega) &= \frac{4\pi\mathrm{i}\omega}{c^2}\epsilon(\mathbf{r},\omega)\mu(\mathbf{r},\omega)\mathbf{J}_f(\mathbf{r},\omega) + \epsilon(\mathbf{r},\omega)\mu(\mathbf{r},\omega)\frac{\omega^2}{c^2}\mathbf{D}(\mathbf{r},\omega)\\
+&\qquad + \frac{\mathrm{i}\omega}{c}\nabla\left\{\epsilon(\mathbf{r},\omega)\mu(\mathbf{r},\omega)\right\}\times\mathbf{H}(\mathbf{r},\omega) + \nabla\times\left\{\nabla\epsilon(\mathbf{r},\omega)\times\mathbf{E}(\mathbf{r},\omega)\right\}.
+\end{split}
+\end{equation}
+The last term on the right-hand side of the first equation and the last two terms on the right-hand side of the second equation are nonzero for any system with space-dependent (i.e. interesting) material properties. These terms also act as sources that depend on the state of the field at any given frequency, such that, on the surface, they appear to make our lives quite complicated. However, in the special case where the dielectric and diamagnetic functions are piece-wise constant in space, these terms disappear. To see this, we can begin with the first line of Eq. \eqref{eq:waveEquationsEandD} and let
+\begin{equation}
+\mathbf{E}(\mathbf{r},\omega) = \sum_i\Theta(\mathbf{r}\in\mathbb{V}_i)\mathbf{E}_i(\mathbf{r},\omega).
+\end{equation}
+Here, space is divided into a number of regions $i$ that each contain a set of points $\mathbb{V}_i$. Each volume $\mathbb{V}_i$ borders any other number neighboring of volumes $\mathbb{V}_j$ and possibly infinity. Each volume $\mathbb{V}_i$ shares a set of points along the surface $\partial\mathbb{V}_{ij}$ with its neighbor $\mathbb{V}_j$ along which the dielectric functions, diamagnetic functions, and fields are undefined. Letting $\partial\mathbb{V}_i$ be the total set of surface points surrounding the volume $\mathbb{V}_i$, we can define the Heaviside function
+\begin{equation}
+\Theta(\mathbf{r}\in\mathbb{V}_i) = 
+\begin{cases}
+\mathbf{r}\in\mathbb{V}_i\setminus\partial\mathbb{V}_i, & 1,\\
+\mathbf{r}\notin\mathbb{V}_i, & 0,\\
+\mathbf{r}\in\partial\mathbb{V}_i, & \mathrm{undefined}.
+\end{cases}
+\end{equation}
+Further, 
+\begin{equation}
+\mathbf{E}_i(\mathbf{r},\omega) = 
+\begin{cases}
+\mathbf{E}(\mathbf{r},\omega), & \mathbf{r}\in\mathbb{V}_i,\\
+0, & \mathrm{otherwise},
+\end{cases}
+\end{equation}
+such that our piece-wise definition of the electric field serves to ``stitch together'' the electric field in each separate region of space by connecting it along the system's boundaries to its neighbors. The dielectric and diamagnetic functions follow as
+\begin{equation}
+\begin{split}
+\epsilon(\mathbf{r},\omega) &= \sum_i\epsilon_i(\omega)\Theta(\mathbf{r}\in\mathbb{V}_i),\\
+\mu(\mathbf{r},\omega) &= \sum_i\mu_i(\omega)\Theta(\mathbf{r}\in\mathbb{V}_i),
+\end{split}
+\end{equation}
+but, in contrast with the definition of the electric field, are space-independent within each region.
+
+Using these definitions, we can apply the double-curl operator on the left-hand side of the first line of Eq. \eqref{eq:waveEquationsEandD} to find
+\begin{equation}\label{eq:waveEqEseparated}
+\begin{split}
+&\sum_i\Theta(\mathbf{r}\in\mathbb{V}_i)\nabla\times\nabla\times\mathbf{E}_i(\mathbf{r},\omega) + \sum_i\delta(\mathbf{r}\in\partial\mathbb{V}_i)\hat{\mathbf{n}}_i(\mathbf{r})\times\nabla\times\mathbf{E}_i(\mathbf{r},\omega)\\
+&\qquad + \sum_i\nabla\times\left\{\delta(\mathbf{r}\in\mathbb{V}_i)\hat{\mathbf{n}}_i(\mathbf{r})\times\mathbf{E}_i(\mathbf{r},\omega)\right\} = \sum_i\frac{4\pi\mathrm{i}\omega}{c}\mu_i(\omega)\mathbf{J}_{fi}(\mathbf{r},\omega)\Theta(\mathbf{r}\in\mathbb{V}_i)\\
+&\qquad + \frac{\omega^2}{c^2}\sum_i\mu_i(\omega)\epsilon_i(\omega)\mathbf{E}_i(\mathbf{r},\omega)\Theta(\mathbf{r}\in\mathbb{V}_i) + \sum_i\frac{\mathrm{i}\omega}{c}\mu_i(\omega)\delta(\mathbf{r}\in\partial\mathbb{V}_i)\hat{\mathbf{n}}_i(\mathbf{r})\times\mathbf{H}_i(\mathbf{r},\omega).
+\end{split}
+\end{equation}
+Here, we have used the identity $\nabla\Theta(\mathbf{r}\in\mathbb{V}_i) = \hat{\mathbf{n}}_i(\mathbf{r})\delta(\mathbf{r}\in\partial\mathbb{V}_i)$ to evaluate the derivatives, where $\hat{\mathbf{n}}_i(\mathbf{r})$ is the outward-facing surface-normal unit vector of the boundary of $\mathbb{V}_i$. Because the fields and material functions are not defined on the boundary exactly, we will take the Dirac deltas to imply limits as one approaches a point on a boundary from inside the associated bounded volume. In this case, we have let $\Theta(\mathbf{r}\in\mathbb{V}_i)\delta(\mathbf{r}\in\partial\mathbb{V}_i) = \delta(\mathbf{r}\in\partial\mathbb{V}_i)$. Moreover, we can see that along each shared boundary $\partial\mathbb{V}_{ij}$,
+\begin{equation}
+\hat{\mathbf{n}}_i(\mathbf{r}\in\partial\mathbb{V}_{ij})\times\mathbf{E}_i(\mathbf{r}\in\partial\mathbb{V}_{ij},\omega) = -\hat{\mathbf{n}}_j(\mathbf{r}\in\partial\mathbb{V}_{ij})\times\mathbf{E}_j(\mathbf{r}\in\partial\mathbb{V}_{ij},\omega)
+\end{equation}
+as the surface-parallel components of the electric fields are equal and the surface-normal vectors are equal and opposite. Therefore, we can see that
+\begin{equation}
+\sum_i\delta(\mathbf{r}\in\mathbb{V}_i)\hat{\mathbf{n}}_i(\mathbf{r})\times\mathbf{E}_i(\mathbf{r},\omega) = 0
+\end{equation}
+and, accordingly, $\sum_i\nabla\times\left\{\delta(\mathbf{r}\in\mathbb{V}_i)\hat{\mathbf{n}}_i(\mathbf{r})\times\mathbf{E}_i(\mathbf{r},\omega)\right\} = 0$. Moreover, we can see from Faraday's law that
+\begin{equation}
+\sum_i\Theta(\mathbf{r}\in\mathbb{V}_i)\nabla\times\mathbf{E}_i(\mathbf{r},\omega) + \sum_i\delta(\mathbf{r}\in\partial\mathbb{V}_i)\hat{\mathbf{n}}_i(\mathbf{r})\times\mathbf{E}_i(\mathbf{r},\omega) = \sum_i\frac{\mathrm{i}\omega}{c}\mathbf{B}_i(\mathbf{r},\omega)\Theta(\mathbf{r}\in\mathbb{V}_i).
+\end{equation}
+Since the second term on the left-hand side is zero, we can equate the remaining quantities point-wise within their respective regions:
+\begin{equation}
+\nabla\times\mathbf{E}_i(\mathbf{r},\omega) = \frac{\mathrm{i}\omega}{c}\mathbf{B}_i(\mathbf{r},\omega).
+\end{equation}
+\sloppy Combined with the definition $\mu_i(\omega)\mathbf{H}_i(\mathbf{r},\omega) = \mathbf{B}_i(\mathbf{r},\omega)$, we can use the region-separated form of Faraday's law to see that $\nabla\times\mathbf{E}_i(\mathbf{r},\omega) = \mathrm{i}\omega\mu_i(\omega)\mathbf{H}_i(\mathbf{r},\omega)/c$. We can then cancel the remaining terms on either side of Eq. \eqref{eq:waveEqEseparated} proportional to Dirac deltas. Further, as the rest of the terms feature sums of independent quantities, we can drop the sums and Heaviside functions as we did with Faraday's law, such that the double curl of $\mathbf{E}(\mathbf{r},\omega)$ provides
+\begin{equation}\label{eq:waveEqEseparated2}
+\nabla\times\nabla\times\mathbf{E}_i(\mathbf{r},\omega) = \frac{4\pi\mathrm{i}\omega}{c}\mu_i(\omega)\mathbf{J}_{fi}(\mathbf{r},\omega) + \frac{\omega^2}{c^2}\mu_i(\omega)\epsilon_i(\omega)\mathbf{E}_i(\mathbf{r},\omega).
+\end{equation}
+This is simply the wave equation for the electric field within region $i$. Therefore, we have proved that the wave equation for the electric field in Eq. \eqref{eq:waveEquationsEandD} can be decomposed into a series of wave equations in each region that must be solved individually and do \textit{not} contain any anomalous boundary terms proportional to $\nabla\mu(\mathbf{r},\omega)$.
+
+A similar process can be used to find the region-separated form of the wave equation of the $\mathbf{D}$-field. Letting
+\begin{equation}
+\begin{split}
+\mathbf{D}(\mathbf{r},\omega) &= \sum_i\Theta(\mathbf{r}\in\mathbb{V}_i)\epsilon_i(\omega)\mathbf{E}_i(\mathbf{r},\omega),\\
+\epsilon(\mathbf{r},\omega)\mu(\mathbf{r},\omega) &= \sum_i\Theta(\mathbf{r}\in\mathbb{V}_i)\epsilon_i(\omega)\mu_i(\omega),
+\end{split}
+\end{equation}
+we arrive at
+\begin{equation}
+\begin{split}
+&\sum_i\Theta(\mathbf{r}\in\mathbb{V}_i)\nabla\times\nabla\times\mathbf{D}_i(\mathbf{r},\omega) + \sum_i\epsilon_i(\omega)\delta(\mathbf{r}\in\partial\mathbb{V}_i)\hat{\mathbf{n}}_i(\mathbf{r})\times\nabla\times\mathbf{E}_i(\mathbf{r},\omega)\\
+&\qquad + \nabla\times\left\{\sum_i\epsilon_i(\omega)\delta(\mathbf{r}\in\partial\mathbb{V}_i)\hat{\mathbf{n}}_i(\mathbf{r})\times\mathbf{E}_i(\mathbf{r},\omega)\right\} = \sum_i\Theta(\mathbf{r}\in\mathbb{V}_i)\frac{4\pi\mathrm{i}\omega}{c^2}\epsilon_i(\omega)\mu_i(\omega)\mathbf{J}_{fi}(\mathbf{r},\omega)\\
+&\qquad + \sum_i\Theta(\mathbf{r}\in\mathbb{V}_i)\epsilon_i(\omega)\mu_i(\omega)\frac{\omega^2}{c^2}\mathbf{D}_i(\mathbf{r},\omega) + \sum_i\frac{\mathrm{i}\omega}{c}\epsilon_i(\omega)\mu_i(\omega)\delta(\mathbf{r}\in\delta\mathbb{V}_i)\hat{\mathbf{n}}_i(\mathbf{r})\times\mathbf{H}_i(\mathbf{r},\omega)\\
+&\qquad + \nabla\times\left\{\sum_i\epsilon_i(\omega)\delta(\mathbf{r}\in\partial\mathbb{V}_i)\hat{\mathbf{n}}_i(\mathbf{r})\times\mathbf{E}_i(\mathbf{r},\omega)\right\},
+\end{split}
+\end{equation}
+wherein $\mathbf{D}_i(\mathbf{r},\omega) = \epsilon_i(\omega)\mathbf{E}_i(\mathbf{r},\omega)$. We can immediately see that the last terms on both the left- and right-hand sides of the equation cancel. The second-to-last terms on either side of the equation can be seen to cancel using Faraday's law as was done in the previous paragraph, such that, after dropping sums and Heaviside functions, we find
+\begin{equation}\label{eq:waveEqDseparated2}
+\nabla\times\nabla\times\mathbf{D}_i(\mathbf{r},\omega) = \frac{4\pi\mathrm{i}\omega}{c^2}\epsilon_i(\omega)\mu_i(\omega)\mathbf{J}_{fi}(\mathbf{r},\omega) + \epsilon_i(\omega)\mu_i(\omega)\frac{\omega^2}{c^2}\mathbf{D}_i(\mathbf{r},\omega).
+\end{equation}
+
+We can now define the polarization field in each region as $\mathbf{P}_i(\mathbf{r},\omega)$ such that
+\begin{equation}
+\mathbf{P}(\mathbf{r},\omega) = \sum_i\Theta(\mathbf{r}\in\mathbb{V}_i)\mathbf{P}_i(\mathbf{r},\omega).
+\end{equation}
+This paves the wave for the identity
+\begin{equation}
+\mathbf{P}_i(\mathbf{r},\omega) = \frac{\mathbf{D}_i(\mathbf{r},\omega) - \mathbf{E}_i(\mathbf{r},\omega)}{4\pi}.
+\end{equation}
+Therefore, subtracting Eq. \eqref{eq:waveEqEseparated2} from Eq. \eqref{eq:waveEqDseparated2} and dividing by $4\pi$, we find
+\begin{equation}
+\nabla\times\nabla\times\mathbf{P}_i(\mathbf{r},\omega) - \epsilon_i(\omega)\mu_i(\omega)\frac{\omega^2}{c^2}\mathbf{P}_i(\mathbf{r},\omega) = \frac{\mathrm{i}\omega}{c}\mu_i(\omega)\left[\epsilon_i(\omega) - 1\right]\mathbf{J}_{fi}(\mathbf{r},\omega).
+\end{equation}
+Therefore, the polarization field in each region obeys the same wave equation as do the electric and $\mathbf{D}$-fields, modulo a space-independent prefactor in front of the free current source term on the right-hand side.
