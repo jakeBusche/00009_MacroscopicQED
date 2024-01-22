@@ -8,13 +8,13 @@ We begin with a Hamiltonian
 \end{equation}
 where 
 \begin{equation}
-\hat{H}_0 = \sum_{i = 1}^{M}\hbar\Omega_i\hat{a}_{i}^\dagger(t)\hat{a}_{i}(t) + \sum_{\sigma = 1}^N\int_0^\infty\hbar\tilde{\nu}_\sigma\hat{b}_\sigma^\dagger(\nu,t)\hat{b}_\sigma(\nu,t)\;\mathrm{d}\nu
+\hat{H}_0 = \sum_{i = 1}^{N}\hbar\Omega_i\hat{a}_{i}^\dagger(t)\hat{a}_{i}(t) + \sum_{\sigma = 1}^N\int_0^\infty\hbar\tilde{\nu}_\sigma\hat{b}_\sigma^\dagger(\nu,t)\hat{b}_\sigma(\nu,t)\;\mathrm{d}\nu
 \end{equation}
 and
 \begin{equation}
 \hat{H}_\mathrm{int} = \sum_{i,\sigma}\int_0^\infty\hbar g_{i \sigma}(\nu)\left[\hat{a}_{i}(t) + \hat{a}_{i}^\dagger(t)\right]\left[\hat{b}_\sigma(\nu,t) + \hat{b}_\sigma^\dagger(\nu,t)\right]\mathrm{d}\nu.
 \end{equation}
-The $M$ discrete boson operators $\hat{a}_i(t)$ and $N$ sets of bath operators $\hat{b}_\sigma(\nu,t)$ have natural frequencies $\Omega_i$ and $\tilde{\nu}_\sigma(\nu)$, respectively, and commutation relations
+The $N$ discrete boson operators $\hat{a}_i(t)$ and $N$ sets of bath operators $\hat{b}_\sigma(\nu,t)$ have natural frequencies $\Omega_i$ and $\tilde{\nu}_\sigma(\nu)$, respectively, and commutation relations
 \begin{equation}
 \begin{split}
 \left[\hat{a}_i(t),\hat{a}_{j}^\dagger(t)\right] &= \delta_{ij},\\
@@ -288,7 +288,9 @@ We can then see
 \end{equation}
 is the normalization condition that sets the absolute magnitude of the elements of $\mathbf{q}_n(\omega)$. 
 
-The inverse Fano transformations used to define the unhybridized operators $\hat{a}_i(t)$ and $\hat{b}_\sigma(\nu,t)$ in terms of the polariton operators can be straightforwardly built from these results and the integral techniques of Appendix \ref{app:fanoDiagonalization}. To begin, we can propose a trial solution
+It is important to note at this point that the complex coefficients $x_{i\sigma}(\omega)$ are still not uniquely defined. This means that, for a given $n$ and $\omega$, a set of polariton operators $\{\hat{C}_n(\omega,t;\mathbf{X})\}$ exists in which each element $\hat{C}_n(\omega,t;\mathbf{X})$ describes the dynamics of the system with equal validity. These elements are indexed by the matrices $\mathbf{X}(\omega) = \sum_{i\sigma}x_{i\sigma}(\omega)\hat{\mathbf{e}}_i\hat{\mathbf{e}}_\sigma$ whose elements describe the degree to which the operators $\hat{b}_\sigma(\omega_\sigma)$ contribute to $\hat{C}_n(\omega,t)$. These elements are nonzero, but are otherwise free to vary in the complex plane. Therefore, it is up to the author of a particular model to choose which values of $\mathbf{X}(\omega)$ are most advantageous for him/her. However, as we will see in the following, the inverse Fano transformations that reproduce the uncoupled operators $\hat{a}_i(t)$ and $\hat{b}_\sigma(\nu,t)$ as combinations of polariton operators will place additional constraints on $\mathbf{X}(\omega)$ such that particular values of $x_{i\sigma}(\omega)$ will be more convenient for use in one model or another.
+
+To begin, we can see that the inverse Fano transformations used to define the unhybridized operators $\hat{a}_i(t)$ and $\hat{b}_\sigma(\nu,t)$ in terms of the polariton operators can be straightforwardly built from these results and the integral techniques of Appendix \ref{app:fanoDiagonalization}. Forgoing the explicit dependence of each $\hat{C}_n(\omega,t)$ on $\mathbf{X}$, we can propose a trial solution
 \begin{equation}
 \begin{split}
 \hat{a}_i(t) &= \frac{1}{\mathcal{N}_i}\sum_n\int_0^\infty P_{ni}(\omega)\left[\frac{\omega + \Omega_i}{2\Omega_i}q_{ni}^*(\omega)\hat{C}_n(\omega,t) - s_{ni}(\omega)\hat{C}_{n}^\dagger(\omega,t)\right]\mathrm{d}\omega\\
@@ -411,9 +413,7 @@ u_{n\sigma}'(\omega,\nu) &= PV\left\{\frac{1}{\omega - \tilde{\nu}_\sigma}\right
 &= \lim_{\epsilon\to0}\frac{1}{\omega - \tilde{\nu}_\sigma - \mathrm{i}\epsilon}\sum_ig_{i\sigma}(\nu)q_{ni}(\omega) + \sum_ig_{i\sigma}(\nu)q_{ni}(\omega)y_{i\sigma}(\omega)\delta(\omega - \tilde{\nu}_\sigma)
 \end{split}
 \end{equation}
-is defined such that its Dirac-delta term, which can have any complex coefficient and still allow $u_{n\sigma}'(\omega,\nu)$ to satisfy Eq. \eqref{eq:hybridizationCoefficientsSystemManyModes}, has a prefactor $y_{i\sigma}(\omega) + \mathrm{i}\pi$ that may or may not be equal to $x_{i\sigma}(\omega)$. The primed polariton operators are similarly defined such that $\hat{C}_n'(\omega,t) = \hat{C}_n(\omega,t)|_{u_{n\sigma}\to u'_{n\sigma}}$. 
-
-Expanding, we find
+is defined such that its Dirac-delta term, which can have any complex coefficient and still allow $u_{n\sigma}'(\omega,\nu)$ to satisfy Eq. \eqref{eq:hybridizationCoefficientsSystemManyModes}, has a prefactor $y_{i\sigma}(\omega) + \mathrm{i}\pi$ that may or may not be equal to $x_{i\sigma}(\omega)$. The primed polariton operators are similarly defined such that $\hat{C}_n'(\omega,t) = \hat{C}_n(\omega,t)|_{u_{n\sigma}\to u'_{n\sigma}}$. Expanding, we find
 \begin{equation}
 \begin{split}
 \hat{b}_\sigma(\nu,t) 
@@ -430,58 +430,70 @@ Expanding, we find
 With
 \begin{equation}
 \begin{split}
-K_{n\sigma}(\omega) &= \pi^2\lambda_n\frac{4\Omega^2\Sigma^2(\omega)}{|\omega^2 - \Omega^2z(\omega)|^2},\\
-z(\omega) &= 1 + \lim_{\epsilon\to0}\frac{2}{\Omega}\int_{-\infty}^\infty\frac{\Sigma^2(\nu)}{\omega - \nu - \mathrm{i}\epsilon}\;\mathrm{d}\nu,
+K_{n\sigma}(\omega) &= \pi^2\lambda_n\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2},\\
+z_\sigma(\omega) &= 1 + \lim_{\epsilon\to0}\frac{2}{\Omega}\int_{-\infty}^\infty\frac{\Sigma_\sigma^2(\nu)}{\omega - \nu - \mathrm{i}\epsilon}\;\mathrm{d}\nu,
 \end{split}
 \end{equation}
-in which $\Omega$ and $\Sigma(\omega)$ are left to be constrained by downstream requirements, we can see that
+in which $\Omega$ and $\Sigma_\sigma(\omega)$ are left to be constrained by downstream requirements, we can see that
 \begin{equation}
 \begin{split}
 &\sum_n\int_0^\infty K_{n\sigma}(\omega)\left[u_{n\sigma}^{\prime*}(\omega,\nu)u'_{n\sigma'}(\omega,\nu') - v_{n\sigma}(\omega,\nu)v_{n\sigma'}^*(\omega,\nu')\right]\mathrm{d}\omega\\
-% = &\sum_n\int_0^\infty\pi^2\lambda_n\frac{4\Omega^2\Sigma^2(\omega)}{|\omega^2 - \Omega^2z(\omega)|^2}\left[\left(\frac{1}{\omega - \tilde{\nu}_\sigma + \mathrm{i}\epsilon}\sum_ig_{i\sigma}(\nu)q_{ni}(\omega) + \sum_ig_{i\sigma}(\nu)q_{ni}(\omega)y_{i\sigma}^*(\omega)\delta(\omega - \tilde{\nu}_\sigma)\right)\right.\\
+% = &\sum_n\int_0^\infty\pi^2\lambda_n\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2}\left[\left(\frac{1}{\omega - \tilde{\nu}_\sigma + \mathrm{i}\epsilon}\sum_ig_{i\sigma}(\nu)q_{ni}(\omega) + \sum_ig_{i\sigma}(\nu)q_{ni}(\omega)y_{i\sigma}^*(\omega)\delta(\omega - \tilde{\nu}_\sigma)\right)\right.\\
 % &\qquad \times \left(\frac{1}{\omega - \tilde{\nu}'_{\sigma'} - \mathrm{i}\epsilon}\sum_jg_{j\sigma'}(\nu')q_{nj}(\omega) + \sum_jg_{j\sigma'}(\nu')q_{nj}(\omega)y_{j\sigma'}(\omega)\delta(\omega - \tilde{\nu}'_{\sigma'})\right)\\
 % &\left.\qquad - \frac{1}{\omega + \tilde{\nu}_\sigma}\frac{1}{\omega + \tilde{\nu}'_{\sigma'}}\sum_ig_{i\sigma}(\nu)q_{ni}(\omega)\sum_jg_{j\sigma'}(\nu')q_{nj}(\omega)\right]\mathrm{d}\omega\\
-% &= \sum_n\pi^2\lambda_n\left[\int_0^\infty\frac{4\Omega^2\Sigma^2(\omega)}{|\omega^2 - \Omega^2z(\omega)|^2}\left(\frac{1}{\omega - \tilde{\nu}_\sigma + \mathrm{i}\epsilon}\frac{1}{\omega - \tilde{\nu}'_{\sigma'} - \mathrm{i}\epsilon} - \frac{1}{\omega + \tilde{\nu}_\sigma}\frac{1}{\omega + \tilde{\nu}'_{\sigma'}}\right)\right.\\
+% &= \sum_n\pi^2\lambda_n\left[\int_0^\infty\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2}\left(\frac{1}{\omega - \tilde{\nu}_\sigma + \mathrm{i}\epsilon}\frac{1}{\omega - \tilde{\nu}'_{\sigma'} - \mathrm{i}\epsilon} - \frac{1}{\omega + \tilde{\nu}_\sigma}\frac{1}{\omega + \tilde{\nu}'_{\sigma'}}\right)\right.\\
 % &\qquad\times\sum_{ij}g_{i\sigma}(\nu)g_{j\sigma'}(\nu')q_{ni}(\omega)q_{nj}(\omega)\;\mathrm{d}\omega\\
-% &\qquad + \frac{4\Omega^2\Sigma^2(\tilde{\nu}'_{\sigma'})}{|\tilde{\nu}_{\sigma'}^{\prime2} - \Omega^2z(\tilde{\nu}'_{\sigma'})|^2}\frac{1}{\tilde{\nu}'_{\sigma'} - \tilde{\nu}_\sigma + \mathrm{i}\epsilon}\sum_{ij}y_{j\sigma'}(\tilde{\nu}'_{\sigma'})g_{i\sigma}(\nu)g_{j\sigma'}(\nu')q_{ni}(\tilde{\nu}'_{\sigma'})q_{nj}(\tilde{\nu}'_{\sigma'})\\
-% &\qquad + \frac{4\Omega^2\Sigma^2(\tilde{\nu}_\sigma)}{|\tilde{\nu}_\sigma^2 - \Omega^2z(\tilde{\nu}_\sigma)|^2}\frac{1}{\tilde{\nu}_\sigma - \tilde{\nu}'_{\sigma'} - \mathrm{i}\epsilon}\sum_{ij}y_{i\sigma}^*(\tilde{\nu}_\sigma)g_{i\sigma}(\nu)g_{j\sigma'}(\nu')q_{ni}(\tilde{\nu}_{\sigma})q_{nj}(\tilde{\nu}_\sigma)\\
-% &\qquad\left. + \frac{4\Omega^2\Sigma^2(\tilde{\nu}_\sigma)}{|\nu_\sigma^2 - \Omega^2z(\tilde{\nu}_\sigma)|^2}\sum_{ij}y^*_{i\sigma}(\tilde{\nu}_\sigma)y_{j\sigma'}(\tilde{\nu}_\sigma)g_{i\sigma}(\nu)g_{j\sigma'}(\nu')q_{ni}(\tilde{\nu}_\sigma)q_{nj}(\tilde{\nu}_\sigma)\delta(\tilde{\nu}_\sigma - \tilde{\nu}'_{\sigma'}) \vphantom{\int_0^\infty} \right]\\
-= &\sum_ig_{i\sigma}(\nu)g_{j\sigma'}(\nu')\int_0^\infty\frac{4\Omega^2\Sigma^2(\omega)}{|\omega^2 - \Omega^2z(\omega)|^2}\left(\frac{1}{\omega - \tilde{\nu}_\sigma + \mathrm{i}\epsilon}\frac{1}{\omega - \tilde{\nu}'_{\sigma'} - \mathrm{i}\epsilon} - \frac{1}{\omega + \tilde{\nu}_\sigma}\frac{1}{\omega + \tilde{\nu}'_{\sigma'}}\right)\mathrm{d}\omega\\
-&\qquad + \frac{4\Omega^2\Sigma^2(\tilde{\nu}'_{\sigma'})}{|\tilde{\nu}_{\sigma'}^{\prime2} - \Omega^2z(\tilde{\nu}'_{\sigma'})|^2}\frac{1}{\tilde{\nu}'_{\sigma'} - \tilde{\nu}_\sigma + \mathrm{i}\epsilon}\sum_{i}y_{i\sigma'}(\tilde{\nu}'_{\sigma'})g_{i\sigma}(\nu)g_{i\sigma'}(\nu')\\
-&\qquad + \frac{4\Omega^2\Sigma^2(\tilde{\nu}_\sigma)}{|\tilde{\nu}_\sigma^2 - \Omega^2z(\tilde{\nu}_\sigma)|^2}\frac{1}{\tilde{\nu}_\sigma - \tilde{\nu}'_{\sigma'} - \mathrm{i}\epsilon}\sum_{i}y_{i\sigma}^*(\tilde{\nu}_\sigma)g_{i\sigma}(\nu)g_{i\sigma'}(\nu')\\
-&\qquad + \frac{4\Omega^2\Sigma^2(\tilde{\nu}_\sigma)}{|\nu_\sigma^2 - \Omega^2z(\tilde{\nu}_\sigma)|^2}\sum_{i}y^*_{i\sigma}(\tilde{\nu}_\sigma)y_{i\sigma'}(\tilde{\nu}'_\sigma)g_{i\sigma}(\nu)g_{i\sigma'}(\nu')\delta(\tilde{\nu}_\sigma - \tilde{\nu}'_{\sigma'}).
+% &\qquad + \frac{4\Omega^2\Sigma_\sigma^2(\tilde{\nu}'_{\sigma'})}{|\tilde{\nu}_{\sigma'}^{\prime2} - \Omega^2z_\sigma(\tilde{\nu}'_{\sigma'})|^2}\frac{1}{\tilde{\nu}'_{\sigma'} - \tilde{\nu}_\sigma + \mathrm{i}\epsilon}\sum_{ij}y_{j\sigma'}(\tilde{\nu}'_{\sigma'})g_{i\sigma}(\nu)g_{j\sigma'}(\nu')q_{ni}(\tilde{\nu}'_{\sigma'})q_{nj}(\tilde{\nu}'_{\sigma'})\\
+% &\qquad + \frac{4\Omega^2\Sigma_\sigma^2(\tilde{\nu}_\sigma)}{|\tilde{\nu}_\sigma^2 - \Omega^2z_\sigma(\tilde{\nu}_\sigma)|^2}\frac{1}{\tilde{\nu}_\sigma - \tilde{\nu}'_{\sigma'} - \mathrm{i}\epsilon}\sum_{ij}y_{i\sigma}^*(\tilde{\nu}_\sigma)g_{i\sigma}(\nu)g_{j\sigma'}(\nu')q_{ni}(\tilde{\nu}_{\sigma})q_{nj}(\tilde{\nu}_\sigma)\\
+% &\qquad\left. + \frac{4\Omega^2\Sigma_\sigma^2(\tilde{\nu}_\sigma)}{|\nu_\sigma^2 - \Omega^2z_\sigma(\tilde{\nu}_\sigma)|^2}\sum_{ij}y^*_{i\sigma}(\tilde{\nu}_\sigma)y_{j\sigma'}(\tilde{\nu}_\sigma)g_{i\sigma}(\nu)g_{j\sigma'}(\nu')q_{ni}(\tilde{\nu}_\sigma)q_{nj}(\tilde{\nu}_\sigma)\delta(\tilde{\nu}_\sigma - \tilde{\nu}'_{\sigma'}) \vphantom{\int_0^\infty} \right]\\
+= &\sum_ig_{i\sigma}(\nu)g_{j\sigma'}(\nu')\int_0^\infty\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2}\left(\frac{1}{\omega - \tilde{\nu}_\sigma + \mathrm{i}\epsilon}\frac{1}{\omega - \tilde{\nu}'_{\sigma'} - \mathrm{i}\epsilon} - \frac{1}{\omega + \tilde{\nu}_\sigma}\frac{1}{\omega + \tilde{\nu}'_{\sigma'}}\right)\mathrm{d}\omega\\
+&\qquad + \frac{4\Omega^2\Sigma_\sigma^2(\tilde{\nu}'_{\sigma'})}{|\tilde{\nu}_{\sigma'}^{\prime2} - \Omega^2z_\sigma(\tilde{\nu}'_{\sigma'})|^2}\frac{1}{\tilde{\nu}'_{\sigma'} - \tilde{\nu}_\sigma + \mathrm{i}\epsilon}\sum_{i}y_{i\sigma'}(\tilde{\nu}'_{\sigma'})g_{i\sigma}(\nu)g_{i\sigma'}(\nu')\\
+&\qquad + \frac{4\Omega^2\Sigma_\sigma^2(\tilde{\nu}_\sigma)}{|\tilde{\nu}_\sigma^2 - \Omega^2z_\sigma(\tilde{\nu}_\sigma)|^2}\frac{1}{\tilde{\nu}_\sigma - \tilde{\nu}'_{\sigma'} - \mathrm{i}\epsilon}\sum_{i}y_{i\sigma}^*(\tilde{\nu}_\sigma)g_{i\sigma}(\nu)g_{i\sigma'}(\nu')\\
+&\qquad + \frac{4\Omega^2\Sigma_\sigma^2(\tilde{\nu}_\sigma)}{|\nu_\sigma^2 - \Omega^2z_\sigma(\tilde{\nu}_\sigma)|^2}\sum_{i}y^*_{i\sigma}(\tilde{\nu}_\sigma)y_{i\sigma'}(\tilde{\nu}'_\sigma)g_{i\sigma}(\nu)g_{i\sigma'}(\nu')\delta(\tilde{\nu}_\sigma - \tilde{\nu}'_{\sigma'}).
 \end{split}
 \end{equation}
-From here, we will let
+From here, we will assume that our coupled system has been constructed such that
 \begin{equation}
-y_{i\sigma}(\omega) = \frac{\omega^2 - \Omega^2z(\omega)}{2\Omega\Sigma^2(\omega)}\mathcal{T}_{i\sigma}(\omega)
+g_{i\sigma}(\nu) = \tilde{g}_\sigma(\nu)w_{i\sigma},
 \end{equation}
-where
+where $w_{i\sigma}$ is an element of a unitary $N\times N$ matrix of eigenvectors. Therefore,
 \begin{equation}
-\mathcal{T}_{i\sigma}(\omega)f(\mathbf{x}) = 
-\begin{cases}
-f(\mathbf{x}), & f(\mathbf{x})\neq f(\omega)\\
-\frac{w_{i\sigma}}{g_{i\sigma}(\omega_\sigma)}\sqrt{\frac{\omega_\sigma}{\omega}}\Sigma(\omega)f(\omega), & f(\mathbf{x}) = f(\omega),
-\end{cases}
+\begin{split}
+\sum_iw_{i\sigma}w_{i\rho} &= \delta_{\sigma\rho},\\
+\sum_\sigma w_{i\sigma}w_{j\sigma} &= \delta_{ij}.
+\end{split}
 \end{equation}
-is a function that takes a value of one when part of a multivariate product of functions and takes a different value when part of a univariate product of functions. Further, $w_{i\sigma}$ are elements of the normalized vector $\mathbf{w}_\sigma$ defined such that $\mathbf{w}_\sigma\cdot\mathbf{w}_{\sigma'} = \delta_{\sigma\sigma'}$. Substitution into the above expression provides
+We will then let
+\begin{equation}
+y_{i\sigma}(\omega) = \frac{\omega^2 - \Omega^2z_\sigma(\omega)}{2\Omega\Sigma_\sigma^2(\omega)}
+\end{equation}
+such that, after substitution,
 \begin{equation}
 \begin{split}
 &\sum_n\int_0^\infty K_{n\sigma}(\omega)\left[u_{n\sigma}^{\prime*}(\omega,\nu)u'_{n\sigma'}(\omega,\nu') - v_{n\sigma}(\omega,\nu)v_{n\sigma'}^*(\omega,\nu')\right]\mathrm{d}\omega\\
-= &\sum_ig_{i\sigma}(\nu)g_{j\sigma'}(\nu')\int_0^\infty\frac{4\Omega^2\Sigma^2(\omega)}{|\omega^2 - \Omega^2z(\omega)|^2}\left(\frac{1}{\omega - \tilde{\nu}_\sigma + \mathrm{i}\epsilon}\frac{1}{\omega - \tilde{\nu}'_{\sigma'} - \mathrm{i}\epsilon} - \frac{1}{\omega + \tilde{\nu}_\sigma}\frac{1}{\omega + \tilde{\nu}'_{\sigma'}}\right)\mathrm{d}\omega\\
-&\qquad + \sum_i\frac{2\Omega g_{i\sigma}(\nu)g_{i\sigma'}(\nu')}{\tilde{\nu}_\sigma^2 - \Omega^2z^*(\tilde{\nu}_\sigma)}\frac{1}{\tilde{\nu}_\sigma - \tilde{\nu}'_{\sigma'} - \mathrm{i}\epsilon} + \sum_i\frac{2\Omega g_{i\sigma}(\nu)g_{i\sigma'}(\nu')}{\tilde{\nu}^{\prime2}_{\sigma'} - \Omega^2z(\tilde{\nu}'_{\sigma'})}\frac{1}{\tilde{\nu}'_{\sigma'} - \tilde{\nu}_\sigma + \mathrm{i}\epsilon}\\
-&\qquad + \frac{1}{\Sigma^2(\tilde{\nu}_\sigma)}\sum_i\frac{w_{i\sigma}}{g_{i\sigma}(\nu)}\sqrt{\frac{\nu}{\tilde{\nu}_\sigma}}\Sigma(\tilde{\nu}_\sigma)\frac{w_{i\sigma'}}{g_{i\sigma'}(\nu')}\sqrt{\frac{\nu'}{\tilde{\nu}'_{\sigma'}}}\Sigma(\tilde{\nu}'_{\sigma'})g_{i\sigma}(\nu)g_{i\sigma'}(\nu')\delta(\tilde{\nu}_\sigma - \tilde{\nu}'_{\sigma'})\\
-&= 0 + \frac{\Sigma(\tilde{\nu}'_{\sigma'})}{\Sigma(\tilde{\nu}_\sigma)}\sqrt{\frac{\nu\nu'}{\tilde{\nu}_\sigma\tilde{\nu}'_{\sigma'}}}\sum_iw_{i\sigma}w_{i\sigma'}\delta(\tilde{\nu}_\sigma - \tilde{\nu}'_{\sigma'})
+= &\sum_ig_{i\sigma}(\nu)g_{j\sigma'}(\nu')\int_0^\infty\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2}\left(\frac{1}{\omega - \tilde{\nu}_\sigma + \mathrm{i}\epsilon}\frac{1}{\omega - \tilde{\nu}'_{\sigma'} - \mathrm{i}\epsilon} - \frac{1}{\omega + \tilde{\nu}_\sigma}\frac{1}{\omega + \tilde{\nu}'_{\sigma'}}\right)\mathrm{d}\omega\\
+&\qquad + \sum_i\frac{2\Omega g_{i\sigma}(\nu)g_{i\sigma'}(\nu')}{\tilde{\nu}_\sigma^2 - \Omega^2z^*(\tilde{\nu}_\sigma)}\frac{1}{\tilde{\nu}_\sigma - \tilde{\nu}'_{\sigma'} - \mathrm{i}\epsilon} + \sum_i\frac{2\Omega g_{i\sigma}(\nu)g_{i\sigma'}(\nu')}{\tilde{\nu}^{\prime2}_{\sigma'} - \Omega^2z_\sigma(\tilde{\nu}'_{\sigma'})}\frac{1}{\tilde{\nu}'_{\sigma'} - \tilde{\nu}_\sigma + \mathrm{i}\epsilon}\\
+&\qquad + \frac{1}{\Sigma_\sigma^2(\tilde{\nu}_\sigma)}\sum_ig_{i\sigma}(\nu)g_{i\sigma'}(\nu')\delta(\tilde{\nu}_\sigma - \tilde{\nu}'_{\sigma'})\\
+= &\; \tilde{g}_{\sigma}(\nu)\tilde{g}_{\sigma}(\nu')\delta_{\sigma\sigma'}\left(\int_0^\infty\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2}\left[\frac{1}{\omega - \tilde{\nu}_\sigma + \mathrm{i}\epsilon}\frac{1}{\omega - \tilde{\nu}_{\sigma}' - \mathrm{i}\epsilon} - \frac{1}{\omega + \tilde{\nu}_\sigma}\frac{1}{\omega + \tilde{\nu}_\sigma'}\right]\mathrm{d}\omega\right.\\
+&\qquad\left. + \frac{2\Omega}{\tilde{\nu}_\sigma^2 - \Omega^2z^*(\tilde{\nu}_\sigma)}\frac{1}{\tilde{\nu}_\sigma - \tilde{\nu}_\sigma' - \mathrm{i}\epsilon} + \frac{2\Omega}{\tilde{\nu}_\sigma^{\prime2} - \Omega^2z_\sigma(\tilde{\nu}_\sigma')}\frac{1}{\tilde{\nu}_\sigma' - \tilde{\nu}_\sigma + \mathrm{i}\epsilon} \vphantom{\int_0^\infty}\right) + \frac{\tilde{g}_{\sigma}(\nu)\tilde{g}_{\sigma}(\nu')}{\Sigma_\sigma^2(\tilde{\nu}_\sigma)}\delta_{\sigma\sigma'}\delta(\tilde{\nu}_\sigma - \tilde{\nu}'_{\sigma'})\\
+= &\; 0 + \frac{\tilde{g}_{\sigma}(\nu)\tilde{g}_{\sigma}(\nu')\tilde{\nu}_\sigma}{\nu\Sigma_\sigma^2(\nu)}\delta_{\sigma\sigma'}\left[\delta(\nu' + \nu) + \delta(\nu' - \nu)\right]\\
+= &\; \frac{\tilde{g}_{\sigma}^2(\nu)\tilde{\nu}_\sigma}{\nu\Sigma_\sigma^2(\nu)}\delta_{\sigma\sigma'}\delta(\nu - \nu'),
 \end{split}
 \end{equation}
-where we have recognized that the last term on the right-hand side is either a function of a single variable ($\nu$ or $\nu'$, equivalently) or zero, as enforced by the Dirac delta. The terms on the right-hand side not proportional to a Dirac delta sum to zero via the process shown in Eq. \eqref{eq:uu-minus-vv-integral} such that
+wherein we have let
 \begin{equation}
 \begin{split}
-&\sum_n\int_0^\infty K_{n\sigma}(\omega)\left[u_{n\sigma}^{\prime*}(\omega,\nu)u'_{n\sigma'}(\omega,\nu') - v_{n\sigma}(\omega,\nu)v_{n\sigma'}^*(\omega,\nu')\right]\mathrm{d}\omega\\
-= & \frac{\Sigma(\tilde{\nu}'_{\sigma'})}{\Sigma(\tilde{\nu}_\sigma)}\sqrt{\frac{\nu\nu'}{\tilde{\nu}_\sigma\tilde{\nu}'_{\sigma'}}}\delta_{\sigma\sigma'}\delta(\tilde{\nu}_\sigma - \tilde{\nu}'_{\sigma'})\\
-= & \frac{\Sigma(\tilde{\nu}'_{\sigma'})}{\Sigma(\tilde{\nu}_\sigma)}\sqrt{\frac{\nu\nu'}{\tilde{\nu}_\sigma\tilde{\nu}'_{\sigma'}}}\delta_{\sigma\sigma'}\frac{\tilde{\nu}'_\sigma}{\nu'}\left[\delta(\nu + \nu') + \delta(\nu - \nu')\right]\\
-&= \delta_{\sigma\sigma'}\delta(\nu - \nu')
+&\int_0^\infty\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2}\left(\frac{1}{\omega - \tilde{\nu}_\sigma + \mathrm{i}\epsilon}\frac{1}{\omega - \tilde{\nu}_{\sigma}' - \mathrm{i}\epsilon} - \frac{1}{\omega + \tilde{\nu}_\sigma}\frac{1}{\omega + \tilde{\nu}_\sigma'}\right)\mathrm{d}\omega\\
+&\qquad + \frac{2\Omega}{\tilde{\nu}_\sigma^2 - \Omega^2z^*(\tilde{\nu}_\sigma)}\frac{1}{\tilde{\nu}_\sigma - \tilde{\nu}_\sigma' - \mathrm{i}\epsilon} + \frac{2\Omega}{\tilde{\nu}_\sigma^{\prime2} - \Omega^2z_\sigma(\tilde{\nu}_\sigma')}\frac{1}{\tilde{\nu}_\sigma' - \tilde{\nu}_\sigma + \mathrm{i}\epsilon} = 0
 \end{split}
+\end{equation}
+via the process shown in Eq. \eqref{eq:uu-minus-vv-integral}. Therefore, we can let 
+\begin{equation}
+\Sigma_\sigma(\nu) = \tilde{g}_\sigma(\nu)\sqrt{\frac{\tilde{\nu}_\sigma}{\nu}}
+\end{equation}
+such that
+\begin{equation}
+\sum_n\int_0^\infty K_{n\sigma}(\omega)\left[u_{n\sigma}^{\prime*}(\omega,\nu)u'_{n\sigma'}(\omega,\nu') - v_{n\sigma}(\omega,\nu)v_{n\sigma'}^*(\omega,\nu')\right]\mathrm{d}\omega = \delta_{\sigma\sigma'}\delta(\nu - \nu')
 \end{equation}
 and
 \begin{equation}
@@ -491,7 +503,6 @@ and
 &= \hat{b}_\sigma(\nu,t).
 \end{split}
 \end{equation}
-
 Next, we can look at the integral
 \begin{equation}
 \begin{split}
@@ -542,7 +553,10 @@ the reservoir operators can be retrieved via
 \begin{equation}
 \hat{b}_\sigma(\nu,t) = \sum_n\int_0^\infty\pi^2\lambda_n\frac{4\Omega^2\Sigma^2(\omega)}{|\omega^2 - \Omega^2z(\omega)|^2}\left[u^{\prime*}_{n\sigma}(\omega,\nu)\hat{C}'_n(\omega,t) - v_{n\sigma}(\omega,\nu)\hat{C}^{\prime\dagger}_n(\omega,t)\right]\mathrm{d}\omega.
 \end{equation}
-Note that, aside from the constraint that $\Sigma^2(\omega)$ has units of coupling strength squared and obeys that property $\Sigma^2(-\omega) = -\Sigma^2(\omega)$, the values of $\Omega$ and $\Sigma^2(\omega)$ can be freely chosen. Therefore, the values of $z(\omega)$ and $\hat{b}_\sigma(\nu,t)$ are not unique.
+Note that, analogous to the inverse Fano process for deriving the oscillator operators $a_i(t)$, this derivation has left us with an undetermined coefficient. In contrast, however, it is the frequency $\Omega$ rather than the coupling strength $\Sigma_\sigma(\omega)$ that is free to vary. However, the overall results are the same: the values of $z(\omega)$ and $\hat{b}_\sigma(\nu,t)$ are not unique.
+
+
+
 
 
 
