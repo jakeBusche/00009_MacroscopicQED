@@ -955,7 +955,7 @@ J_{Sp\ell mn}(t)&\to J_{Sn}(t).
 While we now need to be careful to not ignore any suppressed indices, we can write the cleaner expressions
 \begin{equation}
 \begin{split}
-\hat{H}_M &= \int_0^\infty\hbar\omega\hat{a}^\dagger(\omega,t)\hat{a}(\omega,t)\;\mathrm{d}\omega + \sum_n\hbar\tilde{\omega}_n\hat{b}_n^\dagger(t)\hat{b}_n(t) + \sum_n\int_0^\infty\hbar\nu\hat{c}_n^\dagger(\nu,t)\hat{c}_n(\nu,t)\;\mathrm{d}\nu\\
+\hat{H}_M &= \int_0^\infty\hbar\omega\hat{a}^\dagger(\omega,t)\hat{a}(\omega,t)\;\mathrm{d}\omega + \sum_n\hbar\Omega_0\hat{b}_n^\dagger(t)\hat{b}_n(t) + \sum_n\int_0^\infty\hbar\nu\hat{c}_n^\dagger(\nu,t)\hat{c}_n(\nu,t)\;\mathrm{d}\nu\\
 &\qquad + \sum_{nn'}\hbar\sigma_{nn'}\left[\hat{b}_n(t) + \hat{b}_n^\dagger(t)\right]\left[\hat{b}_{n'}(t) + \hat{b}_{n'}^\dagger(t)\right] \\
 &\qquad + \sum_n\int_0^\infty\hbar\Lambda_n(\omega)\left[\hat{a}(\omega,t) + \hat{a}^\dagger(\omega,t)\right]\left[\hat{b}_n(t) + \hat{b}_n^\dagger(t)\right]\mathrm{d}\omega,\\
 &\qquad + \sum_n\int_0^\infty\hbar V(\nu)\left[\hat{b}_n(t) + \hat{b}_n^\dagger(t)\right]\left[\hat{c}_n(\nu,t) + \hat{c}_n^\dagger(\nu,t)\right]\mathrm{d}\nu\\
@@ -965,7 +965,7 @@ While we now need to be careful to not ignore any suppressed indices, we can wri
 and
 \begin{equation}
 \begin{split}
-\hat{H}_{EL} &= \int_0^\infty\hbar\omega\hat{a}_E^\dagger(\omega,t)\hat{a}_E(\omega,t)\;\mathrm{d}\omega + \sum_{Sn}\hbar\tilde{\omega}_{Sn}\hat{b}_{Sn}^\dagger(t)\hat{b}_{Sn}(t) + \sum_{Sn}\int_0^\infty\hbar\nu\hat{c}_{Sn}^\dagger(\nu,t)\hat{c}_{Sn}(\nu,t)\;\mathrm{d}\nu\\
+\hat{H}_{EL} &= \int_0^\infty\hbar\omega\hat{a}_E^\dagger(\omega,t)\hat{a}_E(\omega,t)\;\mathrm{d}\omega + \sum_{Sn}\hbar\Omega_0\hat{b}_{Sn}^\dagger(t)\hat{b}_{Sn}(t) + \sum_{Sn}\int_0^\infty\hbar\nu\hat{c}_{Sn}^\dagger(\nu,t)\hat{c}_{Sn}(\nu,t)\;\mathrm{d}\nu\\
 &\qquad + \sum_{SS'}\sum_{nn'}\hbar\sigma_{SS'nn'}\left[\hat{b}_{Sn}(t) + \hat{b}_{Sn}^\dagger(t)\right]\left[\hat{b}_{S'n'}(t) + \hat{b}_{S'n'}^\dagger(t)\right]\\
 &\qquad + \sum_{Sn}\hbar\Lambda_{ESn}(\omega)\left[\hat{a}_{E}(\omega,t) + \hat{a}_{E}^\dagger(\omega,t)\right]\left[\hat{b}_{Sn}(t) + \hat{b}_{Sn}^\dagger(t)\right]\mathrm{d}\omega\\
 &\qquad + \sum_{Sn}\hbar V(\nu)\left[\hat{b}_{Sn}(t) + \hat{b}_{Sn}^\dagger(t)\right]\left[\hat{c}_{Sn}(\nu,t) + \hat{c}_{Sn}^\dagger(\nu,t)\right]\mathrm{d}\nu,\\
@@ -974,7 +974,7 @@ and
 \end{equation}
 wherein we have remembered that the photon operators $\hat{a}_E(\omega,t)$ do not have longitudinal counterparts. Each term $\hat{H}_M$ and $\hat{H}_{EL}$ can be diagonalized separately in two steps. Looking first at the magnetic Hamiltonian terms, we can let $\hat{H}_M = \hat{H}_M' + \hat{H}_M^\mathrm{mat}$, where
 \begin{equation}
-\hat{H}_M^\mathrm{mat} = \sum_{n}\hbar\tilde{\omega}_n\hat{b}_n^\dagger(t)\hat{b}_n(t) + \sum_{nn'}\hbar\sigma_{nn'}\left[\hat{b}_n(t) + \hat{b}_n^\dagger(t)\right]\left[\hat{b}_{n'}(t) + \hat{b}_{n'}^\dagger(t)\right].
+\hat{H}_M^\mathrm{mat} = \sum_{n}\hbar\Omega_0\hat{b}_n^\dagger(t)\hat{b}_n(t) + \sum_{nn'}\hbar\sigma_{nn'}\left[\hat{b}_n(t) + \hat{b}_n^\dagger(t)\right]\left[\hat{b}_{n'}(t) + \hat{b}_{n'}^\dagger(t)\right].
 \end{equation}
 In matrix-vector form, $\hat{H}_M^\mathrm{mat}$ can be represented as
 \begin{equation}
@@ -984,9 +984,9 @@ In matrix-vector form, $\hat{H}_M^\mathrm{mat}$ can be represented as
 \hat{b}_1^\dagger(t) & \hat{b}_1(t) & \hat{b}_2^\dagger(t) & \hat{b}_2(t) & \cdots
 \end{pmatrix}
 \begin{pmatrix}
-\hbar\tilde{\omega}_1 + \hbar\sigma_{11} & \hbar\sigma_{11} & \hbar\sigma_{12} & \hbar\sigma_{12} & \cdots\\
+\hbar\Omega_0 + \hbar\sigma_{11} & \hbar\sigma_{11} & \hbar\sigma_{12} & \hbar\sigma_{12} & \cdots\\
 \hbar\sigma_{11} & \hbar\sigma_{11} & \hbar\sigma_{12} & \hbar\sigma_{12} &\\
-\hbar\sigma_{21} & \hbar\sigma_{21} & \hbar\tilde{\omega}_2 + \hbar\sigma_{22} & \hbar\sigma_{22} & \\
+\hbar\sigma_{21} & \hbar\sigma_{21} & \hbar\Omega_0 + \hbar\sigma_{22} & \hbar\sigma_{22} & \\
 \hbar\sigma_{21} & \hbar\sigma_{21} & \hbar\sigma_{22} & \hbar\sigma_{22} & \\
 \vdots & & & & \ddots
 \end{pmatrix}
@@ -1096,7 +1096,7 @@ where
 
 Repeating this process for $\hat{H}_{EL} = \hat{H}_{EL}' + \hat{H}_{EL}^\mathrm{mat}$, we can define
 \begin{equation}
-\hat{H}_{EL}^\mathrm{mat} = \sum_{Sn}\hbar\tilde{\omega}_{Sn}\hat{b}_{Sn}^\dagger(t)\hat{b}_{Sn}(t) + \sum_{SS'}\sum_{nn'}\hbar\sigma_{SS'nn'}\left[\hat{b}_{Sn}(t) + \hat{b}_{Sn}^\dagger(t)\right]\left[\hat{b}_{S'n'}(t) + \hat{b}_{S'n'}^\dagger(t)\right]
+\hat{H}_{EL}^\mathrm{mat} = \sum_{Sn}\hbar\Omega_0\hat{b}_{Sn}^\dagger(t)\hat{b}_{Sn}(t) + \sum_{SS'}\sum_{nn'}\hbar\sigma_{SS'nn'}\left[\hat{b}_{Sn}(t) + \hat{b}_{Sn}^\dagger(t)\right]\left[\hat{b}_{S'n'}(t) + \hat{b}_{S'n'}^\dagger(t)\right]
 \end{equation}
 and diagonalize it. Explicitly, we can expand in matrix-vector notation as
 \begin{equation}
@@ -1107,9 +1107,9 @@ and diagonalize it. Explicitly, we can expand in matrix-vector notation as
 \end{pmatrix}\\
 &\times\left(
 \begin{matrix}
-\hbar\tilde{\omega}_{E1} + \hbar\sigma_{EE11} & \hbar\sigma_{EE11} & \hbar\sigma_{EE12} & \hbar\sigma_{EE12}\\ 
+\hbar\Omega_0 + \hbar\sigma_{EE11} & \hbar\sigma_{EE11} & \hbar\sigma_{EE12} & \hbar\sigma_{EE12}\\ 
 \hbar\sigma_{EE11} & \hbar\sigma_{EE11} & \hbar\sigma_{EE12} & \hbar\sigma_{EE12}\\
-\hbar\sigma_{EE21} & \hbar\sigma_{EE21} & \hbar\tilde{\omega}_{E2} + \hbar\sigma_{EE22} & \hbar\sigma_{EE22}\\
+\hbar\sigma_{EE21} & \hbar\sigma_{EE21} & \hbar\Omega_0 + \hbar\sigma_{EE22} & \hbar\sigma_{EE22}\\
 \hbar\sigma_{EE21} & \hbar\sigma_{EE21} & \hbar\sigma_{EE22} & \hbar\sigma_{EE22}\\
 \vdots & & & \\
 \hbar\sigma_{EL11} & \hbar\sigma_{EL11} & \hbar\sigma_{EL21} & \hbar\sigma_{EL21}\\
@@ -1127,9 +1127,9 @@ and diagonalize it. Explicitly, we can expand in matrix-vector notation as
 \cdots & \hbar\sigma_{EL21} & \hbar\sigma_{EL21} & \hbar\sigma_{EL22} & \hbar\sigma_{EL22} &\\
 \cdots & \hbar\sigma_{EL21} & \hbar\sigma_{EL21} & \hbar\sigma_{EL22} & \hbar\sigma_{EL22} &\\
 & & & & \vdots &\\
-\cdots & \hbar\tilde{\omega}_{L1} + \hbar\sigma_{LL11} & \hbar\sigma_{LL11} & \hbar\sigma_{LL12} & \hbar\sigma_{LL12} &\\
+\cdots & \hbar\Omega_0 + \hbar\sigma_{LL11} & \hbar\sigma_{LL11} & \hbar\sigma_{LL12} & \hbar\sigma_{LL12} &\\
 \cdots & \hbar\sigma_{LL11} & \hbar\sigma_{LL11} & \hbar\sigma_{LL12} & \hbar\sigma_{LL12} &\\
-\cdots & \hbar\sigma_{LL12} & \hbar\sigma_{LL12} & \hbar\tilde{\omega}_{L2} + \hbar\sigma_{LL22} & \hbar\sigma_{LL22} &\\
+\cdots & \hbar\sigma_{LL12} & \hbar\sigma_{LL12} & \hbar\Omega_0 + \hbar\sigma_{LL22} & \hbar\sigma_{LL22} &\\
 \cdots & \hbar\sigma_{LL12} & \hbar\sigma_{LL12} & \hbar\sigma_{LL22} & \hbar\sigma_{LL22} &\\
 & & & & & \ddots
 \end{matrix}
@@ -1261,8 +1261,6 @@ where
 \end{split}
 \end{equation}
 
-\noindent\rule{\textwidth}{0.5pt}\\
-
 We are now in a position to define our polariton operators. Using the logic of Appendix \ref{app:fanoDiagonalizationManyModes}, we can define polariton operators
 \begin{equation}
 \begin{split}
@@ -1275,8 +1273,8 @@ We are now in a position to define our polariton operators. Using the logic of A
 such that
 \begin{equation}
 \begin{split}
-\hat{H}_M &= \sum_\kappa\int_0^\infty\hat{C}_\kappa^\dagger(\omega,t)\hat{C}_\kappa(\omega,t)\;\mathrm{d}\omega + \sum_i\hbar J_i(t)\left[\hat{B}_i(t) + \hat{B}_i^\dagger(t)\right],\\
-\hat{H}_{EL} &= \sum_\kappa\int_0^\infty\hat{C}_\kappa^{\prime\dagger}(\omega,t)\hat{C}'_\kappa(\omega,t)\;\mathrm{d}\omega + \sum_{Si}\hbar J_{Si}(t)\left[\hat{B}_i'(t) + \hat{B}_i^{\prime\dagger}(t)\right].\\
+\hat{H}_M &= \sum_\kappa\int_0^\infty\hbar\omega\hat{C}_\kappa^\dagger(\omega,t)\hat{C}_\kappa(\omega,t)\;\mathrm{d}\omega + \sum_i\hbar \tilde{J}_i(t)\left[\hat{B}_i(t) + \hat{B}_i^\dagger(t)\right],\\
+\hat{H}_{EL} &= \sum_\kappa\int_0^\infty\hbar\omega\hat{C}_\kappa^{\prime\dagger}(\omega,t)\hat{C}'_\kappa(\omega,t)\;\mathrm{d}\omega + \sum_{Si}\hbar \tilde{J}_{Si}(t)\left[\hat{B}_i'(t) + \hat{B}_i^{\prime\dagger}(t)\right].\\
 \end{split}
 \end{equation}
 The expansion coefficients of the polariton operators are derived from the values of $p_{\kappa i}(\omega)$ and $x_{\kappa i}(\omega)$, which are themselves defined as the elements of eigenvectors
@@ -1369,10 +1367,109 @@ z_{\kappa i}^S(\omega,\nu) &= \sum_{i}x_{\kappa i}(\omega)\left[PV\left\{\frac{1
 w_{\kappa i}^S(\omega,\nu) &= \sum_i\frac{x_{\kappa i}(\omega)}{\omega + \nu}\left(\tilde{\Lambda}_{Ei}(\omega)\delta_{n0}\delta_{SE} + \tilde{V}_{Sin}(\omega)(1 - \delta_{n0})\right).
 \end{split}
 \end{equation}
+The matter operators can then be written in terms of the polariton operators as
+\begin{equation}
+\begin{split}
+\hat{B}_i(t) &= \sum_\kappa\int_0^\infty\alpha_\kappa(\omega)\frac{4\Omega_i^2\Sigma_i^2(\omega)}{|\omega^2 - \Omega_i^2Z_i(\omega)|^2}\left[\frac{\omega + \Omega_i}{2\Omega_i}p_{\kappa i}^*(\omega)\hat{C}_\kappa(\omega,t) - s_{\kappa i}(\omega)\hat{C}_\kappa^\dagger(\omega,t)\right]\mathrm{d}\omega,\\
+\hat{B}_i'(t) &= \sum_\kappa\int_0^\infty\alpha_\kappa'(\omega)\frac{4\Omega_i^{\prime2}\Sigma_i^{\prime2}(\omega)}{|\omega^2 - \Omega_i^{\prime2}Z_i'(\omega)|^2}\left[\frac{\omega + \Omega_i'}{2\Omega_i'}x_{\kappa i}^*(\omega)\hat{C}'_\kappa(\omega,t) - y_{\kappa i}(\omega)\hat{C}_\kappa^{\prime\dagger}(\omega,t)\right]\mathrm{d}\omega,
+\end{split} 
+\end{equation}
+such that, after rearrangement,
+\begin{equation}
+\begin{split}
+\hat{B}_i(t) + \hat{B}_i^\dagger(t)
+% &= \sum_\kappa\int_0^\infty\frac{4\Omega_i^2\Sigma_i^2(\omega)}{|\omega^2 - \Omega_i^2Z_i(\omega)|^2}\left(\left[\frac{\omega + \Omega_i}{2\Omega_i}\alpha_\kappa(\omega)p_{\kappa i}^*(\omega) - \frac{\omega - \Omega_i}{2\Omega_i}\alpha_\kappa^*(\omega)p_{\kappa i}^*(\omega)\right]\hat{C}_\kappa(\omega,t)\right.\\
+% &\qquad\left. + \left[-\frac{\omega - \Omega_i}{2\Omega_i}\alpha_\kappa(\omega)p_{\kappa i}(\omega) + \frac{\omega + \Omega_i}{2\Omega_i}\alpha_\kappa^*(\omega)p_{\kappa i}(\omega)\right]\hat{C}_\kappa^\dagger(\omega,t)\right)\mathrm{d}\omega\\
+% &= \sum_\kappa\int_0^\infty\frac{2\Omega_i\Sigma_i^2(\omega)}{|\omega^2 - \Omega_i^2Z_i(\omega)|}\left(\left[(\omega + \Omega_i)\alpha_\kappa(\omega) - (\omega - \Omega_i)\alpha_\kappa^*(\omega)\right]p_{\kappa i}^*(\omega)\hat{C}_\kappa(\omega,t)\right.\\
+% &\qquad + \left.\left[-(\omega - \Omega_i)\alpha_\kappa(\omega) + (\omega + \Omega_i)\alpha_\kappa^*(\omega)\right]p_{\kappa i}(\omega)\hat{C}_\kappa^\dagger(\omega,t)\right)\mathrm{d}\omega\\
+&= \sum_\kappa\int_0^\infty\left(P_{\kappa i}^*(\omega)\hat{C}_\kappa(\omega,t) + P_{\kappa i}(\omega)\hat{C}_\kappa^\dagger(\omega,t)\right)\mathrm{d}\omega
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+\hat{B}_i'(t) + \hat{B}_i^{\prime\dagger}(t) 
+% &= \sum_\kappa\int_0^\infty\frac{4\Omega_i^{\prime2}\Sigma_i^{\prime2}(\omega)}{|\omega^2 - \Omega_i^{\prime2}Z_i'(\omega)|^2}\left(\left[\frac{\omega + \Omega_i'}{2\Omega_i'}\alpha_\kappa'(\omega)x_{\kappa i}^*(\omega) - \frac{\omega - \Omega_i'}{2\Omega_i'}\alpha_\kappa^{\prime*}(\omega)x_{\kappa i}^*(\omega)\right]\hat{C}_\kappa'(\omega,t)\right.\\
+% &\qquad\left. + \left[-\frac{\omega - \Omega_i'}{2\Omega_i'}\alpha_\kappa'(\omega)x_{\kappa i}(\omega) + \frac{\omega + \Omega_i'}{2\Omega_i'}\alpha_\kappa^{\prime*}(\omega)x_{\kappa i}(\omega)\right]\hat{C}_\kappa^{\prime\dagger}(\omega,t)\right)\mathrm{d}\omega\\
+&= \sum_\kappa\int_0^\infty\left(X_{\kappa i}^*(\omega)\hat{C}_\kappa(\omega,t) + X_{\kappa i}(\omega)\hat{C}_\kappa^\dagger(\omega,t)\right)\mathrm{d}\omega,
+\end{split}
+\end{equation}
+with
+\begin{equation}
+\begin{split}
+P_{\kappa i}(\omega) &= \frac{2\Omega_i\Sigma_i^2(\omega)}{|\omega^2 - \Omega_i^2Z_i(\omega)|^2}[(\omega + \Omega_i)\alpha_\kappa^*(\omega) - (\omega - \Omega_i)\alpha_\kappa(\omega)]p_{\kappa i}(\omega),\\
+X_{\kappa i}(\omega) &= \frac{2\Omega_i'\Sigma_i^{\prime2}(\omega)}{|\omega^2 - \Omega_i^{\prime2}Z_i'(\omega)|^2}[(\omega + \Omega_i')\alpha_\kappa^{\prime*}(\omega) - (\omega - \Omega_i')\alpha_\kappa'(\omega)]x_{\kappa i}(\omega).
+\end{split}
+\end{equation}
+Therefore,
+\begin{equation}
+\begin{split}
+\hat{H}_M &= \sum_\kappa\int_0^\infty\hbar\omega\hat{C}_\kappa^\dagger(\omega,t)\hat{C}_\kappa(\omega,t)\;\mathrm{d}\omega + \sum_{\kappa i}\int_0^\infty\hbar\tilde{J}_i(t)\left(P_{\kappa i}^*(\omega)\hat{C}_\kappa(\omega,t) + P_{\kappa i}(\omega)\hat{C}_\kappa^\dagger(\omega,t)\right)\mathrm{d}\omega,\\
+\hat{H}_{EL} &= \sum_\kappa\int_0^\infty\hbar\omega\hat{C}_\kappa^{\prime\dagger}(\omega,t)\hat{C}_\kappa'(\omega,t)\;\mathrm{d}\omega + \sum_{\kappa i}\int_0^\infty\hbar\tilde{J}_i'(t)\left(X_{\kappa i}^*(\omega)\hat{C}_\kappa'(\omega,t) + X_{\kappa i}(\omega)\hat{C}_\kappa^{\prime\dagger}(\omega,t)\right)\mathrm{d}\omega.
+\end{split}
+\end{equation}
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+\subsection{Mie Scattering}
+
+\begin{equation}
+\begin{split}
+J_{\bm{\beta}n}(t) &= \sqrt{\frac{1}{2\hbar\Omega_0m_{\bm{\beta}n}}}e\eta\int_{r<a}\mathbf{X}_{\bm{\beta}}(\mathbf{r},k_{\bm{\beta}n})\cdot\left[\nabla\Phi_f(\mathbf{r},t) + \dot{\mathbf{A}}_f(\mathbf{r},t)\right]\mathrm{d}^3\mathbf{r}\\
+&= -e\eta\sqrt{\frac{1}{2\hbar\Omega_0m_{\bm{\beta}n}}}\int_{r<a}\mathbf{X}_{\bm{\beta}}(\mathbf{r},k_{\bm{\beta}n})\cdot\mathbf{E}_f(\mathbf{r},t)\;\mathrm{d}^3\mathbf{r}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\mathrm{e}^{\mathrm{i}k_0z}\hat{\mathbf{x}} = \sum_{\ell = 1}^\infty\mathrm{i}^\ell\frac{2\ell + 1}{\ell(\ell + 1)}\left[\mathbf{M}_{1\ell1}(\mathbf{r},k_0) - \mathrm{i}\mathbf{N}_{0\ell1}(\mathbf{r},k_0)\right]
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\mathbf{E}_f(\mathbf{r},t) &= E_f\cos(k_fz - \omega_ft)\hat{\mathbf{x}}\\
+&= E_f\left[\cos(k_fz)\cos(\omega_ft) + \sin(k_fz)\sin(\omega_ft)\right]\hat{\mathbf{x}}\\
+&= E_f\left(\frac{\mathrm{e}^{\mathrm{i}k_fz} + \mathrm{e}^{-\mathrm{i}k_fz}}{2}\cos(\omega_ft) + \frac{\mathrm{e}^{\mathrm{i}k_fz} - \mathrm{e}^{-\mathrm{i}k_fz}}{2\mathrm{i}}\sin(\omega_ft)\right)\\
+&= E_f\cos(\omega_ft)\frac{1}{2}\sum_\ell\frac{2\ell + 1}{\ell(\ell + 1)}\left(\mathrm{i}^\ell\left[\mathbf{M}_{1\ell1}(\mathbf{r},k_f) - \mathrm{i}\mathbf{N}_{0\ell1}(\mathbf{r},k_f)\right] + (-\mathrm{i})^\ell\left[\mathbf{M}_{1\ell1}(\mathbf{r},k_f) + \mathrm{i}\mathbf{N}_{0\ell1}(\mathbf{r},k_f)\right]\right)\\
+&\qquad + E_f\sin(\omega_ft)\frac{1}{2\mathrm{i}}\sum_\ell\frac{2\ell + 1}{\ell(\ell + 1)}\left(\mathrm{i}^\ell\left[\mathbf{M}_{1\ell1}(\mathbf{r},k_f) - \mathrm{i}\mathbf{N}_{0\ell1}(\mathbf{r},k_f)\right] - (-\mathrm{i})^\ell\left[\mathbf{M}_{1\ell1}(\mathbf{r},k_f) + \mathrm{i}\mathbf{N}_{0\ell1}(\mathbf{r},k_f)\right]\right)\\
+&= E_f\cos(\omega_ft)\sum_\ell\frac{2\ell + 1}{\ell(\ell + 1)}\left(\cos\!\left(\frac{\ell\pi}{2}\right)\mathbf{M}_{1\ell1}(\mathbf{r},k_f) + \sin\!\left(\frac{\ell\pi}{2}\right)\mathbf{N}_{0\ell1}(\mathbf{r},k_f)\right)\\
+&\qquad + E_f\sin(\omega_ft)\sum_\ell\frac{2\ell + 1}{\ell(\ell + 1)}\left(\sin\!\left(\frac{\ell\pi}{2}\right)\mathbf{M}_{1\ell1}(\mathbf{r},k_f) + \cos\!\left(\frac{\ell\pi}{2}\right)\mathbf{N}_{0\ell1}(\mathbf{r},k_f)\right)\\
+&= E_f\sum_{\ell}\frac{2\ell + 1}{\ell(\ell + 1)}\left(\left[\cos\!\left(\frac{\ell\pi}{2}\right)\!\cos(\omega_ft) + \sin\!\left(\frac{\ell\pi}{2}\right)\!\sin(\omega_ft)\right]\mathbf{M}_{1\ell1}(\mathbf{r},k_f)\right.\\
+&\qquad + \left.\left[\sin\!\left(\frac{\ell\pi}{2}\right)\!\cos(\omega_ft) + \cos\!\left(\frac{\ell\pi}{2}\right)\!\sin(\omega_ft)\right]\mathbf{N}_{0\ell1}(\mathbf{r},k_f)\right)
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+J_{\bm{\beta}n}(t) &= -e\eta\sqrt{\frac{1}{2\hbar\Omega_0m_{\bm{\beta}n}}}\int_{r<a}\mathbf{X}_{\bm{\beta}}(\mathbf{r},k_{\bm{\beta}n})\cdot E_f\sum_{\ell'}\frac{2\ell' + 1}{\ell'(\ell' + 1)}\\
+&\qquad\times\left(\left[\cos\!\left(\frac{\ell'\pi}{2}\right)\!\cos(\omega_ft) + \sin\!\left(\frac{\ell'\pi}{2}\right)\!\sin(\omega_ft)\right]\mathbf{M}_{1\ell'1}(\mathbf{r},k_f)\right.\\
+&\qquad + \left.\left[\sin\!\left(\frac{\ell'\pi}{2}\right)\!\cos(\omega_ft) + \cos\!\left(\frac{\ell'\pi}{2}\right)\!\sin(\omega_ft)\right]\mathbf{N}_{0\ell'1}(\mathbf{r},k_f)\right)\\
+&= -e\eta E_f\sqrt{\frac{1}{2\hbar\Omega_0m_{\bm{\beta}n}}}\sum_{\ell'}\frac{2\ell' + 1}{\ell'(\ell' + 1)}\left( \left[\cos\!\left(\frac{\ell'\pi}{2}\right)\!\cos(\omega_ft) + \sin\!\left(\frac{\ell'\pi}{2}\right)\!\sin(\omega_ft)\right]\right.\\
+&\qquad\qquad\times\vphantom{\frac{\sqrt{\ell(\ell + 1)}}{k_{L0\ell1n}k_f}} 4\pi(1 - \delta_{p1}\delta_{m0})\delta_{TM}\delta_{p1}\delta_{\ell\ell'}\delta_{m1}R_{M\ell}^\ll(k_{M1\ell1n},k_f;0,a)\\
+&\qquad + \left[\sin\!\left(\frac{\ell'\pi}{2}\right)\!\cos(\omega_ft) + \cos\!\left(\frac{\ell'\pi}{2}\right)\!\sin(\omega_ft)\right]\\
+&\qquad\qquad\times\left[ \vphantom{\frac{\sqrt{\ell(\ell + 1)}}{k_{L0\ell1n}k_f}} 4\pi(1 - \delta_{p1}\delta_{m0})\delta_{TE}\delta_{p0}\delta_{\ell\ell'}\delta_{m1}R_{E\ell}^\ll(k_{E0\ell1n},k_f;0,a)\right.\\
+&\qquad\qquad\left.\left. + 4\pi(1 - \delta_{p1}\delta_{m0})\delta_{TL}\delta_{p0}\delta_{\ell\ell'}\delta_{m1}\frac{\sqrt{\ell(\ell + 1)}}{k_{L0\ell1n}k_f}aj_\ell(k_{L0\ell1n}a)j_\ell(k_fa)\right]\right)\\
+&= -4\pi e\eta E_f\sqrt{\frac{1}{2\hbar\Omega_0m_{\bm{\beta}n}}}\sum_\ell\frac{2\ell + 1}{\ell(\ell + 1)}\left[\sin\!\left(\delta_{TM}\frac{\pi}{2} + (-1)^{\delta_{TM}}\frac{\ell\pi}{2}\right)\!\cos(\omega_ft)\right.\\
+&\qquad\left. + \cos\!\left(\delta_{TM}\frac{\pi}{2} + (-1)^{\delta_{TM}}\frac{\ell\pi}{2}\right)\!\sin(\omega_ft)\right]\left[ \vphantom{\frac{a^2\sqrt{\ell(\ell + 1)}}{w_{\ell n}k_f}} \delta_{TM}\delta_{p1}\delta_{m1}R_{M\ell}^\ll\!\left(\frac{z_{\ell n}}{a},k_f;0,a\right)\!\right.\\
+&\qquad\left. + \delta_{TE}\delta_{p0}\delta_{m1}R_{E\ell}^\ll\!\left(\frac{z_{\ell n}}{a},k_f;0,a\right)\! + \delta_{TL}\delta_{p0}\delta_{m1}\frac{a^2\sqrt{\ell(\ell + 1)}}{w_{\ell n}k_f}j_\ell(w_{\ell n})j_\ell(k_fa)\right]
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\tilde{J}_{Tp\ell mi}(t) &= \sum_n\left[\delta_{TM}J_{Mp\ell mn}(t)u_{i,2n} + \delta_{TE}J_{Ep\ell mn}(t)u'_{i,2n} + \delta_{TL}J_{Lp\ell mn}(t)u'_{i,2n+2N}\right]
+\end{split}
+\end{equation}
 
  
 

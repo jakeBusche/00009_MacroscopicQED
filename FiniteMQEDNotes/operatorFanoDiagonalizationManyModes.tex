@@ -8,13 +8,13 @@ We begin with a Hamiltonian
 \end{equation}
 where 
 \begin{equation}
-\hat{H}_0 = \sum_{i = 1}^{N}\hbar\Omega_i\hat{a}_{i}^\dagger(t)\hat{a}_{i}(t) + \sum_{\sigma = 1}^N\int_0^\infty\hbar\tilde{\nu}_\sigma\hat{b}_\sigma^\dagger(\nu,t)\hat{b}_\sigma(\nu,t)\;\mathrm{d}\nu
+\hat{H}_0 = \sum_{i = 1}^{M}\hbar\Omega_i\hat{a}_{i}^\dagger(t)\hat{a}_{i}(t) + \sum_{\sigma = 1}^N\int_0^\infty\hbar\nu \hat{b}_\sigma^\dagger(\nu,t)\hat{b}_\sigma(\nu,t)\;\mathrm{d}\nu
 \end{equation}
 and
 \begin{equation}
 \hat{H}_\mathrm{int} = \sum_{i,\sigma}\int_0^\infty\hbar g_{i \sigma}(\nu)\left[\hat{a}_{i}(t) + \hat{a}_{i}^\dagger(t)\right]\left[\hat{b}_\sigma(\nu,t) + \hat{b}_\sigma^\dagger(\nu,t)\right]\mathrm{d}\nu.
 \end{equation}
-The $N$ discrete boson operators $\hat{a}_i(t)$ and $N$ sets of bath operators $\hat{b}_\sigma(\nu,t)$ have natural frequencies $\Omega_i$ and $\tilde{\nu}_\sigma(\nu)$, respectively, and commutation relations
+The $M$ discrete boson operators $\hat{a}_i(t)$ and $N$ sets of bath operators $\hat{b}_\sigma(\nu,t)$ have natural frequencies $\Omega_i$ and $\nu (\nu)$, respectively, and commutation relations
 \begin{equation}
 \begin{split}
 \left[\hat{a}_i(t),\hat{a}_{j}^\dagger(t)\right] &= \delta_{ij},\\
@@ -48,14 +48,14 @@ Further, using the algebra of the previous section, we can employ the commutator
 \begin{equation}
 \begin{split}
 \left[\hat{a}_i(t),\hat{H}\right] &= \hbar\Omega_i\hat{a}_i(t) + \sum_\sigma\int_0^\infty\hbar g_{i\sigma}(\nu)\left[\hat{b}_\sigma(\nu,t) + \hat{b}_\sigma^\dagger(\nu,t)\right]\mathrm{d}\nu,\\
-\left[\hat{b}_\sigma(\nu,t),\hat{H}\right] &= \hbar\tilde{\nu}_\sigma\hat{b}_\sigma(\nu,t) + \sum_i\hbar g_{i\sigma}(\nu)\left[\hat{a}_i(t) + \hat{a}_i^\dagger(t)\right],
+\left[\hat{b}_\sigma(\nu,t),\hat{H}\right] &= \hbar\nu \hat{b}_\sigma(\nu,t) + \sum_i\hbar g_{i\sigma}(\nu)\left[\hat{a}_i(t) + \hat{a}_i^\dagger(t)\right],
 \end{split}
 \end{equation}
 and
 \begin{equation}
 \begin{split}
 \left[\hat{a}_i^\dagger(t),\hat{H}\right] &= -\hbar\Omega_i\hat{a}_i^\dagger(t) - \sum_\sigma\int_0^\infty\hbar g_{i\sigma}(\nu)\left[\hat{b}_\sigma(\nu,t) + \hat{b}_\sigma^\dagger(\nu,t)\right]\mathrm{d}\nu,\\
-\left[\hat{b}_\sigma^\dagger(\nu,t),\hat{H}\right] &= -\hbar\tilde{\nu}_\sigma\hat{b}_\sigma^\dagger(\nu,t) - \sum_i\hbar g_{i\sigma}(\nu)\left[\hat{a}_i(t) + \hat{a}_i^\dagger(t)\right],
+\left[\hat{b}_\sigma^\dagger(\nu,t),\hat{H}\right] &= -\hbar\nu \hat{b}_\sigma^\dagger(\nu,t) - \sum_i\hbar g_{i\sigma}(\nu)\left[\hat{a}_i(t) + \hat{a}_i^\dagger(t)\right],
 \end{split}
 \end{equation}
 via Eq. \eqref{eq:HmanyModes} as well as
@@ -70,8 +70,8 @@ via Eq. \eqref{eq:HdiagManyModes}. Alongside the definition of the hybridized op
 &\qquad\left. + v_{n\sigma}(\omega,\nu)\left[\hat{b}_\sigma^\dagger(\nu,t),\hat{H}\right]\right)\mathrm{d}\nu\\
 &= \sum_i\left(\frac{\omega + \Omega_i}{2\Omega_i}q_{ni}(\omega)\left[\hbar\Omega_i\hat{a}_i(t) + \sum_\sigma\int_0^\infty\hbar g_{i\sigma}(\nu)\left(\hat{b}_\sigma(\nu,t) + \hat{b}_\sigma^\dagger(\nu,t)\right)\mathrm{d}\nu\right]\right.\\
 &\qquad\left. + s_{ni}(\omega)\left[-\hbar\Omega_i\hat{a}_i^\dagger(t) - \sum_\sigma\int_0^\infty\hbar g_{i\sigma}(\nu)\left(\hat{b}_\sigma(\nu,t) + \hat{b}_\sigma^\dagger(\nu,t)\right)\mathrm{d}\nu\right]\right)\\
-&\qquad + \sum_\sigma\int_0^\infty\left(u_{n\sigma}(\omega,\nu)\left[\hbar\tilde{\nu}_\sigma\hat{b}_\sigma(\nu,t) + \sum_i\hbar g_{i\sigma}(\nu)\left(\hat{a}_i(t) + \hat{a}_i^\dagger(t)\right)\right]\right.\\
-&\qquad\left. + v_{n\sigma}(\omega,\nu)\left[-\hbar\tilde{\nu}_\sigma\hat{b}_\sigma^\dagger(\nu,t) - \sum_i\hbar g_{i\sigma}(\nu)\left(\hat{a}_i(t) + \hat{a}_i^\dagger(t)\right)\right] \right)\mathrm{d}\nu.
+&\qquad + \sum_\sigma\int_0^\infty\left(u_{n\sigma}(\omega,\nu)\left[\hbar\nu \hat{b}_\sigma(\nu,t) + \sum_i\hbar g_{i\sigma}(\nu)\left(\hat{a}_i(t) + \hat{a}_i^\dagger(t)\right)\right]\right.\\
+&\qquad\left. + v_{n\sigma}(\omega,\nu)\left[-\hbar\nu \hat{b}_\sigma^\dagger(\nu,t) - \sum_i\hbar g_{i\sigma}(\nu)\left(\hat{a}_i(t) + \hat{a}_i^\dagger(t)\right)\right] \right)\mathrm{d}\nu.
 \end{split}
 \end{equation}
 This provides a set of equations, one for each independent operator, that serve to fix the values of each expansion coefficient $q_{ni}(\omega)$, $s_{ni}(\omega)$, $u_{n\sigma}(\omega,\nu)$, and $v_{n\sigma}(\omega,\nu)$. Explicitly,
@@ -79,8 +79,8 @@ This provides a set of equations, one for each independent operator, that serve 
 \begin{split}
 (\omega - \Omega_i)\frac{\omega + \Omega_i}{2\Omega_i}q_{ni}(\omega) &= \sum_\sigma\int_0^\infty\left[u_{n\sigma}(\omega,\nu) - v_{n\sigma}(\omega,\nu)\right]g_{i\sigma}(\nu)\;\mathrm{d}\nu,\\
 (\omega + \Omega_i)s_{ni}(\omega) &= \sum_\sigma\int_0^\infty\left[u_{n\sigma}(\omega,\nu) - v_{n\sigma}(\omega,\nu)\right]g_{i\sigma}(\nu)\;\mathrm{d}\nu,\\
-(\omega - \tilde{\nu}_\sigma)u_{n\sigma}(\omega,\nu) &= \sum_i\left[\frac{\omega + \Omega_i}{2\Omega_i}q_{ni}(\omega) - s_{ni}(\omega)\right]g_{i\sigma}(\nu),\\
-(\omega + \tilde{\nu}_\sigma)v_{n\sigma}(\omega,\nu) &= \sum_i\left[\frac{\omega + \Omega_i}{2\Omega_i}q_{ni}(\omega) - s_{ni}(\omega)\right]g_{i\sigma}(\nu).
+(\omega - \nu )u_{n\sigma}(\omega,\nu) &= \sum_i\left[\frac{\omega + \Omega_i}{2\Omega_i}q_{ni}(\omega) - s_{ni}(\omega)\right]g_{i\sigma}(\nu),\\
+(\omega + \nu )v_{n\sigma}(\omega,\nu) &= \sum_i\left[\frac{\omega + \Omega_i}{2\Omega_i}q_{ni}(\omega) - s_{ni}(\omega)\right]g_{i\sigma}(\nu).
 \end{split}
 \end{equation}
 
@@ -92,27 +92,19 @@ s_{ni}(\omega) &= \frac{\omega - \Omega_i}{\omega + \Omega_i}\frac{\omega + \Ome
 \end{split}
 \end{equation}
 we can see that the most general solutions for $u_{n\sigma}(\omega,\nu)$ and $v_{n\sigma}(\omega,\nu)$ are
-\begin{equation}
+\begin{equation}\label{eq:uvDefinition}
 \begin{split}
-u_{n\sigma}(\omega,\nu) &= PV\left\{\frac{1}{\omega - \tilde{\nu}_\sigma}\right\}\sum_ig_{i\sigma}(\nu)q_{ni}(\omega) + \sum_ig_{i\sigma}(\nu)q_{ni}(\omega)x_{ni\sigma}(\omega)\delta(\omega - \tilde{\nu}_\sigma),\\
-v_{n\sigma}(\omega,\nu) &= \frac{1}{\omega + \tilde{\nu}_\sigma}\sum_ig_{i\sigma}(\nu)q_{ni}(\omega),
+u_{n\sigma}(\omega,\nu) &= PV\left\{\frac{1}{\omega - \nu }\right\}\sum_ig_{i\sigma}(\nu)q_{ni}(\omega) + \sum_ig_{i\sigma}(\nu)q_{ni}(\omega)x_{ni\sigma}(\omega)\delta(\omega - \nu ),\\
+v_{n\sigma}(\omega,\nu) &= \frac{1}{\omega + \nu }\sum_ig_{i\sigma}(\nu)q_{ni}(\omega),
 \end{split}
 \end{equation}
 wherein the Cauchy principal value operator $PV$ has been introduced to handle the singularity in $u_{n\sigma}(\omega,\nu)$ at $\omega = \nu$. The functions $x_{ni\sigma}(\omega)$ are smooth, complex, and nonzero and have forms determined through physical constraints, as will be shown below. 
 
-In practice, common forms of the bath frequencies are $\tilde{\nu}_\sigma(\nu) = \nu$ and $\tilde{\nu}_\sigma(\nu) = \sqrt{\nu^2 + \xi_\sigma^2}$. We can then separate our $N$ reservoirs into $N_1$ baths of the first kind and $N_2 = N - N_1$ baths of the second kind such that, using the identity $\delta(g[x]) = \sum_i\delta(x - x_i)/\abs{(\partial g(y)/\partial y)_{y\to x_i}}$ with $x_i$ the roots of $g(x)$, we find
-\begin{equation}
-\delta(\omega - \tilde{\nu}_\sigma) =
-\begin{cases}
-\delta(\nu - \omega), &\sigma\leq N_1,\\
-\frac{\omega}{\sqrt{\omega^2 - \xi_\sigma^2}}\left[\delta(\nu + \sqrt{\omega^2 - \xi_\sigma^2}) + \delta(\nu - \sqrt{\omega^2 - \xi_\sigma^2})\right], &\sigma > N_1.
-\end{cases}
-\end{equation}
-Plugging these solutions back into the first equation of Eq. \eqref{eq:hybridizationCoefficientsSystemManyModes} and defining $\omega_\sigma = \sqrt{\omega^2 - \xi_\sigma^2}$, one finds
+Plugging these solutions back into the first equation of Eq. \eqref{eq:hybridizationCoefficientsSystemManyModes}, one finds
 \begin{equation}
 \begin{split}
-\frac{\omega^2 - \Omega_i^2}{2\Omega_i}q_{ni}(\omega) &= \sum_\sigma\sum_jq_{nj}(\omega)\int_0^\infty\left(PV\left\{\frac{1}{\omega - \tilde{\nu}_\sigma}\right\} - \frac{1}{\omega + \tilde{\nu}_\sigma}\right)g_{i\sigma}(\nu)g_{j\sigma}(\nu)\;\mathrm{d}\nu\\
-&\qquad + \sum_\sigma\sum_j x_{nj\sigma}(\omega)q_{nj}(\omega)\frac{\omega}{\omega_\sigma}g_{i\sigma}(\omega_\sigma)g_{j\sigma}(\omega_\sigma).
+\frac{\omega^2 - \Omega_i^2}{2\Omega_i}q_{ni}(\omega) &= \sum_\sigma\sum_jq_{nj}(\omega)\int_0^\infty\left(PV\left\{\frac{1}{\omega - \nu }\right\} - \frac{1}{\omega + \nu }\right)g_{i\sigma}(\nu)g_{j\sigma}(\nu)\;\mathrm{d}\nu\\
+&\qquad + \sum_\sigma\sum_j x_{nj\sigma}(\omega)q_{nj}(\omega)g_{i\sigma}(\omega)g_{j\sigma}(\omega).
 \end{split}
 \end{equation}
 Note that the thermal bath terms in the above sum are identical to the photonic bath therms under the transformation $\xi_\sigma\to0$.
@@ -121,8 +113,8 @@ Summation over $i$ allows for the separation of this relation into matrix-vector
 \begin{equation}
 \begin{split}
 \sum_i&\frac{\omega^2 - \Omega_i^2}{2\Omega_i}\hat{\mathbf{e}}_i\hat{\mathbf{e}}_i\cdot\sum_kq_{nk}(\omega)\hat{\mathbf{e}}_k\\
-&= \sum_\sigma\sum_{ij}\int_0^\infty\left(PV\left\{\frac{1}{\omega - \tilde{\nu}_\sigma}\right\} - \frac{1}{\omega + \tilde{\nu}_\sigma}\right)g_{i\sigma}(\nu)g_{j\sigma}(\nu)\;\mathrm{d}\nu\;\hat{\mathbf{e}}_i\hat{\mathbf{e}}_j\cdot\sum_kq_{nk}(\omega)\hat{\mathbf{e}}_k\\
-&\qquad + \sum_{\sigma}\sum_{ij}\frac{\omega}{\omega_\sigma}x_{nj\sigma}(\omega)g_{i\sigma}(\omega_\sigma)g_{j\sigma}(\omega_\sigma)\hat{\mathbf{e}}_i\hat{\mathbf{e}}_j\cdot\sum_kq_{nk
+&= \sum_\sigma\sum_{ij}\int_0^\infty\left(PV\left\{\frac{1}{\omega - \nu }\right\} - \frac{1}{\omega + \nu }\right)g_{i\sigma}(\nu)g_{j\sigma}(\nu)\;\mathrm{d}\nu\;\hat{\mathbf{e}}_i\hat{\mathbf{e}}_j\cdot\sum_kq_{nk}(\omega)\hat{\mathbf{e}}_k\\
+&\qquad + \sum_{\sigma}\sum_{ij}x_{nj\sigma}(\omega)g_{i\sigma}(\omega)g_{j\sigma}(\omega)\hat{\mathbf{e}}_i\hat{\mathbf{e}}_j\cdot\sum_kq_{nk
 }(\omega)\hat{\mathbf{e}}_k.
 \end{split}
 \end{equation}
@@ -130,9 +122,9 @@ Therefore, we can define the matrices
 \begin{equation}
 \begin{split}
 \mathbf{A}(\omega) &= \sum_i\frac{(\omega^2 - \Omega_i^2)}{2\Omega_i}\hat{\mathbf{e}}_i\hat{\mathbf{e}}_i,\\
-\mathbf{B}_\sigma(\omega) &= \sum_{ij}\int_0^\infty\left(PV\left\{\frac{1}{\omega - \tilde{\nu}_\sigma}\right\} - \frac{1}{\omega + \tilde{\nu}_\sigma}\right)g_{i\sigma}(\nu)g_{j\sigma}(\nu)\;\mathrm{d}\nu\,\hat{\mathbf{e}}_i\hat{\mathbf{e}}_j,\\
-\mathbf{C}_{n\sigma}(\omega) &= \sum_{ij} x_{nj\sigma}(\omega)g_{i\sigma}(\omega_\sigma)g_{j\sigma}(\omega_\sigma)\hat{\mathbf{e}}_i\hat{\mathbf{e}}_j,\\
-\mathbf{D}_\sigma(\omega) &= \sum_{ij}g_{i\sigma}(\omega_\sigma)g_{j\sigma}(\omega_\sigma)\hat{\mathbf{e}}_i\hat{\mathbf{e}}_j,
+\mathbf{B}_\sigma(\omega) &= \sum_{ij}\int_0^\infty\left(PV\left\{\frac{1}{\omega - \nu }\right\} - \frac{1}{\omega + \nu }\right)g_{i\sigma}(\nu)g_{j\sigma}(\nu)\;\mathrm{d}\nu\,\hat{\mathbf{e}}_i\hat{\mathbf{e}}_j,\\
+\mathbf{C}_{n\sigma}(\omega) &= \sum_{ij} x_{nj\sigma}(\omega)g_{i\sigma}(\omega)g_{j\sigma}(\omega)\hat{\mathbf{e}}_i\hat{\mathbf{e}}_j,\\
+\mathbf{D}_\sigma(\omega) &= \sum_{ij}g_{i\sigma}(\omega)g_{j\sigma}(\omega)\hat{\mathbf{e}}_i\hat{\mathbf{e}}_j,
 \end{split}
 \end{equation}
 and the vector
@@ -141,7 +133,7 @@ and the vector
 \end{equation}
 such that the first line of Eq. \eqref{eq:hybridizationCoefficientsSystemManyModes} can be rewritten as the vector equation
 \begin{equation}\label{eq:ABCmatrixIdentity}
-\mathbf{A}(\omega)\cdot\mathbf{q}_n(\omega) = \sum_\sigma\mathbf{B}_\sigma(\omega)\cdot\mathbf{q}_n(\omega) + \sum_\sigma \frac{\omega}{\omega_\sigma}\mathbf{C}_\sigma(\omega)\cdot\mathbf{q}_n(\omega).
+\mathbf{A}(\omega)\cdot\mathbf{q}_n(\omega) = \sum_\sigma\mathbf{B}_\sigma(\omega)\cdot\mathbf{q}_n(\omega) + \sum_\sigma \mathbf{C}_\sigma(\omega)\cdot\mathbf{q}_n(\omega).
 \end{equation}
 
 This process can calso be used to expand our final physical constraint, the commutator of Eq. \eqref{eq:hybridOperatorCommutatorManyModes}, as a matrix-vector equation. In more detail,
@@ -161,11 +153,11 @@ leads, with the substitution of the explicit form of each expansion coefficient,
 \delta_{nn'}\delta(\omega - \omega') 
 &= \sum_i\left(\frac{(\omega + \Omega_i)(\omega' + \Omega_i)}{4\Omega_i^2} - \frac{(\omega - \Omega_i)(\omega' - \Omega_i)}{4\Omega_i^2}\right)q_{ni}(\omega)q_{n'i}^*(\omega')\\
 &\qquad + \sum_\sigma\sum_{ij}\int_0^\infty g_{i\sigma}(\nu)g_{j\sigma}(\nu)q_{ni}(\omega)q_{n'j}^*(\omega')\\
-&\qquad\times \left(\left[PV\left\{\frac{1}{\omega - \tilde{\nu}_\sigma}\right\} + x_{ni\sigma}(\omega)\delta(\omega - \tilde{\nu}_\sigma)\right]\left[PV\left\{\frac{1}{\omega - \tilde{\nu}_\sigma}\right\} + x_{n'j\sigma}^*(\omega')\delta(\omega' - \tilde{\nu}_\sigma)\right]\right.\\
-&\qquad\left. - \frac{1}{\omega + \tilde{\nu}_\sigma}\frac{1}{\omega' + \tilde{\nu}_\sigma} \right)\mathrm{d}\nu\\
+&\qquad\times \left(\left[PV\left\{\frac{1}{\omega - \nu }\right\} + x_{ni\sigma}(\omega)\delta(\omega - \nu )\right]\left[PV\left\{\frac{1}{\omega - \nu }\right\} + x_{n'j\sigma}^*(\omega')\delta(\omega' - \nu )\right]\right.\\
+&\qquad\left. - \frac{1}{\omega + \nu }\frac{1}{\omega' + \nu } \right)\mathrm{d}\nu\\
 &= \sum_i\frac{\omega + \omega'}{2\Omega_i}q_{ni}(\omega)q_{n'i}^*(\omega') + \sum_\sigma\sum_{ij}\int_0^\infty g_{i\sigma}(\nu)g_{j\sigma}(\nu)q_{ni}(\omega)q_{n'j}^*(\omega')\\
-&\qquad\times\left(\left[PV\left\{\frac{1}{\omega - \tilde{\nu}_\sigma}\right\} + x_{ni\sigma}(\omega)\delta(\omega - \tilde{\nu}_\sigma)\right]\left[PV\left\{\frac{1}{\omega' - \tilde{\nu}_\sigma}\right\} + x_{n'j\sigma}^*(\omega')\delta(\omega' - \tilde{\nu}_\sigma)\right]\right.\\
-&\qquad\left. - \frac{1}{\omega + \tilde{\nu}_\sigma}\frac{1}{\omega' + \tilde{\nu}_\sigma} \right)\mathrm{d}\nu.
+&\qquad\times\left(\left[PV\left\{\frac{1}{\omega - \nu }\right\} + x_{ni\sigma}(\omega)\delta(\omega - \nu )\right]\left[PV\left\{\frac{1}{\omega' - \nu }\right\} + x_{n'j\sigma}^*(\omega')\delta(\omega' - \nu )\right]\right.\\
+&\qquad\left. - \frac{1}{\omega + \nu }\frac{1}{\omega' + \nu } \right)\mathrm{d}\nu.
 \end{split}
 \end{equation}
 Using the identities
@@ -198,73 +190,68 @@ Therefore,
 \begin{equation}
 \begin{split}
 \delta_{nn'}\delta(\omega - \omega') &= \sum_i\frac{(\omega + \omega')}{2\Omega_i}q_{ni}(\omega)q_{n'i}^*(\omega') + \sum_\sigma\sum_{ij}\int_0^\infty g_{i\sigma}(\nu)g_{j\sigma}(\nu)q_{ni}(\omega)q_{n'j}^*(\omega')\\
-&\qquad\times\left(\pi^2\delta(\omega' - \tilde{\nu}_\sigma)\delta(\omega - \tilde{\nu}_\sigma) + PV\left\{\frac{1}{\omega - \omega'}\right\}\left[PV\left\{\frac{1}{\omega' - \tilde{\nu}_\sigma}\right\} - \frac{1}{\omega' + \tilde{\nu}_\sigma}\right]\right.\\
-&\qquad\left. - PV\left\{\frac{1}{\omega - \omega'}\right\}\left[PV\left\{\frac{1}{\omega - \tilde{\nu}_\sigma}\right\} - \frac{1}{\omega + \tilde{\nu}_\sigma}\right]\right)\mathrm{d}\nu\\
-&\qquad - \sum_{\sigma}\sum_{ij}q_{ni}(\omega)q_{n'j}^*(\omega')PV\left\{\frac{1}{\omega - \omega'}\right\}\frac{\omega}{\omega_\sigma}x_{ni\sigma}(\omega)g_{i\sigma}(\omega_\sigma)g_{j\sigma}(\omega_\sigma)\\
-&\qquad + \sum_{\sigma}\sum_{ij}q_{ni}(\omega)q_{n'j}^*(\omega')PV\left\{\frac{1}{\omega - \omega'}\right\}\frac{\omega'}{\omega_\sigma'}x_{n'j\sigma}^*(\omega')g_{i\sigma}(\omega_\sigma')g_{j\sigma}(\omega_\sigma')\\
-&\qquad + \sum_\sigma\sum_{ij}\int_0^\infty q_{ni}(\omega)q_{n'j}^*(\omega')x_{ni\sigma}(\omega)x_{n'j\sigma}^*(\omega')g_{i\sigma}(\nu)g_{j\sigma}(\nu)\delta(\omega - \tilde{\nu}_\sigma)\delta(\omega' - \tilde{\nu}_\sigma)\;\mathrm{d}\nu.
-% &\qquad + \sum_\sigma\sum_{ij}q_{\ni}(\omega)q_{n'j}^*(\omega')\frac{\omega}{\omega_\sigma}x_{ni\sigma}(\omega)x_{n'k\sigma}^*(\omega')g_{i\sigma}(\omega_\sigma)g_{j\sigma}(\omega_\sigma)\delta(\omega - \omega').
+&\qquad\times\left(\pi^2\delta(\omega' - \nu )\delta(\omega - \nu ) + PV\left\{\frac{1}{\omega - \omega'}\right\}\left[PV\left\{\frac{1}{\omega' - \nu }\right\} - \frac{1}{\omega' + \nu }\right]\right.\\
+&\qquad\left. - PV\left\{\frac{1}{\omega - \omega'}\right\}\left[PV\left\{\frac{1}{\omega - \nu }\right\} - \frac{1}{\omega + \nu }\right]\right)\mathrm{d}\nu\\
+&\qquad - \sum_{\sigma}\sum_{ij}q_{ni}(\omega)q_{n'j}^*(\omega')PV\left\{\frac{1}{\omega - \omega'}\right\}x_{ni\sigma}(\omega)g_{i\sigma}(\omega)g_{j\sigma}(\omega)\\
+&\qquad + \sum_{\sigma}\sum_{ij}q_{ni}(\omega)q_{n'j}^*(\omega')PV\left\{\frac{1}{\omega - \omega'}\right\}x_{n'j\sigma}^*(\omega')g_{i\sigma}(\omega')g_{j\sigma}(\omega')\\
+&\qquad + \sum_\sigma\sum_{ij}\int_0^\infty q_{ni}(\omega)q_{n'j}^*(\omega')x_{ni\sigma}(\omega)x_{n'j\sigma}^*(\omega')g_{i\sigma}(\nu)g_{j\sigma}(\nu)\delta(\omega - \nu )\delta(\omega' - \nu )\;\mathrm{d}\nu.
+% &\qquad + \sum_\sigma\sum_{ij}q_{\ni}(\omega)q_{n'j}^*(\omega')x_{ni\sigma}(\omega)x_{n'k\sigma}^*(\omega')g_{i\sigma}(\omega)g_{j\sigma}(\omega)\delta(\omega - \omega').
 \end{split}
 \end{equation}
 Further, with
 \begin{equation}
-\begin{split}
-\int_0^\infty f(\nu)\delta(\omega' - \tilde{\nu}_\sigma)\delta(\omega - \tilde{\nu}_\sigma)\;\mathrm{d}\nu &= \frac{\omega\omega'}{\omega_\sigma\omega_\sigma'}\int_0^\infty f(\nu)[\delta(\nu - \omega_\sigma') + \delta(\nu + \omega_\sigma')][\delta(\nu - \omega_\sigma) + \delta(\nu + \omega_\sigma)]\;\mathrm{d}\nu\\
-&= \frac{\omega\omega'}{\omega_\sigma\omega_\sigma'}f(\omega_\sigma)\delta(\omega_\sigma - \omega_\sigma')\\
-% &= \frac{\omega\omega'}{\omega_\sigma\omega_\sigma'}f(\omega_\sigma)\frac{\omega_\sigma'}{\omega'}\left[\delta(\omega - \omega') + \delta(\omega + \omega')\right]\\
-&= \frac{\omega}{\omega_\sigma}f(\omega_\sigma)\left[\delta(\omega - \omega') + \delta(\omega + \omega')\right]
-\end{split}
+\int_0^\infty f(\nu)\delta(\omega' - \nu )\delta(\omega - \nu )\;\mathrm{d}\nu = f(\omega)\delta(\omega - \omega'),
 \end{equation}
 % and
 % \begin{equation}
 % \begin{split}
-% \delta(\omega_\sigma - \omega_\sigma') &= \frac{\omega_\sigma'}{\omega'}[\delta(\omega - \omega') + \delta(\omega + \omega')]\\
-% &= \frac{\omega_\sigma'}{\omega'}\delta(\omega - \omega')
+% \delta(\omega - \omega') &= [\delta(\omega - \omega') + \delta(\omega + \omega')]\\
+% &= \delta(\omega - \omega')
 % \end{split}
 % \end{equation}
-wherein $\omega_\sigma' = \sqrt{\omega'^2 - \xi_\sigma^2}$, we find
+we find
 \begin{equation}
 \begin{split}
-\delta_{nn'}\delta(\omega - \omega') &= \sum_i\frac{(\omega + \omega')}{2\Omega_i}q_{ni}(\omega)q_{n'i}^*(\omega') + \sum_\sigma\sum_{ij}\pi^2\frac{\omega}{\omega_\sigma}\delta(\omega - \omega')g_{i\sigma}(\omega_\sigma)g_{j\sigma}(\omega_\sigma)q_{ni}(\omega)q_{n'j}^*(\omega')\\
-& + \sum_\sigma\sum_{ij}q_{ni}(\omega)q_{n'j}^*(\omega')PV\left\{\frac{1}{\omega - \omega'}\right\}\int_0^\infty\left(PV\left\{\frac{1}{\omega' - \tilde{\nu}_\sigma}\right\} - \frac{1}{\omega' + \tilde{\nu}_\sigma}\right)g_{i\sigma}(\nu)g_{j\sigma}(\nu)\;\mathrm{d}\nu\\
-&- \sum_\sigma\sum_{ij}q_{ni}(\omega)q_{n'j}^*(\omega')PV\left\{\frac{1}{\omega - \omega'}\right\}\int_0^\infty\left(PV\left\{\frac{1}{\omega - \tilde{\nu}_\sigma}\right\} - \frac{1}{\omega + \tilde{\nu}_\sigma}\right)g_{i\sigma}(\nu)g_{j\sigma}(\nu)\;\mathrm{d}\nu\\
-&\qquad + \sum_{\sigma}\sum_{ij}q_{ni}(\omega)q_{n'j}^*(\omega')PV\left\{\frac{1}{\omega - \omega'}\right\}\frac{\omega'}{\omega_\sigma'}x_{n'j\sigma}^*(\omega')g_{i\sigma}(\omega_\sigma')g_{j\sigma}(\omega_\sigma')\\
-&\qquad - \sum_{\sigma}\sum_{ij}q_{ni}(\omega)q_{n'j}^*(\omega')PV\left\{\frac{1}{\omega - \omega'}\right\}\frac{\omega}{\omega_\sigma}x_{ni\sigma}(\omega)g_{i\sigma}(\omega_\sigma)g_{j\sigma}(\omega_\sigma)\\
-&\qquad + \sum_\sigma\sum_{ij}q_{ni}(\omega)q_{n'j}^*(\omega')x_{ni\sigma}(\omega)x_{n'j\sigma}^*(\omega')\frac{\omega}{\omega_\sigma}g_{i\sigma}(\omega_\sigma)g_{j\sigma}(\omega_\sigma)\delta(\omega - \omega').
+\delta_{nn'}\delta(\omega - \omega') &= \sum_i\frac{(\omega + \omega')}{2\Omega_i}q_{ni}(\omega)q_{n'i}^*(\omega') + \sum_\sigma\sum_{ij}\pi^2\delta(\omega - \omega')g_{i\sigma}(\omega)g_{j\sigma}(\omega)q_{ni}(\omega)q_{n'j}^*(\omega')\\
+& + \sum_\sigma\sum_{ij}q_{ni}(\omega)q_{n'j}^*(\omega')PV\left\{\frac{1}{\omega - \omega'}\right\}\int_0^\infty\left(PV\left\{\frac{1}{\omega' - \nu }\right\} - \frac{1}{\omega' + \nu }\right)g_{i\sigma}(\nu)g_{j\sigma}(\nu)\;\mathrm{d}\nu\\
+&- \sum_\sigma\sum_{ij}q_{ni}(\omega)q_{n'j}^*(\omega')PV\left\{\frac{1}{\omega - \omega'}\right\}\int_0^\infty\left(PV\left\{\frac{1}{\omega - \nu }\right\} - \frac{1}{\omega + \nu }\right)g_{i\sigma}(\nu)g_{j\sigma}(\nu)\;\mathrm{d}\nu\\
+&\qquad + \sum_{\sigma}\sum_{ij}q_{ni}(\omega)q_{n'j}^*(\omega')PV\left\{\frac{1}{\omega - \omega'}\right\}x_{n'j\sigma}^*(\omega')g_{i\sigma}(\omega')g_{j\sigma}(\omega')\\
+&\qquad - \sum_{\sigma}\sum_{ij}q_{ni}(\omega)q_{n'j}^*(\omega')PV\left\{\frac{1}{\omega - \omega'}\right\}x_{ni\sigma}(\omega)g_{i\sigma}(\omega)g_{j\sigma}(\omega)\\
+&\qquad + \sum_\sigma\sum_{ij}q_{ni}(\omega)q_{n'j}^*(\omega')x_{ni\sigma}(\omega)x_{n'j\sigma}^*(\omega')g_{i\sigma}(\omega)g_{j\sigma}(\omega)\delta(\omega - \omega').
 \end{split}
 \end{equation}
 Here, we have let $\delta(\omega + \omega') = 0$ for $\omega,\omega' > 0$. Further, it will make our lives easier if there exists a solution for $q_{ni}(\omega)$ wherein the prefactor $x_{ni\sigma}(\omega)$ is independent of the polariton index $n$. Assuming a solution can be found, we will let $x_{ni\sigma}(\omega)\to x_{i\sigma}(\omega)$. Further defining a new matrix
 \begin{equation}
-\mathbf{E}_\sigma(\omega) = \sum_{ij}x_{i\sigma}(\omega)x_{j\sigma}^*(\omega)g_{i\sigma}(\omega_\sigma)g_{j\sigma}(\omega_\sigma)\hat{\mathbf{e}}_i\hat{\mathbf{e}}_j,
+\mathbf{E}_\sigma(\omega) = \sum_{ij}x_{i\sigma}(\omega)x_{j\sigma}^*(\omega)g_{i\sigma}(\omega)g_{j\sigma}(\omega)\hat{\mathbf{e}}_i\hat{\mathbf{e}}_j,
 \end{equation}
 we can rearrange the above expression in vector form such that
 \begin{equation}
 \begin{split}
 \delta_{nn'}\delta(\omega - \omega') &= \mathbf{q}_n(\omega)\cdot\sum_{i}\frac{\omega + \omega'}{2\Omega_i}\hat{\mathbf{e}}_i\hat{\mathbf{e}}_i\cdot\mathbf{q}_{n'}^*(\omega')\\
-&\qquad + \mathbf{q}_n(\omega)\cdot\pi^2\delta(\omega - \omega')\sum_\sigma\frac{\omega}{\omega_\sigma}\mathbf{D}_\sigma(\omega)\cdot\mathbf{q}_{n'}^*(\omega')\\
+&\qquad + \mathbf{q}_n(\omega)\cdot\pi^2\delta(\omega - \omega')\sum_\sigma\mathbf{D}_\sigma(\omega)\cdot\mathbf{q}_{n'}^*(\omega')\\
 &\qquad + \mathbf{q}_n(\omega)\cdot PV\left\{\frac{1}{\omega - \omega'}\right\}\sum_\sigma\left[\mathbf{B}_\sigma(\omega') - \mathbf{B}_\sigma(\omega)\right]\cdot\mathbf{q}_{n'}^*(\omega')\\
-&\qquad + \mathbf{q}_{n}(\omega)\cdot PV\left\{\frac{1}{\omega - \omega'}\right\}\sum_\sigma\left[\frac{\omega'}{\omega_\sigma'}\mathbf{C}_\sigma(\omega_\sigma') - \frac{\omega}{\omega_\sigma}\mathbf{C}_\sigma^\top(\omega)\right]\cdot\mathbf{q}_{n'}^*(\omega')\\
-&\qquad + \mathbf{q}_n(\omega)\cdot\delta(\omega - \omega')\sum_\sigma\frac{\omega}{\omega_\sigma}\mathbf{E}_\sigma(\omega)\cdot\mathbf{q}_n^*(\omega'),
+&\qquad + \mathbf{q}_{n}(\omega)\cdot PV\left\{\frac{1}{\omega - \omega'}\right\}\sum_\sigma\left[\mathbf{C}_\sigma(\omega') - \mathbf{C}_\sigma^\top(\omega)\right]\cdot\mathbf{q}_{n'}^*(\omega')\\
+&\qquad + \mathbf{q}_n(\omega)\cdot\delta(\omega - \omega')\sum_\sigma\mathbf{E}_\sigma(\omega)\cdot\mathbf{q}_n^*(\omega'),
 \end{split}
 \end{equation}
 wherein we have let $\mathbf{C}_{n\sigma}(\omega)\to\mathbf{C}_\sigma(\omega)$. Use of the identity of Eq. \eqref{eq:ABCmatrixIdentity} provides
 \begin{equation}
 \begin{split}
 \delta_{nn'}\delta(\omega - \omega') &= \mathbf{q}_n(\omega)\cdot\sum_{i}\frac{\omega + \omega'}{2\Omega_i}\hat{\mathbf{e}}_i\hat{\mathbf{e}}_i\cdot\mathbf{q}_{n'}^*(\omega')\\
-&\qquad + \mathbf{q}_n(\omega)\cdot\delta(\omega - \omega')\sum_\sigma\frac{\omega}{\omega_\sigma}\left[\pi^2\mathbf{D}_\sigma(\omega) + \mathbf{E}_\sigma(\omega)\right]\cdot\mathbf{q}_{n'}^*(\omega')\\
+&\qquad + \mathbf{q}_n(\omega)\cdot\delta(\omega - \omega')\sum_\sigma\left[\pi^2\mathbf{D}_\sigma(\omega) + \mathbf{E}_\sigma(\omega)\right]\cdot\mathbf{q}_{n'}^*(\omega')\\
 &\qquad + \mathbf{q}_n(\omega)\cdot PV\left\{\frac{1}{\omega - \omega'}\right\}\sum_\sigma\left[\mathbf{B}_\sigma(\omega') - \mathbf{B}_\sigma(\omega)\right]\cdot\mathbf{q}_{n'}^*(\omega')\\
 &\qquad + \mathbf{q}_n(\omega)\cdot PV\left\{\frac{1}{\omega - \omega'}\right\}\left[\mathbf{A}(\omega') - \sum_\sigma\mathbf{B}_\sigma(\omega') - \mathbf{A}(\omega) + \sum_\sigma\mathbf{B}_\sigma(\omega)\right]\\
 &= \mathbf{q}_n(\omega)\cdot\sum_i\left(\frac{\omega + \omega'}{2\Omega_i} + PV\left\{\frac{1}{\omega - \omega'}\right\}\left[\frac{\omega'^2 - \Omega_i^2}{2\Omega_i} - \frac{\omega^2 - \Omega_i^2}{2\Omega_i}\right]\right)\hat{\mathbf{e}}_i\hat{\mathbf{e}}_i\cdot\mathbf{q}_{n'}^*(\omega')\\
-&\qquad + \mathbf{q}_n(\omega)\cdot\delta(\omega - \omega')\sum_\sigma\frac{\omega}{\omega_\sigma}\left[\pi^2\mathbf{D}_\sigma(\omega) + \mathbf{E}_\sigma(\omega)\right]\cdot\mathbf{q}_{n'}^*(\omega')\\
+&\qquad + \mathbf{q}_n(\omega)\cdot\delta(\omega - \omega')\sum_\sigma\left[\pi^2\mathbf{D}_\sigma(\omega) + \mathbf{E}_\sigma(\omega)\right]\cdot\mathbf{q}_{n'}^*(\omega')\\
 &= \mathbf{q}_n(\omega)\cdot\sum_i\left(\frac{\omega + \omega'}{2\Omega_i} + PV\left\{\frac{1}{\omega - \omega'}\right\}\frac{(\omega' - \omega)(\omega' + \omega)}{2\Omega_i}\right)\hat{\mathbf{e}}_i\hat{\mathbf{e}}_i\cdot\mathbf{q}_{n'}^*(\omega')\\
-&\qquad + \mathbf{q}_n(\omega)\cdot\delta(\omega - \omega')\sum_\sigma\frac{\omega}{\omega_\sigma}\left[\pi^2\mathbf{D}_\sigma(\omega) + \mathbf{E}_\sigma(\omega)\right]\cdot\mathbf{q}_{n'}^*(\omega')\\
-&= \delta(\omega - \omega')\mathbf{q}_n(\omega)\cdot\sum_\sigma\frac{\omega}{\omega_\sigma}\left[\pi^2\mathbf{D}_\sigma(\omega) + \mathbf{E}_\sigma(\omega)\right]\cdot\mathbf{q}_{n'}^*(\omega').
+&\qquad + \mathbf{q}_n(\omega)\cdot\delta(\omega - \omega')\sum_\sigma\left[\pi^2\mathbf{D}_\sigma(\omega) + \mathbf{E}_\sigma(\omega)\right]\cdot\mathbf{q}_{n'}^*(\omega')\\
+&= \delta(\omega - \omega')\mathbf{q}_n(\omega)\cdot\sum_\sigma\left[\pi^2\mathbf{D}_\sigma(\omega) + \mathbf{E}_\sigma(\omega)\right]\cdot\mathbf{q}_{n'}^*(\omega').
 \end{split}
 \end{equation}
 
 Finally, it is advantageous to define
 \begin{equation}
-\mathbf{G}(\omega) = \sum_\sigma\frac{\omega}{\omega_\sigma}\left[\pi^2\mathbf{D}_\sigma(\omega) + \mathbf{E}_\sigma(\omega)\right]
+\mathbf{G}(\omega) = \sum_\sigma\left[\pi^2\mathbf{D}_\sigma(\omega) + \mathbf{E}_\sigma(\omega)\right]
 \end{equation}
 as the characteristic matrix of the polariton decomposition. The bosonic commutator $[\hat{C}_n(\omega,t),\hat{C}_{n'}^\dagger(\omega',t)] = \delta_{nn'}\delta(\omega - \omega')$ is then only satisfied if $\mathbf{q}_n(\omega)$ is an eigenvector of $\mathbf{G}(\omega)$. Letting its corresponding eigenvalue be $\lambda_n(\omega)$, we have, explicitly,
 \begin{equation}
@@ -277,18 +264,18 @@ Because the matrices $\mathbf{D}_\sigma(\omega)$ and $\mathbf{E}_\sigma(\omega)$
 and
 \begin{equation}
 \begin{split}
-\delta_{nn'}\delta(\omega - \omega') &= \pi^2\delta(\omega - \omega')\mathbf{q}_n^*(\omega)\cdot\mathbf{G}(\omega)\cdot\mathbf{q}_{n'}(\omega)\\
-&= \pi^2\delta(\omega - \omega')\lambda_n(\omega)\mathbf{q}_n^*(\omega)\cdot\mathbf{q}_{n'}(\omega)\\
-&= \pi^2\delta(\omega - \omega')\lambda_n(\omega)|\mathbf{q}_n(\omega)|^2\delta_{nn'}.
+\delta_{nn'}\delta(\omega - \omega') &= \delta(\omega - \omega')\mathbf{q}_n^*(\omega)\cdot\mathbf{G}(\omega)\cdot\mathbf{q}_{n'}(\omega)\\
+&= \delta(\omega - \omega')\lambda_n(\omega)\mathbf{q}_n^*(\omega)\cdot\mathbf{q}_{n'}(\omega)\\
+&= \delta(\omega - \omega')\lambda_n(\omega)|\mathbf{q}_n(\omega)|^2\delta_{nn'}.
 \end{split}
 \end{equation}
 We can then see
 \begin{equation}
-|\mathbf{q}_n(\omega)|^2 = \frac{1}{\pi^2\lambda_n(\omega)}.
+|\mathbf{q}_n(\omega)|^2 = \frac{1}{\lambda_n(\omega)}.
 \end{equation}
 is the normalization condition that sets the absolute magnitude of the elements of $\mathbf{q}_n(\omega)$. 
 
-It is important to note at this point that the complex coefficients $x_{i\sigma}(\omega)$ are still not uniquely defined. This means that, for a given $n$ and $\omega$, a set of polariton operators $\{\hat{C}_n(\omega,t;\mathbf{X})\}$ exists in which each element $\hat{C}_n(\omega,t;\mathbf{X})$ describes the dynamics of the system with equal validity. These elements are indexed by the matrices $\mathbf{X}(\omega) = \sum_{i\sigma}x_{i\sigma}(\omega)\hat{\mathbf{e}}_i\hat{\mathbf{e}}_\sigma$ whose elements describe the degree to which the operators $\hat{b}_\sigma(\omega_\sigma)$ contribute to $\hat{C}_n(\omega,t)$. These elements are nonzero, but are otherwise free to vary in the complex plane. Therefore, it is up to the author of a particular model to choose which values of $\mathbf{X}(\omega)$ are most advantageous for him/her. However, as we will see in the following, the inverse Fano transformations that reproduce the uncoupled operators $\hat{a}_i(t)$ and $\hat{b}_\sigma(\nu,t)$ as combinations of polariton operators will place additional constraints on $\mathbf{X}(\omega)$ such that particular values of $x_{i\sigma}(\omega)$ will be more convenient for use in one model or another.
+It is important to note at this point that the complex coefficients $x_{i\sigma}(\omega)$ are still not uniquely defined. This means that, for a given $n$ and $\omega$, a set of polariton operators $\{\hat{C}_n(\omega,t;\mathbf{X})\}$ exists in which each element $\hat{C}_n(\omega,t;\mathbf{X})$ describes the dynamics of the system with equal validity. These elements are indexed by the matrices $\mathbf{X}(\omega) = \sum_{i\sigma}x_{i\sigma}(\omega)\hat{\mathbf{e}}_i\hat{\mathbf{e}}_\sigma$ whose elements describe the degree to which the operators $\hat{b}_\sigma(\omega)$ contribute to $\hat{C}_n(\omega,t)$. These elements are nonzero, but are otherwise free to vary in the complex plane. Therefore, it is up to the author of a particular model to choose which values of $\mathbf{X}(\omega)$ are most advantageous for him/her. However, as we will see in the following, the inverse Fano transformations that reproduce the uncoupled operators $\hat{a}_i(t)$ and $\hat{b}_\sigma(\nu,t)$ as combinations of polariton operators will place additional constraints on $\mathbf{X}(\omega)$ such that particular values of $x_{i\sigma}(\omega)$ will be more convenient for use in one model or another.
 
 To begin, we can see that the inverse Fano transformations used to define the unhybridized operators $\hat{a}_i(t)$ and $\hat{b}_\sigma(\nu,t)$ in terms of the polariton operators can be straightforwardly built from these results and the integral techniques of Appendix \ref{app:fanoDiagonalization}. Forgoing the explicit dependence of each $\hat{C}_n(\omega,t)$ on $\mathbf{X}$, we can propose a trial solution
 \begin{equation}
@@ -307,11 +294,11 @@ where $P_{ni}(\omega)$ is a characteristic prefactor and $\mathcal{N}_i$ is a no
 \mathbf{v}_1^\top(\omega) & \mathbf{v}_2^\top(\omega) & \cdots & \mathbf{v}_M^\top(\omega) 
 \end{pmatrix},
 \end{equation}
-is unitary. Here $\mathbf{v}_n(\omega) = \pi\sqrt{\lambda_n}\mathbf{q}_n(\omega) = \pi\sqrt{\lambda_n}\left[q_{n1}(\omega)\hat{\mathbf{e}}_1 + q_{n2}(\omega)\hat{\mathbf{e}}_2 + \ldots\right]$. Because both the rows and columns of a unitary matrix form an orthonormal set of vectors, we can define $\mathbf{u}_i(\omega) = \pi\sqrt{\lambda_1}q_{1i}(\omega)\hat{\mathbf{e}}_{1} + \pi\sqrt{\lambda_{2}}q_{2i}(\omega)\hat{\mathbf{e}}_{2} + \ldots$, such that
+is unitary. Here $\mathbf{v}_n(\omega) = \sqrt{\lambda_n}\mathbf{q}_n(\omega) = \sqrt{\lambda_n}\left[q_{n1}(\omega)\hat{\mathbf{e}}_1 + q_{n2}(\omega)\hat{\mathbf{e}}_2 + \ldots\right]$. Because both the rows and columns of a unitary matrix form an orthonormal set of vectors, we can define $\mathbf{u}_i(\omega) = \sqrt{\lambda_1}q_{1i}(\omega)\hat{\mathbf{e}}_{1} + \sqrt{\lambda_{2}}q_{2i}(\omega)\hat{\mathbf{e}}_{2} + \ldots$, such that
 \begin{equation}
 \begin{split}
-\mathbf{v}_n^*(\omega)\cdot\mathbf{v}_{n'}(\omega) &= \pi^2\lambda_n\sum_iq_{ni}^*(\omega)q_{n'i}(\omega) = \delta_{nn'},\\
-\mathbf{u}_i^*(\omega)\cdot\mathbf{u}_j(\omega) &= \sum_n\pi^2\lambda_nq_{ni}^*(\omega)q_{nj}(\omega) = \delta_{ij}.
+\mathbf{v}_n^*(\omega)\cdot\mathbf{v}_{n'}(\omega) &= \lambda_n\sum_iq_{ni}^*(\omega)q_{n'i}(\omega) = \delta_{nn'},\\
+\mathbf{u}_i^*(\omega)\cdot\mathbf{u}_j(\omega) &= \sum_n\lambda_nq_{ni}^*(\omega)q_{nj}(\omega) = \delta_{ij}.
 \end{split}
 \end{equation}
 Therefore, looking at the first integral of our trial solution for $\hat{a}_i(t)$, we can see upon substitution of $s_{ni}(\omega) = (\omega - \Omega_i)q_{ni}(\omega)/2\Omega_i$ that
@@ -319,12 +306,12 @@ Therefore, looking at the first integral of our trial solution for $\hat{a}_i(t)
 \begin{split}
 &\sum_n\int_0^\infty P_{ni}(\omega)\left[\frac{(\omega + \Omega_i)(\omega + \Omega_j)}{4\Omega_i\Omega_j}q_{ni}^*(\omega)q_{nj}(\omega) - s_{ni}(\omega)s_{nj}^*(\omega)\right]\mathrm{d}\omega\\
 = &\sum_n\int_0^\infty P_{ni}(\omega)\left[\frac{(\omega + \Omega_i)(\omega + \Omega_j)}{4\Omega_i\Omega_j}q_{ni}^*(\omega)q_{nj}(\omega) - \frac{(\omega - \Omega_i)(\omega - \Omega_j)}{4\Omega_i\Omega_j}q_{ni}(\omega)q_{nj}^*(\omega)\right]\mathrm{d}\omega\\
-= &\sum_n\int_0^\infty\pi^2\lambda_n\bar{P}_{i}(\omega)\left[\frac{(\omega + \Omega_i)(\omega + \Omega_j)}{4\Omega_i\Omega_j}q_{ni}^*(\omega)q_{nj}(\omega) - \frac{(\omega - \Omega_i)(\omega - \Omega_j)}{4\Omega_i\Omega_j}q_{ni}(\omega)q_{nj}^*(\omega)\right]\mathrm{d}\omega\\
+= &\sum_n\int_0^\infty\lambda_n\bar{P}_{i}(\omega)\left[\frac{(\omega + \Omega_i)(\omega + \Omega_j)}{4\Omega_i\Omega_j}q_{ni}^*(\omega)q_{nj}(\omega) - \frac{(\omega - \Omega_i)(\omega - \Omega_j)}{4\Omega_i\Omega_j}q_{ni}(\omega)q_{nj}^*(\omega)\right]\mathrm{d}\omega\\
 = &\int_0^\infty\bar{P}_{i}(\omega)\delta_{ij}\left[\frac{(\omega + \Omega_i)(\omega + \Omega_j)}{4\Omega_i\Omega_j} - \frac{(\omega - \Omega_i)(\omega - \Omega_j)}{4\Omega_i\Omega_j}\right]\mathrm{d}\omega\\
 = &\int_0^\infty\delta_{ij}\frac{\omega(\Omega_i + \Omega_j)}{2\Omega_i\Omega_j}\bar{P}_i(\omega)\;\mathrm{d}\omega,
 \end{split}
 \end{equation}
-where we have let $P_{ni}(\omega) = \pi^2\lambda_n\bar{P}_i(\omega)$. Finally, looking at the form of the integral in Eq. \eqref{eq:qq-minus-ss-integral}, we can propose that $\bar{P}_{i}(\omega) = 4\Omega_i^2 \Sigma_i^2(\omega)/|\omega^2 - \Omega_i^2z_i(\omega)|^2$, wherein
+where we have let $P_{ni}(\omega) = \lambda_n\bar{P}_i(\omega)$. Finally, looking at the form of the integral in Eq. \eqref{eq:qq-minus-ss-integral}, we can propose that $\bar{P}_{i}(\omega) = 4\Omega_i^2 \Sigma_i^2(\omega)/|\omega^2 - \Omega_i^2z_i(\omega)|^2$, wherein
 \begin{equation}
 \begin{split}
 % \Sigma_i^2(\omega) &= \sum_\sigma g_{i\sigma}^2(\omega),\\
@@ -343,7 +330,7 @@ and $\Sigma_i^2(\omega)$ is an as-yet-undertermined function with units of coupl
 such that
 \begin{equation}
 \begin{split}
-P_{ni}(\omega) &= \pi^2\lambda_n\frac{4\Omega_i^2\Sigma_i^2(\omega)}{|\omega^2 - \Omega_i^2z_i(\omega)|^2},\\
+P_{ni}(\omega) &= \lambda_n\frac{4\Omega_i^2\Sigma_i^2(\omega)}{|\omega^2 - \Omega_i^2z_i(\omega)|^2},\\
 \mathcal{N}_i &= 1
 \end{split}
 \end{equation}
@@ -353,7 +340,7 @@ Moving forward, we can see that
 \begin{equation}
 \begin{split}
 &\sum_j\hat{a}_j^\dagger(t)\sum_n\int_0^\infty P_{ni}(\omega)\left[\frac{\omega + \Omega_i}{2\Omega_i}q_{ni}^*(\omega)s_{nj}(\omega) - \frac{\omega + \Omega_j}{2\Omega_j}s_{ni}(\omega)q_{nj}^*(\omega)\right]\mathrm{d}\omega\\
-= &\sum_j\hat{a}_j^\dagger(t)\sum_n\int_0^\infty \pi^2\lambda_n\frac{4\Omega_i^2\Sigma_i^2(\omega)}{|\omega^2 - \Omega_i^2z_i(\omega)|^2}\\
+= &\sum_j\hat{a}_j^\dagger(t)\sum_n\int_0^\infty \lambda_n\frac{4\Omega_i^2\Sigma_i^2(\omega)}{|\omega^2 - \Omega_i^2z_i(\omega)|^2}\\
 &\qquad\times\left[\frac{(\omega + \Omega_i)(\omega - \Omega_j)}{4\Omega_i\Omega_j}q_{ni}^*(\omega)q_{nj}(\omega) - \frac{(\omega - \Omega_i)(\omega + \Omega_j)}{4\Omega_i\Omega_j}q_{ni}(\omega)q_{nj}^*(\omega)\right]\;\mathrm{d}\omega\\
 &= \sum_j\hat{a}_j^\dagger(t)\int_0^\infty\frac{4\Omega_i^2\Sigma_i^2(\omega)}{|\omega^2 - \Omega_i^2z_i(\omega)|^2}\frac{2\omega(\Omega_i - \Omega_j)}{4\Omega_i\Omega_j}\delta_{ij}\;\mathrm{d}\omega\,\mathrm{d}\nu\\
 &= 0.
@@ -363,8 +350,8 @@ Further,
 \begin{equation}
 \begin{split}
 &\sum_\sigma\int_0^\infty\hat{b}_\sigma(\nu,t)\sum_n\int_0^\infty P_{ni}(\omega)\left[\frac{\omega + \Omega_i}{2\Omega_i}q_{ni}^*(\omega)u_{n\sigma}(\omega,\nu) - s_{ni}(\omega)v_{n\sigma}^*(\omega,\nu)\right]\mathrm{d}\omega\,\mathrm{d}\nu\\
-= &\sum_\sigma\int_0^\infty\hat{b}_\sigma(\nu,t)\sum_n\int_0^\infty \pi^2\lambda_n\frac{4\Omega_i^2\Sigma_i^2(\omega)}{|\omega^2 - \Omega_i^2z_i(\omega)|^2}\left[\frac{\omega + \Omega_i}{2\Omega_i}q_{ni}^*(\omega)\left(PV\left\{\frac{1}{\omega - \tilde{\nu}_\sigma}\right\}\sum_jg_{j\sigma}(\nu)q_{nj}(\omega)\right.\right.\\
-&\qquad\left.\left. + \sum_jg_{j\sigma}(\nu)q_{nj}(\omega)x_{j\sigma}(\omega)\delta(\omega - \tilde{\nu}_\sigma)\right) - \frac{\omega - \Omega_i}{2\Omega_i}q_{ni}(\omega)\frac{1}{\omega + \tilde{\nu}_\sigma}\sum_jg_{j\sigma}(\nu)q_{nj}^*(\omega)\right]\mathrm{d}\omega\,\mathrm{d}\nu.
+= &\sum_\sigma\int_0^\infty\hat{b}_\sigma(\nu,t)\sum_n\int_0^\infty \lambda_n\frac{4\Omega_i^2\Sigma_i^2(\omega)}{|\omega^2 - \Omega_i^2z_i(\omega)|^2}\left[\frac{\omega + \Omega_i}{2\Omega_i}q_{ni}^*(\omega)\left(PV\left\{\frac{1}{\omega - \nu }\right\}\sum_jg_{j\sigma}(\nu)q_{nj}(\omega)\right.\right.\\
+&\qquad\left.\left. + \sum_jg_{j\sigma}(\nu)q_{nj}(\omega)x_{j\sigma}(\omega)\delta(\omega - \nu )\right) - \frac{\omega - \Omega_i}{2\Omega_i}q_{ni}(\omega)\frac{1}{\omega + \nu }\sum_jg_{j\sigma}(\nu)q_{nj}^*(\omega)\right]\mathrm{d}\omega\,\mathrm{d}\nu.
 \end{split}
 \end{equation}
 To align this expression with the form of Eq. \eqref{eq:qu-minus-sv-integral} such that it evaluates to zero, we choose the form of our final unknown quantity,
@@ -373,22 +360,22 @@ x_{i\sigma}(\omega) = \mathrm{i}\pi + \frac{\omega^2 - \Omega_i^2z_i(\omega)}{2\
 \end{equation}
 such that
 \begin{equation}
-u_{n\sigma}(\omega,\nu) = \lim_{\epsilon\to0}\frac{1}{\omega - \tilde{\nu}_\sigma - \mathrm{i}\epsilon}\sum_ig_{i\sigma}(\nu)q_{ni}(\omega) + \sum_ig_{i\sigma}(\nu)q_{ni}(\omega)\frac{\omega^2 - \Omega_i^2z_i(\omega)}{2\Omega_i\Sigma_i^2(\omega)}\delta(\omega - \tilde{\nu}_\sigma)
+u_{n\sigma}(\omega,\nu) = \lim_{\epsilon\to0}\frac{1}{\omega - \nu  - \mathrm{i}\epsilon}\sum_ig_{i\sigma}(\nu)q_{ni}(\omega) + \sum_ig_{i\sigma}(\nu)q_{ni}(\omega)\frac{\omega^2 - \Omega_i^2z_i(\omega)}{2\Omega_i\Sigma_i^2(\omega)}\delta(\omega - \nu )
 \end{equation}
 and
 \begin{equation}
 \begin{split}
-&\sum_\sigma\int_0^\infty\hat{b}_\sigma(\nu,t)\sum_n\int_0^\infty P_{ni}(\omega)\left[\frac{\omega + \Omega_i}{2\Omega_i}q_{ni}^*(\omega)u_{n\sigma}(\omega,\nu) - s_{ni}(\omega)v_{n\sigma}^*(\omega,\nu)\right]\mathrm{d}\omega\,\mathrm{d}\nu\\
-% = &\sum_\sigma\int_0^\infty\hat{b}_\sigma(\nu,t)\sum_n\int_0^\infty \pi^2\lambda_n\frac{4\Omega_i^2\Sigma_i^2(\omega)}{|\omega^2 - \Omega_i^2z_i(\omega)|^2}\left[\frac{\omega + \Omega_i}{2\Omega_i}q_{ni}^*(\omega)\left(PV\left\{\frac{1}{\omega - \tilde{\nu}_\sigma}\right\}\sum_jg_{j\sigma}(\nu)q_{nj}(\omega)\right.\right.\\
-% &\qquad\left.\left. + \sum_jg_{j\sigma}(\nu)q_{nj}(\omega)x_{j\sigma}(\omega)\delta(\omega - \tilde{\nu}_\sigma)\right) - \frac{\omega - \Omega_i}{2\Omega_i}q_{ni}(\omega)\frac{1}{\omega + \tilde{\nu}_\sigma}\sum_jg_{j\sigma}(\nu)q_{nj}^*(\omega)\right]\mathrm{d}\omega\,\mathrm{d}\nu\\
-% = &\sum_\sigma\int_0^\infty\hat{b}_\sigma(\nu,t)\sum_n\left[\int_0^\infty \pi^2\lambda_n\frac{2\Omega_i\Sigma_i^2(\omega)}{|\omega^2 - \Omega_i^2z_i(\omega)|^2}\lim_{\epsilon\to0}\left(\frac{\omega + \Omega_i}{\omega - \tilde{\nu}_\sigma - \mathrm{i}\epsilon} - \frac{\omega - \Omega_i}{\omega + \tilde{\nu}_\sigma}\right)\right.\\
-% &\qquad\times q_{ni}^*(\omega)\sum_jg_{j\sigma}(\nu)q_{nj}(\omega)\;\mathrm{d}\omega + \pi^2\lambda_n\frac{4\Omega_i^2\Sigma_i^2(\tilde{\nu}_\sigma)}{|\tilde{\nu}_\sigma^2 - \Omega_i^2z_i(\tilde{\nu}_\sigma)|^2}\frac{\tilde{\nu}_\sigma + \Omega_i}{2\Omega_i}\\
-% &\left.\qquad\times q_{ni}(\tilde{\nu}_\sigma)\sum_jg_{j\sigma}(\nu)q_{nj}^*(\tilde{\nu}_\sigma)\frac{\tilde{\nu}_\sigma^2 - \Omega_i^2z_i(\tilde{\nu}_\sigma)}{2\Omega_i\Sigma_i^2(\tilde{\nu}_\sigma)}\right]\mathrm{d}\nu\\
-% = &\sum_\sigma\int_0^\infty\hat{b}_\sigma(\nu,t)\left[\int_0^\infty\frac{2\Omega_i\Sigma_i^2(\omega)}{|\omega^2 - \Omega_i^2z_i(\omega)|^2}\lim_{\epsilon\to0}\left(\frac{\omega + \Omega_i}{\omega - \tilde{\nu}_\sigma - \mathrm{i}\epsilon} - \frac{\omega - \Omega_i}{\omega + \tilde{\nu}_\sigma}\right)\sum_jg_{j\sigma}(\nu)\sum_n\pi^2\lambda_nq_{ni}^*(\omega)q_{nj}(\omega)\;\mathrm{d}\omega\right.\\
-% &\qquad\left. + \frac{\tilde{\nu}_\sigma + \Omega_i}{\tilde{\nu}_\sigma^2 - \Omega_i^2z_i^*(\tilde{\nu}_\sigma)}\sum_jg_{j\sigma}(\nu)\sum_n\pi^2\lambda_nq_{ni}(\tilde{\nu}_\sigma)q_{nj}^*(\tilde{\nu}_\sigma)\right]\mathrm{d}\nu\\
-% = &\sum_\sigma\int_0^\infty\hat{b}_\sigma(\nu,t)\left[\int_0^\infty\frac{2\Omega_i\Sigma_i^2(\omega)}{|\omega^2 - \Omega_i^2z_i(\omega)|^2}\lim_{\epsilon\to0}\left(\frac{\omega + \Omega_i}{\omega - \tilde{\nu}_\sigma - \mathrm{i}\epsilon} - \frac{\omega - \Omega_i}{\omega + \tilde{\nu}_\sigma}\right)\sum_jg_{j\sigma}(\nu)\delta_{ij}\;\mathrm{d}\omega\right.\\
-% &\qquad\left. + \frac{\tilde{\nu}_\sigma + \Omega_i}{\tilde{\nu}_\sigma^2 - \Omega_i^2z_i^*(\tilde{\nu}_\sigma)}\sum_jg_{j\sigma}(\nu)\delta_{ij}\right]\mathrm{d}\nu\\
-= &\sum_\sigma\int_0^\infty\hat{b}_\sigma(\nu,t)\left[\int_0^\infty\frac{2\Omega_i\Sigma_i^2(\omega)g_{i\sigma}(\nu)}{|\omega^2 - \Omega_i^2z_i(\omega)|^2}\lim_{\epsilon\to0}\left(\frac{\omega + \Omega_i}{\omega - \tilde{\nu}_\sigma - \mathrm{i}\epsilon} - \frac{\omega - \Omega_i}{\omega + \tilde{\nu}_\sigma}\right)\mathrm{d}\omega + \frac{(\tilde{\nu}_\sigma + \Omega_i)g_{i\sigma}(\nu)}{\tilde{\nu}_\sigma^2 - \Omega_i^2z_i^*(\tilde{\nu}_\sigma)}\right]\mathrm{d}\nu\\
+% &\sum_\sigma\int_0^\infty\hat{b}_\sigma(\nu,t)\sum_n\int_0^\infty P_{ni}(\omega)\left[\frac{\omega + \Omega_i}{2\Omega_i}q_{ni}^*(\omega)u_{n\sigma}(\omega,\nu) - s_{ni}(\omega)v_{n\sigma}^*(\omega,\nu)\right]\mathrm{d}\omega\,\mathrm{d}\nu\\
+% = &\sum_\sigma\int_0^\infty\hat{b}_\sigma(\nu,t)\sum_n\int_0^\infty \lambda_n\frac{4\Omega_i^2\Sigma_i^2(\omega)}{|\omega^2 - \Omega_i^2z_i(\omega)|^2}\left[\frac{\omega + \Omega_i}{2\Omega_i}q_{ni}^*(\omega)\left(PV\left\{\frac{1}{\omega - \nu }\right\}\sum_jg_{j\sigma}(\nu)q_{nj}(\omega)\right.\right.\\
+% &\qquad\left.\left. + \sum_jg_{j\sigma}(\nu)q_{nj}(\omega)x_{j\sigma}(\omega)\delta(\omega - \nu )\right) - \frac{\omega - \Omega_i}{2\Omega_i}q_{ni}(\omega)\frac{1}{\omega + \nu }\sum_jg_{j\sigma}(\nu)q_{nj}^*(\omega)\right]\mathrm{d}\omega\,\mathrm{d}\nu\\
+% = &\sum_\sigma\int_0^\infty\hat{b}_\sigma(\nu,t)\sum_n\left[\int_0^\infty \lambda_n\frac{2\Omega_i\Sigma_i^2(\omega)}{|\omega^2 - \Omega_i^2z_i(\omega)|^2}\lim_{\epsilon\to0}\left(\frac{\omega + \Omega_i}{\omega - \nu  - \mathrm{i}\epsilon} - \frac{\omega - \Omega_i}{\omega + \nu }\right)\right.\\
+% &\qquad\times q_{ni}^*(\omega)\sum_jg_{j\sigma}(\nu)q_{nj}(\omega)\;\mathrm{d}\omega + \lambda_n\frac{4\Omega_i^2\Sigma_i^2(\nu )}{|\nu ^2 - \Omega_i^2z_i(\nu )|^2}\frac{\nu  + \Omega_i}{2\Omega_i}\\
+% &\left.\qquad\times q_{ni}(\nu )\sum_jg_{j\sigma}(\nu)q_{nj}^*(\nu )\frac{\nu ^2 - \Omega_i^2z_i(\nu )}{2\Omega_i\Sigma_i^2(\nu )}\right]\mathrm{d}\nu\\
+% = &\sum_\sigma\int_0^\infty\hat{b}_\sigma(\nu,t)\left[\int_0^\infty\frac{2\Omega_i\Sigma_i^2(\omega)}{|\omega^2 - \Omega_i^2z_i(\omega)|^2}\lim_{\epsilon\to0}\left(\frac{\omega + \Omega_i}{\omega - \nu  - \mathrm{i}\epsilon} - \frac{\omega - \Omega_i}{\omega + \nu }\right)\sum_jg_{j\sigma}(\nu)\sum_n\lambda_nq_{ni}^*(\omega)q_{nj}(\omega)\;\mathrm{d}\omega\right.\\
+% &\qquad\left. + \frac{\nu  + \Omega_i}{\nu ^2 - \Omega_i^2z_i^*(\nu )}\sum_jg_{j\sigma}(\nu)\sum_n\lambda_nq_{ni}(\nu )q_{nj}^*(\nu )\right]\mathrm{d}\nu\\
+% = &\sum_\sigma\int_0^\infty\hat{b}_\sigma(\nu,t)\left[\int_0^\infty\frac{2\Omega_i\Sigma_i^2(\omega)}{|\omega^2 - \Omega_i^2z_i(\omega)|^2}\lim_{\epsilon\to0}\left(\frac{\omega + \Omega_i}{\omega - \nu  - \mathrm{i}\epsilon} - \frac{\omega - \Omega_i}{\omega + \nu }\right)\sum_jg_{j\sigma}(\nu)\delta_{ij}\;\mathrm{d}\omega\right.\\
+% &\qquad\left. + \frac{\nu  + \Omega_i}{\nu ^2 - \Omega_i^2z_i^*(\nu )}\sum_jg_{j\sigma}(\nu)\delta_{ij}\right]\mathrm{d}\nu\\
+= &\sum_\sigma\int_0^\infty\hat{b}_\sigma(\nu,t)\left[\int_0^\infty\frac{2\Omega_i\Sigma_i^2(\omega)g_{i\sigma}(\nu)}{|\omega^2 - \Omega_i^2z_i(\omega)|^2}\lim_{\epsilon\to0}\left(\frac{\omega + \Omega_i}{\omega - \nu  - \mathrm{i}\epsilon} - \frac{\omega - \Omega_i}{\omega + \nu }\right)\mathrm{d}\omega + \frac{(\nu  + \Omega_i)g_{i\sigma}(\nu)}{\nu ^2 - \Omega_i^2z_i^*(\nu )}\right]\mathrm{d}\nu\\
 = &\;0.
 \end{split}
 \end{equation}
@@ -398,7 +385,7 @@ The final equality to zero is inferred from the form of the expression in bracke
 \end{equation}
 but we will not show it explicitly here. Therefore, we have confirmed that
 \begin{equation}
-\hat{a}_i(t) = \sum_n\int_0^\infty \pi^2\lambda_n\frac{4\Omega_i^2\Sigma_i^2(\omega)}{|\omega^2 - \Omega_i^2z_i(\omega)|^2}\left[\frac{\omega + \Omega_i}{2\Omega_i}q_{ni}^*(\omega)\hat{C}_n(\omega,t) - s_{ni}(\omega)\hat{C}_n^\dagger(\omega,t)\right]\mathrm{d}\omega.
+\hat{a}_i(t) = \sum_n\int_0^\infty \lambda_n\frac{4\Omega_i^2\Sigma_i^2(\omega)}{|\omega^2 - \Omega_i^2z_i(\omega)|^2}\left[\frac{\omega + \Omega_i}{2\Omega_i}q_{ni}^*(\omega)\hat{C}_n(\omega,t) - s_{ni}(\omega)\hat{C}_n^\dagger(\omega,t)\right]\mathrm{d}\omega.
 \end{equation}
 Note that an explicit form for $\Sigma_i^2(\omega)$ has not been determined, such that the above definition for $\hat{a}_i(t)$ is not unique. We can then regard $\Sigma_i(\omega)$ and $z_i(\omega)$ as ``dummy'' functions, with explicit values free to be chosen as is convenient for anyone implementing the model except where they are subject to the constraints listed above.
 
@@ -409,8 +396,8 @@ A trial solution for the bath operators is then
 The primed expansion coefficient
 \begin{equation}
 \begin{split}
-u_{n\sigma}'(\omega,\nu) &= PV\left\{\frac{1}{\omega - \tilde{\nu}_\sigma}\right\}\sum_ig_{i\sigma}(\nu)q_{ni}(\omega) + \sum_ig_{i\sigma}(\nu)q_{ni}(\omega)[\mathrm{i}\pi + y_{i\sigma}(\omega)]\delta(\omega - \tilde{\nu}_\sigma)\\
-&= \lim_{\epsilon\to0}\frac{1}{\omega - \tilde{\nu}_\sigma - \mathrm{i}\epsilon}\sum_ig_{i\sigma}(\nu)q_{ni}(\omega) + \sum_ig_{i\sigma}(\nu)q_{ni}(\omega)y_{i\sigma}(\omega)\delta(\omega - \tilde{\nu}_\sigma)
+u_{n\sigma}'(\omega,\nu) &= PV\left\{\frac{1}{\omega - \nu }\right\}\sum_ig_{i\sigma}(\nu)q_{ni}(\omega) + \sum_ig_{i\sigma}(\nu)q_{ni}(\omega)[\mathrm{i}\pi + y_{i\sigma}(\omega)]\delta(\omega - \nu )\\
+&= \lim_{\epsilon\to0}\frac{1}{\omega - \nu  - \mathrm{i}\epsilon}\sum_ig_{i\sigma}(\nu)q_{ni}(\omega) + \sum_ig_{i\sigma}(\nu)q_{ni}(\omega)y_{i\sigma}(\omega)\delta(\omega - \nu )
 \end{split}
 \end{equation}
 is defined such that its Dirac-delta term, which can have any complex coefficient and still allow $u_{n\sigma}'(\omega,\nu)$ to satisfy Eq. \eqref{eq:hybridizationCoefficientsSystemManyModes}, has a prefactor $y_{i\sigma}(\omega) + \mathrm{i}\pi$ that may or may not be equal to $x_{i\sigma}(\omega)$. The primed polariton operators are similarly defined such that $\hat{C}_n'(\omega,t) = \hat{C}_n(\omega,t)|_{u_{n\sigma}\to u'_{n\sigma}}$. Expanding, we find
@@ -430,7 +417,7 @@ is defined such that its Dirac-delta term, which can have any complex coefficien
 With
 \begin{equation}
 \begin{split}
-K_{n\sigma}(\omega) &= \pi^2\lambda_n\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2},\\
+K_{n\sigma}(\omega) &= \lambda_n\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2},\\
 z_\sigma(\omega) &= 1 + \lim_{\epsilon\to0}\frac{2}{\Omega}\int_{-\infty}^\infty\frac{\Sigma_\sigma^2(\nu)}{\omega - \nu - \mathrm{i}\epsilon}\;\mathrm{d}\nu,
 \end{split}
 \end{equation}
@@ -438,62 +425,63 @@ in which $\Omega$ and $\Sigma_\sigma(\omega)$ are left to be constrained by down
 \begin{equation}
 \begin{split}
 &\sum_n\int_0^\infty K_{n\sigma}(\omega)\left[u_{n\sigma}^{\prime*}(\omega,\nu)u'_{n\sigma'}(\omega,\nu') - v_{n\sigma}(\omega,\nu)v_{n\sigma'}^*(\omega,\nu')\right]\mathrm{d}\omega\\
-% = &\sum_n\int_0^\infty\pi^2\lambda_n\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2}\left[\left(\frac{1}{\omega - \tilde{\nu}_\sigma + \mathrm{i}\epsilon}\sum_ig_{i\sigma}(\nu)q_{ni}(\omega) + \sum_ig_{i\sigma}(\nu)q_{ni}(\omega)y_{i\sigma}^*(\omega)\delta(\omega - \tilde{\nu}_\sigma)\right)\right.\\
-% &\qquad \times \left(\frac{1}{\omega - \tilde{\nu}'_{\sigma'} - \mathrm{i}\epsilon}\sum_jg_{j\sigma'}(\nu')q_{nj}(\omega) + \sum_jg_{j\sigma'}(\nu')q_{nj}(\omega)y_{j\sigma'}(\omega)\delta(\omega - \tilde{\nu}'_{\sigma'})\right)\\
-% &\left.\qquad - \frac{1}{\omega + \tilde{\nu}_\sigma}\frac{1}{\omega + \tilde{\nu}'_{\sigma'}}\sum_ig_{i\sigma}(\nu)q_{ni}(\omega)\sum_jg_{j\sigma'}(\nu')q_{nj}(\omega)\right]\mathrm{d}\omega\\
-% &= \sum_n\pi^2\lambda_n\left[\int_0^\infty\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2}\left(\frac{1}{\omega - \tilde{\nu}_\sigma + \mathrm{i}\epsilon}\frac{1}{\omega - \tilde{\nu}'_{\sigma'} - \mathrm{i}\epsilon} - \frac{1}{\omega + \tilde{\nu}_\sigma}\frac{1}{\omega + \tilde{\nu}'_{\sigma'}}\right)\right.\\
+% = &\sum_n\int_0^\infty\lambda_n\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2}\left[\left(\frac{1}{\omega - \nu  + \mathrm{i}\epsilon}\sum_ig_{i\sigma}(\nu)q_{ni}(\omega) + \sum_ig_{i\sigma}(\nu)q_{ni}(\omega)y_{i\sigma}^*(\omega)\delta(\omega - \nu )\right)\right.\\
+% &\qquad \times \left(\frac{1}{\omega - \nu' - \mathrm{i}\epsilon}\sum_jg_{j\sigma'}(\nu')q_{nj}(\omega) + \sum_jg_{j\sigma'}(\nu')q_{nj}(\omega)y_{j\sigma'}(\omega)\delta(\omega - \nu')\right)\\
+% &\left.\qquad - \frac{1}{\omega + \nu }\frac{1}{\omega + \nu'}\sum_ig_{i\sigma}(\nu)q_{ni}(\omega)\sum_jg_{j\sigma'}(\nu')q_{nj}(\omega)\right]\mathrm{d}\omega\\
+% &= \sum_n\lambda_n\left[\int_0^\infty\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2}\left(\frac{1}{\omega - \nu  + \mathrm{i}\epsilon}\frac{1}{\omega - \nu' - \mathrm{i}\epsilon} - \frac{1}{\omega + \nu }\frac{1}{\omega + \nu'}\right)\right.\\
 % &\qquad\times\sum_{ij}g_{i\sigma}(\nu)g_{j\sigma'}(\nu')q_{ni}(\omega)q_{nj}(\omega)\;\mathrm{d}\omega\\
-% &\qquad + \frac{4\Omega^2\Sigma_\sigma^2(\tilde{\nu}'_{\sigma'})}{|\tilde{\nu}_{\sigma'}^{\prime2} - \Omega^2z_\sigma(\tilde{\nu}'_{\sigma'})|^2}\frac{1}{\tilde{\nu}'_{\sigma'} - \tilde{\nu}_\sigma + \mathrm{i}\epsilon}\sum_{ij}y_{j\sigma'}(\tilde{\nu}'_{\sigma'})g_{i\sigma}(\nu)g_{j\sigma'}(\nu')q_{ni}(\tilde{\nu}'_{\sigma'})q_{nj}(\tilde{\nu}'_{\sigma'})\\
-% &\qquad + \frac{4\Omega^2\Sigma_\sigma^2(\tilde{\nu}_\sigma)}{|\tilde{\nu}_\sigma^2 - \Omega^2z_\sigma(\tilde{\nu}_\sigma)|^2}\frac{1}{\tilde{\nu}_\sigma - \tilde{\nu}'_{\sigma'} - \mathrm{i}\epsilon}\sum_{ij}y_{i\sigma}^*(\tilde{\nu}_\sigma)g_{i\sigma}(\nu)g_{j\sigma'}(\nu')q_{ni}(\tilde{\nu}_{\sigma})q_{nj}(\tilde{\nu}_\sigma)\\
-% &\qquad\left. + \frac{4\Omega^2\Sigma_\sigma^2(\tilde{\nu}_\sigma)}{|\nu_\sigma^2 - \Omega^2z_\sigma(\tilde{\nu}_\sigma)|^2}\sum_{ij}y^*_{i\sigma}(\tilde{\nu}_\sigma)y_{j\sigma'}(\tilde{\nu}_\sigma)g_{i\sigma}(\nu)g_{j\sigma'}(\nu')q_{ni}(\tilde{\nu}_\sigma)q_{nj}(\tilde{\nu}_\sigma)\delta(\tilde{\nu}_\sigma - \tilde{\nu}'_{\sigma'}) \vphantom{\int_0^\infty} \right]\\
-= &\sum_ig_{i\sigma}(\nu)g_{j\sigma'}(\nu')\int_0^\infty\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2}\left(\frac{1}{\omega - \tilde{\nu}_\sigma + \mathrm{i}\epsilon}\frac{1}{\omega - \tilde{\nu}'_{\sigma'} - \mathrm{i}\epsilon} - \frac{1}{\omega + \tilde{\nu}_\sigma}\frac{1}{\omega + \tilde{\nu}'_{\sigma'}}\right)\mathrm{d}\omega\\
-&\qquad + \frac{4\Omega^2\Sigma_\sigma^2(\tilde{\nu}'_{\sigma'})}{|\tilde{\nu}_{\sigma'}^{\prime2} - \Omega^2z_\sigma(\tilde{\nu}'_{\sigma'})|^2}\frac{1}{\tilde{\nu}'_{\sigma'} - \tilde{\nu}_\sigma + \mathrm{i}\epsilon}\sum_{i}y_{i\sigma'}(\tilde{\nu}'_{\sigma'})g_{i\sigma}(\nu)g_{i\sigma'}(\nu')\\
-&\qquad + \frac{4\Omega^2\Sigma_\sigma^2(\tilde{\nu}_\sigma)}{|\tilde{\nu}_\sigma^2 - \Omega^2z_\sigma(\tilde{\nu}_\sigma)|^2}\frac{1}{\tilde{\nu}_\sigma - \tilde{\nu}'_{\sigma'} - \mathrm{i}\epsilon}\sum_{i}y_{i\sigma}^*(\tilde{\nu}_\sigma)g_{i\sigma}(\nu)g_{i\sigma'}(\nu')\\
-&\qquad + \frac{4\Omega^2\Sigma_\sigma^2(\tilde{\nu}_\sigma)}{|\nu_\sigma^2 - \Omega^2z_\sigma(\tilde{\nu}_\sigma)|^2}\sum_{i}y^*_{i\sigma}(\tilde{\nu}_\sigma)y_{i\sigma'}(\tilde{\nu}'_\sigma)g_{i\sigma}(\nu)g_{i\sigma'}(\nu')\delta(\tilde{\nu}_\sigma - \tilde{\nu}'_{\sigma'}).
+% &\qquad + \frac{4\Omega^2\Sigma_\sigma^2(\nu')}{|\nu^{\prime2} - \Omega^2z_\sigma(\nu')|^2}\frac{1}{\nu' - \nu  + \mathrm{i}\epsilon}\sum_{ij}y_{j\sigma'}(\nu')g_{i\sigma}(\nu)g_{j\sigma'}(\nu')q_{ni}(\nu')q_{nj}(\nu')\\
+% &\qquad + \frac{4\Omega^2\Sigma_\sigma^2(\nu )}{|\nu ^2 - \Omega^2z_\sigma(\nu )|^2}\frac{1}{\nu  - \nu' - \mathrm{i}\epsilon}\sum_{ij}y_{i\sigma}^*(\nu )g_{i\sigma}(\nu)g_{j\sigma'}(\nu')q_{ni}(\tilde{\nu}_{\sigma})q_{nj}(\nu )\\
+% &\qquad\left. + \frac{4\Omega^2\Sigma_\sigma^2(\nu )}{|\nu_\sigma^2 - \Omega^2z_\sigma(\nu )|^2}\sum_{ij}y^*_{i\sigma}(\nu )y_{j\sigma'}(\nu )g_{i\sigma}(\nu)g_{j\sigma'}(\nu')q_{ni}(\nu )q_{nj}(\nu )\delta(\nu  - \nu') \vphantom{\int_0^\infty} \right]\\
+= &\sum_ig_{i\sigma}(\nu)g_{j\sigma'}(\nu')\int_0^\infty\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2}\left(\frac{1}{\omega - \nu  + \mathrm{i}\epsilon}\frac{1}{\omega - \nu' - \mathrm{i}\epsilon} - \frac{1}{\omega + \nu }\frac{1}{\omega + \nu'}\right)\mathrm{d}\omega\\
+&\qquad + \frac{4\Omega^2\Sigma_\sigma^2(\nu')}{|\nu^{\prime2} - \Omega^2z_\sigma(\nu')|^2}\frac{1}{\nu' - \nu  + \mathrm{i}\epsilon}\sum_{i}y_{i\sigma'}(\nu')g_{i\sigma}(\nu)g_{i\sigma'}(\nu')\\
+&\qquad + \frac{4\Omega^2\Sigma_\sigma^2(\nu )}{|\nu ^2 - \Omega^2z_\sigma(\nu )|^2}\frac{1}{\nu  - \nu' - \mathrm{i}\epsilon}\sum_{i}y_{i\sigma}^*(\nu )g_{i\sigma}(\nu)g_{i\sigma'}(\nu')\\
+&\qquad + \frac{4\Omega^2\Sigma_\sigma^2(\nu )}{|\nu_\sigma^2 - \Omega^2z_\sigma(\nu )|^2}\sum_{i}y^*_{i\sigma}(\nu )y_{i\sigma'}(\tilde{\nu}'_\sigma)g_{i\sigma}(\nu)g_{i\sigma'}(\nu')\delta(\nu  - \nu').
 \end{split}
 \end{equation}
-From here, we will assume that our coupled system has been constructed such that
+
+At this point, it is useful to note that $y_{i\sigma}(\omega)$ can be an operator instead of a function. To see why this is, one can analyze a simplified version of the definition of $u_{n\sigma}(\omega,\nu)$ (Eq. [\ref{eq:uvDefinition}]). Specifically, if $f(x)$ is a real function of a real variable $x$, then the solution of $xf(x) = 1$ is $f(x) = PV\{1/x\} + C\delta(x)$, where $C$ can be any constant in the complex plane. We can generalize this problem by noting that the solution of
 \begin{equation}
-g_{i\sigma}(\nu) = \tilde{g}_\sigma(\nu)w_{i\sigma},
+xf(x) = g(y,z,\ldots)
 \end{equation}
-where $w_{i\sigma}$ is an element of a unitary $N\times N$ matrix of eigenvectors. Therefore,
+is given by
+\begin{equation}
+f(x) = PV\left\{\frac{1}{x}\right\}g(y,z,\ldots) + \mathcal{C}\{g(y,z,\ldots)\}\delta(x)
+\end{equation}
+for nonzero $g(y,z,\ldots)$. Here, $\mathcal{C}$ is an operator on $g(y,z,\ldots)$. The solution exists for any $\mathcal{C}$ that transforms $g(y,z,\ldots)$ to a finite value, as is easily confirmed by multiplying by $x$ and using the identities $x\,PV\{1/x\} = 1$ and $x\delta(x) = 0$. Using this logic, we will define
+\begin{equation}
+y_{i\sigma}(\omega) = \frac{\omega^2 - \Omega^2z_\sigma(\omega)}{2\Omega\Sigma_\sigma^2(\omega)}\mathcal{U}_{i\sigma}(\omega),
+\end{equation}
+where $\mathcal{U}_{i\sigma}(\omega)$ are operators defined by
 \begin{equation}
 \begin{split}
-\sum_iw_{i\sigma}w_{i\rho} &= \delta_{\sigma\rho},\\
-\sum_\sigma w_{i\sigma}w_{j\sigma} &= \delta_{ij}.
+\mathcal{U}_{i\sigma}(\omega)f(x,y,z,\ldots) &= \mathcal{U}_{i\sigma}\left\{f(x,y,z,\ldots)\right\}(\omega)\\
+&= 
+\begin{cases}
+f(x,y,z\ldots), & f(x,y,z,\ldots) \neq f(\omega),\\
+\frac{w_{i\sigma}}{g_{i\sigma}(\omega)}\Sigma_\sigma(\omega)f(\omega), & f(x,y,z\ldots) = f(\omega). 
+\end{cases}
 \end{split}
 \end{equation}
-We will then let
-\begin{equation}
-y_{i\sigma}(\omega) = \frac{\omega^2 - \Omega^2z_\sigma(\omega)}{2\Omega\Sigma_\sigma^2(\omega)}
-\end{equation}
-such that, after substitution,
+In other words, $\mathcal{U}_{i\sigma}(\omega)$ is an operator that acts on any function it is multiplied by and either a) reproduces the function unaltered if the the function is multivariate or does not depend on the operator argument $\omega$, or b) produces a rescaled version of the function if the function is a univariate function of $\omega$. Finally, $w_{i\sigma}$ is an element of the vector $\mathbf{w}_\sigma$ defined such that $\mathbf{w}_\sigma\cdot\mathbf{w}_{\sigma'} = \delta_{\sigma\sigma'}$. The simplest convention for these vectors is to define them as orthonormal basis vectors $\mathbf{w}_\sigma = \sum_i\delta_{i\sigma}\hat{\mathbf{e}}_i$, which also makes clear that, for $N>M$, $\mathcal{U}_{i\sigma}(\omega)f(\omega) = 0$ for some values of $\sigma$.
+
+Substitution into the above expression provides
 \begin{equation}
 \begin{split}
 &\sum_n\int_0^\infty K_{n\sigma}(\omega)\left[u_{n\sigma}^{\prime*}(\omega,\nu)u'_{n\sigma'}(\omega,\nu') - v_{n\sigma}(\omega,\nu)v_{n\sigma'}^*(\omega,\nu')\right]\mathrm{d}\omega\\
-= &\sum_ig_{i\sigma}(\nu)g_{j\sigma'}(\nu')\int_0^\infty\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2}\left(\frac{1}{\omega - \tilde{\nu}_\sigma + \mathrm{i}\epsilon}\frac{1}{\omega - \tilde{\nu}'_{\sigma'} - \mathrm{i}\epsilon} - \frac{1}{\omega + \tilde{\nu}_\sigma}\frac{1}{\omega + \tilde{\nu}'_{\sigma'}}\right)\mathrm{d}\omega\\
-&\qquad + \sum_i\frac{2\Omega g_{i\sigma}(\nu)g_{i\sigma'}(\nu')}{\tilde{\nu}_\sigma^2 - \Omega^2z^*(\tilde{\nu}_\sigma)}\frac{1}{\tilde{\nu}_\sigma - \tilde{\nu}'_{\sigma'} - \mathrm{i}\epsilon} + \sum_i\frac{2\Omega g_{i\sigma}(\nu)g_{i\sigma'}(\nu')}{\tilde{\nu}^{\prime2}_{\sigma'} - \Omega^2z_\sigma(\tilde{\nu}'_{\sigma'})}\frac{1}{\tilde{\nu}'_{\sigma'} - \tilde{\nu}_\sigma + \mathrm{i}\epsilon}\\
-&\qquad + \frac{1}{\Sigma_\sigma^2(\tilde{\nu}_\sigma)}\sum_ig_{i\sigma}(\nu)g_{i\sigma'}(\nu')\delta(\tilde{\nu}_\sigma - \tilde{\nu}'_{\sigma'})\\
-= &\; \tilde{g}_{\sigma}(\nu)\tilde{g}_{\sigma}(\nu')\delta_{\sigma\sigma'}\left(\int_0^\infty\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2}\left[\frac{1}{\omega - \tilde{\nu}_\sigma + \mathrm{i}\epsilon}\frac{1}{\omega - \tilde{\nu}_{\sigma}' - \mathrm{i}\epsilon} - \frac{1}{\omega + \tilde{\nu}_\sigma}\frac{1}{\omega + \tilde{\nu}_\sigma'}\right]\mathrm{d}\omega\right.\\
-&\qquad\left. + \frac{2\Omega}{\tilde{\nu}_\sigma^2 - \Omega^2z^*(\tilde{\nu}_\sigma)}\frac{1}{\tilde{\nu}_\sigma - \tilde{\nu}_\sigma' - \mathrm{i}\epsilon} + \frac{2\Omega}{\tilde{\nu}_\sigma^{\prime2} - \Omega^2z_\sigma(\tilde{\nu}_\sigma')}\frac{1}{\tilde{\nu}_\sigma' - \tilde{\nu}_\sigma + \mathrm{i}\epsilon} \vphantom{\int_0^\infty}\right) + \frac{\tilde{g}_{\sigma}(\nu)\tilde{g}_{\sigma}(\nu')}{\Sigma_\sigma^2(\tilde{\nu}_\sigma)}\delta_{\sigma\sigma'}\delta(\tilde{\nu}_\sigma - \tilde{\nu}'_{\sigma'})\\
-= &\; 0 + \frac{\tilde{g}_{\sigma}(\nu)\tilde{g}_{\sigma}(\nu')\tilde{\nu}_\sigma}{\nu\Sigma_\sigma^2(\nu)}\delta_{\sigma\sigma'}\left[\delta(\nu' + \nu) + \delta(\nu' - \nu)\right]\\
-= &\; \frac{\tilde{g}_{\sigma}^2(\nu)\tilde{\nu}_\sigma}{\nu\Sigma_\sigma^2(\nu)}\delta_{\sigma\sigma'}\delta(\nu - \nu'),
+= &\sum_ig_{i\sigma}(\nu)g_{j\sigma'}(\nu')\int_0^\infty\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2}\left(\frac{1}{\omega - \nu  + \mathrm{i}\epsilon}\frac{1}{\omega - \nu' - \mathrm{i}\epsilon} - \frac{1}{\omega + \nu }\frac{1}{\omega + \nu'}\right)\mathrm{d}\omega\\
+&\qquad + \sum_i\frac{2\Omega g_{i\sigma}(\nu)g_{i\sigma'}(\nu')}{\nu ^2 - \Omega^2z^*(\nu )}\frac{1}{\nu  - \nu' - \mathrm{i}\epsilon} + \sum_i\frac{2\Omega g_{i\sigma}(\nu)g_{i\sigma'}(\nu')}{\tilde{\nu}^{\prime2}_{\sigma'} - \Omega^2z_\sigma(\nu')}\frac{1}{\nu' - \nu  + \mathrm{i}\epsilon}\\
+&\qquad + \frac{1}{\Sigma_\sigma^2(\nu )}\sum_i\frac{w_{i\sigma}}{g_{i\sigma}(\nu)}\Sigma_\sigma(\nu )\frac{w_{i\sigma'}}{g_{i\sigma'}(\nu')}\Sigma_\sigma(\nu')g_{i\sigma}(\nu)g_{i\sigma'}(\nu')\delta(\nu  - \nu')\\
+&= 0 + \frac{\Sigma_\sigma(\nu')}{\Sigma_\sigma(\nu )}\sum_iw_{i\sigma}w_{i\sigma'}\delta(\nu  - \nu')
 \end{split}
 \end{equation}
-wherein we have let
+where we have recognized that the last term on the right-hand side is either a function of a single variable ($\nu$ or $\nu'$, equivalently) or zero, as enforced by the Dirac delta. The terms on the right-hand side not proportional to a Dirac delta sum to zero via the process shown in Eq. \eqref{eq:uu-minus-vv-integral} such that
 \begin{equation}
 \begin{split}
-&\int_0^\infty\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2}\left(\frac{1}{\omega - \tilde{\nu}_\sigma + \mathrm{i}\epsilon}\frac{1}{\omega - \tilde{\nu}_{\sigma}' - \mathrm{i}\epsilon} - \frac{1}{\omega + \tilde{\nu}_\sigma}\frac{1}{\omega + \tilde{\nu}_\sigma'}\right)\mathrm{d}\omega\\
-&\qquad + \frac{2\Omega}{\tilde{\nu}_\sigma^2 - \Omega^2z^*(\tilde{\nu}_\sigma)}\frac{1}{\tilde{\nu}_\sigma - \tilde{\nu}_\sigma' - \mathrm{i}\epsilon} + \frac{2\Omega}{\tilde{\nu}_\sigma^{\prime2} - \Omega^2z_\sigma(\tilde{\nu}_\sigma')}\frac{1}{\tilde{\nu}_\sigma' - \tilde{\nu}_\sigma + \mathrm{i}\epsilon} = 0
+&\sum_n\int_0^\infty K_{n\sigma}(\omega)\left[u_{n\sigma}^{\prime*}(\omega,\nu)u'_{n\sigma'}(\omega,\nu') - v_{n\sigma}(\omega,\nu)v_{n\sigma'}^*(\omega,\nu')\right]\mathrm{d}\omega\\
+= &\;\frac{\Sigma_\sigma(\nu')}{\Sigma_\sigma(\nu )}\delta_{\sigma\sigma'}\delta(\nu  - \nu')\\
+= &\; \delta_{\sigma\sigma'}\delta(\nu - \nu')
 \end{split}
-\end{equation}
-via the process shown in Eq. \eqref{eq:uu-minus-vv-integral}. Therefore, we can let 
-\begin{equation}
-\Sigma_\sigma(\nu) = \tilde{g}_\sigma(\nu)\sqrt{\frac{\tilde{\nu}_\sigma}{\nu}}
-\end{equation}
-such that
-\begin{equation}
-\sum_n\int_0^\infty K_{n\sigma}(\omega)\left[u_{n\sigma}^{\prime*}(\omega,\nu)u'_{n\sigma'}(\omega,\nu') - v_{n\sigma}(\omega,\nu)v_{n\sigma'}^*(\omega,\nu')\right]\mathrm{d}\omega = \delta_{\sigma\sigma'}\delta(\nu - \nu')
 \end{equation}
 and
 \begin{equation}
@@ -503,19 +491,20 @@ and
 &= \hat{b}_\sigma(\nu,t).
 \end{split}
 \end{equation}
+
 Next, we can look at the integral
 \begin{equation}
 \begin{split}
 &\sum_n\int_0^\infty K_{n\sigma}(\omega)\left[u^{\prime*}_{n\sigma}(\omega,\nu)v_{n\sigma'}(\omega,\nu') - v_{n\sigma}(\omega,\nu)u^{\prime*}_{n\sigma'}(\omega,\nu')\right]\mathrm{d}\omega\\
-% = &\sum_n\int_0^\infty\pi^2\lambda_n\frac{4\Omega^2\Sigma^2(\omega)}{|\omega^2 - \Omega^2z(\omega)|^2}\left[\left(\frac{1}{\omega - \tilde{\nu}_\sigma + \mathrm{i}\epsilon}\sum_ig_{i\sigma}(\nu)q_{ni}^*(\omega) + \sum_ig_{i\sigma}(\nu)q_{ni}^*(\omega)\frac{\omega^2 - \Omega^2 z^*(\omega)}{2\Omega\Sigma^2(\omega)}\delta(\omega - \tilde{\nu}_\sigma)\right)\right.\\
-% &\qquad\times \frac{1}{\omega + \tilde{\nu}'_{\sigma'}}\sum_jg_{j\sigma'}(\nu')q_{nj}(\omega) - \frac{1}{\omega + \tilde{\nu}_\sigma}\sum_ig_{i\sigma}(\nu)q_{ni}(\omega)\left(\frac{1}{\omega - \tilde{\nu}'_{\sigma'} - \mathrm{i}\epsilon}\sum_jg_{j\sigma'}(\nu')q_{nj}^*(\omega)\right.\\
-% &\qquad\left.\left. + \sum_jg_{j\sigma'}(\nu')q_{nj}^*(\omega)\frac{\omega^2 - \Omega^2z(\omega)}{2\Omega\Sigma^2(\omega)}\delta(\omega - \tilde{\nu}'_{\sigma'})\right)\right]\mathrm{d}\omega\\
-% = &\sum_n\int_0^\infty\pi^2\lambda_n\frac{4\Omega^2\Sigma^2(\omega)}{|\omega^2 - \Omega^2z(\omega)|^2}\left(\frac{1}{\omega - \tilde{\nu}_\sigma + \mathrm{i}\epsilon}\frac{1}{\omega + \tilde{\nu}'_{\sigma'}}\sum_{ij}g_{i\sigma}(\nu)g_{j\sigma'}(\nu')q_{ni}^*(\omega)q_{nj}(\omega)\right.\\
-% &\qquad\left. - \frac{1}{\omega - \tilde{\nu}'_{\sigma'} - \mathrm{i}\epsilon}\frac{1}{\omega + \tilde{\nu}_\sigma}\sum_{ij}g_{i\sigma}(\nu)g_{j\sigma'}(\nu')q_{ni}(\omega)q_{nj}^*(\omega)\right)\mathrm{d}\omega\\
-% &\qquad + \sum_n\pi^2\lambda_n\frac{4\Omega^2\Sigma^2(\tilde{\nu}_\sigma)}{|\tilde{\nu}_\sigma^2 - \Omega^2z(\tilde{\nu}_\sigma)|^2}\frac{\tilde{\nu}_\sigma^2 - \Omega^2z^*(\tilde{\nu}_\sigma)}{2\Omega\Sigma^2(\tilde{\nu}_\sigma)}\frac{1}{\tilde{\nu}_\sigma + \tilde{\nu}'_\sigma}\sum_{ij}g_{i\sigma}(\nu)g_{j\sigma'}(\nu')q_{ni}^*(\tilde{\nu}_\sigma)q_{nj}(\tilde{\nu}_\sigma)\\
-% &\qquad - \sum_n\pi^2\lambda_n\frac{4\Omega^2\Sigma^2(\tilde{\nu}'_{\sigma'})}{|\tilde{\nu}^{\prime2}_{\sigma'} - \Omega^2z(\tilde{\nu}'_{\sigma'})|^2}\frac{\tilde{\nu}_{\sigma'}^{\prime2} - \Omega^2z(\tilde{\nu}'_{\sigma'})}{2\Omega\Sigma^2(\tilde{\nu}'_{\sigma'})}\frac{1}{\tilde{\nu}'_{\sigma'} + \tilde{\nu}_\sigma}\sum_{ij}g_{i\sigma}(\nu)g_{j\sigma'}(\nu')q_{ni}(\tilde{\nu}'_{\sigma'})q_{nj}^*(\tilde{\nu}'_{\sigma'})\\
-= &\int_0^\infty\sum_ig_{i\sigma}(\nu)g_{i\sigma'}(\nu')\frac{4\Omega^2\Sigma^2(\omega)}{|\omega^2 - \Omega^2z(\omega)|^2}\left(\frac{1}{\omega - \tilde{\nu}_\sigma + \mathrm{i}\epsilon}\frac{1}{\omega + \tilde{\nu}'_{\sigma'}} - \frac{1}{\omega - \tilde{\nu}'_{\sigma'} - \mathrm{i}\epsilon}\frac{1}{\omega + \tilde{\nu}_\sigma}\right)\\
-&\qquad + \sum_ig_{i\sigma}(\nu)g_{j\sigma'}(\nu')\frac{2\Omega}{\tilde{\nu}_\sigma^2 - \Omega^2z(\tilde{\nu}_\sigma)}\frac{1}{\tilde{\nu}_\sigma + \tilde{\nu}'_{\sigma'}} - \sum_ig_{i\sigma}(\nu)g_{j\sigma'}(\nu')\frac{2\Omega}{\tilde{\nu}_{\sigma'}^{\prime2} - \Omega^2z(\tilde{\nu}'_{\sigma'})}\frac{1}{\tilde{\nu}_\sigma + \tilde{\nu}'_{\sigma'}}\\
+% = &\sum_n\int_0^\infty\pi^2\lambda_n\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2}\left[\left(\frac{1}{\omega - \nu  + \mathrm{i}\epsilon}\sum_ig_{i\sigma}(\nu)q_{ni}^*(\omega) + \sum_ig_{i\sigma}(\nu)q_{ni}^*(\omega)\frac{\omega^2 - \Omega^2 z^*(\omega)}{2\Omega\Sigma_\sigma^2(\omega)}\delta(\omega - \nu )\right)\right.\\
+% &\qquad\times \frac{1}{\omega + \nu'}\sum_jg_{j\sigma'}(\nu')q_{nj}(\omega) - \frac{1}{\omega + \nu }\sum_ig_{i\sigma}(\nu)q_{ni}(\omega)\left(\frac{1}{\omega - \nu' - \mathrm{i}\epsilon}\sum_jg_{j\sigma'}(\nu')q_{nj}^*(\omega)\right.\\
+% &\qquad\left.\left. + \sum_jg_{j\sigma'}(\nu')q_{nj}^*(\omega)\frac{\omega^2 - \Omega^2z_\sigma(\omega)}{2\Omega\Sigma_\sigma^2(\omega)}\delta(\omega - \nu')\right)\right]\mathrm{d}\omega\\
+% = &\sum_n\int_0^\infty\pi^2\lambda_n\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2}\left(\frac{1}{\omega - \nu  + \mathrm{i}\epsilon}\frac{1}{\omega + \nu'}\sum_{ij}g_{i\sigma}(\nu)g_{j\sigma'}(\nu')q_{ni}^*(\omega)q_{nj}(\omega)\right.\\
+% &\qquad\left. - \frac{1}{\omega - \nu' - \mathrm{i}\epsilon}\frac{1}{\omega + \nu }\sum_{ij}g_{i\sigma}(\nu)g_{j\sigma'}(\nu')q_{ni}(\omega)q_{nj}^*(\omega)\right)\mathrm{d}\omega\\
+% &\qquad + \sum_n\pi^2\lambda_n\frac{4\Omega^2\Sigma_\sigma^2(\nu )}{|\nu ^2 - \Omega^2z_\sigma(\nu )|^2}\frac{\nu ^2 - \Omega^2z^*(\nu )}{2\Omega\Sigma_\sigma^2(\nu )}\frac{1}{\nu  + \tilde{\nu}'_\sigma}\sum_{ij}g_{i\sigma}(\nu)g_{j\sigma'}(\nu')q_{ni}^*(\nu )q_{nj}(\nu )\\
+% &\qquad - \sum_n\pi^2\lambda_n\frac{4\Omega^2\Sigma_\sigma^2(\nu')}{|\tilde{\nu}^{\prime2}_{\sigma'} - \Omega^2z_\sigma(\nu')|^2}\frac{\nu^{\prime2} - \Omega^2z_\sigma(\nu')}{2\Omega\Sigma_\sigma^2(\nu')}\frac{1}{\nu' + \nu }\sum_{ij}g_{i\sigma}(\nu)g_{j\sigma'}(\nu')q_{ni}(\nu')q_{nj}^*(\nu')\\
+= &\int_0^\infty\sum_ig_{i\sigma}(\nu)g_{i\sigma'}(\nu')\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2}\left(\frac{1}{\omega - \nu  + \mathrm{i}\epsilon}\frac{1}{\omega + \nu'} - \frac{1}{\omega - \nu' - \mathrm{i}\epsilon}\frac{1}{\omega + \nu }\right)\\
+&\qquad + \sum_ig_{i\sigma}(\nu)g_{j\sigma'}(\nu')\frac{2\Omega}{\nu ^2 - \Omega^2z_\sigma(\nu )}\frac{1}{\nu  + \nu'} - \sum_ig_{i\sigma}(\nu)g_{j\sigma'}(\nu')\frac{2\Omega}{\nu^{\prime2} - \Omega^2z_\sigma(\nu')}\frac{1}{\nu  + \nu'}\\
 = &\;0,
 \end{split}
 \end{equation}
@@ -523,12 +512,12 @@ where the equality with zero is inferred by the analogous forms of the above exp
 \begin{equation}
 \begin{split}
 &\sum_n\int_0^\infty K_{n\sigma}(\omega)\left[\frac{\omega + \Omega_i}{2\Omega_i}q_{ni}(\omega)u^{\prime*}_{n\sigma}(\omega,\nu) - s_{ni}^*(\omega)v_{n\sigma}(\omega,\nu)\right]\mathrm{d}\omega\\
-% = &\sum_n\int_0^\infty\pi^2\lambda_n\frac{4\Omega^2\Sigma^2(\omega)}{|\omega^2 - \Omega^2z(\omega)|^2}\left[\frac{\omega + \Omega_i}{2\Omega_i}q_{ni}(\omega)\left(\lim_{\epsilon\to0}\frac{1}{\omega - \tilde{\nu}_\sigma + \mathrm{i}\epsilon}\sum_jg_{j\sigma}(\nu)q_{nj}^*(\omega)\right.\right.\\
-% &\qquad\left.\left.  + \sum_jg_{j\sigma}(\nu)q_{nj}^*(\omega)y_{j\sigma}^*(\omega)\delta(\omega - \tilde{\nu}_\sigma)\right) - \frac{\omega - \Omega_i}{2\Omega_i}q_{ni}^*(\omega)\left(\frac{1}{\omega + \tilde{\nu}_\sigma}\sum_jg_{j\sigma}(\nu)q_{nj}(\omega)\right)\right]\\
-% = &\sum_n\int_0^\infty\pi^2\lambda_n\frac{4\Omega^2\Sigma^2(\omega)}{|\omega^2 - \Omega^2z(\omega)|^2}\left[\frac{\omega + \Omega_i}{2\Omega_i}\frac{1}{\omega - \tilde{\nu}_\sigma + \mathrm{i}\epsilon}\sum_jg_{j\sigma}q_{ni}(\omega)q_{nj}^*(\omega)\right.\\
-% &\qquad - \frac{\omega - \Omega_i}{2\Omega_i}\frac{1}{\omega + \tilde{\nu}_\sigma}\sum_jg_{j\sigma}(\nu)q_{ni}^*(\omega)q_{nj}(\omega)\\
-% &\qquad\left. + \frac{\omega + \Omega_i}{2\Omega_i}\sum_jg_{j\sigma}(\nu)q_{ni}(\omega)q_{nj}^*(\omega)\frac{\omega^2 - \Omega^2z^*(\omega)}{2\Omega\Sigma^2(\omega)}\mathcal{T}_{j\sigma}(\omega)\delta(\omega - \tilde{\nu}_\sigma)\right]\mathrm{d}\omega\\
-= &\int_0^\infty\frac{4\Omega^2\Sigma^2(\omega)g_{i\sigma}(\nu)}{|\omega^2 - \Omega^2z(\omega)|^2}\left[\frac{\omega + \Omega_i}{2\Omega_i}\frac{1}{\omega - \tilde{\nu}_\sigma + \mathrm{i}\epsilon} - \frac{\omega - \Omega_i}{2\Omega_i}\frac{1}{\omega + \tilde{\nu}_\sigma}\right]\mathrm{d}\omega + \frac{\tilde{\nu}_\sigma + \Omega_i}{2\Omega_i}\frac{2\Omega g_{i\sigma}(\nu)}{\tilde{\nu}_\sigma^2 - \Omega^2z(\tilde{\nu}_\sigma)}\\
+% = &\sum_n\int_0^\infty\pi^2\lambda_n\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2}\left[\frac{\omega + \Omega_i}{2\Omega_i}q_{ni}(\omega)\left(\lim_{\epsilon\to0}\frac{1}{\omega - \nu  + \mathrm{i}\epsilon}\sum_jg_{j\sigma}(\nu)q_{nj}^*(\omega)\right.\right.\\
+% &\qquad\left.\left.  + \sum_jg_{j\sigma}(\nu)q_{nj}^*(\omega)y_{j\sigma}^*(\omega)\delta(\omega - \nu )\right) - \frac{\omega - \Omega_i}{2\Omega_i}q_{ni}^*(\omega)\left(\frac{1}{\omega + \nu }\sum_jg_{j\sigma}(\nu)q_{nj}(\omega)\right)\right]\\
+% = &\sum_n\int_0^\infty\pi^2\lambda_n\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2}\left[\frac{\omega + \Omega_i}{2\Omega_i}\frac{1}{\omega - \nu  + \mathrm{i}\epsilon}\sum_jg_{j\sigma}q_{ni}(\omega)q_{nj}^*(\omega)\right.\\
+% &\qquad - \frac{\omega - \Omega_i}{2\Omega_i}\frac{1}{\omega + \nu }\sum_jg_{j\sigma}(\nu)q_{ni}^*(\omega)q_{nj}(\omega)\\
+% &\qquad\left. + \frac{\omega + \Omega_i}{2\Omega_i}\sum_jg_{j\sigma}(\nu)q_{ni}(\omega)q_{nj}^*(\omega)\frac{\omega^2 - \Omega^2z^*(\omega)}{2\Omega\Sigma_\sigma^2(\omega)}\mathcal{T}_{j\sigma}(\omega)\delta(\omega - \nu )\right]\mathrm{d}\omega\\
+= &\int_0^\infty\frac{4\Omega^2\Sigma_\sigma^2(\omega)g_{i\sigma}(\nu)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2}\left[\frac{\omega + \Omega_i}{2\Omega_i}\frac{1}{\omega - \nu  + \mathrm{i}\epsilon} - \frac{\omega - \Omega_i}{2\Omega_i}\frac{1}{\omega + \nu }\right]\mathrm{d}\omega + \frac{\nu  + \Omega_i}{2\Omega_i}\frac{2\Omega g_{i\sigma}(\nu)}{\nu ^2 - \Omega^2z_\sigma(\nu )}\\
 = &\;0
 \end{split}
 \end{equation}
@@ -536,12 +525,12 @@ via the process of Eq. \eqref{eq:qu-minus-sv-integral} (note the overall complex
 \begin{equation}
 \begin{split}
 &\sum_n\int_0^\infty K_{n\sigma}(\omega)\left[s_{ni}(\omega)u^{\prime*}_{n\sigma}(\omega,\nu) - \frac{\omega + \Omega_i}{2\Omega_i}q_{ni}^*(\omega)v_{n\sigma}(\omega,\nu)\right]\mathrm{d}\omega\\
-% = &\sum_n\int_0^\infty\pi^2\lambda_n\frac{4\Omega^2\Sigma^2(\omega)}{|\omega^2 - \Omega^2z(\omega)|^2}\left[\frac{\omega - \Omega_i}{2\Omega_i}q_{ni}(\omega)\left(\frac{1}{\omega - \tilde{\nu}_\sigma + \mathrm{i}\epsilon}\sum_jg_{j\sigma}(\nu)q_{nj}^*(\omega)\right.\right.\\
-% &\left.\left.\qquad + \sum_jg_{j\sigma}(\nu)q_{nj}^*(\omega)y_{j\sigma}^*(\omega)\delta(\omega - \tilde{\nu}_\sigma)\right) - \frac{\omega + \Omega_i}{2\Omega_i}q_{ni}^*(\omega)\frac{1}{\omega + \tilde{\nu}_\sigma}\sum_jg_{j\sigma}(\nu)q_{nj}(\omega)\right]\\
-% = &\sum_n\int_0^\infty\pi^2\lambda_n\frac{4\Omega^2\Sigma^2(\omega)}{|\omega^2 - \Omega^2z(\omega)|^2}\left[\frac{\omega - \Omega_i}{2\Omega_i}\frac{1}{\omega - \tilde{\nu}_\sigma + \mathrm{i}\epsilon}\sum_jg_{j\sigma}(\nu)q_{ni}(\omega)q_{nj}^*(\omega)\right.\\
-% &\qquad - \frac{\omega + \Omega_i}{2\Omega_i}\frac{1}{\omega + \tilde{\nu}_\sigma}\sum_jg_{j\sigma}(\nu)q_{ni}^*(\omega)q_{nj}(\omega)\\
-% &\qquad\left. + \frac{\omega - \Omega_i}{2\Omega_i}\sum_jg_{j\sigma}q_{ni}(\omega)q_{nj}^*(\omega)\frac{\omega^2 - \Omega^2z^*(\omega)}{2\Omega\Sigma^2(\omega)}\delta(\omega - \tilde{\nu}_\sigma)\right]\mathrm{d}\omega\\
-= &\int_0^\infty\frac{4\Omega^2\Sigma^2(\omega)g_{i\sigma}(\nu)}{|\omega^2 - \Omega^2z(\omega)|^2}\left[\frac{\omega - \Omega_i}{2\Omega_i}\frac{1}{\omega - \tilde{\nu}_\sigma + \mathrm{i}\epsilon} - \frac{\omega + \Omega_i}{2\Omega_i}\frac{1}{\omega + \tilde{\nu}_\sigma}\right]\mathrm{d}\omega + \frac{\tilde{\nu}_\sigma - \Omega_i}{2\Omega_i}\frac{2\Omega g_{i\sigma}(\nu)}{\tilde{\nu}_\sigma^2 - \Omega^2z(\tilde{\nu}_\sigma)}\\
+% = &\sum_n\int_0^\infty\pi^2\lambda_n\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2}\left[\frac{\omega - \Omega_i}{2\Omega_i}q_{ni}(\omega)\left(\frac{1}{\omega - \nu  + \mathrm{i}\epsilon}\sum_jg_{j\sigma}(\nu)q_{nj}^*(\omega)\right.\right.\\
+% &\left.\left.\qquad + \sum_jg_{j\sigma}(\nu)q_{nj}^*(\omega)y_{j\sigma}^*(\omega)\delta(\omega - \nu )\right) - \frac{\omega + \Omega_i}{2\Omega_i}q_{ni}^*(\omega)\frac{1}{\omega + \nu }\sum_jg_{j\sigma}(\nu)q_{nj}(\omega)\right]\\
+% = &\sum_n\int_0^\infty\pi^2\lambda_n\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2}\left[\frac{\omega - \Omega_i}{2\Omega_i}\frac{1}{\omega - \nu  + \mathrm{i}\epsilon}\sum_jg_{j\sigma}(\nu)q_{ni}(\omega)q_{nj}^*(\omega)\right.\\
+% &\qquad - \frac{\omega + \Omega_i}{2\Omega_i}\frac{1}{\omega + \nu }\sum_jg_{j\sigma}(\nu)q_{ni}^*(\omega)q_{nj}(\omega)\\
+% &\qquad\left. + \frac{\omega - \Omega_i}{2\Omega_i}\sum_jg_{j\sigma}q_{ni}(\omega)q_{nj}^*(\omega)\frac{\omega^2 - \Omega^2z^*(\omega)}{2\Omega\Sigma_\sigma^2(\omega)}\delta(\omega - \nu )\right]\mathrm{d}\omega\\
+= &\int_0^\infty\frac{4\Omega^2\Sigma_\sigma^2(\omega)g_{i\sigma}(\nu)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2}\left[\frac{\omega - \Omega_i}{2\Omega_i}\frac{1}{\omega - \nu  + \mathrm{i}\epsilon} - \frac{\omega + \Omega_i}{2\Omega_i}\frac{1}{\omega + \nu }\right]\mathrm{d}\omega + \frac{\nu  - \Omega_i}{2\Omega_i}\frac{2\Omega g_{i\sigma}(\nu)}{\nu ^2 - \Omega^2z_\sigma(\nu )}\\
 = &\;0
 \end{split}
 \end{equation}
@@ -551,9 +540,12 @@ via the logic of Eq. \eqref{eq:qv-minus-su-integral} (note the added complex con
 \end{equation}
 the reservoir operators can be retrieved via
 \begin{equation}
-\hat{b}_\sigma(\nu,t) = \sum_n\int_0^\infty\pi^2\lambda_n\frac{4\Omega^2\Sigma^2(\omega)}{|\omega^2 - \Omega^2z(\omega)|^2}\left[u^{\prime*}_{n\sigma}(\omega,\nu)\hat{C}'_n(\omega,t) - v_{n\sigma}(\omega,\nu)\hat{C}^{\prime\dagger}_n(\omega,t)\right]\mathrm{d}\omega.
+\hat{b}_\sigma(\nu,t) = \sum_n\int_0^\infty\lambda_n\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2}\left[u^{\prime*}_{n\sigma}(\omega,\nu)\hat{C}'_n(\omega,t) - v_{n\sigma}(\omega,\nu)\hat{C}^{\prime\dagger}_n(\omega,t)\right]\mathrm{d}\omega.
 \end{equation}
-Note that, analogous to the inverse Fano process for deriving the oscillator operators $a_i(t)$, this derivation has left us with an undetermined coefficient. In contrast, however, it is the frequency $\Omega$ rather than the coupling strength $\Sigma_\sigma(\omega)$ that is free to vary. However, the overall results are the same: the values of $z(\omega)$ and $\hat{b}_\sigma(\nu,t)$ are not unique.
+Note that, aside from the constraint that $\Sigma_\sigma^2(\omega)$ has units of coupling strength squared and obeys that property $\Sigma_\sigma^2(-\omega) = -\Sigma_\sigma^2(\omega)$, the values of $\Omega$ and $\Sigma_\sigma^2(\omega)$ can be freely chosen. Therefore, the values of $z_\sigma(\omega)$ and $\hat{b}_\sigma(\nu,t)$ are not unique.
+
+
+
 
 
 
