@@ -1,4 +1,4 @@
-\begin{thebibliography}{4}
+\begin{thebibliography}{5}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -16,6 +16,11 @@ E.~C. Titchmarsh.
 \newblock \emph{Eigenfunction {Expansions} {Associated} {With} {Second} {Order}
   {Differential} {Equations}}.
 \newblock Oxford at the Clarendon Press, 1946.
+
+\bibitem[Huttner and Barnett(1992)]{huttner1992quantization}
+Bruno Huttner and Stephen~M. Barnett.
+\newblock Quantization of the electromagnetic field in dielectrics.
+\newblock \emph{Phys. Rev. A}, 46\penalty0 (7):\penalty0 4306--4322, 1992.
 
 \bibitem[Stratton(1941)]{stratton1941electromagnetic}
 Julius~Adams Stratton.

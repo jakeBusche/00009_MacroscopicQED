@@ -425,18 +425,18 @@ in which $\Omega$ and $\Sigma_\sigma(\omega)$ are left to be constrained by down
 \begin{equation}
 \begin{split}
 &\sum_n\int_0^\infty K_{n\sigma}(\omega)\left[u_{n\sigma}^{\prime*}(\omega,\nu)u'_{n\sigma'}(\omega,\nu') - v_{n\sigma}(\omega,\nu)v_{n\sigma'}^*(\omega,\nu')\right]\mathrm{d}\omega\\
-% = &\sum_n\int_0^\infty\lambda_n\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2}\left[\left(\frac{1}{\omega - \nu  + \mathrm{i}\epsilon}\sum_ig_{i\sigma}(\nu)q_{ni}(\omega) + \sum_ig_{i\sigma}(\nu)q_{ni}(\omega)y_{i\sigma}^*(\omega)\delta(\omega - \nu )\right)\right.\\
-% &\qquad \times \left(\frac{1}{\omega - \nu' - \mathrm{i}\epsilon}\sum_jg_{j\sigma'}(\nu')q_{nj}(\omega) + \sum_jg_{j\sigma'}(\nu')q_{nj}(\omega)y_{j\sigma'}(\omega)\delta(\omega - \nu')\right)\\
-% &\left.\qquad - \frac{1}{\omega + \nu }\frac{1}{\omega + \nu'}\sum_ig_{i\sigma}(\nu)q_{ni}(\omega)\sum_jg_{j\sigma'}(\nu')q_{nj}(\omega)\right]\mathrm{d}\omega\\
-% &= \sum_n\lambda_n\left[\int_0^\infty\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2}\left(\frac{1}{\omega - \nu  + \mathrm{i}\epsilon}\frac{1}{\omega - \nu' - \mathrm{i}\epsilon} - \frac{1}{\omega + \nu }\frac{1}{\omega + \nu'}\right)\right.\\
-% &\qquad\times\sum_{ij}g_{i\sigma}(\nu)g_{j\sigma'}(\nu')q_{ni}(\omega)q_{nj}(\omega)\;\mathrm{d}\omega\\
-% &\qquad + \frac{4\Omega^2\Sigma_\sigma^2(\nu')}{|\nu^{\prime2} - \Omega^2z_\sigma(\nu')|^2}\frac{1}{\nu' - \nu  + \mathrm{i}\epsilon}\sum_{ij}y_{j\sigma'}(\nu')g_{i\sigma}(\nu)g_{j\sigma'}(\nu')q_{ni}(\nu')q_{nj}(\nu')\\
-% &\qquad + \frac{4\Omega^2\Sigma_\sigma^2(\nu )}{|\nu ^2 - \Omega^2z_\sigma(\nu )|^2}\frac{1}{\nu  - \nu' - \mathrm{i}\epsilon}\sum_{ij}y_{i\sigma}^*(\nu )g_{i\sigma}(\nu)g_{j\sigma'}(\nu')q_{ni}(\tilde{\nu}_{\sigma})q_{nj}(\nu )\\
-% &\qquad\left. + \frac{4\Omega^2\Sigma_\sigma^2(\nu )}{|\nu_\sigma^2 - \Omega^2z_\sigma(\nu )|^2}\sum_{ij}y^*_{i\sigma}(\nu )y_{j\sigma'}(\nu )g_{i\sigma}(\nu)g_{j\sigma'}(\nu')q_{ni}(\nu )q_{nj}(\nu )\delta(\nu  - \nu') \vphantom{\int_0^\infty} \right]\\
-= &\sum_ig_{i\sigma}(\nu)g_{j\sigma'}(\nu')\int_0^\infty\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2}\left(\frac{1}{\omega - \nu  + \mathrm{i}\epsilon}\frac{1}{\omega - \nu' - \mathrm{i}\epsilon} - \frac{1}{\omega + \nu }\frac{1}{\omega + \nu'}\right)\mathrm{d}\omega\\
+= &\sum_n\int_0^\infty\lambda_n\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2}\left[\left(\frac{1}{\omega - \nu  + \mathrm{i}\epsilon}\sum_ig_{i\sigma}(\nu)q_{ni}(\omega) + \sum_ig_{i\sigma}(\nu)q_{ni}(\omega)y_{i\sigma}^*(\omega)\delta(\omega - \nu )\right)\right.\\
+&\qquad \times \left(\frac{1}{\omega - \nu' - \mathrm{i}\epsilon}\sum_jg_{j\sigma'}(\nu')q_{nj}(\omega) + \sum_jg_{j\sigma'}(\nu')q_{nj}(\omega)y_{j\sigma'}(\omega)\delta(\omega - \nu')\right)\\
+&\left.\qquad - \frac{1}{\omega + \nu }\frac{1}{\omega + \nu'}\sum_ig_{i\sigma}(\nu)q_{ni}(\omega)\sum_jg_{j\sigma'}(\nu')q_{nj}(\omega)\right]\mathrm{d}\omega\\
+&= \sum_n\lambda_n\left[\int_0^\infty\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2}\left(\frac{1}{\omega - \nu  + \mathrm{i}\epsilon}\frac{1}{\omega - \nu' - \mathrm{i}\epsilon} - \frac{1}{\omega + \nu }\frac{1}{\omega + \nu'}\right)\right.\\
+&\qquad\times\sum_{ij}g_{i\sigma}(\nu)g_{j\sigma'}(\nu')q_{ni}(\omega)q_{nj}(\omega)\;\mathrm{d}\omega\\
+&\qquad + \frac{4\Omega^2\Sigma_\sigma^2(\nu')}{|\nu^{\prime2} - \Omega^2z_\sigma(\nu')|^2}\frac{1}{\nu' - \nu  + \mathrm{i}\epsilon}\sum_{ij}y_{j\sigma'}(\nu')g_{i\sigma}(\nu)g_{j\sigma'}(\nu')q_{ni}(\nu')q_{nj}(\nu')\\
+&\qquad + \frac{4\Omega^2\Sigma_\sigma^2(\nu )}{|\nu ^2 - \Omega^2z_\sigma(\nu )|^2}\frac{1}{\nu  - \nu' - \mathrm{i}\epsilon}\sum_{ij}y_{i\sigma}^*(\nu )g_{i\sigma}(\nu)g_{j\sigma'}(\nu')q_{ni}(\nu)q_{nj}(\nu )\\
+&\qquad\left. + \frac{4\Omega^2\Sigma_\sigma^2(\nu )}{|\nu^2 - \Omega^2z_\sigma(\nu )|^2}\sum_{ij}y^*_{i\sigma}(\nu )y_{j\sigma'}(\nu )g_{i\sigma}(\nu)g_{j\sigma'}(\nu')q_{ni}(\nu )q_{nj}(\nu )\delta(\nu  - \nu') \vphantom{\int_0^\infty} \right]\\
+= &\sum_ig_{i\sigma}(\nu)g_{i\sigma'}(\nu')\int_0^\infty\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2}\left(\frac{1}{\omega - \nu  + \mathrm{i}\epsilon}\frac{1}{\omega - \nu' - \mathrm{i}\epsilon} - \frac{1}{\omega + \nu }\frac{1}{\omega + \nu'}\right)\mathrm{d}\omega\\
 &\qquad + \frac{4\Omega^2\Sigma_\sigma^2(\nu')}{|\nu^{\prime2} - \Omega^2z_\sigma(\nu')|^2}\frac{1}{\nu' - \nu  + \mathrm{i}\epsilon}\sum_{i}y_{i\sigma'}(\nu')g_{i\sigma}(\nu)g_{i\sigma'}(\nu')\\
 &\qquad + \frac{4\Omega^2\Sigma_\sigma^2(\nu )}{|\nu ^2 - \Omega^2z_\sigma(\nu )|^2}\frac{1}{\nu  - \nu' - \mathrm{i}\epsilon}\sum_{i}y_{i\sigma}^*(\nu )g_{i\sigma}(\nu)g_{i\sigma'}(\nu')\\
-&\qquad + \frac{4\Omega^2\Sigma_\sigma^2(\nu )}{|\nu_\sigma^2 - \Omega^2z_\sigma(\nu )|^2}\sum_{i}y^*_{i\sigma}(\nu )y_{i\sigma'}(\tilde{\nu}'_\sigma)g_{i\sigma}(\nu)g_{i\sigma'}(\nu')\delta(\nu  - \nu').
+&\qquad + \frac{4\Omega^2\Sigma_\sigma^2(\nu )}{|\nu^2 - \Omega^2z_\sigma(\nu )|^2}\sum_{i}y^*_{i\sigma}(\nu )y_{i\sigma'}(\nu')g_{i\sigma}(\nu)g_{i\sigma'}(\nu')\delta(\nu  - \nu').
 \end{split}
 \end{equation}
 
@@ -542,7 +542,7 @@ the reservoir operators can be retrieved via
 \begin{equation}
 \hat{b}_\sigma(\nu,t) = \sum_n\int_0^\infty\lambda_n\frac{4\Omega^2\Sigma_\sigma^2(\omega)}{|\omega^2 - \Omega^2z_\sigma(\omega)|^2}\left[u^{\prime*}_{n\sigma}(\omega,\nu)\hat{C}'_n(\omega,t) - v_{n\sigma}(\omega,\nu)\hat{C}^{\prime\dagger}_n(\omega,t)\right]\mathrm{d}\omega.
 \end{equation}
-Note that, aside from the constraint that $\Sigma_\sigma^2(\omega)$ has units of coupling strength squared and obeys that property $\Sigma_\sigma^2(-\omega) = -\Sigma_\sigma^2(\omega)$, the values of $\Omega$ and $\Sigma_\sigma^2(\omega)$ can be freely chosen. Therefore, the values of $z_\sigma(\omega)$ and $\hat{b}_\sigma(\nu,t)$ are not unique.
+Note that, aside from the constraint that $\Sigma_\sigma^2(\omega)$ has units of coupling strength squared and obeys the property $\Sigma_\sigma^2(-\omega) = -\Sigma_\sigma^2(\omega)$, the values of $\Omega$ and $\Sigma_\sigma^2(\omega)$ can be freely chosen. Therefore, the values of $z_\sigma(\omega)$ and $\hat{b}_\sigma(\nu,t)$ are not unique.
 
 
 

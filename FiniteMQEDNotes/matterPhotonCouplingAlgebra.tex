@@ -1,0 +1,182 @@
+%!TEX root = finiteMQED.tex
+
+\section{Analyzing the Photon-Matter Coupling}\label{app:matterPhotonCoupling}
+
+A challenging step in the derivation of the polariton operators is the calculation of the integrals
+\begin{equation}
+I_{\bm{\alpha}\bm{\beta}\bm{\beta'}nn'} = \int_0^\infty\frac{c^3}{\pi \mathrm{e}^2\omega}\lambda_{\bm{\alpha}\bm{\beta}n}(\omega)\lambda_{\bm{\alpha}\bm{\beta}'n'}(\omega)\;\mathrm{d}\omega,
+\end{equation}
+where
+\begin{equation}
+\lambda_{\bm{\alpha}\bm{\beta}n}(\omega) = \frac{4\pi e^2\omega^\frac{3}{2}\eta}{c^3}\left[\delta_{TT_\alpha}R_{T\ell}^\ll\left(\frac{z_{\ell n}}{a},\frac{\omega}{c};0,a\right) + \delta_{TL}\delta_{T_\alpha E}\sqrt{\ell(\ell+1)}\frac{a^2c}{w_{\ell n}\omega}j_\ell(w_{\ell n})j_{\ell}\left(\frac{\omega a}{c}\right)\right]\delta_{pp_\alpha}\delta_{\ell\ell_\alpha}\delta_{mm_\alpha}
+\end{equation}
+are the coupling coefficients that characterize the strength of the interaction between the matter oscillator coordinates and the electromagnetic field. We'll define the collective indices as $\bm{\beta} = (T,p,\ell,m)$, $\bm{\beta} = (T',p',\ell',m')$, and $\bm{\alpha} = (T_\alpha,p_\alpha,\ell_\alpha,m_\alpha)$ in this appendix. To make the notation easier to read, we will define
+\begin{equation}
+I_{\bm{\alpha}\bm{\beta}\bm{\beta}'nn'} = \delta_{p_\alpha p}\delta_{\ell_\alpha\ell}\delta_{m_\alpha m}\delta_{p_\alpha p'}\delta_{\ell_\alpha\ell'}\delta_{m_\alpha m'}
+\begin{dcases}
+I_{\ell nn'}^{(M)}, & T_\alpha = T = T' = M,\\
+I_{\ell nn'}^{(E)}, & T_\alpha = T = T' = E,\\
+I_{\ell nn'}^{(L)}, & T_\alpha = E,\;T = T' = L,\\
+I_{\ell nn'}^{(EL)}, & T_\alpha = T = E, T' = L,\\
+I_{\ell nn'}^{(LE)}, & T_\alpha = T' = E, T = L,
+\end{dcases}
+\end{equation}
+where
+\begin{equation}
+\begin{split}
+I_{\ell nn'}^{(M)} &= \int_0^\infty\frac{16\pi e^2\omega^2\eta^2}{c^3}R_{M\ell}\!\left(\frac{z_{\ell n}}{a},\frac{\omega}{c};0,a\right)R_{M\ell}\!\left(\frac{z_{\ell n'}}{a},\frac{\omega}{c};0,a\right)\mathrm{d}\omega,\\
+I_{\ell nn'}^{(E)} &= \int_0^\infty\frac{16\pi e^2\omega^2\eta^2}{c^3}R_{E\ell}\!\left(\frac{z_{\ell n}}{a},\frac{\omega}{c};0,a\right)R_{E\ell}\!\left(\frac{z_{\ell n'}}{a},\frac{\omega}{c};0,a\right)\mathrm{d}\omega,\\
+I_{\ell nn'}^{(L)} &= \int_0^\infty\frac{16\pi e^2a^4\eta^2}{c w_{\ell n}w_{\ell n'}}\ell(\ell + 1)j_\ell(w_{\ell n})j_\ell(w_{\ell n'})j_\ell^2\!\left(\frac{\omega a}{c}\right)\mathrm{d}\omega
+\end{split}
+\end{equation}
+describe coupling between modes of the same type and
+\begin{equation}
+\begin{split}
+I_{\ell nn'}^{(EL)} &= \int_0^\infty\frac{16\pi e^2\omega a^2\eta^2}{c^2w_{\ell n'}}\sqrt{\ell(\ell + 1)}R_{E\ell}\!\left(\frac{z_{\ell n}}{a},\frac{\omega a}{c};0,a\right)j_\ell(w_{\ell n'})j_\ell\!\left(\frac{\omega a}{c}\right)\mathrm{d}\omega,\\
+I_{\ell nn'}^{(LE)} &= \int_0^\infty\frac{16\pi e^2\omega a^2\eta^2}{c^2w_{\ell n}}\sqrt{\ell(\ell + 1)}R_{E\ell}\!\left(\frac{z_{\ell n'}}{a},\frac{\omega}{c};0,a\right)j_\ell(w_{\ell n})j_\ell\!\left(\frac{\omega a}{c}\right)\mathrm{d}\omega
+\end{split}
+\end{equation}
+describe cross-coupling between electric and longitudinal modes. Further noting that
+\begin{equation}
+\begin{split}
+R_{M\ell}\!\left(\frac{z_{\ell n}}{a},\frac{\omega}{c};0,a\right) 
+&= -\frac{a^2}{\left(\frac{z_{\ell n}}{a}\right)^2 - \left(\frac{\omega}{c}\right)^2}\frac{z_{\ell n}}{a}j_{\ell - 1}\!\left(z_{\ell n}\right)j_{\ell}\!\left(\frac{\omega a}{c}\right)\\
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+R_{E\ell}\!\left(\frac{z_{\ell n}}{a},\frac{\omega}{c};0,a\right) 
+&= \frac{\ell + 1}{2\ell + 1}\frac{a^2}{\left(\frac{z_{\ell n}}{a}\right)^2 - \left(\frac{\omega}{c}\right)^2}\left[\frac{\omega}{c}j_{\ell - 2}\!\left(\frac{\omega a}{c}\right)j_{\ell - 1}\!\left(z_{\ell n}\right) - \frac{z_{\ell n}}{a}j_{\ell - 2}\!\left(z_{\ell n}\right)j_{\ell - 1}\!\left(\frac{\omega a}{c}\right)\right]\\
+&\qquad + \frac{\ell}{2\ell + 1}\frac{a^2}{\left(\frac{z_{\ell n}}{a}\right)^2 - \left(\frac{\omega}{c}\right)^2}\frac{\omega}{c}j_{\ell}\!\left(\frac{\omega a}{c}\right)j_{\ell + 1}\!\left(z_{\ell n}\right),
+\end{split}
+\end{equation}
+we can see that a series of integrals involving products of spherical Bessel functions of argument $\omega a/c$ need to be calculated in order to determine $I_{\bm{\alpha}\bm{\beta}\bm{\beta}'nn'}$ for any set of indices. First noting that each of the above integrals is even in $\omega$, we can rewrite each as an integral over the entire real line and then use contour integration to find an analytical solution. 
+
+In each integral, a useful trick is to notice that the integrals from $-\infty$ to $\infty$ of the even products $j_\ell(x)j_{\ell + 2k}(x)$ and $xj_\ell(x)j_{\ell + k}(x)$ are equal to the integrals of $j_\ell(x)h_{\ell + 2k}^{(1)}(x)$ and $xj_\ell(x)h_{\ell + k}(x)$, respectively, over the same bounds. Here, $h_{\ell}^{(1)}(x) = j_\ell(x) + \mathrm{i}y_\ell(x)$ is a spherical Hankel function of the first kind, $y_\ell(x)$ is a spherical Bessel function of the second kind, and $k \in\{0,\pm1,\pm2,\ldots\}$. This replacement is made possible by the fact that the products $j_\ell(x)y_{\ell + 2k}(x)$ and $xj_\ell(x)y_{\ell + k}(x)$ are odd in $x$, such that integrands of these forms (perhaps multiplied by an even power of $x$) contribute nothing to an integral. Further, while $j_\ell(x)\to\infty$ as $x$ goes to complex infinity, $h_{\ell}^{(1)}(x)\to0$ for large $x$ in the upper half-plane, allowing for the formation of great-arc contours that contribute nothing to a contour integral but allow for use of the residue theorem.
+
+Using the standard toolkit of complex analysis from here, one can see our important integrals can be calculated straightforwardly and form three groups. The first group is comprised of integrals with simple results:
+\begin{equation}
+\begin{split}
+I^{(1)}_\ell &= \int_{-\infty}^\infty j_\ell^2(x)\;\mathrm{d}x = \frac{\pi}{2\ell + 1},\\
+I^{(2)}_{\ell n} &= \int_{-\infty}^\infty\frac{x^2}{z_{\ell n}^2 - x^2}j_\ell^2(x)\;\mathrm{d}x = 0,\\
+I^{(3)}_{\ell n} &= \int_{-\infty}^\infty\frac{x}{z_{\ell n}^2 - x^2}j_\ell(x)j_{\ell - 1}(x)\;\mathrm{d}x = 0,\\
+I^{(4)}_{\ell n} &= \int_{-\infty}^\infty\frac{x^2}{z_{\ell n}^2 - x^2}j_\ell(x)j_{\ell - 2}(x)\;\mathrm{d}x = 0.\\
+\end{split}
+\end{equation}
+The second is comprised of integrals that evaluate to quantities proportional to the Kronecker delta $\delta_{nn'}$,
+\begin{equation}
+\begin{split}
+I^{(5)}_{\ell nn'} &= \int_{-\infty}^\infty x^2\frac{1}{z_{\ell n}^2 - x^2}\frac{1}{z_{\ell n'}^2 - x^2}j_\ell^2(x)\;\mathrm{d}x = \delta_{nn'}\frac{\pi}{2}j_{\ell + 1}(z_{\ell n})y_\ell(z_{\ell n}),\\
+I^{(6)}_{\ell nn'} &= PV\int_{-\infty}^\infty x^3\frac{1}{z_{\ell n}^2 - x^2}\frac{1}{z_{\ell n'}^2 - x^2}j_\ell(x)j_{\ell - 1}(x)\;\mathrm{d}x = \delta_{nn'}\frac{\pi}{2}z_{\ell n}j_{\ell + 1}(z_{\ell n})y_{\ell - 1}(z_{\ell n}),\\
+I^{(7)}_{\ell nn'} &= \int_{-\infty}^\infty x^4\frac{1}{z_{\ell n}^2 - x^2}\frac{1}{z_{\ell n'}^2 - x^2}j_\ell^2(x)\;\mathrm{d}x = \delta_{nn'}\frac{\pi}{2}z_{\ell n}^2j_{\ell + 1}(z_{\ell n})y_\ell(z_{\ell n}),\\
+I^{(8)}_{\ell nn'} &= PV\int_{-\infty}^\infty x^4\frac{1}{z_{\ell n}^2 - x^2}\frac{1}{z_{\ell n'}^2 - x^2}j_\ell(x)j_{\ell - 2}(x)\;\mathrm{d}x = \delta_{nn'}\frac{\pi}{2}z_{\ell n}^2j_{\ell + 1}(z_{\ell n})y_{\ell - 2}(z_{\ell n}),\\
+\end{split}
+\end{equation}
+and the third contains integrals that need to be handled carefully when $n = n'$:
+\begin{equation}
+\begin{split}
+I^{(9)}_{\ell nn'} &= PV\int_{-\infty}^\infty x^2\frac{1}{z_{\ell n}^2 - x^2}\frac{1}{z_{\ell n'}^2 - x^2}j_{\ell - 1}^2(x)\;\mathrm{d}x\\
+&=
+\begin{dcases}
+\frac{\pi}{z_{\ell n'}^2 - z_{\ell n}^2}\left[z_{\ell n}j_{\ell - 1}(z_{\ell n})y_{\ell - 1}(z_{\ell n}) - z_{\ell n'}j_{\ell - 1}(z_{\ell n'})y_{\ell - 1}(z_{\ell n'})\right], & n\neq n';\\
+-\frac{\pi}{4}\frac{j_{\ell - 1}(z_{\ell n})}{z_{\ell n}}\left[z_{\ell n}y_{\ell - 2}(z_{\ell n}) + (2\ell - 1)y_{\ell - 1}(z_{\ell n}) - z_{\ell n}y_\ell(z_{\ell n})\right], & n = n';
+\end{dcases}\\ 
+I^{(10)}_{\ell nn'} &= PV\int_{-\infty}^\infty x^3\frac{1}{z_{\ell n}^2 - x^2}\frac{1}{z_{\ell n'}^2 - x^2}j_{\ell - 1}(x)j_{\ell - 2}(x)\;\mathrm{d}x\\
+&= 
+\begin{dcases}
+\frac{\pi}{z_{\ell n'}^2 - z_{\ell n}^2}\left[z_{\ell n}^2j_{\ell - 1}(z_{\ell n})y_{\ell - 2}(z_{\ell n}) - z_{\ell n'}^2j_{\ell - 1}(z_{\ell n'})y_{\ell - 2}(z_{\ell n'})\right], & n\neq n';\\
+-\frac{\pi}{4}j_{\ell - 1}(z_{\ell n})\left[z_{\ell n}y_{\ell - 3}(z_{\ell n}) + (2\ell + 1)y_{\ell - 2}(z_{\ell n}) - z_{\ell n}y_{\ell - 1}(z_{\ell n})\right], & n=n';
+\end{dcases}\\
+I^{(11)}_{\ell nn'} &= PV\int_{-\infty}^\infty x^4\frac{1}{z_{\ell n}^2 - x^2}\frac{1}{z_{\ell n'}^2 - x^2}j_{\ell - 2}^2(x)\;\mathrm{d}x\\
+&= 
+\begin{dcases}
+\frac{\pi}{z_{\ell n'}^2 - z_{\ell n}^2}\left[z_{\ell n}^3j_{\ell - 2}(z_{\ell n})y_{\ell - 2}(z_{\ell n}) - z_{\ell n'}^3j_{\ell - 2}(z_{\ell n'})y_{\ell - 2}(z_{\ell n'})\right], & n\neq n;\\
+\frac{\pi}{2}z_{\ell n}\left[z_{\ell n}j_{\ell - 1}(z_{\ell n})y_{\ell - 2}(z_{\ell n}) - 2j_{\ell - 2}(z_{\ell n})y_{\ell - 2}(z_{\ell n}) - z_{\ell n}j_{\ell - 2}(z_{\ell n})y_{\ell - 3}(z_{\ell n})\right], & n = n.
+\end{dcases}
+\end{split}
+\end{equation}
+Here, the prefix $PV$ denotes a Cauchy principal value integral. The integrals above that need to be carefully evaluated using principal value methods arise only in cases where singularities generated by the factors $1/(z_{\ell n}^2 - x^2)$ are eliminated by subtraction. The use of principal value integrals simply allows us to analyze these integrals one-by-one.
+
+Moving forward, we can let $x = \omega a/c$ to find
+\begin{equation}
+\begin{split}
+I_{\ell nn'}^{(M)} 
+% &= \frac{16\pi e^2\omega^2\eta^2}{c^3}\frac{1}{2}\int_{-\infty}^\infty\frac{a^2}{\left(\frac{z_{\ell n}}{a}\right)^2 - \left(\frac{\omega}{c}\right)^2}\frac{z_{\ell n}}{a}j_{\ell - 1}(z_{\ell n})j_\ell\!\left(\frac{\omega a}{c}\right)\frac{a^2}{\left(\frac{z_{\ell n'}}{a}\right)^2 - \left(\frac{\omega}{c}\right)^2}\frac{z_{\ell n'}}{a}j_{\ell - 1}(z_{\ell n'})j_\ell\!\left(\frac{\omega a}{c}\right)\;\mathrm{d}\omega\\
+&= 8\pi e^2a^3\eta^2z_{\ell n'}z_{\ell n}j_{\ell - 1}(z_{\ell n})j_{\ell - 1}(z_{\ell n'})I_{\ell nn'}^{(5)}\\
+% &= 4\pi^2\delta_{nn'}e^2a^3\eta^2z_{\ell n}^2j_{\ell - 1}^2(z_{\ell n})j_{\ell + 1}(z_{\ell n})y_\ell(z_{\ell n}),\\
+&= 4\pi^2\delta_{nn'}e^2a^3\eta^2j_{\ell - 1}^2(z_{\ell n}),
+\end{split}
+\end{equation}
+where we have used the identity $z_{\ell n}^2j_{\ell + 1}(z_{\ell n})y_{\ell}(z_{\ell n}) = 1$. Further, using the identities
+% \begin{equation}
+% \begin{split}
+% z_{\ell n'}z_{\ell n}^2&j_{\ell - 1}(z_{\ell n})j_{\ell - 2}(z_{\ell n'})\left[j_{\ell - 2}(z_{\ell n})y_{\ell -1}(z_{\ell n}) - j_{\ell - 1}(z_{\ell n})y_{\ell - 2}(z_{\ell n})\right]\\
+% &+ z_{\ell n}z_{\ell n'}^2j_{\ell - 1}(z_{\ell n'})j_{\ell - 2}(z_{\ell n})\left[j_{\ell - 1}(z_{\ell n'})y_{\ell -2}(z_{\ell n'}) - j_{\ell - 2}(z_{\ell n'})y_{\ell - 1}(z_{\ell n'})\right] = 0
+% \end{split}
+% \end{equation}
+\begin{equation}
+\begin{split}
+\left[j_{\ell - 1}(z_{\ell n})y_{\ell - 2}(z_{\ell n}) - j_{\ell - 2}(z_{\ell n})y_{\ell - 1}(z_{\ell n})\right] &= \frac{1}{z_{\ell n}^2},\\
+j_{\ell - 2}(z_{\ell n}) &= \frac{2\ell - 1}{z_{\ell n}}j_{\ell - 1}(z_{\ell n}),\\
+y_{\ell - 3}(z_{\ell n}) &= \frac{2\ell - 3}{z_{\ell n}}y_{\ell - 2}(z_{\ell n}) - y_{\ell - 1}(z_{\ell n}),\\
+j_{\ell - 1}(z_{\ell n}) &= -j_{\ell + 1}(z_{\ell n}),
+\end{split}
+\end{equation}
+we can show that $I_{\ell nn'}^{(E)}$ takes the same form:
+\begin{equation}
+\begin{split}
+I_{\ell nn'}^{(E)} &= \frac{8\pi e^2a^3\eta^2}{(2\ell + 1)^2}\left[(\ell + 1)^2j_{\ell - 1}(z_{\ell n})j_{\ell - 1}(z_{\ell n'})I_{\ell nn'}^{(11)} - (\ell + 1)^2z_{\ell n'}j_{\ell - 1}(z_{\ell n})j_{\ell - 2}(z_{\ell n'})I_{\ell nn'}^{(10)}\right.\\
+&\qquad - (\ell + 1)^2z_{\ell n}j_{\ell - 1}(z_{\ell n'})j_{\ell - 2}(z_{\ell n})I_{\ell nn'}^{(10)} + (\ell + 1)^2z_{\ell n}z_{\ell n'}j_{\ell - 2}(z_{\ell n})j_{\ell - 2}(z_{\ell n'})I_{\ell nn'}^{(9)}\\
+&\qquad + \ell(\ell + 1)j_{\ell - 1}(z_{\ell n})j_{\ell + 1}(z_{\ell n'})I_{\ell nn'}^{(8)} + \ell(\ell + 1)j_{\ell - 1}(z_{\ell n'})j_{\ell + 1}(z_{\ell n})I_{\ell nn'}^{(8)}\\
+&\qquad - \ell(\ell + 1)z_{\ell n}j_{\ell + 1}(z_{\ell n'})j_{\ell - 2}(z_{\ell n})I_{\ell nn'}^{(6)} - \ell(\ell + 1)z_{\ell n'}j_{\ell + 1}(z_{\ell n})j_{\ell - 2}(z_{\ell n'})I_{\ell nn'}^{(6)}\\
+&\qquad\left. + \ell^2j_{\ell +1 }(z_{\ell n})j_{\ell +1 }(z_{\ell n'})I_{\ell nn'}^{(7)}\right]\\[0.5em]
+% &= \frac{8\pi e^2a^3\eta^2}{(2\ell + 1)^2}\left((1-\delta_{nn'})(\ell + 1)^2\frac{\pi}{z_{\ell n'}^2 - z_{\ell n}^2}\left[-z_{\ell n'}z_{\ell n}^2j_{\ell - 1}^2(z_{\ell n})j_{\ell - 2}(z_{\ell n'})y_{\ell - 2}(z_{\ell n})\right.\right.\\
+% &\qquad\qquad + z_{\ell n}z_{\ell n'}^2j_{\ell - 1}^2(z_{\ell n'})j_{\ell - 2}(z_{\ell n})y_{\ell - 2}(z_{\ell n'})\\
+% &\qquad\qquad - z_{\ell n}z_{\ell n'}^2j_{\ell - 2}(z_{\ell n})j_{\ell - 2}(z_{\ell n'})j_{\ell - 1}(z_{\ell n'})y_{\ell - 1}(z_{\ell n'})\\
+% &\qquad\qquad \left. + z_{\ell n'}z_{\ell n}^2j_{\ell - 2}(z_{\ell n})j_{\ell - 2}(z_{\ell n'})j_{\ell - 1}(z_{\ell n})y_{\ell - 1}(z_{\ell n})\right]\\
+% &\qquad + \delta_{nn'}(\ell + 1)^2j_{\ell - 1}^2(z_{\ell n})\frac{\pi}{2}z_{\ell n}\left[z_{\ell n}j_{\ell - 1}(z_{\ell n})y_{\ell - 2}(z_{\ell n})\right.\\
+% &\qquad\qquad\left. - 2j_{\ell - 2}(z_{\ell n})y_{\ell - 2}(z_{\ell n})- z_{\ell n}j_{\ell - 2}(z_{\ell n})y_{\ell - 3}(z_{\ell n})\right]\\
+% &\qquad + \delta_{nn'}(\ell + 1)^2j_{\ell - 1}^2(z_{\ell n})\frac{\pi}{2}z_{\ell n}j_{\ell - 2}(z_{\ell n})\left[z_{\ell n}y_{\ell - 3}(z_{\ell n}) + (2\ell + 1)y_{\ell - 2}(z_{\ell n}) - z_{\ell n}y_{\ell - 1}(z_{\ell n})\right]\\
+% &\qquad - \delta_{nn'}(\ell + 1)^2j_{\ell - 2}^2(z_{\ell n})\frac{\pi}{4}z_{\ell n}j_{\ell - 1}(z_{\ell n})\left[z_{\ell n}y_{\ell - 2}(z_{\ell n}) + (2\ell - 1)y_{\ell - 1}(z_{\ell n}) - z_{\ell n}y_\ell(z_{\ell n})\right]\\
+% &\qquad + 2\delta_{nn'}\ell(\ell + 1)j_{\ell + 1}^2(z_{\ell n})\frac{\pi}{2}j_{\ell - 1}(z_{\ell n})y_{\ell - 2}(z_{\ell n})\\
+% &\qquad\left. - 2\delta_{nn'}\ell(\ell + 1)j_{\ell + 1}^2(z_{\ell n})\frac{\pi}{2}z_{\ell n}^2j_{\ell - 2}(z_{\ell n})y_{\ell - 1}(z_{\ell n}) + \delta_{nn'}\ell^2j_{\ell + 1}^2(z_{\ell n})\frac{\pi}{2}z_{\ell n}^2j_{\ell + 1}(z_{\ell n})y_\ell(z_{\ell n}) \vphantom{\frac{\pi}{z_{\ell n}^2}}\right)\\
+% &= \delta_{nn'}\frac{8\pi e^2a^3\eta^2}{(2\ell + 1)^2}\left((\ell + 1)^2\frac{\pi}{2}z_{\ell n}j_{\ell - 1}(z_{\ell n})\left[z_{\ell n}j_{\ell - 1}^2(z_{\ell n})y_{\ell - 2}(z_{\ell n})\right.\right.\\
+% &\qquad\left. + j_{\ell - 1}(z_{\ell n})j_{\ell - 2}(z_{\ell n})\left\{z_{\ell n}y_{\ell - 3}(z_{\ell n}) + 2y_{\ell - 2}(z_{\ell n})\right\} - z_{\ell n}j_{\ell - 2}^2(z_{\ell n})y_{\ell - 2}(z_{\ell n})\right]\\
+% &\qquad + \frac{\pi}{2}z_{\ell n}^2j_{\ell + 1}^2(z_{\ell n})\left[2\ell(\ell + 1)j_{\ell - 1}(z_{\ell n})y_{\ell - 2}(z_{\ell n}) - 2\ell(\ell + 1)j_{\ell - 2}(z_{\ell n})y_{\ell - 1}(z_{\ell n})\right.\\
+% &\qquad\qquad\left. + \left.\ell^2j_{\ell + 1}(z_{\ell n})y_\ell(z_{\ell n})\right] \vphantom{\frac{\pi}{2}} \right)\\
+% &= \delta_{nn'}\frac{4\pi^2e^2a^3\eta^2}{(2\ell + 1)^2}\left((\ell + 1)^2z_{\ell n}^2j_{\ell - 1}^2(z_{\ell n})\left[j_{\ell - 1}(z_{\ell n})y_{\ell - 2}(z_{\ell n})  \vphantom{\frac{2}{z_{\ell n}}} \right.\right.\\
+% &\qquad\left. + j_{\ell - 2}(z_{\ell n})\left\{y_{\ell - 3}(z_{\ell n}) + \frac{2}{z_{\ell n}}y_{\ell - 2}(z_{\ell n})\right\} - \frac{j_{\ell - 2}^2(z_{\ell n})}{j_{\ell - 1}(z_{\ell n})}y_{\ell - 2}(z_{\ell n})\right]\\
+% &\qquad + z_{\ell n}^2j_{\ell + 1}^2(z_{\ell n})\left[ \vphantom{\ell^2} 2\ell(\ell + 1)j_{\ell - 1}(z_{\ell n})y_{\ell - 2}(z_{\ell n}) - 2\ell(\ell + 1)j_{\ell - 2}(z_{\ell n})y_{\ell - 1}(z_{\ell n})\right.\\
+% &\qquad\qquad\left. + \left.\ell^2j_{\ell + 1}(z_{\ell n})y_\ell(z_{\ell n})\right] \vphantom{\frac{\pi}{2}} \vphantom{\frac{2}{z_{\ell n}}} \right)\\
+% &= \delta_{nn'}\frac{4\pi^2e^2a^3\eta^2}{(2\ell + 1)^2}\left((\ell + 1)^2z_{\ell n}^2j_{\ell - 1}(z_{\ell n})\left[\left\{j_{\ell - 1}^2(z_{\ell n}) - j_{\ell - 2}^2(z_{\ell n})\right\}y_{\ell - 2}(z_{\ell n})  \vphantom{\frac{2}{z_{\ell n}}} \right.\right.\\
+% &\qquad\left. + j_{\ell - 1}(z_{\ell n})j_{\ell - 2}(z_{\ell n})\left\{y_{\ell - 3}(z_{\ell n}) + \frac{2}{z_{\ell n}}y_{\ell - 2}(z_{\ell n})\right\}\right]\\
+% &\qquad\left. + j_{\ell + 1}^2(z_{\ell n})\left[z_{\ell n}\frac{2\ell(\ell + 1)}{2\ell - 1}\frac{j_{\ell -2 }(z_{\ell n})}{j_{\ell - 1}(z_{\ell n})} + \ell^2\right]\right)\\
+% &= \delta_{nn'}\frac{4\pi^2e^2a^3\eta^2}{(2\ell + 1)^2}\left((\ell + 1)^2z_{\ell n}^2j_{\ell - 1}(z_{\ell n})\left[j_{\ell - 1}^2(z_{\ell n})y_{\ell - 2}
+% (z_{\ell n}) - \left(\frac{2\ell - 1}{z_{\ell n}}\right)^2j_{\ell - 1}^2(z_{\ell n})y_{\ell - 2}(z_{\ell n})\right.\right.\\
+% &\qquad\left.\left. + j_{\ell - 1}^2(z_{\ell n})\frac{2\ell - 1}{z_{\ell n}}\left(\frac{2\ell - 1}{z_{\ell n}}y_{\ell - 2}(z_{\ell n}) - y_{\ell - 1}(z_{\ell n})\right)\right] + j_{\ell - 1}^2(z_{\ell n})\left[2\ell(\ell + 1) + \ell^2\right]\right)\\
+% &= \delta_{nn'}\frac{4\pi^2e^2a^3\eta^2}{(2\ell + 1)^2}\left((\ell + 1)^2z_{\ell n}^2j_{\ell - 1}^2(z_{\ell n})\left[j_{\ell - 1}(z_{\ell n})y_{\ell - 2}(z_{\ell n}) - j_{\ell - 2}(z_{\ell n})y_{\ell - 1}(z_{\ell n})\right]\right.\\
+% &\qquad\left. + j_{\ell - 1}^2(z_{\ell n})\left[2\ell(\ell + 1) + \ell^2\right]\right)\\
+% &= \delta_{nn'}4\pi^2e^2a^3\eta^2j_{\ell - 1}^2(z_{\ell n})\frac{(\ell + 1)^2 + 2\ell(\ell + 1) + \ell^2}{(2\ell + 1)^2}\\
+&= 4\pi^2\delta_{nn'}e^2a^3\eta^2j_{\ell - 1}^2(z_{\ell n}).
+\end{split}
+\end{equation}
+In a straightforward manner, we can then show that the integrals $I_{\ell nn'}^{(EL)}$ and $I_{\ell nn'}^{(EL)}$ evaluate to zero:
+\begin{equation}
+\begin{split}
+I_{\ell nn'}^{(EL)} &= \frac{16\pi e^2a^3\eta^2}{w_{\ell n'}}\sqrt{\ell(\ell + 1)}j_\ell(w_{\ell n'})\\
+&\qquad\times\left(\frac{\ell + 1}{2\ell + 1}j_{\ell - 1}(z_{\ell n})I_{\ell n}^{(4)} - \frac{\ell + 1}{2\ell + 1}j_{\ell - 2}(z_{\ell n})z_{\ell n}I_{\ell n}^{(3)} + \frac{\ell}{2\ell + 1}j_{\ell + 1}(z_{\ell n})I_{\ell n}^{(2)}\right)\\
+&= 0,
+\end{split}
+\end{equation}
+and $I_{\ell nn'}^{(LE)}$ follows from the transformation $I_{\ell nn'}^{(LE)} = I_{\ell nn'}^{(EL)}|_{n\leftrightarrow n'}$. Finally, we have a simple result for $I_{\ell nn'}^{(L)}$:
+\begin{equation}
+\begin{split}
+I_{\ell nn'}^{(L)} &= 8\pi e^2a^3\eta^2\ell(\ell + 1)\frac{j_{\ell}(w_{\ell n})j_\ell(w_{\ell n'})}{w_{\ell n}w_{\ell n'}}I_\ell^{(1)}\\
+&= 8\pi^2e^2a^3\eta^2\frac{\ell(\ell + 1)}{2\ell + 1}\frac{j_\ell(w_{\ell n})j_\ell(w_{\ell n'})}{w_{\ell n}w_{\ell n'}}.
+\end{split}
+\end{equation}
+
+
+
+
